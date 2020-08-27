@@ -1,0 +1,51 @@
+.footer {
+    width: 100%;
+    position: relative;
+    background-color: #00216d;
+    display: grid;
+    grid-template-columns: 33% 34% 33%;
+}
+
+.title {
+    color: white;
+    margin-top: 1rem;
+    text-align: center;
+    font-family: sans-serif;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: capitalize;
+    font-size: 1rem;
+}
+
+.links, .address {
+    font-family: sans-serif;
+    font-size: 0.8rem;
+    text-align: center;
+    color: white;
+}
+
+.address ul li {
+    list-style: none;
+}
+
+.links a {
+    font-family: sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.help {
+    font-family: sans-serif;
+    text-align: center;
+    text-transform: capitalize;
+}
+
+.copyright p {
+    color: white;
+    font-family: sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    background-color: #00216d;
+    text-align: center;
+}

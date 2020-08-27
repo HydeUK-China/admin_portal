@@ -13,4 +13,31 @@ router.post('/api/post', (req, res) => {
     );
 });
 
+// ======
+const fakeData = require('./fakeData');
+const expertData = fakeData.expertData;
+const projectData = fakeData.projectData;
+const assessData = fakeData.assessData;
+
+router.post('/api/fetchExpert', (req, res) => {
+    res.status(200).json({
+        success: true,
+        data: expertData
+    });
+});
+
+router.post('/api/fetchProject', (req, res) => {
+    res.status(200).json({
+        success: true,
+        data: projectData
+    });
+});
+
+router.post('/api/fetchAssessment', (req, res) => {
+    res.status(200).json({
+        success: true,
+        data: assessData
+    });
+});
+
 module.exports = router;
