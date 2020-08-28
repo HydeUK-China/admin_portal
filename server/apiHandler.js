@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const dbOps = require('./dbOps');
 
 router.get('/api/get', (req, res) => {
     const name = req.query.name;
@@ -14,46 +15,10 @@ router.post('/api/post', (req, res) => {
 });
 
 // ======
-const fakeData = require('./fakeData');
-const expertData = fakeData.expertData;
-const projectData = fakeData.projectData;
-const assessData = fakeData.assessData;
-
-router.post('/api/login', (req, res) => {
-    
-    if ('admin' == req.body.email && '123456' == req.body.password){
-        res.status(200).json({
-            success: true,
-            data: {token: 'welcome'}
-        });
-    } else {
-        res.status(401).json({
-            success: false,
-            msg: 'failed authorization'
-        });
-    }
-    
-});
-
-router.post('/api/fetchExpert', (req, res) => {
-    res.status(200).json({
-        success: true,
-        data: expertData
-    });
-});
-
-router.post('/api/fetchProject', (req, res) => {
-    res.status(200).json({
-        success: true,
-        data: projectData
-    });
-});
-
-router.post('/api/fetchAssessment', (req, res) => {
-    res.status(200).json({
-        success: true,
-        data: assessData
-    });
-});
+router.post('/api/login', dbOps.login);
+router.post('/api/expertDashboard', dbOps.expertDashboard);
+router.post('/api/fetchExpert', dbOps.fetchExpert);
+router.post('/api/fetchProject', dbOps.fetchProject);
+router.post('/api/fetchAssessment', dbOps.fetchAssessment);
 
 module.exports = router;
