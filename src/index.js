@@ -1,14 +1,31 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter } from "react-router-dom";
-import './styles/index.css';
-import App from './App/App';
+import {
+  BrowserRouter, Switch,
+  Route, Redirect
+} from "react-router-dom";
 import * as serviceWorker from './serviceWorker';
+import App from './App/App';
+import Login from './pages/Login';
+import {isLoggedIn} from './utils/utils';
+
+import './styles/index.css';
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <Switch>
+        <Route exact path="/admin/login">
+          <Login />
+        </Route>
+        <Route path="/admin">
+          { isLoggedIn() ? <App /> : <Redirect to="/admin/login" />}
+        </Route>
+        {/* fallback route */}
+        <Route path="/">
+          <Redirect to="/admin/admin_dashboard" />
+        </Route>
+      </Switch>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')

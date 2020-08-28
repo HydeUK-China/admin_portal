@@ -22,6 +22,7 @@ export default class ProjectPorposal extends Component {
         this.setState(
           { data }
         ))
+        .catch( err =>  console.log(err) );
     }
     
     render() {

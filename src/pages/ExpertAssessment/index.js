@@ -23,6 +23,7 @@ export default class ExpertAssessment extends Component {
         this.setState(
           { data }
         ))
+        .catch( err =>  console.log(err) );
     }
     
     render() {

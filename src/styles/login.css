@@ -1,0 +1,70 @@
+.btn{
+    cursor: pointer;
+    background-color: blue;
+    color: white;
+    text-align: center;
+}
+
+.registerLogin-page {
+    background: #eee;
+  }
+  .content-box {
+    background: white;
+    height: 100vh;
+  }
+  .logo-container .logo {
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding-left: 5%;
+    /* padding-top: 50px; */
+  }
+  .registerLogin-title_content {
+    padding-left: 5%;
+    padding-top: 8%;
+  }
+  .registerLogin-title_content h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    line-height: 1.5;
+  }
+  .registerLogin-title_content h4 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #333333;
+  }
+  .registerLogin-title_content a {
+    text-decoration: none;
+  }
+  .registerLogin-form {
+    padding-left: 5%;
+    margin-top: 2.5rem;
+    max-width: 450px;
+  }
+  
+  .register-bg_image {
+    position: relative;
+    background-image: url('../img/registerbg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* opacity: 1.5; */
+    background-position: center;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+  }
+  .login-bg_image {
+    position: relative;
+    background-image: url('../img/loginbg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* opacity: 1.5; */
+    background-position: center;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+  }
+  .bg-col {
+    padding: 0;
+  }
+  

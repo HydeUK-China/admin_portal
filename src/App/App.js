@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import {
   Switch,
   Route,
-  Link
+  Link, Redirect
 } from 'react-router-dom';
+import {withRouter} from 'react-router';
 import _ from 'lodash';
 import Tab from '../components/tab';
 import Footer from './Footer';
@@ -11,6 +12,7 @@ import Dashboard from '../pages/Dashboard';
 import ExpertDatabase from '../pages/ExpertDatabase';
 import ProjectPorposal from '../pages/ProjectPorposal';
 import ExpertAssessment from '../pages/ExpertAssessment';
+import {logout} from '../utils/utils';
 
 import '../styles/app.css';
 
@@ -24,6 +26,8 @@ class App extends Component {
       { path: 'project_proposal_collaboration', name: 'Project Porposal' },
       { path: 'expert_assessment', name: 'Expert Assessment' }
     ]
+
+    this.handleLogout = this.handleLogout.bind(this);
   }
 
   getTabs(tabs) {
@@ -36,8 +40,16 @@ class App extends Component {
     })
   }
 
-  render() {
+  handleLogout(e){
+    e.preventDefault();
 
+    logout();
+    const props = this.props;
+    props.history.push('/admin/login')
+  }
+
+
+  render() {
     return (
       <div>
         <div id="top" className="category-hero">
@@ -45,14 +57,14 @@ class App extends Component {
             <div className="brand-container">
               <Link className="brand" to="/admin/admin_dashboard">
                 Hyde International Talents
-                </Link>
+                  </Link>
             </div>
 
             <nav className="main-nav">
               <div className="sign-in">
-                <Link className="nav-item user" to="/logout">
+                <div className="nav-item user" onClick={this.handleLogout}>
                   Logout
-                  </Link>
+                </div>
               </div>
             </nav>
           </div>
@@ -61,58 +73,38 @@ class App extends Component {
         <div className="main-box">
           <div className="admin-platform">
             Hyde International Talents (HIT) Admin Portal
-            <hr></hr>
+              <hr></hr>
             {this.getTabs(this.tabs)}
           </div>
 
           <div className="container">
             <div className="welcome-admin">Welcome to Hyde International Talents (HIT) Admin Portal</div>
-
-            <Switch>
-              {/* If URL is /about, this route is rendered
-              while the rest are ignored */}
-              <Route path="/admin/admin_dashboard">
-                <Dashboard />
-              </Route>
-              <Route path="/admin/admin_expert_database">
-                <ExpertDatabase />
-              </Route>
-              <Route path="/admin/project_proposal_collaboration">
-                <ProjectPorposal />
-              </Route>
-              <Route path="/admin/expert_assessment">
-                <ExpertAssessment />
-              </Route>
-              <Route path="/logout">
-                <Logout />
-              </Route>
-              {/*  this route is a fallback */}
-              <Route path="/">
-                <Dashboard />
-              </Route>
-            </Switch>
+            
+            <Route path="/admin/admin_dashboard">
+              <Dashboard />
+            </Route>
+            <Route path="/admin/admin_expert_database">
+              <ExpertDatabase />
+            </Route>
+            <Route path="/admin/project_proposal_collaboration">
+              <ProjectPorposal />
+            </Route>
+            <Route path="/admin/expert_assessment">
+              <ExpertAssessment />
+            </Route>
+            {/* fallback route */}
+            <Route path="/admin">
+              <Redirect to="/admin/admin_dashboard" />
+            </Route>
+          
           </div>
         </div>
-
-        <Footer/>
-        
+        <Footer />
       </div>
     );
   }
 }
 
-
-class Logout extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return (
-      <div></div>
-    )
-  }
-}
 
 class About extends Component {
   constructor(props) {
@@ -184,4 +176,4 @@ class About extends Component {
   }
 }
 
-export default App;
+export default withRouter(App);

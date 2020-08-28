@@ -1,23 +1,32 @@
-export function fetchReq(path, method, param){
+export function fetchReq(path, opt = {}){
     const options = {
-      method: method || 'POST',
-      headers: {
+      method: opt.method || 'POST',
+      headers: opt.headers || {
         'Content-Type': 'application/json',
       },
-      body: param || null
+      body: opt.body || null
     }
     return fetch(path, options)
       .then(res => res.json())
       .then(res =>
         { 
           if(res.success){
-            return res.data
+            return (res.data)
           } else {
-            console.log("fetch failed")
-            return { message: res.msg}
+            throw (res.msg || res) 
           }
         })
-      .catch(e => console.error(e));
   }
 
-  
+  export function isLoggedIn() {
+    return localStorage.getItem('token');
+  }
+
+  export function login(token) {
+    localStorage.setItem('token', token);
+  }
+
+  export function logout() {
+    // Clear user token and profile data from localStorage
+    localStorage.removeItem('token');
+  }
