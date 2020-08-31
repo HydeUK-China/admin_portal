@@ -8,6 +8,19 @@ function expertDashboard(req, res){
         success: true,
         data: []
     });
+    // res.app.get('connection').query('SELECT * FROM ', function(err, rows){
+    //     if(err){
+    //         res.status(401).json({
+    //             success: false,
+    //             msg: 'failed authorization'
+    //         });
+    //     } else {
+    //         res.status(200).json({
+    //             success: true,
+    //             data: []
+    //         });
+    //     }
+    // })
 }
 
 function login(req, res){
@@ -25,7 +38,6 @@ function login(req, res){
 }
 
 function fetchExpert(req, res){
-    // console.log(res.app.get('connection'))
     res.status(200).json({
         success: true,
         data: expertData

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {fetchReq} from '../../utils/utils';
 
 import '../../styles/dashboard.css';
 
@@ -13,15 +14,11 @@ export default class Dashboard extends Component {
   }
 
   componentDidMount(){
-
-  }
-
-  componentWillReceiveProps(){
-
-  }
-
-  fetchDashboardData(){
-    
+    fetchReq('/api/expertDashboard').then(data => 
+      this.setState(
+        { data }
+      ))
+      .catch( err =>  console.log(err) );
   }
 
   render() {
