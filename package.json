@@ -16,7 +16,7 @@
     "react-scripts": "3.4.3"
   },
   "scripts": {
-    "start": "cross-env NODE_ENV=production node .",
+    "start": "cross-env NODE_ENV=production pm2 start .",
     "clean": "rimraf build",
     "react": "react-scripts start",
     "build": "npm run clean && react-scripts build",
