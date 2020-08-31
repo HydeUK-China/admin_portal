@@ -53,17 +53,21 @@ if (process.env.NODE_ENV === 'production') {
     });
 
     app.set('connection', mysql.createConnection(dbConfig['prod']))
+    const client = app.get('connection');
+    client.query(`USE ${process.env.RDS_DB_NAME}`)
   }
 
 if (process.env.NODE_ENV == 'development') {
     console.log('======Development======')
-    console.log('read from .env: RDS_HOSTNAME = ', process.env.RDS_HOSTNAME);
+    console.log('read from .env: RDS_DB_NAME = ', process.env.RDS_DB_NAME);
     app.use(errorHandler())
 
     // serve no static files
     // therefore in dev mode, nodejs can only respond to recognized api
 
     app.set('connection', mysql.createConnection(dbConfig['dev']))
+    const client = app.get('connection');
+    client.query(`USE ${process.env.RDS_DB_NAME}`)
 }
 
 app.listen(port, () => console.log(`Listening on port ${port}`));

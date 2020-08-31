@@ -4,23 +4,19 @@ const projectData = fakeData.projectData;
 const assessData = fakeData.assessData;
 
 function expertDashboard(req, res){
-    res.status(200).json({
-        success: true,
-        data: []
-    });
-    // res.app.get('connection').query('SELECT * FROM ', function(err, rows){
-    //     if(err){
-    //         res.status(401).json({
-    //             success: false,
-    //             msg: 'failed authorization'
-    //         });
-    //     } else {
-    //         res.status(200).json({
-    //             success: true,
-    //             data: []
-    //         });
-    //     }
-    // })
+    res.app.get('connection').query('SELECT * FROM Transactions', function(err, rows){
+        if(err){
+            res.status(401).json({
+                success: false,
+                msg: err.sqlMessage
+            });
+        } else {
+            res.status(200).json({
+                success: true,
+                data: rows
+            });
+        }
+    })
 }
 
 function login(req, res){
