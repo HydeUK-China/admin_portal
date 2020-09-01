@@ -7,6 +7,7 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "async": "^3.2.0",
     "axios": "^0.20.0",
     "lodash": "^4.17.20",
     "mysql": "^2.18.1",
@@ -16,14 +17,14 @@
     "react-scripts": "3.4.3"
   },
   "scripts": {
-    "start": "cross-env NODE_ENV=production pm2 start .",
+    "start": "cross-env NODE_ENV=prod pm2 start .",
     "clean": "rimraf build",
     "react": "react-scripts start",
     "build": "npm run clean && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "server": "nodenv . --exec nodemon | pino-colada",
-    "dev": "cross-env NODE_ENV=development run-p server react"
+    "dev": "cross-env NODE_ENV=dev run-p server react"
   },
   "proxy": "http://localhost:3001",
   "eslintConfig": {

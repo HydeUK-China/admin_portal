@@ -7,14 +7,15 @@ const multer = require('multer')
 const errorHandler = require('errorhandler')
 const bodyParser = require('body-parser');
 const pino = require('express-pino-logger');
-const port = process.env.PORT || 3001;
 
-const mysql = require('mysql')
+const mysql = require('mysql');
+const async = require('async');
 
 const apiHandler = require('./server/apiHandler');
 const dbConfig = require('./server/dbConfig');
 
-
+const port = process.env.PORT || 3001;
+const __env__ = process.env.NODE_ENV;
 
 // multipart/form-data , which is primarily used for uploading files
 const upload = multer({ dest: './uploads/' })
@@ -36,38 +37,49 @@ app.use(session({
 // and then send the resulting HTML string to the client.
 app.set('view engine', 'pug');
 
-// use: match url starts with specified path
-// "/" match "/api", "/api/get", ...
-app.use('/', apiHandler)
-
-if (process.env.NODE_ENV === 'production') {
-    console.log('======Production======')
+function init() {
+  // use: match url starts with specified path
+  // "/" match "/api", "/api/get", ...
+  app.use('/', apiHandler)
+  app.listen(port, () => console.log(`Listening on port ${port}`));
+  
+  if (__env__ === 'prod') {
+    console.log('====== Production ======')
     console.log(`serving static file from: ${__dirname}/build`)
-    
     // Serve any static files
     app.use(express.static(path.join(__dirname, 'build')));
-    // therefor in prod mode, nodejs handle unrecognized (default) GET HTTP requests
+    
+    // therefore in prod mode, nodejs handle unrecognized (default) GET HTTP requests
     // as React routing, return all requests to React app
-    app.get('*', function(req, res) {
+    // therefore in dev mode, nodejs can only respond to recognized api
+    app.get('*', function (req, res) {
       res.sendFile(path.join(__dirname, 'build', 'index.html'));
     });
 
-    app.set('connection', mysql.createConnection(dbConfig['prod']))
-    const client = app.get('connection');
-    client.query(`USE ${process.env.RDS_DB_NAME}`)
-  }
-
-if (process.env.NODE_ENV == 'development') {
-    console.log('======Development======')
+  } else if(__env__ === 'dev'){
+    console.log('====== Development ======')
     console.log('read from .env: RDS_DB_NAME = ', process.env.RDS_DB_NAME);
+
     app.use(errorHandler())
-
-    // serve no static files
-    // therefore in dev mode, nodejs can only respond to recognized api
-
-    app.set('connection', mysql.createConnection(dbConfig['dev']))
-    const client = app.get('connection');
-    client.query(`USE ${process.env.RDS_DB_NAME}`)
+  }
 }
 
-app.listen(port, () => console.log(`Listening on port ${port}`));
+app.set('connection', mysql.createConnection(dbConfig[__env__]))
+const client = app.get('connection');
+
+async.series([
+  function connect(callback) {
+    client.connect(callback);
+  },
+  function use_db(callback) {
+    client.query(`USE ${process.env.RDS_DB_NAME}`, callback);
+  },
+], (err, results) => {
+  if (err) {
+    console.log('Exception connecting database.');
+    throw err;
+  } else {
+    console.log('Database initialization complete.');
+    init();
+  }
+});
