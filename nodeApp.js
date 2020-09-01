@@ -72,7 +72,7 @@ async.series([
     client.connect(callback);
   },
   function use_db(callback) {
-    client.query(`USE ${process.env.RDS_DB_NAME}`, callback);
+    client.query(`USE ${dbConfig.db}`, callback);
   },
 ], (err, results) => {
   if (err) {
