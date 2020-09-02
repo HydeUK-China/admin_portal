@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import _ from 'lodash';
 import Search from '../../components/search';
 import Table from '../../components/table';
 import {fetchReq} from '../../utils/utils';
@@ -15,14 +16,17 @@ export default class ExpertDatabase extends Component {
 
       this.header = ['Applicant ID', 'First Name', 'Last Name', 'Email', 
       'Tel', 'D.O.B', 'Nationality', 'Expertise', 'Professional Field', 'CV']
+
+      this.field_name = ['applicant_id', 'First_Name', 'Last_Name', 'Email',
+      'Tel', 'DOB', 'Nationality', 'Expertise', 'Research_Field', 'CV']
     }
 
     componentDidMount(){
-      fetchReq('/api/fetchExpert').then(data => 
+      fetchReq('/api/fetchExpert').then(data => {     
         this.setState(
           { data }
-        ))
-        .catch( err =>  console.log(err) );
+        )
+      }).catch( err =>  console.log(err) );
     }
     
     render() {

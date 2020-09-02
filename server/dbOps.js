@@ -4,19 +4,19 @@ const projectData = fakeData.projectData;
 const assessData = fakeData.assessData;
 
 function expertDashboard(req, res){
-    res.app.get('connection').query('SELECT * FROM Transactions', function(err, rows){
-        if(err){
-            res.status(401).json({
-                success: false,
-                msg: err.sqlMessage
-            });
-        } else {
+    // res.app.get('connection').query('SELECT * FROM Applicant_Information', function(err, rows){
+    //     if(err){
+    //         res.status(401).json({
+    //             success: false,
+    //             msg: err.sqlMessage
+    //         });
+    //     } else {
             res.status(200).json({
                 success: true,
-                data: rows
+                data: []
             });
-        }
-    })
+    //     }
+    // })
 }
 
 function login(req, res){
@@ -34,10 +34,20 @@ function login(req, res){
 }
 
 function fetchExpert(req, res){
-    res.status(200).json({
-        success: true,
-        data: expertData
-    });
+    // res.app.get('connection').query('SELECT * FROM Applicant_Information', function(err, rows){
+        // if(err){
+        //     console.log(err)
+        //     res.status(401).json({
+        //         success: false,
+        //         msg: err.sqlMessage
+        //     })
+        // } else {
+            res.status(200).json({
+                success: true,
+                data: expertData
+            })
+        // }
+    // })
 }
 
 function fetchProject(req, res){
@@ -48,10 +58,19 @@ function fetchProject(req, res){
 }
 
 function fetchAssessment(req, res){
-    res.status(200).json({
-        success: true,
-        data: assessData
-    });
+    res.app.get('connection').query('SELECT * FROM Applicant_Information', function(err, rows){
+        if(err){
+            res.status(401).json({
+                success: false,
+                msg: err.sqlMessage
+            })
+        } else {
+            res.status(200).json({
+                success: true,
+                data: rows
+            })
+        }
+    })
 }
 
 module.exports = {

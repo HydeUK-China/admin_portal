@@ -18,9 +18,9 @@ ReactDOM.render(
         <Route exact path="/admin/login">
           <Login />
         </Route>
-        <Route path="/admin">
-          { isLoggedIn() ? <App /> : <Redirect to="/admin/login" />}
-        </Route>
+        <PrivateRoute path="/admin">
+          <App />
+        </PrivateRoute>
         {/* fallback route */}
         <Route path="/">
           <Redirect to="/admin/admin_dashboard" />
@@ -30,6 +30,17 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
+
+function PrivateRoute({ children, ...rest }) {
+  return (
+    <Route
+      {...rest}
+      render={(location) => isLoggedIn() != null
+        ? children
+        : <Redirect to={{ pathname: '/admin/login'}} />}
+    />
+  )
+}
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

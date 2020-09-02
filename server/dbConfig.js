@@ -1,17 +1,17 @@
 const config = {
     prod: {
-        host: 'nodeappmysql.cz7jwgpwtdgk.eu-west-2.rds.amazonaws.com',
-        user: 'admin',
-        password: '12345678',
+        host: 'expertdb.cwhivqtuvfvm.eu-west-2.rds.amazonaws.com',
+        user: 'hydeuk',
+        password: 'Shree123456',
         port: '3306'
     },
     dev: {
-        host: 'nodeappmysql.cz7jwgpwtdgk.eu-west-2.rds.amazonaws.com',
-        user: 'admin',
-        password: '12345678',
+        host: 'expertdb.cwhivqtuvfvm.eu-west-2.rds.amazonaws.com',
+        user: 'hydeuk',
+        password: 'Shree123456',
         port: '3306'
     },
-    db: 'Transactions_Prod'
+    db: 'ExpertDatabase'
 }
 
 module.exports = config

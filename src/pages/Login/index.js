@@ -32,7 +32,7 @@ class Login extends Component {
     }).then(data => {
       login(data.token)
  
-      props.history.push('/admin/admin_dashboard')
+      props.history.replace('/admin/admin_dashboard')
     }).catch(msg => 
       alert(msg)
     )
