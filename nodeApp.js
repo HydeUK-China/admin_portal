@@ -14,7 +14,7 @@ const async = require('async');
 const apiHandler = require('./server/apiHandler');
 const dbConfig = require('./server/dbConfig');
 
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 5001;
 const __env__ = process.env.NODE_ENV;
 
 // multipart/form-data , which is primarily used for uploading files

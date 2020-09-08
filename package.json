@@ -19,14 +19,14 @@
   "scripts": {
     "start": "pm2 start ecosystem.config.js --env production",
     "clean": "rimraf build",
-    "react": "react-scripts start",
+    "react": "cross-env PORT=5000 react-scripts start",
     "build": "npm run clean && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "server": "nodenv . --exec nodemon | pino-colada",
     "dev": "cross-env NODE_ENV=dev run-p server react"
   },
-  "proxy": "http://localhost:3001",
+  "proxy": "http://localhost:5001",
   "eslintConfig": {
     "extends": "react-app"
   },
