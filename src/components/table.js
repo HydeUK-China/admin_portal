@@ -13,15 +13,22 @@ export default class Table extends Component {
         })
     }
 
-    getTData(data) {
+    getTData(data, field) {
         if (data){
-            const keys = data.length > 0 ? Object.keys(data[0]) : null;
+            const keys = field === undefined ? (data.length > 0 ? Object.keys(data[0]) : null) : field;
 
             return _.map(data, (item, index) => {
                 const row =  _.map(keys, (key, index) => {
-                    return <td key={`key-${index}`}>
+                    if (React.isValidElement(key)){
+                        return <td key={`key-${index}`}>
+                            {key}
+                        </td>
+                    } else {
+                        return <td key={`key-${index}`}>
                                 {item[key]}
                             </td>
+                    }
+                    
                 });
 
                 return <tr key={`tData-${index}`}>{ row }</tr>
@@ -39,7 +46,7 @@ export default class Table extends Component {
                         <tr>{this.getTHead(props.header)}</tr>
                     </thead>
                     <tbody>
-                        {this.getTData(props.data)}
+                        {this.getTData(props.data, props.field)}
                     </tbody>
                 </table>
             </div>

@@ -15,10 +15,10 @@ export default class ExpertDatabase extends Component {
       }
 
       this.header = ['Applicant ID', 'First Name', 'Last Name', 'Email', 
-      'Tel', 'D.O.B', 'Nationality', 'Expertise', 'Professional Field', 'CV']
+      'Tel', 'D.O.B', 'Nationality', 'Expertise', 'Professional Field', 'CV', '']
 
       this.field_name = ['applicant_id', 'First_Name', 'Last_Name', 'Email',
-      'Tel', 'DOB', 'Nationality', 'Expertise', 'Research_Field', 'CV']
+      'Tel', 'DOB', 'Nationality', 'Expertise', 'Research_Field', 'CV', <button>upload</button>]
     }
 
     componentDidMount(){
@@ -35,7 +35,7 @@ export default class ExpertDatabase extends Component {
       return (
         <div>
           <Search text="EP ID Search" placeholder="EP-"/>
-          <Table header={this.header} data={state.data}/>
+          <Table header={this.header} data={state.data} field={this.field_name}/>
         </div>
       )
     }
