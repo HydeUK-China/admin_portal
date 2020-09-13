@@ -3,7 +3,6 @@ const app = express();
 const path = require('path');
 const methodOverride = require('method-override')
 const session = require('express-session')
-const multer = require('multer')
 const errorHandler = require('errorhandler')
 const bodyParser = require('body-parser');
 const pino = require('express-pino-logger');
@@ -17,8 +16,6 @@ const dbConfig = require('./server/dbConfig');
 const port = process.env.PORT || 5001;
 const __env__ = process.env.NODE_ENV;
 
-// multipart/form-data , which is primarily used for uploading files
-const upload = multer({ dest: './uploads/' })
 // enable bodyParser to parse content type of application/json,
 // otherwise req.body is {}
 app.use(bodyParser.json());
@@ -42,13 +39,13 @@ function init() {
   // "/" match "/api", "/api/get", ...
   app.use('/', apiHandler)
   app.listen(port, () => console.log(`Listening on port ${port}`));
-  
+
   if (__env__ === 'prod') {
     console.log('====== Production ======')
     console.log(`serving static file from: ${__dirname}/build`)
     // Serve any static files
     app.use(express.static(path.join(__dirname, 'build')));
-    
+
     // therefore in prod mode, nodejs handle unrecognized (default) GET HTTP requests
     // as React routing, return all requests to React app
     // therefore in dev mode, nodejs can only respond to recognized api
@@ -56,7 +53,7 @@ function init() {
       res.sendFile(path.join(__dirname, 'build', 'index.html'));
     });
 
-  } else if(__env__ === 'dev'){
+  } else if (__env__ === 'dev') {
     console.log('====== Development ======')
     console.log('read from .env: RDS_DB_NAME = ', process.env.RDS_DB_NAME);
 
@@ -64,7 +61,7 @@ function init() {
   }
 }
 
-app.set('connection', mysql.createConnection(dbConfig[__env__]))
+app.set('connection', mysql.createConnection(dbConfig.rdsClient[__env__]))
 const client = app.get('connection');
 
 async.series([
@@ -72,7 +69,7 @@ async.series([
     client.connect(callback);
   },
   function use_db(callback) {
-    client.query(`USE ${dbConfig.db}`, callback);
+    client.query(`USE ${dbConfig.database[__env__]}`, callback);
   },
 ], (err, results) => {
   if (err) {

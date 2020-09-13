@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {
-  Switch,
   Route,
   Link, Redirect
 } from 'react-router-dom';
@@ -9,9 +8,10 @@ import _ from 'lodash';
 import Tab from '../components/tab';
 import Footer from './Footer';
 import Dashboard from '../pages/Dashboard';
-import ExpertDatabase from '../pages/ExpertDatabase';
-import ProjectPorposal from '../pages/ProjectPorposal';
-import ExpertAssessment from '../pages/ExpertAssessment';
+import ExpertManagement from '../pages/ExpertManagement';
+import EmployerManagement from '../pages/EmployerManagement';
+import ProjectManagement from '../pages/ProjectManagement';
+import ProjectMatching from '../pages/ProjectMatching';
 import {logout} from '../utils/utils';
 
 import '../styles/app.css';
@@ -22,9 +22,10 @@ class App extends Component {
 
     this.tabs = [
       { path: 'admin_dashboard', name: 'Dashboard' },
-      { path: 'admin_expert_database', name: 'Expert Database' },
-      { path: 'project_proposal_collaboration', name: 'Project Porposal' },
-      { path: 'expert_assessment', name: 'Expert Assessment' }
+      { path: 'expert_management', name: 'Expert Management' },
+      { path: 'employer_management', name: 'Employer Management' },
+      { path: 'project_management', name: 'Project Management' },
+      { path: 'project_matching', name: 'Project Matching' }
     ]
 
     this.handleLogout = this.handleLogout.bind(this);
@@ -83,20 +84,23 @@ class App extends Component {
             <Route path="/admin/admin_dashboard">
               <Dashboard />
             </Route>
-            <Route path="/admin/admin_expert_database">
-              <ExpertDatabase />
+            <Route path="/admin/expert_management">
+              <ExpertManagement />
             </Route>
-            <Route path="/admin/project_proposal_collaboration">
-              <ProjectPorposal />
-            </Route>
-            <Route path="/admin/expert_assessment">
-              <ExpertAssessment />
-            </Route>
+            
             {/* fallback route */}
             <Route path="/admin">
               <Redirect to="/admin/admin_dashboard" />
             </Route>
-          
+            <Route path="/admin/employer_management">
+              <EmployerManagement />
+            </Route>
+            <Route path="/admin/project_management">
+              <ProjectManagement />
+            </Route>
+            <Route path="/admin/project_matching">
+              <ProjectMatching />
+            </Route>
           </div>
         </div>
         <Footer />

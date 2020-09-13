@@ -1,4 +1,4 @@
-const config = {
+const rdsClient = {
     prod: {
         host: 'expertdb.cwhivqtuvfvm.eu-west-2.rds.amazonaws.com',
         user: 'hydeuk',
@@ -10,8 +10,15 @@ const config = {
         user: 'hydeuk',
         password: 'Shree123456',
         port: '3306'
-    },
-    db: 'ExpertDatabase'
+    }
 }
 
-module.exports = config
+const database = {
+    prod: 'ExpertDatabase',
+    dev: 'ExpertDatabase'
+}
+
+module.exports = {
+    rdsClient,
+    database
+}

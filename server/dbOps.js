@@ -1,8 +1,8 @@
 const fakeData = require('./fakeData');
 const expertData = fakeData.expertData;
 const projectData = fakeData.projectData;
-const assessData = fakeData.assessData;
-const request = require("request");
+const employerData = fakeData.employerData;
+const projectMatchingData = fakeData.projectMatchingData
 
 function expertDashboard(req, res){
     // res.app.get('connection').query('SELECT * FROM Applicant_Information', function(err, rows){
@@ -58,20 +58,27 @@ function fetchProject(req, res){
     });
 }
 
-function fetchAssessment(req, res){
-    res.app.get('connection').query('SELECT * FROM Applicant_Information', function(err, rows){
-        if(err){
-            res.status(401).json({
-                success: false,
-                msg: err.sqlMessage
-            })
-        } else {
+function fetchEmployer(req, res){
+    // res.app.get('connection').query('SELECT * FROM Applicant_Information', function(err, rows){
+    //     if(err){
+    //         res.status(401).json({
+    //             success: false,
+    //             msg: err.sqlMessage
+    //         })
+    //     } else {
             res.status(200).json({
                 success: true,
-                data: rows
+                data: employerData
             })
-        }
-    })
+    //     }
+    // })
+}
+
+function fetchProjectMatching(req, res){
+    res.status(200).json({
+        success: true,
+        data: projectMatchingData
+    });
 }
 
 module.exports = {
@@ -79,5 +86,6 @@ module.exports = {
     login,
     fetchExpert,
     fetchProject,
-    fetchAssessment
+    fetchEmployer,
+    fetchProjectMatching
 }

@@ -8,13 +8,16 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "async": "^3.2.0",
-    "axios": "^0.20.0",
+    "aws-sdk": "^2.749.0",
+    "bootstrap": "^4.5.2",
     "lodash": "^4.17.20",
+    "multer-s3": "^2.9.0",
     "mysql": "^2.18.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.3"
+    "react-scripts": "3.4.3",
+    "react-table": "6.10.0"
   },
   "scripts": {
     "start": "pm2 start ecosystem.config.js --env production",

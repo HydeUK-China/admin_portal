@@ -1,21 +1,49 @@
 import React, { Component } from 'react';
+import _ from 'lodash';
 
 import '../styles/search.css';
 
 export default class Search extends Component {
     constructor(props) {
-      super(props);
+        super(props);
+
+        this.state = {
+            filterInput: ""
+        };
     }
-    
+
+    handleGlobalFilterChange = e => {
+        const value = e.target.value || "";
+        this.setState({ filterInput: value }, () => {
+            this.globalSearch();
+        });
+    };
+
+    globalSearch = () => {
+        const { filterInput } = this.state;
+        const { fullData, dataFilterableField, filterDataHandler } = this.props;
+
+        const filteredData = _.filter(fullData, item => {
+            let condition = false;
+
+            _.forEach(dataFilterableField, (_item, _index) => {
+                condition = condition || item[_item].toString().toLowerCase().includes(filterInput.toLowerCase())
+            })
+            return condition;
+        });
+
+        filterDataHandler(filteredData);
+    };
+
     render() {
-        const props = this.props;
+        const { filterInput } = this.state;
 
         return (
-            <div className="search">
-                <label>{props.text} :</label>
-                <input type="text" placeholder={props.placeholder} required />
-                <button className="search-btn">Search</button>
-            </div>
+            <input
+                value={filterInput}
+                onChange={this.handleGlobalFilterChange}
+                placeholder={"Global search"}
+            />
         )
     }
-  }
+}
