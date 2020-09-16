@@ -28,11 +28,18 @@ app.use(methodOverride());
 app.use(session({
   resave: true,
   saveUninitialized: true,
-  secret: 'uwotm8'
+  secret: 'uwotm8',
+  cookie: {
+    httpOnly: true, // blocks the ability to use the document.cookie object. This prevents XSS attacks from stealing the session identifier.
+    maxAge: 3000 // expiry time (miliseconds) for variable stored in req.session (e.g. req.session.id)
+  },
+  name: "hyde.cookie" // change the name of cookie
 }));
 // Pug (a template engines) replace variables in our file with actual values, 
 // and then send the resulting HTML string to the client.
 app.set('view engine', 'pug');
+// Node app is behind a proxy (like Nginx)
+// app.set('trust proxy', 1)
 
 function init() {
   // use: match url starts with specified path
@@ -61,22 +68,24 @@ function init() {
   }
 }
 
-app.set('connection', mysql.createConnection(dbConfig.rdsClient[__env__]))
-const client = app.get('connection');
+init();
 
-async.series([
-  function connect(callback) {
-    client.connect(callback);
-  },
-  function use_db(callback) {
-    client.query(`USE ${dbConfig.database[__env__]}`, callback);
-  },
-], (err, results) => {
-  if (err) {
-    console.log('Exception connecting database.');
-    throw err;
-  } else {
-    console.log('Database initialization complete.');
-    init();
-  }
-});
+// app.set('connection', mysql.createConnection(dbConfig.rdsClient[__env__]))
+// const client = app.get('connection');
+
+// async.series([
+//   function connect(callback) {
+//     client.connect(callback);
+//   },
+//   function use_db(callback) {
+//     client.query(`USE ${dbConfig.database[__env__]}`, callback);
+//   },
+// ], (err, results) => {
+//   if (err) {
+//     console.log('Exception connecting database.');
+//     throw err;
+//   } else {
+//     console.log('Database initialization complete.');
+//     init();
+//   }
+// });
