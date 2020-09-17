@@ -1,18 +1,15 @@
 import React, { Component } from 'react';
 import {
+  Switch,
   Route,
   Link, Redirect
 } from 'react-router-dom';
-import {withRouter} from 'react-router';
+import { withRouter } from 'react-router';
 import _ from 'lodash';
 import Tab from '../components/tab';
 import Footer from './Footer';
-import Dashboard from '../pages/Dashboard';
-import ExpertManagement from '../pages/ExpertManagement';
-import EmployerManagement from '../pages/EmployerManagement';
-import ProjectManagement from '../pages/ProjectManagement';
-import ProjectMatching from '../pages/ProjectMatching';
-import {logout} from '../utils/utils';
+import { removeRole, getRole, fetchReq } from '../utils/utils';
+import { path_name, renderRoute } from './tabRouteConfig';
 
 import '../styles/app.css';
 
@@ -20,19 +17,18 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    this.tabs = [
-      { path: 'admin_dashboard', name: 'Dashboard' },
-      { path: 'expert_management', name: 'Expert Management' },
-      { path: 'employer_management', name: 'Employer Management' },
-      { path: 'project_management', name: 'Project Management' },
-      { path: 'project_matching', name: 'Project Matching' }
-    ]
+    this.state = {
+      role: getRole()
+    }
 
     this.handleLogout = this.handleLogout.bind(this);
   }
 
-  getTabs(tabs) {
-    return _.map(tabs, (item, index) => {
+  getTabs = () => {
+    const { role } = this.state;
+    const pick_tabs = path_name(role)
+
+    return _.map(pick_tabs, (item, index) => {
       return (
         <div key={`tabs-${index}`}>
           <Tab path={item.path} name={item.name} />
@@ -41,16 +37,22 @@ class App extends Component {
     })
   }
 
-  handleLogout(e){
+  handleLogout(e) {
     e.preventDefault();
 
-    logout();
-    const props = this.props;
-    props.history.push('/admin/login')
+    fetchReq('/api/logout')
+      .then(data => {
+        removeRole();
+        this.props.history.push('/login')
+      }).catch(msg =>
+        alert(msg)
+      )
   }
 
 
   render() {
+    const { role } = this.state;
+
     return (
       <div>
         <div id="top" className="category-hero">
@@ -75,106 +77,23 @@ class App extends Component {
           <div className="admin-platform">
             Hyde International Talents (HIT) Admin Portal
               <hr></hr>
-            {this.getTabs(this.tabs)}
+            {this.getTabs()}
           </div>
 
           <div className="container">
             <div className="welcome-admin">Welcome to Hyde International Talents (HIT) Admin Portal</div>
-            
-            <Route path="/admin/admin_dashboard">
-              <Dashboard />
-            </Route>
-            <Route path="/admin/expert_management">
-              <ExpertManagement />
-            </Route>
-            
-            {/* fallback route */}
-            <Route path="/admin">
-              <Redirect to="/admin/admin_dashboard" />
-            </Route>
-            <Route path="/admin/employer_management">
-              <EmployerManagement />
-            </Route>
-            <Route path="/admin/project_management">
-              <ProjectManagement />
-            </Route>
-            <Route path="/admin/project_matching">
-              <ProjectMatching />
-            </Route>
+            <Switch>
+              {renderRoute(role)}
+              <Route path="/mgt">
+                { role === '__admin__' ?
+                  <Redirect to='/mgt/admin_dashboard' />
+                  : <Redirect to='/mgt/project_management' />
+                  }
+              </Route>
+            </Switch>
           </div>
         </div>
         <Footer />
-      </div>
-    );
-  }
-}
-
-
-class About extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      post: '',
-      get: '',
-      name: '',
-      param: ''
-    };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleGetSubmit = this.handleGetSubmit.bind(this);
-    this.handlePostSubmit = this.handlePostSubmit.bind(this);
-  }
-
-  handleChange(event) {
-    this.setState({ name: event.target.value });
-  }
-
-  handleGetSubmit(event) {
-    event.preventDefault();
-    fetch(`/api/get?name=${encodeURIComponent(this.state.name)}`)
-      .then(response => response.json())
-      .then(state => this.setState(state));
-  }
-
-  handlePostSubmit = (event) => {
-    event.preventDefault();
-
-    fetch('/api/post', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ post: this.state.param })
-    })
-      .then(response => response.text())
-      .then(body => this.setState({ post: body }));
-  }
-
-  render() {
-    return (
-      <div>
-        <form onSubmit={this.handleGetSubmit}>
-          <label htmlFor="name">Test GET Request: </label>
-          <input
-            id="name"
-            type="text"
-            value={this.state.name}
-            onChange={this.handleChange}
-          />
-          <button type="submit">Submit</button>
-        </form>
-        <p>{this.state.get}</p>
-
-
-        <form onSubmit={this.handlePostSubmit}>
-          <label htmlFor="name">Test POST Request: </label>
-          <input
-            type="text"
-            value={this.state.param}
-            onChange={e => this.setState({ param: e.target.value })}
-          />
-          <button type="submit">Submit</button>
-        </form>
-        <p>{this.state.post}</p>
       </div>
     );
   }

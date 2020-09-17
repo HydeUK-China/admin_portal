@@ -7,7 +7,7 @@ import {
 import * as serviceWorker from './serviceWorker';
 import App from './App/App';
 import Login from './pages/Login';
-import {isLoggedIn} from './utils/utils';
+import {getRole} from './utils/utils';
 
 import './styles/index.css';
 
@@ -15,15 +15,15 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <Switch>
-        <Route exact path="/admin/login">
+        <Route exact path="/login">
           <Login />
         </Route>
-        <PrivateRoute path="/admin">
+        <PrivateRoute path="/mgt">
           <App />
         </PrivateRoute>
         {/* fallback route */}
         <Route path="/">
-          <Redirect to="/admin/admin_dashboard" />
+          <Redirect to="/mgt" />
         </Route>
       </Switch>
     </BrowserRouter>
@@ -35,9 +35,9 @@ function PrivateRoute({ children, ...rest }) {
   return (
     <Route
       {...rest}
-      render={(location) => isLoggedIn() != null
+      render={(location) => getRole() != null
         ? children
-        : <Redirect to={{ pathname: '/admin/login'}} />}
+        : <Redirect to={{ pathname: '/login'}} />}
     />
   )
 }

@@ -31,7 +31,7 @@ app.use(session({
   secret: 'uwotm8',
   cookie: {
     httpOnly: true, // blocks the ability to use the document.cookie object. This prevents XSS attacks from stealing the session identifier.
-    maxAge: 3000 // expiry time (miliseconds) for variable stored in req.session (e.g. req.session.id)
+    maxAge: 86400000 // expiry time (miliseconds) for variable stored in req.session (e.g. req.session.id)
   },
   name: "hyde.cookie" // change the name of cookie
 }));

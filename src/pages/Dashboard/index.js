@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {fetchReq} from '../../utils/utils';
+import { fetchReq } from '../../utils/utils';
 
 import '../../styles/dashboard.css';
 
@@ -13,12 +13,12 @@ export default class Dashboard extends Component {
     }
   }
 
-  componentDidMount(){
-    fetchReq('/api/expertDashboard').then(data => 
+  componentDidMount() {
+    fetchReq('/api/expertDashboard').then(data =>
       this.setState(
         { data }
       ))
-      .catch( err =>  console.log(err) );
+      .catch(err => console.log(err));
   }
 
   render() {

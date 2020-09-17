@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import {withRouter} from 'react-router';
-import {fetchReq, login} from '../../utils/utils';
+import {fetchReq, setRole} from '../../utils/utils';
 
 import '../../styles/login.css';
 
@@ -30,9 +30,9 @@ class Login extends Component {
         email: email.current.value, 
         password: pwd.current.value })
     }).then(data => {
-      login(data.token)
+      setRole(data.role)
  
-      props.history.replace('/admin/admin_dashboard')
+      props.history.replace('/mgt')
     }).catch(msg => 
       alert(msg)
     )

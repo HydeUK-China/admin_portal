@@ -29,15 +29,15 @@ export function fetchStream(path, opt = {}) {
     .then(res => res.blob())
 }
 
-export function isLoggedIn() {
-  return localStorage.getItem('token');
+export function getRole() {
+  return localStorage.getItem('role');
 }
 
-export function login(token) {
-  localStorage.setItem('token', token);
+export function setRole(role) {
+  localStorage.setItem('role', role);
 }
 
-export function logout() {
+export function removeRole() {
   // Clear user token and profile data from localStorage
-  localStorage.removeItem('token');
+  localStorage.removeItem('role');
 }

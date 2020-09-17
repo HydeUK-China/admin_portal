@@ -25,7 +25,10 @@ export default class ExpertManagement extends Component {
     }
 
     componentDidMount() {
-        fetchReq('/api/fetchExpert').then(data => {
+        const { role } = this.props;
+        const expertId = 1;
+        const url = role === '__admin__' ? '/api/fetchExpert/all' : `/api/fetchExpert/${expertId}`
+        fetchReq(url).then(data => {
             this.setState({
                 data,
                 filterData: data
