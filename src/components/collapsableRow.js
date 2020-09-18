@@ -22,8 +22,8 @@ export default class CollapsableRow extends Component {
 
     render() {
 
-        const { rowData, rowField, showMoreButtonText, children } = this.props;
-
+        const { rowData, rowField, showMoreButtonText, children, role } = this.props;
+console.log(role)
         return (
             <div className='database'>
 
@@ -32,9 +32,14 @@ export default class CollapsableRow extends Component {
                         return <label key={`row-${index}`}>{item}</label>
                     })
                     }
-                    <button className="more-info-btn" onClick={this.handleToggle}>
-                        {showMoreButtonText}
-                    </button>
+                                       {role === '__admin__' ? <select className='more-info-btn' onChange={this.handleSelect}>
+                        <option value='MoreInfo'>More info</option>
+                        <option value='Edit'>Edit</option>
+                        <option value='Remove'>Remove</option>
+                        <option value='Add'>Add</option>
+                    </select> : <select className='more-info-btn' onChange={this.handleSelect}>
+                            <option value='MoreInfo'>More info</option>
+                            <option value='Edit'>Edit</option></select>}
                 </div>
                 <div className={this.state.showInfo ? 'showContent content ' : 'content'} >
                     {children}

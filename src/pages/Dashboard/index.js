@@ -22,6 +22,8 @@ export default class Dashboard extends Component {
   }
 
   render() {
+    const { role } = this.props;
+    console.log(role)
     return (
       <div className="dashboard">
         <section className="chart-one"> chart one </section>

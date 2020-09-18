@@ -44,9 +44,11 @@ export default class ProjectManagement extends Component {
 
     getTable() {
         const { filterData } = this.state;
-
+        const { role } = this.props;
+        
         return _.map(filterData, (item, index) => {
             return <CollapsableRow
+                role={role}
                 key={`collapsableRow-${index}`}
                 rowData={item}
                 rowField={this.dataField}
@@ -59,6 +61,7 @@ export default class ProjectManagement extends Component {
     render() {
         const { data } = this.state;
 
+
         return (
             <div className="database">
                 <div className="search">
@@ -68,7 +71,7 @@ export default class ProjectManagement extends Component {
                         filterDataHandler={this.filterDataHandler}
                     />
                 </div>
-                
+
                 <div className="dataheader_expert">
                     {this.getHeader()}
                 </div>
