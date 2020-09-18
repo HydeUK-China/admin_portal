@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
 import Search from '../../components/search';
-import CollapsableRow from '../../components/collapsableRow';
-import ExpertCV from '../../components/expertCV';
-import CollapsableCreate from '../../components/collapsableCreate';
+import ExpertTab from '../../components/ExpertTab';
+
 import { fetchReq } from '../../utils/utils';
+import AddExpert from '../../components/addExpert';
 
 export default class ExpertManagement extends Component {
     constructor(props) {
@@ -50,15 +50,14 @@ export default class ExpertManagement extends Component {
 
     getTable() {
         const { filterData } = this.state;
-
+        const { role } = this.props;
         return _.map(filterData, (item, index) => {
-            return <CollapsableRow
+            return <ExpertTab
+                role={role}
                 key={`collapsableRow-${index}`}
                 rowData={item}
-                rowField={this.dataField}
-                showMoreButtonText={'CV'}>
-                <ExpertCV />
-            </CollapsableRow>
+                rowField={this.dataField}>
+            </ExpertTab>
         })
     }
 
@@ -81,7 +80,7 @@ export default class ExpertManagement extends Component {
                     />
                     <button className="search-btn" onClick={this.handleToggleAdd}>Add</button>
                 </div>
-                <CollapsableCreate show={showAdd} />
+                <AddExpert show={showAdd} />
                 <div className="dataheader_expert">
                     {this.getHeader()}
                 </div>

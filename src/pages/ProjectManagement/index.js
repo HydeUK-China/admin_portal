@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 import { fetchReq } from '../../utils/utils';
 import Search from '../../components/search';
-import CollapsableRow from '../../components/collapsableRow';
-import ProjectInfo from '../../components/projectInfo';
+import JobTab from '../../components/JobTab'
+import AddJob from '../../components/addJob'
 
 export default class ProjectManagement extends Component {
     constructor(props) {
@@ -47,19 +47,25 @@ export default class ProjectManagement extends Component {
         const { role } = this.props;
         
         return _.map(filterData, (item, index) => {
-            return <CollapsableRow
+            return <JobTab
                 role={role}
-                key={`collapsableRow-${index}`}
+                key={`JobcollapsableRow-${index}`}
                 rowData={item}
-                rowField={this.dataField}
-                showMoreButtonText={'More info'}>
-                <ProjectInfo />
-            </CollapsableRow>
+                rowField={this.dataField}>
+                
+            </JobTab>
         })
     }
 
+    handleToggleAdd = () => {
+        this.setState({
+            Add: !this.state.Add
+        })
+    }
+
+
     render() {
-        const { data } = this.state;
+        const { data,Add } = this.state;
 
 
         return (
@@ -70,8 +76,9 @@ export default class ProjectManagement extends Component {
                         dataFilterableField={this.dataField}
                         filterDataHandler={this.filterDataHandler}
                     />
+                    <button className="search-btn" onClick={this.handleToggleAdd}>Add</button>
                 </div>
-
+                <AddJob show={Add} />
                 <div className="dataheader_expert">
                     {this.getHeader()}
                 </div>

@@ -4,7 +4,7 @@ import _ from 'lodash';
 import {countryList} from '../asset/countryList';
 import '../styles/database.css';
 
-export default class CollapsableCreate extends Component {
+export default class AddExpert extends Component {
     constructor(props) {
         super(props);
 

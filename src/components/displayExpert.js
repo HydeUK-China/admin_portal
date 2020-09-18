@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import '../styles/search.css'
 import '../styles/database.css'
 
-export default class ExpertCV extends Component {
+export default class DisplayExpert extends Component {
     render() {
         return (
             <div>
@@ -17,8 +17,7 @@ export default class ExpertCV extends Component {
                             <label>University</label>
                             <label>Major</label>
                         </div>
-                        <textarea name="education" id="educationID" className="form-control" rows='5' placeholder="(E.g.) Current - Past
-1. Bachelor 1988/09 – 1992/07 china Peking University Mechanical Engineering"/>
+                        <label>Display Education info</label>
                     </div>
 
                     <div className='columns-merge'>
@@ -29,9 +28,7 @@ export default class ExpertCV extends Component {
                             <label>Country</label>
                             <label>Employer</label>
                         </div>
-                        <textarea name="working" id="workingID" className="form-control" rows='5' placeholder="(E.g. ) Current - Past
-1. Principal Reseracher 20/14/09-20/17/12 USA General Electric Company"/>
-                    </div>
+                        <label>Display Employment info</label>                    </div>
 
                     <div className='columns-merge'>
                         <h2>Projects</h2>
@@ -42,9 +39,7 @@ export default class ExpertCV extends Component {
                             <label>No of Participants</label>
                             <label>Position and Responsibility</label>
                         </div>
-                        <textarea name="projects" id="projectID" className="form-control" rows='5' placeholder="
-1. 20/18/01-20/19/03 | Development of manganese-based lithiumion batteries and supercapacitors (funded by DST/NRF) |$1000,0000 | 25 | R & D Manager and Principal Investigator "/>
-                    </div>
+                        <label>Display Projects info</label>                    </div>
 
                     <div className='columns-merge'>
                         <h2>Patents</h2>
@@ -55,31 +50,22 @@ export default class ExpertCV extends Component {
                             <label>State of Organization</label>
                             <label>Assignee</label>
                         </div>
-                        <textarea name="patent" id="patentID" className="form-control" rows='5'
-                            placeholder="(E.g. ) Current - Past
-1. Date Filling (2018) | Publication Number(#98120393) | Patent Title (General Electric Cooker) | Organization (Company C) | Assignee (Company C Chairman) "/>
-                    </div>
+                        <label>Display Patents info</label>                    </div>
 
                     <div className='columns-merge'>
                         <h2>Field of Speciality</h2>
-                        <textarea name="fieldofspecialty" className='form-control' rows='5'
-                            placeholder="Field of Specialty (Main research areas, Previous research results, Industry and international influence)："
-                        />
-                    </div>
+                        <label>Display Field of speciality info</label>                    </div>
 
                     <div className='columns-merge'>
                         <h2>Awards</h2>
 
-                        <textarea name="awards" placeholder="Awards and Honours" className="form-control" rows='5' />
+                        <label>Display Awards info</label>
                     </div>
 
                     <div className='columns-merge'>
                         <h2>Products</h2>
 
-                        <textarea name="products" className='form-control' rows='5'
-                            placeholder="Product introduction, current industrialization level and industry competitiveness）"
-                        />
-                    </div>
+                        <label>Display Products info</label>                    </div>
                     <div className='columns-merge'>
                         <h2>Publication Date</h2>
                         <div className="grid-info">
@@ -89,31 +75,22 @@ export default class ExpertCV extends Component {
                             <label>Number of Authors</label>
                             <label>Author Rank</label>
                         </div>
-                        <textarea name="pd" className='form-control' rows='5'
-                            placeholder="(E.g. ) Current - Past 
-2014, ADVANCES IN ENGINEERING RESEARCH, Volume 8, chapter 2, Adsorption Refrigeration, Victoria M. Petrova Editor. Nova Publishers. New York, Ahmed Rezk, Ahmed Elsayed, Saad Mahmoud, and Raya AL-Dadah."
-                        />
+                        <label>Display Publication date info</label>
                     </div>
 
                     <div className='columns-merge'>
                         <h2>Recent Major Research Projects</h2>
-                        <textarea name="rmrp" className='form-control' rows='5'
-                            placeholder="(E.g. ) Current - Past 
-Project briefs, innovations compared to existing technologies, current developments and technical difficulties, expected results and industry, and international influence"
-                        />
-                    </div>
+                        <label>Display Recent Major Research Projects info</label>                    </div>
 
                     <div className='columns-merge'>
                         <h2>Collaborative Project Proposal</h2>
-                        <textarea name="cpp" placeholder="Project Proposal With China" className='form-control' rows='5'
-                        />
+                        <label>Display Collaborative Project Proposal info</label>
                     </div>
 
 
                 </div>
 
                 <div>
-                    <button className='edit-btn'>Edit</button>
                     <button className='download-btn'>Download</button>
                 </div>
             </div>

@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 import { fetchReq } from '../../utils/utils';
 import Search from '../../components/search';
-import CollapsableRow from '../../components/collapsableRow';
-import ExpertCV from '../../components/expertCV';
+
+import EditExpert from '../../components/editExpert';
 
 import '../../styles/project_matching.css';
+import JobTab from '../../components/JobTab';
+import ExpertTab from '../../components/ExpertTab';
 
 export default class ProjectMatching extends Component {
     constructor(props) {
@@ -50,20 +52,21 @@ export default class ProjectMatching extends Component {
 
     getOuterTable() {
         const { filterData } = this.state;
-
+        const  { role } = this.props;
         return _.map(filterData, (item, index) => {
-            return <CollapsableRow
-                key={`collapsableRow-${index}`}
+            return <JobTab
+                role={role}
+                key={`JobcollapsableRow-${index}`}
                 rowData={item}
                 rowField={this.outerDataField}
-                showMoreButtonText={'More info'}>
+            >
                 <div>
                     <div className="dataheader_expert">
                         {this.getInnerHeader()}
                     </div>
                     {this.getInnerTable(item.expertData)}
                 </div>
-            </CollapsableRow>
+            </JobTab>
         })
     }
 
@@ -75,19 +78,18 @@ export default class ProjectMatching extends Component {
 
     getInnerTable(data) {
         return _.map(data, (item, index) => {
-            return <CollapsableRow
+            return <ExpertTab
                 key={`collapsableRow-${index}`}
                 rowData={item}
                 rowField={this.innerDataField}
-                showMoreButtonText={'CV'}>
-                <ExpertCV />
-            </CollapsableRow>
+            >
+                <EditExpert />
+            </ExpertTab>
         })
     }
 
     render() {
         const { data } = this.state;
-
         return (
             <div className="database">
                 <div className="search">
