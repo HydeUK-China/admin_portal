@@ -7,7 +7,7 @@ import {
 import { withRouter } from 'react-router';
 import _ from 'lodash';
 import Tab from '../components/tab';
-import Footer from './Footer';
+import { Navbar } from 'react-bootstrap';
 import { removeRole, getRole, fetchReq } from '../utils/utils';
 import { path_name, renderRoute } from './tabRouteConfig';
 
@@ -18,23 +18,39 @@ class App extends Component {
     super(props);
 
     this.state = {
-      role: getRole()
+      role: getRole(),
+      navbarToggler: false
     }
 
+    this.toggleNavbar = this.toggleNavbar.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
+  }
+
+  toggleNavbar() {
+    this.setState({
+      navbarToggler: !this.state.navbarToggler
+    })
   }
 
   getTabs = () => {
     const { role } = this.state;
     const pick_tabs = path_name(role)
-
-    return _.map(pick_tabs, (item, index) => {
-      return (
-        <div key={`tabs-${index}`}>
-          <Tab path={item.path} name={item.name} />
-        </div>
-      )
+    const links = _.map(pick_tabs, (item, index) => {
+      return (<Tab key={`tabs-${index}`}
+        path={item.path}
+        name={item.name}
+        icon={item.icon} />)
     })
+
+    return (
+      <div id="wrapper">
+        <div id="sidebar-wrapper">
+          <ul className="sidebar-nav">
+            {links}
+          </ul>
+        </div>
+      </div>
+    )
   }
 
   handleLogout(e) {
@@ -49,51 +65,58 @@ class App extends Component {
       )
   }
 
-
   render() {
-    const { role } = this.state;
+    const { role, navbarToggler } = this.state;
 
     return (
       <div>
-        <div id="top" className="category-hero">
-          <div className="header">
-            <div className="brand-container">
-              <Link className="brand" to="/admin/admin_dashboard">
-                Hyde International Talents
-                  </Link>
+        {/* <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+          <Link className="navbar-brand" to='/mgt'>HYDE INTERNATIONAL</Link>
+          <button className="navbar-toggler" onClick={this.toggleNavbar}
+            type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className={navbarToggler ? "collapse navbar-collapse show" : "collapse navbar-collapse"}>
+            <ul className="nav navbar-nav ml-auto">
+              <li className="nav-item">
+                <div className="nav-link" onClick={this.handleLogout}>Sign Out</div>
+              </li>
+            </ul>
+          </div>
+        </nav> */}
+        <Navbar className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top" expand="lg">
+          <Navbar.Brand>
+            <Link className="navbar-brand" to='/mgt'>HYDE INTERNATIONAL</Link>
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <ul className="nav navbar-nav ml-auto">
+              <li className="nav-item">
+                <div className="nav-link" onClick={this.handleLogout}>Sign Out</div>
+              </li>
+            </ul>
+          </Navbar.Collapse>
+        </Navbar>
+
+        <main>
+          <div className="container-fluid">
+            <div className="row">
+              {this.getTabs()}
             </div>
-
-            <nav className="main-nav">
-              <div className="sign-in">
-                <div className="nav-item user" onClick={this.handleLogout}>
-                  Logout
-                </div>
-              </div>
-            </nav>
-          </div>
-        </div>
-
-        <div className="main-box">
-          <div className="admin-platform">
-            Hyde International Talents (HIT) Admin Portal
-              <hr></hr>
-            {this.getTabs()}
-          </div>
-
-          <div className="container">
-            <div className="welcome-admin">Welcome to Hyde International Talents (HIT) Admin Portal</div>
-            <Switch>
-              {renderRoute(role)}
-              <Route path="/mgt">
-                { role === '__admin__' ?
-                  <Redirect to='/mgt/admin_dashboard' />
-                  : <Redirect to='/mgt/project_management' />
+            <div className="row">
+              <Switch>
+                {renderRoute(role)}
+                <Route path="/mgt">
+                  {role === '__admin__' ?
+                    <Redirect to='/mgt/admin_dashboard' />
+                    : <Redirect to='/mgt/project_management' />
                   }
-              </Route>
-            </Switch>
+                </Route>
+              </Switch>
+            </div>
           </div>
-        </div>
-        <Footer />
+
+        </main>
       </div>
     );
   }
