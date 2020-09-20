@@ -15,11 +15,11 @@ const role_pages = {
 
 function path_name_component(role) {
     return {
-        admin_dashboard: { path: '/mgt/admin_dashboard', name: 'Dashboard', component: <Dashboard role={role}/> },
-        expert_management: { path: '/mgt/expert_management', name: 'Expert Management', component: <ExpertManagement role={role}/> },
-        employer_management: { path: '/mgt/employer_management', name: 'Employer Management', component: <EmployerManagement role={role}/> },
-        project_management: { path: '/mgt/project_management', name: 'Project Management', component: <ProjectManagement role={role}/> },
-        project_matching: { path: '/mgt/project_matching', name: 'Project Matching', component: <ProjectMatching role={role}/> }
+        admin_dashboard: { path: '/mgt/admin_dashboard', name: 'Dashboard', icon: 'fa-th-large', component: <Dashboard role={role}/> },
+        expert_management: { path: '/mgt/expert_management', name: 'Expert Management', icon: 'fa-users', component: <ExpertManagement role={role}/> },
+        employer_management: { path: '/mgt/employer_management', name: 'Employer Management', icon: 'fa-briefcase', component: <EmployerManagement role={role}/> },
+        project_management: { path: '/mgt/project_management', name: 'Project Management', icon: 'fa-folder-open', component: <ProjectManagement role={role}/> },
+        project_matching: { path: '/mgt/project_matching', name: 'Project Matching', icon: 'fa-key', component: <ProjectMatching role={role}/> }
     }
 }
 
