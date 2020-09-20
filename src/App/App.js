@@ -12,6 +12,7 @@ import { removeRole, getRole, fetchReq } from '../utils/utils';
 import { path_name, renderRoute } from './tabRouteConfig';
 
 import '../styles/app.css';
+import user_img from '../img/user.png'
 
 class App extends Component {
   constructor(props) {
@@ -70,7 +71,7 @@ class App extends Component {
 
     return (
       <div>
-        {/* <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
           <Link className="navbar-brand" to='/mgt'>HYDE INTERNATIONAL</Link>
           <button className="navbar-toggler" onClick={this.toggleNavbar}
             type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -78,13 +79,28 @@ class App extends Component {
           </button>
           <div className={navbarToggler ? "collapse navbar-collapse show" : "collapse navbar-collapse"}>
             <ul className="nav navbar-nav ml-auto">
-              <li className="nav-item">
-                <div className="nav-link" onClick={this.handleLogout}>Sign Out</div>
+              <li className="nav-item ">
+                <a className="nav-link">
+                  <i className="fas fa-bell dropdown-toggle" data-toggle="notification-menu"></i>
+                  <span className="navbar-badge">15</span>
+                </a>              
+                               
+              </li>
+
+              <li className="nav-item ">
+                <div className="avt dropdown">
+                  <img src={user_img} alt="User image" className='avt_img' />
+                </div>
+              </li>
+              <li className="nav-link">
+                <div className="Signout bg warning">
+                  <i className="fas fa-sign-out-alt" onClick={this.handleLogout}></i>
+                </div>
               </li>
             </ul>
           </div>
-        </nav> */}
-        <Navbar className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top" expand="lg">
+        </nav>
+        {/* <Navbar className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top" expand="lg">
           <Navbar.Brand>
             <Link className="navbar-brand" to='/mgt'>HYDE INTERNATIONAL</Link>
           </Navbar.Brand>
@@ -96,7 +112,7 @@ class App extends Component {
               </li>
             </ul>
           </Navbar.Collapse>
-        </Navbar>
+        </Navbar> */}
 
         <main>
           <div className="container-fluid">
