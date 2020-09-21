@@ -79,15 +79,8 @@ class App extends Component {
           </button>
           <div className={navbarToggler ? "collapse navbar-collapse show" : "collapse navbar-collapse"}>
             <ul className="nav navbar-nav ml-auto">
-              <li className="nav-item ">
-                <a className="nav-link">
-                  <i className="fas fa-bell dropdown-toggle" data-toggle="notification-menu"></i>
-                  <span className="navbar-badge">15</span>
-                </a>              
-                               
-              </li>
 
-              <li className="nav-item ">
+              <li className="nav-link ">
                 <div className="avt dropdown">
                   <img src={user_img} alt="User image" className='avt_img' />
                 </div>
@@ -119,7 +112,7 @@ class App extends Component {
             <div className="row">
               {this.getTabs()}
             </div>
-            <div className="row">
+            
               <Switch>
                 {renderRoute(role)}
                 <Route path="/mgt">
@@ -130,7 +123,7 @@ class App extends Component {
                 </Route>
               </Switch>
             </div>
-          </div>
+          
 
         </main>
       </div>

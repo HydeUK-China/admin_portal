@@ -11,16 +11,17 @@ import ExpertProfile from '../pages/ExpertProfile'
 const role_pages = {
     '__admin__': ['admin_dashboard', 'expert_management',
        , 'project_management', 'project_matching'],
-    'expert': ['expert_profile', 'project_management']
+    'expert': ['expert_profile', 'expert_application']
 }
 
 function path_name_component(role) {
     return {
-        admin_dashboard: { path: '/mgt/admin_dashboard', name: 'Dashboard', icon: 'fa-th-large', component: <Dashboard role={role}/> },
-        expert_management: { path: '/mgt/expert_management', name: 'Expert Management', icon: 'fa-users', component: <ExpertManagement role={role}/> },
-        expert_profile: { path: '/mgt/exper_profile', name: 'Profile', icon: 'fa-briefcase', component: <ExpertProfile role={role}/> },
+        admin_dashboard: { path: '/mgt/admin_dashboard', name: 'Dashboard', icon: 'fas fa-chart-line', component: <Dashboard role={role}/> },
+        expert_management: { path: '/mgt/expert_management', name: 'Expert Management', icon: 'fas fa-database', component: <ExpertManagement role={role}/> },
+        expert_profile: { path: '/mgt/exper_profile', name: 'Profile', icon: 'fa fa-user ', component: <ExpertProfile role={role}/> },
         project_management: { path: '/mgt/project_management', name: 'Project Management', icon: 'fa-folder-open', component: <ProjectManagement role={role}/> },
-        project_matching: { path: '/mgt/project_matching', name: 'Project Matching', icon: 'fa-key', component: <ProjectMatching role={role}/> }
+        expert_application: { path: '/mgt/project_management', name: 'Application', icon: 'fa fa-th-large ', component: <ProjectManagement role={role}/> },
+        project_matching: { path: '/mgt/project_matching', name: 'Project Matching', icon: 'fas fa-project-diagram', component: <ProjectMatching role={role}/> }
     }
 }
 

@@ -49,11 +49,11 @@ export default class ExpertTab extends Component {
     }
 
 
-    // handleToggleShow = () => {
-    //     this.setState({
-    //         showInfo: !this.state.showInfo
-    //     })
-    // }
+    handleToggleShow = () => {
+        this.setState({
+            showInfo: !this.state.showInfo
+        })
+    }
 
     // handleToggleEdit = () => {
     //     this.setState({
@@ -92,10 +92,8 @@ export default class ExpertTab extends Component {
                         <option value='Remove'>Remove</option>
                         <option value='Close'>Close</option>
                         {/* <option value='Add'>Add</option> */}
-                    </select> : <select className='more-info-btn' onChange={this.handleSelect}>
-                            <option value='MoreInfo'>More info</option>
-                            <option value='Edit'>Edit</option>
-                            <option value='Close'>Minimize</option></select>}
+                    </select> : <button className='more-info-btn' onClick={this.handleToggleShow}>
+                            More Info</button>}
 
 
                     {/* <button className="more-info-btn" onClick={this.handleToggleShow}>

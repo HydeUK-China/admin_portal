@@ -45,14 +45,14 @@ export default class ProjectManagement extends Component {
     getTable() {
         const { filterData } = this.state;
         const { role } = this.props;
-        
+
         return _.map(filterData, (item, index) => {
             return <JobTab
                 role={role}
                 key={`JobcollapsableRow-${index}`}
                 rowData={item}
                 rowField={this.dataField}>
-                
+
             </JobTab>
         })
     }
@@ -65,18 +65,19 @@ export default class ProjectManagement extends Component {
 
 
     render() {
-        const { data,Add } = this.state;
-
+        const { data, Add } = this.state;
+        const { role } = this.props;
 
         return (
             <div className="database">
+
                 <div className="search">
                     <Search
                         fullData={data}
                         dataFilterableField={this.dataField}
                         filterDataHandler={this.filterDataHandler}
                     />
-                    <button className="search-btn" onClick={this.handleToggleAdd}>Add</button>
+                    {role === '__admin__' ? <button className="search-btn" onClick={this.handleToggleAdd}>Add</button> : <div></div>}
                 </div>
                 <AddJob show={Add} />
                 <div className="dataheader_expert">
