@@ -88,11 +88,12 @@ export default class ExpertManagement extends Component {
                     />
                     <button className="search-btn" onClick={this.handleToggleAdd}>Add</button>
                 </div>
-                <Modal show={this.state.showAdd}>
-                    <Modal.Header closeButton onHide={this.closeTab}>Expert Application Form</Modal.Header>
+                <Modal size="lg" aria-labelledby="contained-modal-title-vcenter" centered
+                    show={this.state.showAdd} >
+                    <Modal.Header closeButton onHide={this.closeTab} id="contained-modal-title-vcenter">Expert Application Form</Modal.Header>
                     <Modal.Body>
                         <form>
-                            <div className='columns'>
+                            <div className='columns-add'>
                                 <label>Title</label>
                                 <select id="title" name="title" className="form-control" required>
                                     <option value='None'>Please Select</option>
@@ -101,60 +102,51 @@ export default class ExpertManagement extends Component {
                                     <option value='Dr'>Dr</option>
                                     <option value='Professor'>Professor</option>
                                 </select>
-
-                            </div>
-                            <div className='columns'>
                                 <label>First Name</label>
                                 <input type="text" className="form-control" placeholder="Jane" required />
+
                             </div>
-                            <div className='columns'>
+                            
+                            <div className='columns-add'>
                                 <label>Last Name</label>
                                 <input type="text" className="form-control" placeholder="Doe" required />
-
-
-                            </div>
-                            <div className='columns'>
                                 <label>Nationality </label>
                                 <select id="country" name="country" className="form-control" required>
                                     {_.map(countryList, (item, index) => {
                                         return <option key={`country-${index}`}>{item}</option>
                                     })}
                                 </select>
+
                             </div>
-                            <div className='columns'>
+                           
+                            <div className='columns-add'>
 
                                 <label>Email</label>
                                 <input type="email" className="form-control" id="inputEmail4" placeholder="name@example.com" required />
-
-                            </div>
-                            <div className='columns'>
                                 <label>Password</label>
                                 <input type="password" className="form-control" id="inputPassword4" placeholder="******" required />
                             </div>
-                            <div className='columns'>
+                          
+                            <div className='columns-add'>
                                 <label>Expertise</label>
                                 <input type="tel" className="form-control" id="expertise" placeholder="Chemical and Material Engineer" required />
 
-
-
-                            </div>
-                            <div className='columns'>
                                 <label>Professional Field</label>
                                 <input type="tel" className="form-control" id="professional_field" placeholder="Chemical Engineer" required />
+
                             </div>
-                            <div className='columns'>
+                            
+                            <div className='columns-add'>
                                 <label>Phone number</label>
                                 <input type="tel" className="form-control" id="inputPhoneNumber" placeholder="796-644-8844" required />
-
-
-                            </div>
-                            <div className='columns'>
                                 <label>Upload CV</label>
                                 <UploadFile />
+
                             </div>
+                          
 
 
-                            <div className='columns-merge'>
+                            <div className='columns-add-merge'>
                                 <h2>Education</h2>
                                 {/* <div className="grid-info">
                                     <label>Degree</label>
@@ -167,7 +159,7 @@ export default class ExpertManagement extends Component {
 1. Bachelor 1988/09 – 1992/07 china Peking University Mechanical Engineering"/>
                             </div>
 
-                            <div className='columns-merge'>
+                            <div className='columns-add-merge'>
                                 <h2>Employment</h2>
                                 {/* <div className="grid-info">
                                     <label>Postion</label>
@@ -179,7 +171,7 @@ export default class ExpertManagement extends Component {
 1. Principal Reseracher 20/14/09-20/17/12 USA General Electric Company"/>
                             </div>
 
-                            <div className='columns-merge'>
+                            <div className='columns-add-merge'>
                                 <h2>Projects</h2>
                                 {/* <div className="grid-info">
                                     <label>Time</label>
@@ -192,7 +184,7 @@ export default class ExpertManagement extends Component {
 1. 20/18/01-20/19/03 | Development of manganese-based lithiumion batteries and supercapacitors (funded by DST/NRF) |$1000,0000 | 25 | R & D Manager and Principal Investigator "/>
                             </div>
 
-                            <div className='columns-merge'>
+                            <div className='columns-add-merge'>
                                 <h2>Patents</h2>
                                 {/* <div className="grid-info">
                                     <label>Date of Filling</label>
@@ -206,27 +198,27 @@ export default class ExpertManagement extends Component {
 1. Date Filling (2018) | Publication Number(#98120393) | Patent Title (General Electric Cooker) | Organization (Company C) | Assignee (Company C Chairman) "/>
                             </div>
 
-                            <div className='columns-merge'>
+                            <div className='columns-add-merge'>
                                 <h2>Field of Speciality</h2>
                                 <textarea name="fieldofspecialty" className='form-control' rows='5'
                                     placeholder="Field of Specialty (Main research areas, Previous research results, Industry and international influence)："
                                 />
                             </div>
 
-                            <div className='columns-merge'>
+                            <div className='columns-add-merge'>
                                 <h2>Awards</h2>
 
                                 <textarea name="awards" placeholder="Awards and Honours" className="form-control" rows='5' />
                             </div>
 
-                            <div className='columns-merge'>
+                            <div className='columns-add-merge'>
                                 <h2>Products</h2>
 
                                 <textarea name="products" className='form-control' rows='5'
                                     placeholder="Product introduction, current industrialization level and industry competitiveness）"
                                 />
                             </div>
-                            <div className='columns-merge'>
+                            <div className='columns-add-merge'>
                                 <h2>Publication Date</h2>
                                 {/* <div className="grid-info">
                                     <label>Publication Date</label>
@@ -241,7 +233,7 @@ export default class ExpertManagement extends Component {
                                 />
                             </div>
 
-                            <div className='columns-merge'>
+                            <div className='columns-add-merge'>
                                 <h2>Recent Major Research Projects</h2>
                                 <textarea name="rmrp" className='form-control' rows='5'
                                     placeholder="(E.g. ) Current - Past 
@@ -249,7 +241,7 @@ Project briefs, innovations compared to existing technologies, current developme
                                 />
                             </div>
 
-                            <div className='columns-merge'>
+                            <div className='columns-add-merge'>
                                 <h2>Collaborative Project Proposal</h2>
                                 <textarea name="cpp" placeholder="Project Proposal With China" className='form-control' rows='5'
                                 />

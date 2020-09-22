@@ -117,7 +117,8 @@
   .columns-add {
     position: relative;
     display: grid;
-    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-columns: 23% 23% 23% 23%;
+    grid-gap: 1rem;
     margin-top: 1rem;
     margin-bottom: 1rem;
   }

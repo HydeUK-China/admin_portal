@@ -87,44 +87,41 @@ export default class ProjectManagement extends Component {
                     />
                     {role === '__admin__' ? <button className="search-btn" onClick={this.handleToggleAdd}>Add</button> : <div></div>}
                 </div>
-                <Modal show={this.state.Add}>
-                    <Modal.Header closeButton onHide={this.closeTab}>Job Posting</Modal.Header>
+                <Modal size="lg" aria-labelledby="contained-modal-title-vcenter" centered
+                    show={this.state.Add} >
+                    <Modal.Header closeButton onHide={this.closeTab} id="contained-modal-title-vcenter">Job Posting</Modal.Header>
                     <Modal.Body><form>
-                        <div className='columns'>
+                        <div className='columns-add'>
                             <label>Job Roles</label>
                             <input type='text' placeholder="Accountant Manager" />
-
-                        </div>
-                        <div className='columns'>
                             <label>Organization</label>
                             <input type='text' placeholder="Amazon" />
 
                         </div>
-                        <div className='columns'>
+                        
+                        <div className='columns-add'>
                             <label>Post Date</label>
                             <input type="date" className="form-control" required />
-                            
-                        </div>
-                        <div className='columns'>
-                        <label>Deadline </label>
+                            <label>Deadline </label>
                             <input type="date" className="form-control" required />
                         </div>
-                        <div className='columns'>
+                        
+                        <div className='columns-add'>
                             <label>Salary</label>
                             <input type="text" className="form-control" placeholder=" £35,000 - 45,000" required />
                         </div>
 
-                        <div className='columns-merge'>
+                        <div className='columns-add-merge'>
                             <h2>Featured</h2>
                             <textarea name="education" id="educationID" className="form-control" rows='5' placeholder="Amazon Advertising operates at the intersection of advertising and ecommerce and offers advertisers a rich array of innovative advertising solutions across Amazon’s mobile and desktop websites, proprietary devices and the Amazon Advertising Platform." />
                         </div>
 
-                        <div className='columns-merge'>
+                        <div className='columns-add-merge'>
                             <h2>Job Description</h2>
                             <textarea name="working" id="workingID" className="form-control" rows='5' placeholder="In this role you will be working within the SME team of Account Managers, taking ownership of the management of a portfolio of SME clients and engaging with to ensure renewals and upsells." />
                         </div>
 
-                        <div className='columns-merge'>
+                        <div className='columns-add-merge'>
                             <h2>Responsibilities</h2>
                             <textarea name="projects" id="projectID" className="form-control" rows='5' placeholder="
 -Onboarding and engagement process with every client.
@@ -134,7 +131,7 @@ export default class ProjectManagement extends Component {
 -Establish and maintain relationship with key client stakeholders. "/>
                         </div>
 
-                        <div className='columns-merge'>
+                        <div className='columns-add-merge'>
                             <h2>Essential skills</h2>
                             <textarea name="patent" id="patentID" className="form-control" rows='5'
                                 placeholder="

@@ -118,8 +118,9 @@ export default class ExpertTab extends Component {
                     </button> */}
                 </div>
 
-                <Modal show={this.state.showInfo}>
-                    <Modal.Header closeButton onHide={this.closeTab}>Job Info</Modal.Header>
+                <Modal size="lg" aria-labelledby="contained-modal-title-vcenter" centered
+                    show={this.state.showInfo} >
+                    <Modal.Header closeButton onHide={this.closeTab} id="contained-modal-title-vcenter">Expert Info</Modal.Header>
 
                     <Modal.Body>
                         <div className='content-general-info'>
@@ -212,8 +213,9 @@ export default class ExpertTab extends Component {
                 </Modal>
 
                 {/* Edit Expert Modal */}
-                <Modal show={this.state.showEdit}>
-                    <Modal.Header closeButton onHide={this.closeTab}>
+                <Modal size="lg" aria-labelledby="contained-modal-title-vcenter" centered
+                    show={this.state.showEdit} >
+                    <Modal.Header closeButton onHide={this.closeTab} id="contained-modal-title-vcenter">
                         Expert Info (Edit Version)
                     </Modal.Header>
                     <Modal.Body>
