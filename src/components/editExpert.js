@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import '../styles/search.css'
 import '../styles/database.css'
 
-export default class EditExpert extends Component {
+export default class Edit extends Component {
     render() {
         return (
             <div>

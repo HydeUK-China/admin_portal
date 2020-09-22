@@ -80,11 +80,6 @@ class App extends Component {
           <div className={navbarToggler ? "collapse navbar-collapse show" : "collapse navbar-collapse"}>
             <ul className="nav navbar-nav ml-auto">
 
-              <li className="nav-link ">
-                <div className="avt dropdown">
-                  <img src={user_img} alt="User image" className='avt_img' />
-                </div>
-              </li>
               <li className="nav-link">
                 <div className="Signout bg warning">
                   <i className="fas fa-sign-out-alt" onClick={this.handleLogout}></i>

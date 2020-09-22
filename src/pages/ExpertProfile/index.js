@@ -4,35 +4,54 @@ import user_img from '../../img/user.png'
 
 
 export default class ExpertProfile extends Component {
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            value: 'Display Expert Profile Info',
+            isInEdit: false,
+            editbutton: 'Edit',
+            savebutton: 'Save'
+
+        }
+    }
+
+    edit = () => {
+        this.setState({
+            isInEdit: !this.state.isInEdit
+        })
+    };
+
     render() {
         return (
             <Fragment>
                 <div className="profile">
 
                     <h3 className='label-tag'>Education</h3>
-                    <section className='profile-content'>
-                        Display Education Info
-                    </section>
+                    {this.state.isInEdit ? <textarea row='5' className='profile-content'>{this.state.value}</textarea> : <section className='profile-content'>
+                        {this.state.value}
+                    </section>}
+
                     <h3 className='label-tag'>Employment</h3>
-                    <section className='profile-content'>
-                        Display Employment Info
-                    </section>
+                    {this.state.isInEdit ? <textarea row='5' className='profile-content'>{this.state.value}</textarea> : <section className='profile-content'>
+                        {this.state.value}
+                    </section>}
                     <h3 className='label-tag'>Patents</h3>
-                    <section className='profile-content'>
-                        Display Patents Info
-                    </section>
+                    {this.state.isInEdit ? <textarea row='5' className='profile-content'>{this.state.value}</textarea> : <section className='profile-content'>
+                        {this.state.value}
+                    </section>}
                     <h3 className='label-tag'>Publication</h3>
-                    <section className='profile-content'>
-                        Display Publication Info
-                    </section>
+                    {this.state.isInEdit ? <textarea row='5' className='profile-content'>{this.state.value}</textarea> : <section className='profile-content'>
+                        {this.state.value}
+                    </section>}
                     <h3 className='label-tag'>Awards</h3>
-                    <section className='profile-content'>
-                        Display Awards Info
-                    </section >
+                    {this.state.isInEdit ? <textarea row='5' className='profile-content'>{this.state.value}</textarea> : <section className='profile-content'>
+                        {this.state.value}
+                    </section>}
                     <h3 className='label-tag'>Collaboration Project Proposal</h3>
-                    <section className='profile-content'>
-                        Display Collaboration Project Proposal Info
-                    </section>
+                    {this.state.isInEdit ? <textarea row='5' className='profile-content'>{this.state.value}</textarea> : <section className='profile-content'>
+                        {this.state.value}
+                    </section>}
 
                 </div>
 
@@ -40,9 +59,9 @@ export default class ExpertProfile extends Component {
                     <div className="right-sidebar-wrapper">
                         <div className="row">
                             <div className="profile">
-                                <img src={user_img} alt="User Image" className="center" />
+                              <input type='file' className='center'/>
                             </div>
-                            <button className="btn">Edit Profile</button>
+                           {this.state.isInEdit ? <button className='btn' onClick={this.edit}>Save</button> : <button className="btn" onClick={this.edit}>Edit</button> } 
 
                         </div>
                         <div className="bio">

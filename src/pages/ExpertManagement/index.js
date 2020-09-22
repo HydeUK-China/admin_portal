@@ -69,7 +69,6 @@ export default class ExpertManagement extends Component {
 
     render() {
         const { data, showAdd } = this.state;
-        const {role} = this.props;
 
         return (
             <div className="database">

@@ -8,6 +8,8 @@ import EditExpert from '../../components/editExpert';
 import '../../styles/project_matching.css';
 import JobTab from '../../components/JobTab';
 import ExpertTab from '../../components/ExpertTab';
+import MatchingJobTab from '../../components/matchingTab';
+import DisplayExpert from '../../components/displayExpert';
 
 export default class ProjectMatching extends Component {
     constructor(props) {
@@ -52,9 +54,9 @@ export default class ProjectMatching extends Component {
 
     getOuterTable() {
         const { filterData } = this.state;
-        const  { role } = this.props;
+        const { role } = this.props;
         return _.map(filterData, (item, index) => {
-            return <JobTab
+            return <MatchingJobTab
                 role={role}
                 key={`JobcollapsableRow-${index}`}
                 rowData={item}
@@ -66,7 +68,7 @@ export default class ProjectMatching extends Component {
                     </div>
                     {this.getInnerTable(item.expertData)}
                 </div>
-            </JobTab>
+            </MatchingJobTab>
         })
     }
 
@@ -78,13 +80,13 @@ export default class ProjectMatching extends Component {
 
     getInnerTable(data) {
         return _.map(data, (item, index) => {
-            return <ExpertTab
+            return <MatchingJobTab
                 key={`collapsableRow-${index}`}
                 rowData={item}
                 rowField={this.innerDataField}
             >
-                <EditExpert />
-            </ExpertTab>
+                <DisplayExpert />
+            </MatchingJobTab>
         })
     }
 

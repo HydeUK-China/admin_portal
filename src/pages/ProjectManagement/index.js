@@ -4,6 +4,7 @@ import { fetchReq } from '../../utils/utils';
 import Search from '../../components/search';
 import JobTab from '../../components/JobTab'
 import AddJob from '../../components/addJob'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 export default class ProjectManagement extends Component {
     constructor(props) {

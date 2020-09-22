@@ -109,11 +109,18 @@
   .columns {
     position: relative;
     display: grid;
-    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-columns: 50% 50%;
     margin-top: 1rem;
     margin-bottom: 1rem;
   }
   
+  .columns-add {
+    position: relative;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
   .columns-merge {
     margin-top: 1rem;
     width: 100%;
