@@ -16,6 +16,7 @@ body {
   margin-right: 2rem;
   margin-bottom: 5px;
   background-image: url('../img/user.png');
+  padding-top: 40%;
 }
 
 .profile{
