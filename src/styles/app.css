@@ -16,6 +16,8 @@ body {
   margin-right: 2rem;
   margin-bottom: 5px;
   background-image: url('../img/user.png');
+  background-repeat: no-repeat;
+  background-size: cover;
   padding-top: 40%;
 }
 

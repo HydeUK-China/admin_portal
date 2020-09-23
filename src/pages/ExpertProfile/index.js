@@ -59,9 +59,9 @@ export default class ExpertProfile extends Component {
                     <div className="right-sidebar-wrapper">
                         <div className="row">
                             <div className="profile">
-                              <input type='file' className='center'/>
+                                {this.state.isInEdit ? <input type='file' className='center'/> : <div className='center'> </div>}
                             </div>
-                           {this.state.isInEdit ? <button className='btn' onClick={this.edit}>Save</button> : <button className="btn" onClick={this.edit}>Edit</button> } 
+                            {this.state.isInEdit ? <button className='btn' onClick={this.edit}>Save</button> : <button className="btn" onClick={this.edit}>Edit</button>}
 
                         </div>
                         <div className="bio">
