@@ -3,10 +3,10 @@ const multerS3 = require('multer-s3');
 const AWS = require('aws-sdk');
 const path = require('path');
 
-const fsConfig = require('./fsConfig');
+const s3Config = require('./s3Config');
 const __env__ = process.env.NODE_ENV;
-const s3Client = new AWS.S3(fsConfig.s3Client[__env__]);
-const bucket = fsConfig.bucket[__env__];
+const s3Client = new AWS.S3(s3Config.s3Client[__env__]);
+const bucket = s3Config.bucket[__env__];
 
 // multipart/form-data , which is primarily used for uploading files
 const singleUpload = multer({

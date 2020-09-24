@@ -134,6 +134,7 @@ function fetchExpertAll(req, res) {
 
 function fetchExpert(req, res) {
     const expertId = req.params.expertid
+
     res.status(200).json({
         success: true,
         data: expertData[expertId]
@@ -164,10 +165,28 @@ function fetchEmployer(req, res) {
         });
 }
 
-function fetchProject(req, res) {
+function fetchProjectAll(req, res) {
     res.status(200).json({
         success: true,
         data: projectData
+    });
+}
+
+function fetchProject(req, res) {
+    const projectId = req.params.projectId
+
+    res.status(200).json({
+        success: true,
+        data: projectData[projectId]
+    });
+}
+
+function fetchExpertProject(req, res) {
+    const expertId = req.params.expertid
+
+    res.status(200).json({
+        success: true,
+        data: expertData[expertId].applications
     });
 }
 
@@ -184,7 +203,9 @@ module.exports = {
     logout,
     fetchExpertAll,
     fetchExpert,
+    fetchProjectAll,
     fetchProject,
+    fetchExpertProject,
     fetchEmployer,
     fetchProjectMatching
 }

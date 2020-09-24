@@ -15,9 +15,9 @@ export default class ProjectManagement extends Component {
             showAdd: false
         }
 
-        this.lessHeader = ['ID', 'Start Date', 'Employer', 'Area', 'Required Expertise', 'Salary', 'Close Date']
+        this.lessHeader = ['ID', 'Job Title', 'Start Date', 'Employer', 'Area', 'Required Expertise', 'Salary', 'Close Date']
 
-        this.lessField = ['id', 'start_date', 'employer', 'area', 'required_expertise', 'salary', 'close_date']
+        this.lessField = ['id', 'job_title', 'start_date', 'employer', 'area', 'required_expertise', 'salary', 'close_date']
 
         this.moreHeader = ['Featured', 'Job Description', 'Responsibilities', 'Essential skills']
 
@@ -27,7 +27,7 @@ export default class ProjectManagement extends Component {
     }
 
     componentDidMount() {
-        fetchReq('/api/fetchProject').then(data => {
+        fetchReq('/api/fetchProject/all').then(data => {
             this.setState({
                 data,
                 filterData: data
@@ -92,7 +92,7 @@ export default class ProjectManagement extends Component {
                     />
                     {role === '__admin__' ? <button className="search-btn" onClick={this.handleToggleAdd}>Add</button> : null}
                 </div>
-                <AddProjectModal show={showAdd} close={this.closeAddHandler}/>
+                <AddProjectModal show={showAdd} close={this.closeAddHandler} />
                 <div className="dataheader_expert">
                     {this.getHeader()}
                 </div>

@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
+import _ from 'lodash';
+import UploadFile from '../components/uploadFile';
 
 export default class ExpertRightSidebar extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
+            data: { first_name: '', category: '' },
             showInput: false
         }
 
@@ -31,18 +34,32 @@ export default class ExpertRightSidebar extends Component {
     }
 
     clickConfirm() {
-        const { handleEdit } = this.props;
+        const { data } = this.state;
+        const { handleConfirm } = this.props;
 
         this.setState({
             showInput: false
         }, () => {
-            handleEdit(this.state.showInput)
+            handleConfirm(this.state.showInput, data)
+        });
+    }
+
+    handleInputChange(e, key) {
+        const { data } = this.state;
+
+        const tmp_data = Object.assign(data, {
+            [key]: e.target.value
+        })
+        this.setState({
+            data: tmp_data
         });
     }
 
     render() {
-        const { showInput } = this.state;
-        
+        const { showInput, data } = this.state;
+        const { first_name, category } = data;
+        const editField = ['phone_no', 'email']
+
         return (
             <div className="right-sidebar">
                 <div className="right-sidebar-wrapper">
@@ -51,6 +68,9 @@ export default class ExpertRightSidebar extends Component {
                             {
                                 showInput ?
                                     <input type='file' className='center' />
+                                    // <div className='center'>
+                                    //     <UploadFile showDownload={false}/>
+                                    // </div>
                                     : <div className='center'> </div>
                             }
                         </div>
@@ -62,10 +82,12 @@ export default class ExpertRightSidebar extends Component {
 
                     </div>
                     <div className="bio">
-                        <span>
+                        {/* <span>
                             <h4>Hello,</h4>
-                        </span>
-                        <h1><b>Jonathan</b></h1>
+                        </span> */}
+                        <h1><b>{first_name}</b></h1>
+                        <i>Bio: </i>
+                        <p>{category}</p>
                     </div>
 
                     <div className="contact-details">
@@ -74,13 +96,26 @@ export default class ExpertRightSidebar extends Component {
                                 <h4>Contact Details </h4>
                             </li>
 
-
-                            <li className="contact-details-link">
-                                <i className="fas fa-phone"></i><span>+44 7123456789</span>
-                            </li>
-                            <li className="contact-details-link">
-                                <i className="fas fa-envelope"></i><span>www.xyz@gmail.com</span>
-                            </li>
+                            {
+                                showInput ?
+                                    _.map(_.pick(data, editField), (value, key) => {
+                                        return (
+                                            <li key={`expertinfo-${key}`} className="contact-details-link">
+                                                {key === 'phone_no' ? <i className="fas fa-phone"></i> : <i className="fas fa-envelope"></i>}
+                                                <input defaultValue={value}
+                                                    onChange={(e) => this.handleInputChange(e, key)} />
+                                            </li>
+                                        )
+                                    }) :
+                                    _.map(_.pick(data, editField), (value, key) => {
+                                        return (
+                                            <li key={`expertinfo-${key}`} className="contact-details-link">
+                                                {key === 'phone_no' ? <i className="fas fa-phone"></i> : <i className="fas fa-envelope"></i>}
+                                                <span>{value}</span>
+                                            </li>
+                                        )
+                                    })
+                            }
                         </ul>
                     </div>
                     <div className="follow-me">

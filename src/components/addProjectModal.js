@@ -35,7 +35,7 @@ export default class AddExpertModal extends Component {
         const { show } = this.state;
 
         return (
-            <Modal size="lg" aria-labelledby="contained-modal-title-vcenter" centered show={show} >
+            <Modal size="lg" aria-labelledby="contained-modal-title-vcenter" centered show={show} onHide={this.closeModal}>
                 <Modal.Header closeButton onHide={this.closeModal} id="contained-modal-title-vcenter">Job Posting</Modal.Header>
                 <Modal.Body>
                     <form>

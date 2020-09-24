@@ -23,7 +23,9 @@ router.post('/api/expertDashboard', dbOps.expertDashboard);
 router.post('/api/fetchExpert/all', dbOps.fetchExpertAll);
 router.post('/api/fetchExpert/:expertid', dbOps.fetchExpert);
 router.post('/api/fetchEmployer', dbOps.fetchEmployer);
-router.post('/api/fetchProject', dbOps.fetchProject);
+router.post('/api/fetchProject/all', dbOps.fetchProjectAll);
+// router.post('/api/fetchProject/:projectid', dbOps.fetchProject);
+router.post('/api/fetchExpertProject/:expertid', dbOps.fetchExpertProject);
 router.post('/api/fetchProjectMatching', dbOps.fetchProjectMatching);
 
 router.post('/api/file/upload', s3Ops.uploadFile)

@@ -10,7 +10,7 @@ import Tab from '../components/tab';
 import { Navbar } from 'react-bootstrap';
 import { removeRole, getRole, fetchReq } from '../utils/utils';
 import { path_name, renderRoute } from './tabRouteConfig';
-
+import 'bootstrap/dist/css/bootstrap.css';
 import '../styles/app.css';
 
 class App extends Component {
@@ -112,7 +112,7 @@ class App extends Component {
                 <Route path="/mgt">
                   {role === '__admin__' ?
                     <Redirect to='/mgt/admin_dashboard' />
-                    : <Redirect to='/mgt/exper_profile' />
+                    : <Redirect to='/mgt/expert_profile' />
                   }
                 </Route>
               </Switch>

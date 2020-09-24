@@ -64,6 +64,7 @@ export default class CollapsableCreate extends Component {
 
     render() {
         const { fileName } = this.state;
+        const { showDownload } = this.props;
 
         return (
             <div>
@@ -73,7 +74,7 @@ export default class CollapsableCreate extends Component {
                 />
                 <button onClick={this.singleFileUploadHandler}>Upload</button>
                 {
-                    fileName !== null ?
+                    (showDownload && fileName) ?
                         <div>
                             <button onClick={this.singleFileDownloadHandler}>Download</button>
                         </div>

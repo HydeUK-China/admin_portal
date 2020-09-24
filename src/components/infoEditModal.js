@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
-// import '../styles/database.css';
 import { Button, Modal } from 'react-bootstrap';
 
 
@@ -14,6 +13,7 @@ export default class InfoEditModal extends Component {
             data: props.data
         }
 
+        this.headerTitle = _.zipObject(props.fileds, props.headers);
         this.closeModal = this.closeModal.bind(this);
         this.clickEdit = this.clickEdit.bind(this);
         this.clickConfirm = this.clickConfirm.bind(this);
@@ -65,12 +65,12 @@ export default class InfoEditModal extends Component {
     }
 
     render() {
-        const { fileds, headers, modalHeader, allowEdit } = this.props;
+        const { fileds, modalHeader, allowEdit } = this.props;
         const { data, show, showInput } = this.state;
 
         return (
             <Modal size="lg" aria-labelledby="contained-modal-title-vcenter" centered
-                show={show} >
+                show={show} onHide={this.closeModal}>
                 <Modal.Header closeButton onHide={this.closeModal} id="contained-modal-title-vcenter">{modalHeader}</Modal.Header>
 
                 <Modal.Body>
@@ -79,7 +79,7 @@ export default class InfoEditModal extends Component {
                             _.map(_.pick(data, fileds), (value, key) => {
                                 return (
                                     <div key={`modal-${key}`} className='columns-merge'>
-                                        <h2>{key}</h2>
+                                        <h2>{this.headerTitle[key]}</h2>
                                         <textarea className="form-control"
                                             rows='2'
                                             defaultValue={value}
@@ -91,7 +91,7 @@ export default class InfoEditModal extends Component {
                             _.map(_.pick(data, fileds), (value, key) => {
                                 return (
                                     <div key={`modal-${key}`} className='columns-merge'>
-                                        <h2>{key}</h2>
+                                        <h2>{this.headerTitle[key]}</h2>
                                         <div>{value}</div>
                                     </div>
                                 )

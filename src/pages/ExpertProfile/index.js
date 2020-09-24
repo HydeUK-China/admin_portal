@@ -26,6 +26,8 @@ export default class ExpertProfile extends Component {
         this.moreField = ['education', 'employment', 'projects', 'patents',
             'field_of_speciality', 'awards', 'products', 'publication_date', 'recent_major_research_projects',
             'collaborative_project_proposal']
+
+        this.headerTitle = _.zipObject(this.moreField, this.moreHeader);
     }
 
     componentDidMount() {
@@ -43,7 +45,7 @@ export default class ExpertProfile extends Component {
 
         const tmp_data = Object.assign(data, {
             [key]: e.target.value
-        })
+        });
         this.setState({
             data: tmp_data
         });
@@ -54,6 +56,18 @@ export default class ExpertProfile extends Component {
             showInput: isEdit
         })
     };
+
+    confirmHandler = (isEdit, sidebarData) => {
+        const { data } = this.state;
+        
+        const tmp_data = Object.assign(data, {
+            ...sidebarData
+        });
+        this.setState({
+            data: tmp_data,
+            showInput: isEdit
+        });
+    }
 
     render() {
         const { showInput, data } = this.state;
@@ -66,7 +80,7 @@ export default class ExpertProfile extends Component {
                             _.map(_.pick(data, this.moreField), (value, key) => {
                                 return (
                                     <div key={`expertinfo-${key}`}>
-                                        <h3 className='label-tag'>{key}</h3>
+                                        <h3 className='label-tag'>{this.headerTitle[key]}</h3>
                                         <textarea className='profile-content'
                                             row='2'
                                             defaultValue={value}
@@ -78,7 +92,7 @@ export default class ExpertProfile extends Component {
                             _.map(_.pick(data, this.moreField), (value, key) => {
                                 return (
                                     <div key={`expertinfo-${key}`}>
-                                        <h3 className='label-tag'>{key}</h3>
+                                        <h3 className='label-tag'>{this.headerTitle[key]}</h3>
                                         <section className='profile-content'>
                                             {value}
                                         </section>
@@ -89,9 +103,9 @@ export default class ExpertProfile extends Component {
                 </div>
                 
                 <ExpertRightSidebar 
-                    data={data}
-                    field={this.lessField}
+                    data={_.pick(data, this.lessField)}
                     handleEdit={this.editHandler}
+                    handleConfirm={this.confirmHandler}
                 />
                 
             </div>
