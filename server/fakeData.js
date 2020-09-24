@@ -1,20 +1,28 @@
 const expertData = [
     {
         'id': 1, 'title': 'Dr', 'first_name': 'H', 'last_name': 'M', 'expertise': 'Data', 'category': 'Computer Science', 'level': 'S', 'email': 'U@com',
-        'phone_no': '074586442', 'cv': 'CV'
+        'phone_no': '074586442', 'education': 'University of Cambridge', 'employment': 'Alibaba', 'projects': 'project xxx', 'patents': 'patent xxx',
+        'field_of_speciality': 'xxx', 'awards': 'xxx', 'products': 'xxx', ' publication_date': 'xxx', 'recent_major_research_projects': 'xxx', 
+        'collaborative_project_proposal': 'xxx'
     },
     {
         'id': 2, 'title': 'Dr', 'first_name': 'A', 'last_name': 'B', 'expertise': 'Engineer', 'category': 'Mechanical Engieneer', 'level': 'A', 'email': 'U@com',
-        'phone_no': '0658994521', 'cv': 'CV'
+        'phone_no': '0658994521', 'education': 'University of Oxford', 'employment': 'Tencent', 'projects': 'project yyy', 'patents': 'patent yyy',
+        'field_of_speciality': 'yyy', 'awards': 'yyy', 'products': 'yyy', 'publication_date': 'yyy', 'recent_major_research_projects': 'yyy', 
+        'collaborative_project_proposal': 'yyy'
     }
 ]
 
 const projectData = [
     {
-        'id': 10, 'start_date': '2020-07-01', 'employer': 'Alibaba', 'area': 'GuangZhou', 'required_expertise': 'Data', 'salary': 100000, 'close_date': '2020-10-22'
+        'id': 10, 'start_date': '2020-07-01', 'employer': 'Alibaba', 'area': 'GuangZhou', 'required_expertise': 'Data', 'salary': 100000, 
+        'close_date': '2020-10-22', 'featured': 'xxx', 'job_description': 'Analyze data', 'responsibilities': 'daily report', 
+        'essential_skills': 'data modelling, machine learning'
     },
     {
-        'id': 19, 'start_date': '2020-08-21', 'employer': 'Siemens', 'area': 'United Kingdom', 'required_expertise': 'Engineer', 'salary': 120000, 'close_date': '2020-10-22'
+        'id': 19, 'start_date': '2020-08-21', 'employer': 'Siemens', 'area': 'United Kingdom', 'required_expertise': 'Engineer', 'salary': 120000, 
+        'close_date': '2020-10-22', 'featured': 'xxx', 'job_description': 'develop website', 'responsibilities': 'daily code push', 
+        'essential_skills': 'javascript, SQL'
     }
 ]
 

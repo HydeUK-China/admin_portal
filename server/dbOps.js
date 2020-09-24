@@ -107,32 +107,36 @@ function expertDashboard(req, res) {
 function fetchExpertAll(req, res) {
     const token = req.session.token;
 
-    jwtUtil.verifyRoleFromToken(token)
-        .then((role) => {
-            if (role === 'admin') {
-                res.status(200).json({
-                    success: true,
-                    data: expertData
-                })
-            } else {
-                res.status(400).json({
-                    success: false,
-                    msg: 'role permission denied'
-                })
-            }
-        }).catch(err => {
-            res.status(400).json({
-                success: false,
-                msg: err
-            })
-        });
+    // jwtUtil.verifyRoleFromToken(token)
+    //     .then((role) => {
+    //         if (role === 'admin') {
+    //             res.status(200).json({
+    //                 success: true,
+    //                 data: expertData
+    //             })
+    //         } else {
+    //             res.status(400).json({
+    //                 success: false,
+    //                 msg: 'role permission denied'
+    //             })
+    //         }
+    //     }).catch(err => {
+    //         res.status(400).json({
+    //             success: false,
+    //             msg: err
+    //         })
+    //     });
+    res.status(200).json({
+        success: true,
+        data: expertData
+    })
 }
 
 function fetchExpert(req, res) {
     const expertId = req.params.expertid
     res.status(200).json({
         success: true,
-        data: [expertData[expertId]]
+        data: expertData[expertId]
     })
 }
 

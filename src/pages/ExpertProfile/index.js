@@ -1,114 +1,100 @@
-import React, { Component, Fragment } from 'react'
-import '../../styles/app.css'
-import user_img from '../../img/user.png'
-
+import React, { Component } from 'react';
+import _ from 'lodash';
+import ExpertRightSidebar from '../../components/expertRightSidebar';
+import { fetchReq } from '../../utils/utils';
 
 export default class ExpertProfile extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
-            value: 'Display Expert Profile Info',
-            isInEdit: false,
+            data: null,
+            showInput: false,
             editbutton: 'Edit',
             savebutton: 'Save'
 
         }
+
+        this.lessHeader = ['Title', 'First Name', 'Category', 'Email', 'Phone No']
+
+        this.lessField = ['title', 'first_name', 'category', 'email', 'phone_no']
+
+        this.moreHeader = ['Education', 'Employment', 'Projects', 'Patents',
+            'Field of Speciality', 'Awards', 'Products', 'Publication Date', 'Recent Major Research Projects',
+            'Collaborative Project Proposal']
+
+        this.moreField = ['education', 'employment', 'projects', 'patents',
+            'field_of_speciality', 'awards', 'products', 'publication_date', 'recent_major_research_projects',
+            'collaborative_project_proposal']
     }
 
-    edit = () => {
+    componentDidMount() {
+        const expertId = 1;
+        const url = `/api/fetchExpert/${expertId}`
+        fetchReq(url).then(data => {
+            this.setState({
+                data
+            })
+        }).catch(err => console.log(err));
+    }
+
+    handleTextChange(e, key) {
+        const { data } = this.state;
+
+        const tmp_data = Object.assign(data, {
+            [key]: e.target.value
+        })
         this.setState({
-            isInEdit: !this.state.isInEdit
+            data: tmp_data
+        });
+    }
+
+    editHandler = (isEdit) => {
+        this.setState({
+            showInput: isEdit
         })
     };
 
     render() {
+        const { showInput, data } = this.state;
+
         return (
-            <Fragment>
+            <div>
                 <div className="profile">
-
-                    <h3 className='label-tag'>Education</h3>
-                    {this.state.isInEdit ? <textarea row='5' className='profile-content'>{this.state.value}</textarea> : <section className='profile-content'>
-                        {this.state.value}
-                    </section>}
-
-                    <h3 className='label-tag'>Employment</h3>
-                    {this.state.isInEdit ? <textarea row='5' className='profile-content'>{this.state.value}</textarea> : <section className='profile-content'>
-                        {this.state.value}
-                    </section>}
-                    <h3 className='label-tag'>Patents</h3>
-                    {this.state.isInEdit ? <textarea row='5' className='profile-content'>{this.state.value}</textarea> : <section className='profile-content'>
-                        {this.state.value}
-                    </section>}
-                    <h3 className='label-tag'>Publication</h3>
-                    {this.state.isInEdit ? <textarea row='5' className='profile-content'>{this.state.value}</textarea> : <section className='profile-content'>
-                        {this.state.value}
-                    </section>}
-                    <h3 className='label-tag'>Awards</h3>
-                    {this.state.isInEdit ? <textarea row='5' className='profile-content'>{this.state.value}</textarea> : <section className='profile-content'>
-                        {this.state.value}
-                    </section>}
-                    <h3 className='label-tag'>Collaboration Project Proposal</h3>
-                    {this.state.isInEdit ? <textarea row='5' className='profile-content'>{this.state.value}</textarea> : <section className='profile-content'>
-                        {this.state.value}
-                    </section>}
-
+                    {
+                        showInput ?
+                            _.map(_.pick(data, this.moreField), (value, key) => {
+                                return (
+                                    <div key={`expertinfo-${key}`}>
+                                        <h3 className='label-tag'>{key}</h3>
+                                        <textarea className='profile-content'
+                                            row='2'
+                                            defaultValue={value}
+                                            onChange={(e) => this.handleTextChange(e, key)}></textarea>
+                                    </div>
+                                )
+                            })
+                            :
+                            _.map(_.pick(data, this.moreField), (value, key) => {
+                                return (
+                                    <div key={`expertinfo-${key}`}>
+                                        <h3 className='label-tag'>{key}</h3>
+                                        <section className='profile-content'>
+                                            {value}
+                                        </section>
+                                    </div>
+                                )
+                            })
+                    }
                 </div>
-
-                <div className="right-sidebar">
-                    <div className="right-sidebar-wrapper">
-                        <div className="row">
-                            <div className="profile">
-                                {this.state.isInEdit ? <input type='file' className='center'/> : <div className='center'> </div>}
-                            </div>
-                            {this.state.isInEdit ? <button className='btn' onClick={this.edit}>Save</button> : <button className="btn" onClick={this.edit}>Edit</button>}
-
-                        </div>
-                        <div className="bio">
-                            <span>
-                                <h4>Hello,</h4>
-                            </span>
-                            <h1><b>Jonathan</b></h1>
-                        </div>
-
-                        <div className="contact-details">
-                            <ul className="contact-details-list">
-                                <li className="contact-details-head">
-                                    <h4>Contact Details </h4>
-
-                                </li>
-
-
-                                <li className="contact-details-link">
-                                    <i className="fas fa-phone"></i><span>+44 7123456789</span>
-                                </li>
-                                <li className="contact-details-link">
-                                    <i className="fas fa-envelope"></i><span>www.xyz@gmail.com</span>
-                                </li>
-                            </ul>
-                        </div>
-                        <div className="follow-me">
-                            <ul className="follow-me-list">
-                                <li className="follow-me-head">
-                                    <h4>Social Media Platforms </h4>
-                                </li>
-                                <li className="follow-me-link">
-                                    <i className="fa fa-linkedin" aria-hidden="true"></i><span>Hyde International Talents</span>
-                                </li>
-                                <li className="follow-me-link">
-                                    <i className="fab fa-facebook-square"></i><span>Hyde International Talents</span>
-                                </li>
-                                <li className="follow-me-link">
-                                    <i className="fab fa-twitter"></i><span>Hyde International Talents</span>
-                                </li>
-
-
-                            </ul>
-
-                        </div>
-                    </div>
-                </div>
-            </Fragment>
+                
+                <ExpertRightSidebar 
+                    data={data}
+                    field={this.lessField}
+                    handleEdit={this.editHandler}
+                />
+                
+            </div>
 
         )
     }

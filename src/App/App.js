@@ -12,7 +12,6 @@ import { removeRole, getRole, fetchReq } from '../utils/utils';
 import { path_name, renderRoute } from './tabRouteConfig';
 
 import '../styles/app.css';
-import user_img from '../img/user.png'
 
 class App extends Component {
   constructor(props) {
@@ -113,7 +112,7 @@ class App extends Component {
                 <Route path="/mgt">
                   {role === '__admin__' ?
                     <Redirect to='/mgt/admin_dashboard' />
-                    : <Redirect to='/mgt/project_management' />
+                    : <Redirect to='/mgt/exper_profile' />
                   }
                 </Route>
               </Switch>

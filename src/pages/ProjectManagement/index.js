@@ -2,10 +2,8 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 import { fetchReq } from '../../utils/utils';
 import Search from '../../components/search';
-import JobTab from '../../components/JobTab'
-// import AddJob from '../../components/addJob'
-import 'bootstrap/dist/css/bootstrap.min.css'
-import { Button, Modal } from 'react-bootstrap'
+import ModalOpsRow from '../../components/modalOpsRow';
+import AddProjectModal from '../../components/addProjectModal';
 
 export default class ProjectManagement extends Component {
     constructor(props) {
@@ -13,12 +11,17 @@ export default class ProjectManagement extends Component {
 
         this.state = {
             data: null,
-            filterData: null
+            filterData: null,
+            showAdd: false
         }
 
-        this.header = ['ID', 'Start Date', 'Employer', 'Area', 'Required Expertise', 'Salary', 'Close Date']
+        this.lessHeader = ['ID', 'Start Date', 'Employer', 'Area', 'Required Expertise', 'Salary', 'Close Date']
 
-        this.dataField = ['id', 'start_date', 'employer', 'area', 'required_expertise', 'salary', 'close_date']
+        this.lessField = ['id', 'start_date', 'employer', 'area', 'required_expertise', 'salary', 'close_date']
+
+        this.moreHeader = ['Featured', 'Job Description', 'Responsibilities', 'Essential skills']
+
+        this.moreField = ['featured', 'job_description', 'responsibilities', 'essential_skills']
 
         this.filterDataHandler = this.filterDataHandler.bind(this);
     }
@@ -39,7 +42,7 @@ export default class ProjectManagement extends Component {
     }
 
     getHeader() {
-        return _.map(this.header, (item, index) => {
+        return _.map(this.lessHeader, (item, index) => {
             return <h6 key={`employerMgt-${index}`}>{item}</h6>
         })
     }
@@ -49,31 +52,33 @@ export default class ProjectManagement extends Component {
         const { role } = this.props;
 
         return _.map(filterData, (item, index) => {
-            return <JobTab
+            return <ModalOpsRow
                 role={role}
-                key={`JobcollapsableRow-${index}`}
+                key={`projectRow-${index}`}
                 rowData={item}
-                rowField={this.dataField}>
-
-            </JobTab>
+                rowLessField={this.lessField}
+                rowMoreField={this.lessField.concat(this.moreField)}
+                rowMoreHeader={this.lessHeader.concat(this.moreHeader)}
+                modalHeader='Project Info'
+            />
         })
     }
 
     handleToggleAdd = () => {
         this.setState({
-            Add: !this.state.Add
+            showAdd: !this.state.showAdd
         })
     }
 
-    closeTab = () => {
+    closeAddHandler = (hide) => {
         this.setState({
-            Add: false,
+            showAdd: hide
         })
     }
 
 
     render() {
-        const { data, Add } = this.state;
+        const { data, showAdd } = this.state;
         const { role } = this.props;
 
         return (
@@ -82,66 +87,12 @@ export default class ProjectManagement extends Component {
                 <div className="search">
                     <Search
                         fullData={data}
-                        dataFilterableField={this.dataField}
+                        dataFilterableField={this.lessField}
                         filterDataHandler={this.filterDataHandler}
                     />
-                    {role === '__admin__' ? <button className="search-btn" onClick={this.handleToggleAdd}>Add</button> : <div></div>}
+                    {role === '__admin__' ? <button className="search-btn" onClick={this.handleToggleAdd}>Add</button> : null}
                 </div>
-                <Modal size="lg" aria-labelledby="contained-modal-title-vcenter" centered
-                    show={this.state.Add} >
-                    <Modal.Header closeButton onHide={this.closeTab} id="contained-modal-title-vcenter">Job Posting</Modal.Header>
-                    <Modal.Body><form>
-                        <div className='columns-add'>
-                            <label>Job Roles</label>
-                            <input type='text' placeholder="Accountant Manager" />
-                            <label>Organization</label>
-                            <input type='text' placeholder="Amazon" />
-
-                        </div>
-                        
-                        <div className='columns-add'>
-                            <label>Post Date</label>
-                            <input type="date" className="form-control" required />
-                            <label>Deadline </label>
-                            <input type="date" className="form-control" required />
-                        </div>
-                        
-                        <div className='columns-add'>
-                            <label>Salary</label>
-                            <input type="text" className="form-control" placeholder=" £35,000 - 45,000" required />
-                        </div>
-
-                        <div className='columns-add-merge'>
-                            <h2>Featured</h2>
-                            <textarea name="education" id="educationID" className="form-control" rows='5' placeholder="Amazon Advertising operates at the intersection of advertising and ecommerce and offers advertisers a rich array of innovative advertising solutions across Amazon’s mobile and desktop websites, proprietary devices and the Amazon Advertising Platform." />
-                        </div>
-
-                        <div className='columns-add-merge'>
-                            <h2>Job Description</h2>
-                            <textarea name="working" id="workingID" className="form-control" rows='5' placeholder="In this role you will be working within the SME team of Account Managers, taking ownership of the management of a portfolio of SME clients and engaging with to ensure renewals and upsells." />
-                        </div>
-
-                        <div className='columns-add-merge'>
-                            <h2>Responsibilities</h2>
-                            <textarea name="projects" id="projectID" className="form-control" rows='5' placeholder="
--Onboarding and engagement process with every client.
--Identify risks to minimise attrition.
--Identify and convert opportunities to up sell and cross sell existing products.
--Create and convert cross sell opportunities.
--Establish and maintain relationship with key client stakeholders. "/>
-                        </div>
-
-                        <div className='columns-add-merge'>
-                            <h2>Essential skills</h2>
-                            <textarea name="patent" id="patentID" className="form-control" rows='5'
-                                placeholder="
-                                -Commercially and client focused
-                                -Sales and relationship management experience
-                                -Experience working to commercial KPI’s"/>
-                        </div>
-                    </form></Modal.Body>
-                    <Modal.Footer><Button>Add Job Post</Button></Modal.Footer>
-                </Modal>
+                <AddProjectModal show={showAdd} close={this.closeAddHandler}/>
                 <div className="dataheader_expert">
                     {this.getHeader()}
                 </div>
