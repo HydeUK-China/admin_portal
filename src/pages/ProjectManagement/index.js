@@ -96,11 +96,12 @@ export default class ProjectManagement extends Component {
     }
 
     addHandler(obj) {
-        const { data } = this.state;
-
+        const { data, filterData } = this.state;
+        
         data.push(obj);
         this.setState({
             data,
+            filterData,
             showAdd: false
         })
     }
