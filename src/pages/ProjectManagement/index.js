@@ -24,6 +24,8 @@ export default class ProjectManagement extends Component {
         this.moreField = ['featured', 'job_description', 'responsibilities', 'essential_skills']
 
         this.filterDataHandler = this.filterDataHandler.bind(this);
+        this.rowDeleteHandler = this.rowDeleteHandler.bind(this);
+        this.addHandler = this.addHandler.bind(this);
     }
 
     componentDidMount() {
@@ -47,6 +49,21 @@ export default class ProjectManagement extends Component {
         })
     }
 
+    rowDeleteHandler(id) {
+        const { data, filterData } = this.state;
+        _.remove(data, (item, index) => {
+            return item.id == id;
+        });
+        _.remove(filterData, (item, index) => {
+            return item.id == id;
+        });
+
+        this.setState({
+            data,
+            filterData
+        });
+    }
+
     getTable() {
         const { filterData } = this.state;
         const { role } = this.props;
@@ -59,6 +76,7 @@ export default class ProjectManagement extends Component {
                 rowLessField={this.lessField}
                 rowMoreField={this.lessField.concat(this.moreField)}
                 rowMoreHeader={this.lessHeader.concat(this.moreHeader)}
+                onRowDelete={role === '__admin__' ? this.rowDeleteHandler : null}
                 modalHeader='Project Info'
             />
         })
@@ -76,6 +94,15 @@ export default class ProjectManagement extends Component {
         })
     }
 
+    addHandler(obj) {
+        const { data } = this.state;
+        
+        data.push(obj);
+        this.setState({
+            data,
+            showAdd: false
+        })
+    }
 
     render() {
         const { data, showAdd } = this.state;
@@ -92,7 +119,7 @@ export default class ProjectManagement extends Component {
                     />
                     {role === '__admin__' ? <button className="search-btn" onClick={this.handleToggleAdd}>Add</button> : null}
                 </div>
-                <AddProjectModal show={showAdd} close={this.closeAddHandler} />
+                <AddProjectModal show={showAdd} close={this.closeAddHandler} onAdd={this.addHandler} />
                 <div className="dataheader_expert">
                     {this.getHeader()}
                 </div>

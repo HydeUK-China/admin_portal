@@ -15,7 +15,7 @@ export default class ExpertManagement extends Component {
             showAdd: false
         }
 
-        this.lessHeader = ['ID', 'Title', 'First Name', 'Last Name', 'Expertise', 'Category', 'Level', 'Email', 'Phone No', 'CV']
+        this.lessHeader = ['ID', 'Title', 'First Name', 'Last Name', 'Expertise', 'Category', 'Level', 'Email', 'Phone No']
 
         this.lessField = ['id', 'title', 'first_name', 'last_name', 'expertise', 'category', 'level', 'email', 'phone_no']
 
@@ -30,6 +30,8 @@ export default class ExpertManagement extends Component {
         this.filterDataHandler = this.filterDataHandler.bind(this);
         this.handleToggleAdd = this.handleToggleAdd.bind(this);
         this.closeAddHandler = this.closeAddHandler.bind(this);
+        this.rowDeleteHandler = this.rowDeleteHandler.bind(this);
+        this.addHandler = this.addHandler.bind(this);
     }
 
     componentDidMount() {
@@ -56,6 +58,21 @@ export default class ExpertManagement extends Component {
         })
     }
 
+    rowDeleteHandler(id) {
+        const { data, filterData } = this.state;
+        _.remove(data, (item, index) => {
+            return item.id == id;
+        });
+        _.remove(filterData, (item, index) => {
+            return item.id == id;
+        });
+        
+        this.setState({
+            data,
+            filterData
+        });
+    }
+
     getTable() {
         const { filterData } = this.state;
         const { role } = this.props;
@@ -67,6 +84,7 @@ export default class ExpertManagement extends Component {
                 rowLessField={this.lessField}
                 rowMoreField={this.lessField.concat(this.moreField)}
                 rowMoreHeader={this.lessHeader.concat(this.moreHeader)}
+                onRowDelete={role === '__admin__' ? this.rowDeleteHandler : null}
                 modalHeader='Expert Info'
                 />
         })
@@ -84,6 +102,16 @@ export default class ExpertManagement extends Component {
         })
     }
 
+    addHandler(obj) {
+        const { data } = this.state;
+        
+        data.push(obj);
+        this.setState({
+            data,
+            showAdd: false
+        })
+    }
+
     render() {
         const { data, showAdd } = this.state;
         const { role } = this.props;
@@ -98,7 +126,7 @@ export default class ExpertManagement extends Component {
                     />
                     {role === '__admin__' ? <button className="search-btn" onClick={this.handleToggleAdd}>Add</button> : null}
                 </div>
-                <AddExpertModal show={showAdd} close={this.closeAddHandler}/>
+                <AddExpertModal show={showAdd} close={this.closeAddHandler} onAdd={this.addHandler}/>
                 <div className="dataheader_expert">
                     {this.getHeader()}
                 </div>

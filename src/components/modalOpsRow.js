@@ -31,7 +31,10 @@ export default class ModalOpsRow extends Component {
                 showInfo: !this.showInfo
             })
         } else if (e.target.value === 'delete') {
-            alert('Are you sure you want to delete?')
+            const { onRowDelete } = this.props;
+            const { data } = this.state;
+            const { id } = data;
+            onRowDelete(id);
         }
     }
 
