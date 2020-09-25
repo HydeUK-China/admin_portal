@@ -4,6 +4,7 @@ import Search from '../../components/search';
 import ModalOpsRow from '../../components/modalOpsRow';
 import { fetchReq } from '../../utils/utils';
 import AddExpertModal from '../../components/addExpertModal';
+import Pagination from '../../components/pagination';
 
 export default class ExpertManagement extends Component {
     constructor(props) {
@@ -131,6 +132,8 @@ export default class ExpertManagement extends Component {
                     {this.getHeader()}
                 </div>
                 {this.getTable()}
+                <hr/>
+                <Pagination/>
             </div>
         )
     }

@@ -4,6 +4,7 @@ import { fetchReq } from '../../utils/utils';
 import Search from '../../components/search';
 import ModalOpsRow from '../../components/modalOpsRow';
 import AddProjectModal from '../../components/addProjectModal';
+import Pagination from '../../components/pagination';
 
 export default class ProjectManagement extends Component {
     constructor(props) {
@@ -96,7 +97,7 @@ export default class ProjectManagement extends Component {
 
     addHandler(obj) {
         const { data } = this.state;
-        
+
         data.push(obj);
         this.setState({
             data,
@@ -124,6 +125,9 @@ export default class ProjectManagement extends Component {
                     {this.getHeader()}
                 </div>
                 {this.getTable()}
+                <hr/>
+                <Pagination />
+                
             </div>
         )
     }

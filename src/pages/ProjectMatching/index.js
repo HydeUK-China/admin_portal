@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import _ from 'lodash';
 import { fetchReq } from '../../utils/utils';
 import Search from '../../components/search';
@@ -10,6 +10,7 @@ import JobTab from '../../components/JobTab';
 import ExpertTab from '../../components/ExpertTab';
 import MatchingJobTab from '../../components/matchingTab';
 import DisplayExpert from '../../components/displayExpert';
+import Pagination from '../../components/pagination';
 
 export default class ProjectMatching extends Component {
     constructor(props) {
@@ -93,20 +94,24 @@ export default class ProjectMatching extends Component {
     render() {
         const { data } = this.state;
         return (
-            <div className="database">
-                <div className="search">
-                    <Search
-                        fullData={data}
-                        dataFilterableField={this.outerDataField}
-                        filterDataHandler={this.filterDataHandler}
-                    />
-                </div>
+            <Fragment>
+                <div className="database">
+                    <div className="search">
+                        <Search
+                            fullData={data}
+                            dataFilterableField={this.outerDataField}
+                            filterDataHandler={this.filterDataHandler}
+                        />
+                    </div>
 
-                <div className="dataheader_expert">
-                    {this.getOuterHeader()}
+                    <div className="dataheader_expert">
+                        {this.getOuterHeader()}
+                    </div>
+                    {this.getOuterTable()}
+                    <hr/>
+                    <Pagination />
                 </div>
-                {this.getOuterTable()}
-            </div>
+            </Fragment>
         )
     }
 }
