@@ -71,7 +71,7 @@ class App extends Component {
     return (
       <div>
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-          <Link className="navbar-brand" to='/mgt'>HYDE INTERNATIONAL</Link>
+          <Link className="navbar-brand" to='/mgt'>HI TALENTS</Link>
           <button className="navbar-toggler" onClick={this.toggleNavbar}
             type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>

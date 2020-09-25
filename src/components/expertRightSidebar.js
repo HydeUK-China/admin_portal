@@ -64,7 +64,7 @@ export default class ExpertRightSidebar extends Component {
             <div className="right-sidebar">
                 <div className="right-sidebar-wrapper">
                     <div className="row">
-                        <div className="profile">
+                        <div className="upper_profile">
                             {
                                 showInput ?
                                     <input type='file' className='center' />
@@ -73,12 +73,15 @@ export default class ExpertRightSidebar extends Component {
                                     // </div>
                                     : <div className='center'> </div>
                             }
+                            {showInput ? <label className='red'>*Notice: Images size no more than 2MB</label> : null}
                         </div>
-                        {
-                            showInput ?
+                        <div className='upper_profile'>                        
+                        {                           showInput ?
                                 <button className='btn' onClick={this.clickConfirm}>Save</button>
                                 : <button className="btn" onClick={this.clickEdit}>Edit</button>
-                        }
+                        }</div>
+
+
 
                     </div>
                     <div className="bio">
@@ -127,7 +130,7 @@ export default class ExpertRightSidebar extends Component {
                                 <i className="fa fa-linkedin" aria-hidden="true"></i><span>Hyde International Talents</span>
                             </li>
                             <li className="follow-me-link">
-                                <i className="fab fa-facebook-square"></i><span>Hyde International Talents</span>
+                                <i className="fab fa-skype"></i><span>Hyde International Talents</span>
                             </li>
                             <li className="follow-me-link">
                                 <i className="fab fa-twitter"></i><span>Hyde International Talents</span>

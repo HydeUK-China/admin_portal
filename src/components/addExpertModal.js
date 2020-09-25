@@ -123,7 +123,7 @@ export default class AddExpertModal extends Component {
 
                         <div className='columns-add'>
                             <label>Phone number</label>
-                            <input type="tel" className="form-control" placeholder="796-644-8844" required 
+                            <input type="tel" className="form-control" placeholder="796-644-8844" 
                                     ref={this.phone_no}/>
                             <label>Upload CV</label>
                             <UploadFile />
@@ -235,11 +235,9 @@ export default class AddExpertModal extends Component {
                             <textarea name="cpp" placeholder="Project Proposal With China" className='form-control' rows='5'
                                     ref={this.collaborative_project_proposal}/>
                         </div>
+                        <button className='apply-btn' >Add User</button>
                     </form>
                 </Modal.Body>
-                <Modal.Footer>
-                    <Button onClick={this.handleAdd}>Add User</Button>
-                </Modal.Footer>
             </Modal>
         )
     }

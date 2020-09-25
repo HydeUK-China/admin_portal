@@ -72,6 +72,7 @@ export default class CollapsableCreate extends Component {
                     type="file"
                     onChange={e => this.setState({ selectedFile: e.target.files[0] })}
                 />
+                <label className='red'>*Notice: Only PDF Format is accepted and no more than 2 MB</label>
                 <button onClick={this.singleFileUploadHandler}>Upload</button>
                 {
                     (showDownload && fileName) ?

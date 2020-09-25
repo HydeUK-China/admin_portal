@@ -55,14 +55,16 @@
     grid-template-columns: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
     border-bottom: 1px solid black;
     margin-top: 5px;
-    padding: 2px;
+    text-align: center;
   }
   
   .datatable_expert {
     position: relative;
-    padding: 2rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
     display: grid;
     grid-template-columns: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
+    text-align: center;
   }
   
   .dataheader_job {

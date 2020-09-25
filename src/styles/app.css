@@ -17,7 +17,7 @@ body {
   background-image: url('../img/user.png');
   background-repeat: no-repeat;
   background-size: cover;
-  padding-top: 40%;
+  padding-top: 20%;
 }
 
 .profile{
@@ -34,6 +34,19 @@ body {
   border-radius: 5px;
   padding-left: 0.5rem;
   padding-top: 0.5rem;
+}
+
+.red{
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: red;
+}
+
+.upper_profile{
+  position: relative;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 60% 40%;
 }
 
 .label-tag{

@@ -2,10 +2,12 @@
     position: relative;
     margin: auto;
     padding: 2rem 0rem;
-    width: 100%;
+	width: 100%;
+	text-align: center;
 }
 
 table {
+	
 	width: 100%;
 }
 

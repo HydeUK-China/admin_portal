@@ -1,5 +1,6 @@
 .btn{
-    min-width: 100px;
+  margin-left: 2px;
+    width: 100px;
     cursor: pointer;
     background-color: blue;
     color: white;
