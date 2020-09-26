@@ -1,30 +1,36 @@
 import React, { Component, Fragment } from 'react'
-import ReactPaginate from 'react-bootstrap/Pagination';
+import ReactPaginate from 'react-js-pagination';
+
 
 export default class Pagination extends Component {
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            activePage: 1
+        }
+    }
+
+    handlePageChange = (PageNumber) => {
+        this.setState({ activePage: PageNumber })
+    }
+
 
 
     render() {
 
         return (
             <Fragment>
-                <ReactPaginate>
-                    <ReactPaginate.First />
-                    <ReactPaginate.Prev />
-                    <ReactPaginate.Item>{1}</ReactPaginate.Item>
-                    <ReactPaginate.Ellipsis />
+                <ReactPaginate
+                    activePage={this.state.activePage}
+                    itemsCountPerPage={1}
+                    pageRangeDisplayed={5}
+                    totalItemsCount={50}
+                    onChange={this.handlePageChange.bind(this)}
+                    itemClass="page-item"
+                    linkClass="page-link"
+                />
 
-                    <ReactPaginate.Item>{10}</ReactPaginate.Item>
-                    <ReactPaginate.Item>{11}</ReactPaginate.Item>
-                    <ReactPaginate.Item active>{12}</ReactPaginate.Item>
-                    <ReactPaginate.Item>{13}</ReactPaginate.Item>
-                    <ReactPaginate.Item disabled>{14}</ReactPaginate.Item>
-
-                    <ReactPaginate.Ellipsis />
-                    <ReactPaginate.Item>{20}</ReactPaginate.Item>
-                    <ReactPaginate.Next />
-                    <ReactPaginate.Last />
-                </ReactPaginate>
             </Fragment>
         )
     }
