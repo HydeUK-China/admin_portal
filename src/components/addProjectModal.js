@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import _ from 'lodash';
-import { currencyList } from '../asset/CurrencyList';
+import { currencyList } from '../asset/currencyList';
 
 export default class AddExpertModal extends Component {
     constructor(props) {
@@ -26,7 +26,9 @@ export default class AddExpertModal extends Component {
         });
     }
 
-    handleAdd() {
+    handleAdd(e) {
+        e.preventDefault();
+        
         const { onAdd } = this.props;
         let obj = {
             'id': 100
@@ -67,13 +69,13 @@ export default class AddExpertModal extends Component {
             <Modal size="lg" aria-labelledby="contained-modal-title-vcenter" centered show={show} onHide={this.closeModal}>
                 <Modal.Header closeButton onHide={this.closeModal} id="contained-modal-title-vcenter">Job Posting</Modal.Header>
                 <Modal.Body>
-                    <form>
+                    <form onSubmit={this.handleAdd}>
                         <div className='columns-add'>
                             <label>Job Roles</label>
-                            <input type='text' placeholder="Accountant Manager"
+                            <input type='text' placeholder="Accountant Manager" required
                                 ref={this.job_title} />
                             <label>Organization</label>
-                            <input type='text' placeholder="Amazon"
+                            <input type='text' placeholder="Amazon" required
                                 ref={this.employer} />
 
                         </div>
@@ -143,7 +145,7 @@ export default class AddExpertModal extends Component {
                                 -Experience working to commercial KPI’s"
                                 ref={this.essential_skills} />
                         </div>
-                        <button className='apply-btn' >Add Job Post</button>
+                        <Button className='apply-btn' type="submit">Add Job</Button>
                     </form>
                 </Modal.Body>
             </Modal>

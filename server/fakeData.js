@@ -6,12 +6,12 @@ const expertData = [
         'collaborative_project_proposal': 'xxx',
         'applications': [
             {
-                'id': 10, 'job_title': 'Data Scientist', 'start_date': '2020-07-01', 'employer': 'Alibaba', 'area': 'GuangZhou', 'required_expertise': 'Data', 'salary': 100000,
+                'id': 10, 'job_title': 'Data Scientist', 'start_date': '2020-07-01', 'employer': 'Alibaba', 'area': 'GuangZhou', 'required_expertise': 'Data', 'salary': 100000, 'currency': 'USD',
                 'close_date': '2020-10-22', 'featured': 'xxx', 'job_description': 'Analyze data', 'responsibilities': 'daily report',
                 'essential_skills': 'data modelling, machine learning'
             },
             {
-                'id': 19, 'job_title': 'Software Engineer', 'start_date': '2020-08-21', 'employer': 'Siemens', 'area': 'United Kingdom', 'required_expertise': 'Engineer', 'salary': 120000,
+                'id': 19, 'job_title': 'Software Engineer', 'start_date': '2020-08-21', 'employer': 'Siemens', 'area': 'United Kingdom', 'required_expertise': 'Engineer', 'salary': 120000, 'currency': 'RMB',
                 'close_date': '2020-10-22', 'featured': 'xxx', 'job_description': 'develop website', 'responsibilities': 'daily code push',
                 'essential_skills': 'javascript, SQL'
             }
@@ -24,32 +24,32 @@ const expertData = [
         'collaborative_project_proposal': 'yyy',
         'applications': [
             {
-                'id': 10, 'job_title': 'Data Scientist', 'start_date': '2020-07-01', 'employer': 'Alibaba', 'area': 'GuangZhou', 'required_expertise': 'Data', 'salary': 100000,
+                'id': 10, 'job_title': 'Data Scientist', 'start_date': '2020-07-01', 'employer': 'Alibaba', 'area': 'GuangZhou', 'required_expertise': 'Data', 'salary': 100000, 'currency': 'USD',
                 'close_date': '2020-10-22', 'featured': 'xxx', 'job_description': 'Analyze data', 'responsibilities': 'daily report',
                 'essential_skills': 'data modelling, machine learning'
             },
             {
-                'id': 19, 'job_title': 'Software Engineer', 'start_date': '2020-08-21', 'employer': 'Siemens', 'area': 'United Kingdom', 'required_expertise': 'Engineer', 'salary': 120000,
+                'id': 19, 'job_title': 'Software Engineer', 'start_date': '2020-08-21', 'employer': 'Siemens', 'area': 'United Kingdom', 'required_expertise': 'Engineer', 'salary': 120000, 'currency': 'RMB',
                 'close_date': '2020-10-22', 'featured': 'xxx', 'job_description': 'develop website', 'responsibilities': 'daily code push',
                 'essential_skills': 'javascript, SQL'
             },
             {
-                'id': 10, 'job_title': 'Data Scientist', 'start_date': '2020-07-01', 'employer': 'Alibaba', 'area': 'GuangZhou', 'required_expertise': 'Data', 'salary': 100000,
+                'id': 10, 'job_title': 'Data Scientist', 'start_date': '2020-07-01', 'employer': 'Alibaba', 'area': 'GuangZhou', 'required_expertise': 'Data', 'salary': 100000, 'currency': 'USD',
                 'close_date': '2020-10-22', 'featured': 'xxx', 'job_description': 'Analyze data', 'responsibilities': 'daily report',
                 'essential_skills': 'data modelling, machine learning'
             },
             {
-                'id': 19, 'job_title': 'Software Engineer', 'start_date': '2020-08-21', 'employer': 'Siemens', 'area': 'United Kingdom', 'required_expertise': 'Engineer', 'salary': 120000,
+                'id': 19, 'job_title': 'Software Engineer', 'start_date': '2020-08-21', 'employer': 'Siemens', 'area': 'United Kingdom', 'required_expertise': 'Engineer', 'salary': 120000, 'currency': 'RMB',
                 'close_date': '2020-10-22', 'featured': 'xxx', 'job_description': 'develop website', 'responsibilities': 'daily code push',
                 'essential_skills': 'javascript, SQL'
             },
             {
-                'id': 10, 'job_title': 'Data Scientist', 'start_date': '2020-07-01', 'employer': 'Alibaba', 'area': 'GuangZhou', 'required_expertise': 'Data', 'salary': 100000,
+                'id': 10, 'job_title': 'Data Scientist', 'start_date': '2020-07-01', 'employer': 'Alibaba', 'area': 'GuangZhou', 'required_expertise': 'Data', 'salary': 100000, 'currency': 'USD',
                 'close_date': '2020-10-22', 'featured': 'xxx', 'job_description': 'Analyze data', 'responsibilities': 'daily report',
                 'essential_skills': 'data modelling, machine learning'
             },
             {
-                'id': 19, 'job_title': 'Software Engineer', 'start_date': '2020-08-21', 'employer': 'Siemens', 'area': 'United Kingdom', 'required_expertise': 'Engineer', 'salary': 120000,
+                'id': 19, 'job_title': 'Software Engineer', 'start_date': '2020-08-21', 'employer': 'Siemens', 'area': 'United Kingdom', 'required_expertise': 'Engineer', 'salary': 120000, 'currency': 'RMB',
                 'close_date': '2020-10-22', 'featured': 'xxx', 'job_description': 'develop website', 'responsibilities': 'daily code push',
                 'essential_skills': 'javascript, SQL'
             }
@@ -59,12 +59,12 @@ const expertData = [
 
 const projectData = [
     {
-        'id': 10, 'job_title': 'Data Scientist', 'start_date': '2020-07-01', 'employer': 'Alibaba', 'area': 'GuangZhou', 'required_expertise': 'Data', 'salary': 100000,
+        'id': 10, 'job_title': 'Data Scientist', 'start_date': '2020-07-01', 'employer': 'Alibaba', 'area': 'GuangZhou', 'required_expertise': 'Data', 'salary': 100000, 'currency': 'USD',
         'close_date': '2020-10-22', 'featured': 'xxx', 'job_description': 'Analyze data', 'responsibilities': 'daily report',
         'essential_skills': 'data modelling, machine learning'
     },
     {
-        'id': 19, 'job_title': 'Software Engineer', 'start_date': '2020-08-21', 'employer': 'Siemens', 'area': 'United Kingdom', 'required_expertise': 'Engineer', 'salary': 120000,
+        'id': 19, 'job_title': 'Software Engineer', 'start_date': '2020-08-21', 'employer': 'Siemens', 'area': 'United Kingdom', 'required_expertise': 'Engineer', 'salary': 120000, 'currency': 'RMB',
         'close_date': '2020-10-22', 'featured': 'xxx', 'job_description': 'develop website', 'responsibilities': 'daily code push',
         'essential_skills': 'javascript, SQL'
     }
@@ -87,7 +87,7 @@ const employerData = [
 
 const projectMatchingData = [
     {
-        'id': 10, 'start_date': '2020-07-01', 'employer': 'Alibaba', 'area': 'GuangZhou', 'required_expertise': 'Data', 'salary': 100000, 'close_date': '2020-10-22',
+        'id': 10, 'start_date': '2020-07-01', 'employer': 'Alibaba', 'area': 'GuangZhou', 'required_expertise': 'Data', 'salary': 100000, 'currency': 'USD', 'close_date': '2020-10-22',
         'expertData': [
             {
                 'id': 1, 'title': 'Dr', 'first_name': 'Jonathan', 'last_name': 'M', 'expertise': 'Data', 'category': 'Computer Science', 'level': 'S', 'email': 'U@com',
@@ -101,7 +101,7 @@ const projectMatchingData = [
 
     },
     {
-        'id': 19, 'start_date': '2020-08-21', 'employer': 'Siemens', 'area': 'United Kingdom', 'required_expertise': 'Engineer', 'salary': 120000, 'close_date': '2020-10-22',
+        'id': 19, 'start_date': '2020-08-21', 'employer': 'Siemens', 'area': 'United Kingdom', 'required_expertise': 'Engineer', 'salary': 120000, 'currency': 'RMB', 'close_date': '2020-10-22',
         'expertData': [
             {
                 'id': 3, 'title': 'Dr', 'first_name': 'Helene', 'last_name': 'N', 'expertise': 'Computer Science', 'category': 'Information Technology', 'level': 'S', 'email': 'U@com',

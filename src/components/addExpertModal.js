@@ -29,7 +29,9 @@ export default class AddExpertModal extends Component {
         });
     }
 
-    handleAdd() {
+    handleAdd(e) {
+        e.preventDefault();
+        
         const { onAdd } = this.props;
         let obj = {
             'id': 100
@@ -72,7 +74,7 @@ export default class AddExpertModal extends Component {
                     Expert Application Form
                 </Modal.Header>
                 <Modal.Body>
-                    <form>
+                    <form onSubmit={this.handleAdd}>
                         <div className='columns-add'>
                             <label>Title</label>
                             <select name="title" className="form-control" required
@@ -112,11 +114,11 @@ export default class AddExpertModal extends Component {
 
                         <div className='columns-add'>
                             <label>Expertise</label>
-                            <input type="tel" className="form-control" placeholder="Chemical and Material Engineer" required 
+                            <input type="text" className="form-control" placeholder="Chemical and Material Engineer" required 
                                     ref={this.expertise}/>
 
                             <label>Professional Field</label>
-                            <input type="tel" className="form-control" placeholder="Chemical Engineer" required 
+                            <input type="text" className="form-control" placeholder="Chemical Engineer" required 
                                     ref={this.category}/>
 
                         </div>
@@ -235,7 +237,7 @@ export default class AddExpertModal extends Component {
                             <textarea name="cpp" placeholder="Project Proposal With China" className='form-control' rows='5'
                                     ref={this.collaborative_project_proposal}/>
                         </div>
-                        <button className='apply-btn' >Add User</button>
+                        <Button type="submit" className='apply-btn'>Add User</Button>
                     </form>
                 </Modal.Body>
             </Modal>

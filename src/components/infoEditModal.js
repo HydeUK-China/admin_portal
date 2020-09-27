@@ -13,7 +13,7 @@ export default class InfoEditModal extends Component {
             data: props.data
         }
 
-        this.headerTitle = _.zipObject(props.fileds, props.headers);
+        this.fieldTitle = _.zipObject(props.fileds, props.headers);
         this.closeModal = this.closeModal.bind(this);
         this.clickEdit = this.clickEdit.bind(this);
         this.clickConfirm = this.clickConfirm.bind(this);
@@ -79,7 +79,7 @@ export default class InfoEditModal extends Component {
                             _.map(_.pick(data, fileds), (value, key) => {
                                 return (
                                     <div key={`modal-${key}`} className='columns-merge'>
-                                        <h2>{this.headerTitle[key]}</h2>
+                                        <h2>{this.fieldTitle[key]}</h2>
                                         <textarea className="form-control"
                                             rows='2'
                                             defaultValue={value}
@@ -91,7 +91,7 @@ export default class InfoEditModal extends Component {
                             _.map(_.pick(data, fileds), (value, key) => {
                                 return (
                                     <div key={`modal-${key}`} className='columns-merge'>
-                                        <h2>{this.headerTitle[key]}</h2>
+                                        <h2>{this.fieldTitle[key]}</h2>
                                         <div>{value}</div>
                                     </div>
                                 )
