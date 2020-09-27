@@ -77,7 +77,7 @@ export default class AddExpertModal extends Component {
                     <form onSubmit={this.handleAdd}>
                         <div className='columns-add'>
                             <label>Title</label>
-                            <select name="title" className="form-control" required
+                            <select name="title" className="form-control"
                                     ref={this.title}>
                                 <option value=''>Please Select</option>
                                 <option value='Mr'>Mr</option>

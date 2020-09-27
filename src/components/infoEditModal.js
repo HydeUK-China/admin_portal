@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
 import { Button, Modal } from 'react-bootstrap';
+import { currencyList } from '../asset/CurrencyList';
 
 
 export default class InfoEditModal extends Component {
@@ -84,6 +85,7 @@ export default class InfoEditModal extends Component {
                                             rows='2'
                                             defaultValue={value}
                                             onChange={(e) => this.handleTextChange(e, key)}></textarea>
+
                                     </div>
                                 )
                             })
@@ -105,8 +107,8 @@ export default class InfoEditModal extends Component {
                         allowEdit ?
                             (showInput ?
                                 <Button onClick={this.clickConfirm}> Save </Button>
-                            : <Button onClick={this.clickEdit}> Edit </Button>)
-                        : null
+                                : <Button onClick={this.clickEdit}> Edit </Button>)
+                            : null
                     }
                     <Button>Download</Button>
                 </Modal.Footer>

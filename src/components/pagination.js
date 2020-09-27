@@ -25,7 +25,7 @@ export default class Pagination extends Component {
                     activePage={this.state.activePage}
                     itemsCountPerPage={1}
                     pageRangeDisplayed={5}
-                    totalItemsCount={50}
+                    totalItemsCount={10}
                     onChange={this.handlePageChange.bind(this)}
                     itemClass="page-item"
                     linkClass="page-link"

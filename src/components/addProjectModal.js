@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import _ from 'lodash';
-import { currencyList } from '../asset/currencyList';
+import { currencyList } from '../../src/asset/CurrencyList';
 
 export default class AddExpertModal extends Component {
     constructor(props) {

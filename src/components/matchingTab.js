@@ -4,6 +4,7 @@ import DisplayJob from './displayJob'
 import EditJob from './editJob'
 import '../styles/database.css';
 import DisplayExpert from './displayExpert';
+import { Button, Modal } from 'react-bootstrap'
 
 
 
@@ -13,42 +14,14 @@ export default class MatchingJobTab extends Component {
 
         this.state = {
             showInfo: false,
-            showEdit: false
         }
 
         // this.handleToggleShow = this.handleToggleShow.bind(this)
         // this.handleToggleEdit = this.handleToggleEdit.bind(this)
         // this.handleToggleRemove = this.handleToggleRemove.bind(this)
         // this.handleToggleAdd = this.handleToggleAdd.bind(this)
-        this.handleSelect = this.handleSelect.bind(this)
     }
 
-    handleSelect(e) {
-        if (e.target.value === 'MoreInfo') {
-            this.setState({
-                showInfo: !this.showInfo,
-                showEdit: this.showEdit
-            })
-        } else if (e.target.value === 'Edit') {
-            this.setState({
-                showEdit: !this.showEdit,
-                showInfo: this.showInfo
-
-            })
-        }
-        else if (e.target.value === 'Remove') {
-            this.setState({
-                showRemove: alert('Are you sure you want to remove?')
-            })
-        }
-
-        else if (e.target.value === 'Close') {
-            this.setState({
-                showInfo: false,
-                showEdit: false
-            })
-        }
-    }
 
 
     handleToggleShow = () => {
@@ -57,26 +30,14 @@ export default class MatchingJobTab extends Component {
         })
     }
 
-    // handleToggleEdit = () => {
-    //     this.setState({
-    //         showEdit: !this.state.showEdit
-    //     })
-    // }
-
-    // handleToggleRemove = () => {
-    //     alert('Remove Expert Data?')
-    // }
-
-
-    // handleToggleAdd = () => {
-    //     this.setState({
-    //         showAdd: !this.state.showAdd
-    //     })
-    // }
+    closeModal =() => {
+        this.setState({
+            showInfo: false
+        })
+    }
 
     render() {
-
-        const { rowData, rowField, DisplayButton, EditButton, RemoveButton, children} = this.props;
+        const { rowData, rowField, DisplayButton, EditButton, RemoveButton, children } = this.props;
         // const { showAdd } = this.state;
 
         return (
@@ -88,9 +49,9 @@ export default class MatchingJobTab extends Component {
                     })
                     }
 
-                    
-                     <button className='more-info-btn' onClick={this.handleToggleShow}>
-                            More Info</button>
+
+                    <button className='more-info-btn' onClick={this.handleToggleShow}>
+                        More Info</button>
 
 
                     {/* <button className="more-info-btn" onClick={this.handleToggleShow}>
@@ -106,16 +67,22 @@ export default class MatchingJobTab extends Component {
                         {AddButton}
                     </button> */}
                 </div>
+                <Modal show={this.state.showInfo} size='xl'>
+                    <Modal.Header closeButton onHide={this.closeModal} id="contained-modal-title-vcenter">Job Matching</Modal.Header>
+                    <Modal.Body>
+                        {children}
+                    </Modal.Body>
+                </Modal>
+                {/* 
+                <div className={this.state.showInfo ? 'showContent content ' : 'content'} > */}
 
-                <div className={this.state.showInfo ? 'showContent content ' : 'content'} >
-                    {children}
-                </div>
-
-              
+                {/* </div> */}
 
 
-                    {/* <Add show={showAdd} /> */}
-                    
+
+
+                {/* <Add show={showAdd} /> */}
+
             </div>
 
 
