@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
 import { Button, Modal } from 'react-bootstrap';
-import { currencyList } from '../asset/CurrencyList';
-
+import { currencyList } from '../asset/currencyList';
+import { placeholder } from '../asset/placeholder';
 
 export default class InfoEditModal extends Component {
     constructor(props) {
@@ -39,15 +39,19 @@ export default class InfoEditModal extends Component {
         });
     }
 
-    clickEdit() {
+    clickEdit(e) {
+        e.preventDefault();
+
         this.setState({
             showInput: true
         });
     }
 
-    clickConfirm() {
+    clickConfirm(e) {
+        e.preventDefault();
+
         this.setState({
-            showInput: false
+            showInput: !this.state.showInput
         });
     }
 
@@ -75,43 +79,101 @@ export default class InfoEditModal extends Component {
                 <Modal.Header closeButton onHide={this.closeModal} id="contained-modal-title-vcenter">{modalHeader}</Modal.Header>
 
                 <Modal.Body>
-                    <div className='content-general-info'>
-                        {showInput ?
-                            _.map(_.pick(data, fileds), (value, key) => {
-                                return (
-                                    <div key={`modal-${key}`} className='columns-merge'>
-                                        <h2>{this.fieldTitle[key]}</h2>
-                                        <textarea className="form-control"
-                                            rows='2'
-                                            defaultValue={value}
-                                            onChange={(e) => this.handleTextChange(e, key)}></textarea>
-
-                                    </div>
-                                )
-                            })
-                            :
-                            _.map(_.pick(data, fileds), (value, key) => {
-                                return (
-                                    <div key={`modal-${key}`} className='columns-merge'>
-                                        <h2>{this.fieldTitle[key]}</h2>
-                                        <div>{value}</div>
-                                    </div>
-                                )
-                            })
+                    <form onSubmit={this.clickConfirm}>
+                        <div className='content-general-info'>
+                            {showInput ?
+                                _.map(_.pick(data, fileds), (value, key) => {
+                                    if (key === 'id') {
+                                        // readonly input
+                                        return (
+                                            <div key={`modal-${key}`} className='columns-merge'>
+                                                <h2>{this.fieldTitle[key]}</h2>
+                                                <input className="form-control" readOnly
+                                                    defaultValue={value} />
+                                            </div>
+                                        )
+                                    } else if (key === 'currency') {
+                                        // required select
+                                        return (
+                                            <div key={`modal-${key}`} className='columns-merge'>
+                                                <h2>{this.fieldTitle[key]}</h2>
+                                                <select className="form-control" required
+                                                    defaultValue={value}
+                                                    onChange={(e) => this.handleTextChange(e, key)}>
+                                                    {_.map(currencyList, (_item, _index) => {
+                                                        return <option key={`currency-${_index}`} value={_item}>{_item}</option>
+                                                    })}
+                                                </select>
+                                            </div>
+                                        )
+                                    } else if (key === 'start_date' || key === 'close_date') {
+                                        // required date
+                                        return (
+                                            <div key={`modal-${key}`} className='columns-merge'>
+                                                <h2>{this.fieldTitle[key]}</h2>
+                                                <input type="date" className="form-control" required
+                                                    defaultValue={value}
+                                                    onChange={(e) => this.handleTextChange(e, key)} />
+                                            </div>
+                                        )
+                                    } else if (key === 'job_title' || key === 'employer' || key === 'area' || key === 'salary' || key === 'title' ||
+                                        key === 'first_name' || key === 'last_name' || key === 'category' || key === 'email' || key === 'expertise') {
+                                        // required input
+                                        return (
+                                            <div key={`modal-${key}`} className='columns-merge'>
+                                                <h2>{this.fieldTitle[key]}</h2>
+                                                <input className="form-control" required
+                                                    placeholder={placeholder[key]}
+                                                    defaultValue={value}
+                                                    onChange={(e) => this.handleTextChange(e, key)} />
+                                            </div>
+                                        )
+                                    } else if (key === 'phone_no' || key === 'level' ){
+                                        // non-required input
+                                        return (
+                                            <div key={`modal-${key}`} className='columns-merge'>
+                                                <h2>{this.fieldTitle[key]}</h2>
+                                                <input className="form-control"
+                                                    placeholder={placeholder[key]}
+                                                    defaultValue={value}
+                                                    onChange={(e) => this.handleTextChange(e, key)} />
+                                            </div>
+                                        )
+                                    } else {
+                                        // non-required textarea
+                                        return (
+                                            <div key={`modal-${key}`} className='columns-merge'>
+                                                <h2>{this.fieldTitle[key]}</h2>
+                                                <textarea className="form-control"
+                                                    rows='5'
+                                                    placeholder={placeholder[key]}
+                                                    defaultValue={value}
+                                                    onChange={(e) => this.handleTextChange(e, key)}></textarea>
+                                            </div>
+                                        )
+                                    }
+                                })
+                                :
+                                _.map(_.pick(data, fileds), (value, key) => {
+                                    return (
+                                        <div key={`modal-${key}`} className='columns-merge'>
+                                            <h2>{this.fieldTitle[key]}</h2>
+                                            <div>{value}</div>
+                                        </div>
+                                    )
+                                })
+                            }
+                        </div>
+                        {
+                            allowEdit ?
+                                (showInput ?
+                                    <Button type="submit"> Save </Button>
+                                    : <Button onClick={this.clickEdit}> Edit </Button>)
+                                : null
                         }
-                    </div>
-
+                        <Button>Download</Button>
+                    </form>
                 </Modal.Body>
-                <Modal.Footer>
-                    {
-                        allowEdit ?
-                            (showInput ?
-                                <Button onClick={this.clickConfirm}> Save </Button>
-                                : <Button onClick={this.clickEdit}> Edit </Button>)
-                            : null
-                    }
-                    <Button>Download</Button>
-                </Modal.Footer>
             </Modal>
         )
     }

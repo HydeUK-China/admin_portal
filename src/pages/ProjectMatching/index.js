@@ -1,16 +1,8 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import _ from 'lodash';
 import { fetchReq } from '../../utils/utils';
 import Search from '../../components/search';
-
-import EditExpert from '../../components/editExpert';
-
-import '../../styles/project_matching.css';
-import JobTab from '../../components/JobTab';
-import ExpertTab from '../../components/ExpertTab';
-import MatchingJobTab from '../../components/matchingTab';
-import DisplayExpert from '../../components/displayExpert';
-import Pagination from '../../components/pagination';
+import ModalOpsTables from '../../components/modalOpsTables';
 
 export default class ProjectMatching extends Component {
     constructor(props) {
@@ -21,13 +13,10 @@ export default class ProjectMatching extends Component {
             filterData: null
         }
 
-        this.outerHeader = ['ID', 'Start Date', 'Employer', 'Area', 'Required Expertise', 'Salary', 'Close Date']
-
-        this.outerDataField = ['id', 'start_date', 'employer', 'area', 'required_expertise', 'salary', 'close_date']
-
-        this.innerHeader = ['ID', 'Title', 'First Name', 'Last Name', 'Expertise', 'Category', 'Level', 'Email', 'Phone No', 'CV']
-
-        this.innerDataField = ['id', 'title', 'first_name', 'last_name', 'expertise', 'category', 'level', 'email', 'phone_no']
+        this.outerLessHeader = ['ID', 'Job Title', 'Start Date', 'Employer', 'Area', 'Currency', 'Salary', 'Close Date']
+        this.outerLessField = ['id', 'job_title', 'start_date', 'employer', 'area', 'currency', 'salary', 'close_date']
+        this.innerLessHeader = ['ID', 'Title', 'First Name', 'Last Name', 'Expertise', 'Category', 'Level', 'Email', 'Phone No']
+        this.innerLessField = ['id', 'title', 'first_name', 'last_name', 'expertise', 'category', 'level', 'email', 'phone_no']
 
         this.filterDataHandler = this.filterDataHandler.bind(this);
     }
@@ -47,71 +36,27 @@ export default class ProjectMatching extends Component {
         })
     }
 
-    getOuterHeader() {
-        return _.map(this.outerHeader, (item, index) => {
-            return <h6 key={`employerMgt-${index}`}>{item}</h6>
-        })
-    }
-
-    getOuterTable() {
-        const { filterData } = this.state;
-        const { role } = this.props;
-        return _.map(filterData, (item, index) => {
-            return <MatchingJobTab
-                role={role}
-                key={`JobcollapsableRow-${index}`}
-                rowData={item}
-                rowField={this.outerDataField}
-            >
-                <div>
-                    <div className="dataheader_expert">
-                        {this.getInnerHeader()}
-                    </div>
-                    {this.getInnerTable(item.expertData)}
-                </div>
-            </MatchingJobTab>
-        })
-    }
-
-    getInnerHeader() {
-        return _.map(this.innerHeader, (item, index) => {
-            return <h6 key={`expertMgt-${index}`}>{item}</h6>
-        })
-    }
-
-    getInnerTable(data) {
-        return _.map(data, (item, index) => {
-            return <MatchingJobTab
-                key={`collapsableRow-${index}`}
-                rowData={item}
-                rowField={this.innerDataField}
-            >
-                <DisplayExpert />
-            </MatchingJobTab>
-        })
-    }
-
     render() {
-        const { data } = this.state;
-        return (
-            <Fragment>
-                <div className="database">
-                    <div className="search">
-                        <Search
-                            fullData={data}
-                            dataFilterableField={this.outerDataField}
-                            filterDataHandler={this.filterDataHandler}
-                        />
-                    </div>
+        const { data, filterData } = this.state;
 
-                    <div className="dataheader_expert">
-                        {this.getOuterHeader()}
-                    </div>
-                    {this.getOuterTable()}
-                    <hr/>
-                    <Pagination />
+        return (
+            <div className="database">
+                <div className="search">
+                    <Search
+                        fullData={data}
+                        dataFilterableField={this.outerLessField}
+                        filterDataHandler={this.filterDataHandler}
+                    />
                 </div>
-            </Fragment>
+
+                <ModalOpsTables
+                    outerLessHeader={this.outerLessHeader}
+                    outerLessField={this.outerLessField}
+                    innerLessHeader={this.innerLessHeader}
+                    innerLessField={this.innerLessField}
+                    outerData={filterData}
+                />
+            </div>
         )
     }
 }

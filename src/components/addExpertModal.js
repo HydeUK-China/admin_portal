@@ -77,7 +77,7 @@ export default class AddExpertModal extends Component {
                     <form onSubmit={this.handleAdd}>
                         <div className='columns-add'>
                             <label>Title</label>
-                            <select name="title" className="form-control"
+                            <select name="title" className="form-control" required
                                     ref={this.title}>
                                 <option value=''>Please Select</option>
                                 <option value='Mr'>Mr</option>
@@ -97,6 +97,7 @@ export default class AddExpertModal extends Component {
                             <label>Nationality </label>
                             <select name="country" className="form-control" required
                                     ref={this.country}>
+                                <option value=''>Please Select</option>
                                 {_.map(countryList, (item, index) => {
                                     return <option key={`country-${index}`} value={item}>{item}</option>
                                 })}
@@ -114,18 +115,18 @@ export default class AddExpertModal extends Component {
 
                         <div className='columns-add'>
                             <label>Expertise</label>
-                            <input type="text" className="form-control" placeholder="Chemical and Material Engineer" required 
+                            <input type="text" className="form-control" placeholder="Chemical Engineering" required 
                                     ref={this.expertise}/>
 
-                            <label>Professional Field</label>
-                            <input type="text" className="form-control" placeholder="Chemical Engineer" required 
+                            <label>Category</label>
+                            <input type="text" className="form-control" placeholder="Engineering" required 
                                     ref={this.category}/>
 
                         </div>
 
                         <div className='columns-add'>
                             <label>Phone number</label>
-                            <input type="tel" className="form-control" placeholder="796-644-8844" 
+                            <input type="tel" className="form-control" placeholder="+44 08844 734551" 
                                     ref={this.phone_no}/>
                             <label>Upload CV</label>
                             <UploadFile />

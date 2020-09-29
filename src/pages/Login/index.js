@@ -48,16 +48,16 @@ class Login extends Component {
           <div className="col-md-6 form-col">
             <div className="logo-container">
               <Link className="logo" to="/" style={{'color': 'black'}}>
-                Hyde International Talents
+                HI TALENTS PORTAL
               </Link>
             </div>
             <div className="registerLogin-title_content">
-              <h2>Admin Portal Log in </h2>
+              <h2>Log in</h2>
             </div>
             <form className="registerLogin-form">
               <div className="form-group ">
                 <label>Username</label>
-                <input type="email" className="form-control" ref={this.email} placeholder="HIT Admin"/>
+                <input type="email" className="form-control" ref={this.email} placeholder="username"/>
               </div>
               <div className="form-group">
                 <label>Password</label>

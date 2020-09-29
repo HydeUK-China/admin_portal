@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 import ExpertRightSidebar from '../../components/expertRightSidebar';
 import { fetchReq } from '../../utils/utils';
+import { placeholder } from '../../asset/placeholder';
 
 export default class ExpertProfile extends Component {
     constructor(props) {
@@ -15,9 +16,7 @@ export default class ExpertProfile extends Component {
 
         }
 
-        this.lessHeader = ['Title', 'First Name', 'Category', 'Email', 'Phone No']
-
-        this.lessField = ['title', 'first_name', 'category', 'email', 'phone_no']
+        this.lessField = ['title', 'first_name', 'category', 'email', 'phone_no', 'linkedin', 'facebook', 'twitter']
 
         this.moreHeader = ['Education', 'Employment', 'Projects', 'Patents',
             'Field of Speciality', 'Awards', 'Products', 'Publication Date', 'Recent Major Research Projects',
@@ -27,18 +26,7 @@ export default class ExpertProfile extends Component {
             'field_of_speciality', 'awards', 'products', 'publication_date', 'recent_major_research_projects',
             'collaborative_project_proposal']
 
-        this.morePlaceholder = ["(E.g.) Current - Past  1. Bachelor 1988/09 – 1992/07 china Peking University Mechanical Engineering",
-            "(E.g. ) Current - Past  1. Principal Reseracher 20/14/09-20/17/12 USA General Electric Company",
-            "1. 20/18/01-20/19/03 | Development of manganese-based lithiumion batteries and supercapacitors (funded by DST/NRF) |$1000,0000 | 25 | R & D Manager and Principal Investigator ",
-            "(E.g. ) Current - Past  1. Date Filling (2018) | Publication Number(#98120393) | Patent Title (General Electric Cooker) | Organization (Company C) | Assignee (Company C Chairman)",
-            "Field of Specialty (Main research areas, Previous research results, Industry and international influence)：",
-            "Awards and Honours", "Product introduction, current industrialization level and industry competitiveness）",
-            "(E.g. ) Current - Past 2014, ADVANCES IN ENGINEERING RESEARCH, Volume 8, chapter 2, Adsorption Refrigeration, Victoria M. Petrova Editor. Nova Publishers. New York, Ahmed Rezk, Ahmed Elsayed, Saad Mahmoud, and Raya AL-Dadah.",
-            "(E.g. ) Current - Past Project briefs, innovations compared to existing technologies, current developments and technical difficulties, expected results and industry, and international influence",
-            "Project Proposal With China"]
-
         this.fieldTitle = _.zipObject(this.moreField, this.moreHeader);
-        this.fieldPlaceholder = _.zipObject(this.moreField, this.morePlaceholder);
     }
 
     componentDidMount() {
@@ -95,7 +83,7 @@ export default class ExpertProfile extends Component {
                                         <textarea className='profile-content'
                                             row='2'
                                             defaultValue={value}
-                                            placeholder={this.fieldPlaceholder[key]}
+                                            placeholder={placeholder[key]}
                                             onChange={(e) => this.handleTextChange(e, key)}></textarea>
                                     </div>
                                 )

@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
 import InfoEditModal from './infoEditModal';
-import '../styles/database.css';
-
 
 export default class ModalOpsRow extends Component {
     constructor(props) {
@@ -57,7 +55,6 @@ export default class ModalOpsRow extends Component {
 
         return (
             <div className='database'>
-
                 <div className="datatable_expert">
                     {_.map(_.pick(data, rowLessField), (value, key) => {
                         return <label key={`row-${key}`}>{value}</label>

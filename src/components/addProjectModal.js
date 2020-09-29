@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import _ from 'lodash';
-import { currencyList } from '../../src/asset/CurrencyList';
+import { currencyList } from '../asset/currencyList';
 
 export default class AddExpertModal extends Component {
     constructor(props) {
@@ -71,20 +71,20 @@ export default class AddExpertModal extends Component {
                 <Modal.Body>
                     <form onSubmit={this.handleAdd}>
                         <div className='columns-add'>
-                            <label>Job Roles</label>
+                            <label>Job Title</label>
                             <input type='text' placeholder="Accountant Manager" required
                                 ref={this.job_title} />
-                            <label>Organization</label>
+                            <label>Employer</label>
                             <input type='text' placeholder="Amazon" required
                                 ref={this.employer} />
 
                         </div>
 
                         <div className='columns-add'>
-                            <label>Post Date</label>
+                            <label>Start Date</label>
                             <input type="date" className="form-control" required
                                 ref={this.start_date} />
-                            <label>Deadline </label>
+                            <label>Close Date</label>
                             <input type="date" className="form-control" required
                                 ref={this.close_date} />
                         </div>
@@ -97,36 +97,35 @@ export default class AddExpertModal extends Component {
                                     return <option key={`currency-${index}`} value={item}>{item}</option>
                                 })}
                             </select>
-                            <input type="text" className="form-control" placeholder=" 35,000 - 45,000" required
+                            <input type="text" className="form-control" placeholder="35,000 - 45,000" required
                                 ref={this.salary} />
                         </div>
-                        <div className='columns-add'> <label>Area</label>
-                            <input type="text" className="form-control" placeholder=" Data Management " required
+                        <div className='columns-add'> 
+                            <label>Area</label>
+                            <input type="text" className="form-control" placeholder="United Kingdom" required
                                 ref={this.area} /></div>
-
-
 
                         <div className='columns-add-merge'>
                             <h2>Featured</h2>
-                            <textarea name="education" className="form-control" rows='5' placeholder="Amazon Advertising operates at the intersection of advertising and ecommerce and offers advertisers a rich array of innovative advertising solutions across Amazon’s mobile and desktop websites, proprietary devices and the Amazon Advertising Platform."
+                            <textarea name="featured" className="form-control" rows='5' placeholder="Amazon Advertising operates at the intersection of advertising and ecommerce and offers advertisers a rich array of innovative advertising solutions across Amazon’s mobile and desktop websites, proprietary devices and the Amazon Advertising Platform."
                                 ref={this.featured} />
                         </div>
 
                         <div className='columns-add-merge'>
                             <h2>Job Description</h2>
-                            <textarea name="working" className="form-control" rows='5' placeholder="In this role you will be working within the SME team of Account Managers, taking ownership of the management of a portfolio of SME clients and engaging with to ensure renewals and upsells."
+                            <textarea name="job_description" className="form-control" rows='5' placeholder="In this role you will be working within the SME team of Account Managers, taking ownership of the management of a portfolio of SME clients and engaging with to ensure renewals and upsells."
                                 ref={this.job_description} />
                         </div>
 
                         <div className='columns-add-merge'>
                             <h2>Required Expertise</h2>
-                            <textarea name="working" className="form-control" rows='5' placeholder="Management, Data, SQL"
+                            <textarea name="required_expertise" className="form-control" rows='5' placeholder="Management, Data, SQL"
                                 ref={this.required_expertise} />
                         </div>
 
                         <div className='columns-add-merge'>
                             <h2>Responsibilities</h2>
-                            <textarea name="projects" id="projectID" className="form-control" rows='5'
+                            <textarea name="responsibilities" id="projectID" className="form-control" rows='5'
                                 placeholder="
                                     -Onboarding and engagement process with every client.
                                     -Identify risks to minimise attrition.
@@ -138,7 +137,7 @@ export default class AddExpertModal extends Component {
 
                         <div className='columns-add-merge'>
                             <h2>Essential skills</h2>
-                            <textarea name="patent" id="patentID" className="form-control" rows='5'
+                            <textarea name="essential_skills" id="patentID" className="form-control" rows='5'
                                 placeholder="
                                 -Commercially and client focused
                                 -Sales and relationship management experience

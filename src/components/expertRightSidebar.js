@@ -58,7 +58,8 @@ export default class ExpertRightSidebar extends Component {
     render() {
         const { showInput, data } = this.state;
         const { first_name, category } = data;
-        const editField = ['phone_no', 'email']
+        const editContactField = ['phone_no', 'email'];
+        const editSocialMediaField = ['linkedin', 'facebook', 'twitter']
 
         return (
             <div className="right-sidebar">
@@ -75,22 +76,20 @@ export default class ExpertRightSidebar extends Component {
                             }
                             {showInput ? <label className='red'>*Notice: Images size no more than 2MB</label> : null}
                         </div>
-                        <div className='upper_profile'>                        
-                        {                           showInput ?
+                        <div className='upper_profile'>
+                            {showInput ?
                                 <button className='btn' onClick={this.clickConfirm}>Save</button>
                                 : <button className="btn" onClick={this.clickEdit}>Edit</button>
-                        }</div>
-
-
-
+                            }</div>
                     </div>
+
                     <div className="bio">
                         {/* <span>
                             <h4>Hello,</h4>
                         </span> */}
                         <h1><b>{first_name}</b></h1>
                         <i>Bio: </i>
-                        <p>{category}</p>
+                        <p><i>{category}</i></p>
                     </div>
 
                     <div className="contact-details">
@@ -98,10 +97,9 @@ export default class ExpertRightSidebar extends Component {
                             <li className="contact-details-head">
                                 <h4>Contact Details </h4>
                             </li>
-
                             {
                                 showInput ?
-                                    _.map(_.pick(data, editField), (value, key) => {
+                                    _.map(_.pick(data, editContactField), (value, key) => {
                                         return (
                                             <li key={`expertinfo-${key}`} className="contact-details-link">
                                                 {key === 'phone_no' ? <i className="fas fa-phone"></i> : <i className="fas fa-envelope"></i>}
@@ -110,7 +108,7 @@ export default class ExpertRightSidebar extends Component {
                                             </li>
                                         )
                                     }) :
-                                    _.map(_.pick(data, editField), (value, key) => {
+                                    _.map(_.pick(data, editContactField), (value, key) => {
                                         return (
                                             <li key={`expertinfo-${key}`} className="contact-details-link">
                                                 {key === 'phone_no' ? <i className="fas fa-phone"></i> : <i className="fas fa-envelope"></i>}
@@ -121,22 +119,41 @@ export default class ExpertRightSidebar extends Component {
                             }
                         </ul>
                     </div>
+                    
                     <div className="follow-me">
                         <ul className="follow-me-list">
-                            <li className="follow-me-head">
-                                <h4>Social Media Platforms </h4>
-                            </li>
-                            <li className="follow-me-link">
-                                <i className="fa fa-linkedin" aria-hidden="true"></i><span>Hyde International Talents</span>
-                            </li>
-                            <li className="follow-me-link">
-                                <i className="fab fa-skype"></i><span>Hyde International Talents</span>
-                            </li>
-                            <li className="follow-me-link">
-                                <i className="fab fa-twitter"></i><span>Hyde International Talents</span>
-                            </li>
+                            {
+                                Object.keys(_.pick(data, editSocialMediaField)).length !== 0 ?
+                                    <li className="follow-me-head">
+                                        <h4>Social Media Platforms </h4>
+                                    </li>
+                                    : null
+                            }
+                            {
+                                showInput ?
+                                    _.map(_.pick(data, editSocialMediaField), (value, key) => {
+                                        return (
+                                            <li key={`expertinfo-${key}`} className="follow-me-link">
+                                                {key === 'linkedin' ? <i className="fa fa-linkedin"></i> :
+                                                    (key === 'facebook' ? <i className="fab fa-facebook"></i> :
+                                                        <i className="fab fa-twitter"></i>)}
+                                                <input defaultValue={value}
+                                                    onChange={(e) => this.handleInputChange(e, key)} />
+                                            </li>
+                                        )
+                                    }) :
+                                    _.map(_.pick(data, editSocialMediaField), (value, key) => {
+                                        return (
+                                            <li key={`expertinfo-${key}`} className="follow-me-link">
+                                                {key === 'linkedin' ? <i className="fa fa-linkedin"></i> :
+                                                    (key === 'facebook' ? <i className="fab fa-facebook"></i> :
+                                                        <i className="fab fa-twitter"></i>)}
+                                                <span>{value}</span>
+                                            </li>
+                                        )
+                                    })
+                            }
                         </ul>
-
                     </div>
                 </div>
             </div>

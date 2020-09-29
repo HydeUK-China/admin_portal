@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
 import Search from '../../components/search';
-import ModalOpsRow from '../../components/modalOpsRow';
+import ModalOpsTable from '../../components/modalOpsTable';
 import { fetchReq } from '../../utils/utils';
 import AddExpertModal from '../../components/addExpertModal';
 import Pagination from '../../components/pagination';
@@ -53,14 +53,9 @@ export default class ExpertManagement extends Component {
         })
     }
 
-    getHeader() {
-        return _.map(this.lessHeader, (item, index) => {
-            return <h6 key={`expertMgt-${index}`}>{item}</h6>
-        })
-    }
-
     rowDeleteHandler(id) {
         const { data, filterData } = this.state;
+
         _.remove(data, (item, index) => {
             return item.id == id;
         });
@@ -72,23 +67,6 @@ export default class ExpertManagement extends Component {
             data,
             filterData
         });
-    }
-
-    getTable() {
-        const { filterData } = this.state;
-        const { role } = this.props;
-        return _.map(filterData, (item, index) => {
-            return <ModalOpsRow
-                role={role}
-                key={`expertRow-${index}`}
-                rowData={item}
-                rowLessField={this.lessField}
-                rowMoreField={this.lessField.concat(this.moreField)}
-                rowMoreHeader={this.lessHeader.concat(this.moreHeader)}
-                onRowDelete={role === '__admin__' ? this.rowDeleteHandler : null}
-                modalHeader='Expert Info'
-                />
-        })
     }
 
     handleToggleAdd = () => {
@@ -115,7 +93,7 @@ export default class ExpertManagement extends Component {
     }
 
     render() {
-        const { data, showAdd } = this.state;
+        const { data, filterData, showAdd } = this.state;
         const { role } = this.props;
 
         return (
@@ -129,10 +107,17 @@ export default class ExpertManagement extends Component {
                     {role === '__admin__' ? <button className="search-btn" onClick={this.handleToggleAdd}>Add</button> : null}
                 </div>
                 <AddExpertModal show={showAdd} close={this.closeAddHandler} onAdd={this.addHandler}/>
-                <div className="dataheader_expert">
-                    {this.getHeader()}
-                </div>
-                {this.getTable()}
+
+                <ModalOpsTable
+                    data={filterData}
+                    rowLessField={this.lessField}
+                    rowMoreField={this.moreField}
+                    rowLessHeader={this.lessHeader}
+                    rowMoreHeader={this.moreHeader}
+                    onRowDelete={this.rowDeleteHandler}
+                    modalHeader={'Expert Info'}
+                    role={role}
+                />
                 <hr/>
                 <Pagination/>
             </div>
