@@ -12,6 +12,7 @@ import { removeRole, getRole, fetchReq } from '../utils/utils';
 import { path_name, renderRoute } from './tabRouteConfig';
 import 'bootstrap/dist/css/bootstrap.css';
 import '../styles/app.css';
+import '../styles/database.css';
 
 class App extends Component {
   constructor(props) {

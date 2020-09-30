@@ -35,7 +35,7 @@ export default class TableModal extends Component {
         const { tableData, show } = this.state;
 
         return (
-            <Modal show={show} size='xl'>
+            <Modal show={show} onHide={this.closeModal} size='xl'>
                 <Modal.Header closeButton onHide={this.closeModal}>Job Matching</Modal.Header>
                 <Modal.Body>
                     <div className="dataheader_expert">

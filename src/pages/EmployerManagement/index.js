@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 import { fetchReq } from '../../utils/utils';
 import Search from '../../components/search';
-import JobTab from '../../components/JobTab';
-import EmployerInfo from '../../components/employerInfo';
 
 export default class EmployerManagement extends Component {
     constructor(props) {
@@ -37,26 +35,6 @@ export default class EmployerManagement extends Component {
         })
     }
 
-    getHeader() {
-        return _.map(this.header, (item, index) => {
-            return <h6 key={`employerMgt-${index}`}>{item}</h6>
-        })
-    }
-
-    getTable() {
-        const { filterData } = this.state;
-
-        return _.map(filterData, (item, index) => {
-            return <JobTab
-                key={`collapsableRow-${index}`}
-                rowData={item}
-                rowField={this.dataField}
-                showMoreButtonText={'More info'}>
-                <EmployerInfo />
-            </JobTab>
-        })
-    }
-
     render() {
         const { data } = this.state;
 
@@ -71,9 +49,9 @@ export default class EmployerManagement extends Component {
                 </div>
                 
                 <div className="dataheader_expert">
-                    {this.getHeader()}
+                   
                 </div>
-                {this.getTable()}
+               
             </div>
         )
     }

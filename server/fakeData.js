@@ -113,6 +113,34 @@ const projectMatchingData = [
             }
         ]
 
+    },
+    {
+        'id': 20, 'job_title': 'Data Scientist', 'start_date': '2020-07-01', 'employer': 'Alibaba', 'area': 'GuangZhou', 'required_expertise': 'Data', 'salary': 100000, 'currency': 'USD', 'close_date': '2020-10-22',
+        'expertData': [
+            {
+                'id': 1, 'title': 'Dr', 'first_name': 'Jonathan', 'last_name': 'M', 'expertise': 'Data', 'category': 'Computer Science', 'level': 'S', 'email': 'U@com',
+                'phone_no': '074586442', 'cv': 'CV'
+            },
+            {
+                'id': 2, 'title': 'Dr', 'first_name': 'Helene', 'last_name': 'B', 'expertise': 'Engineer', 'category': 'Mechanical Engieneer', 'level': 'A', 'email': 'U@com',
+                'phone_no': '0658994521', 'cv': 'CV'
+            }
+        ]
+
+    },
+    {
+        'id': 29, 'job_title': 'Software Engineer', 'start_date': '2020-08-21', 'employer': 'Siemens', 'area': 'United Kingdom', 'required_expertise': 'Engineer', 'salary': 120000, 'currency': 'CNY', 'close_date': '2020-10-22',
+        'expertData': [
+            {
+                'id': 3, 'title': 'Dr', 'first_name': 'Helene', 'last_name': 'N', 'expertise': 'Computer Science', 'category': 'Information Technology', 'level': 'S', 'email': 'U@com',
+                'phone_no': '074586442', 'cv': 'CV'
+            },
+            {
+                'id': 4, 'title': 'Dr', 'first_name': 'Boris', 'last_name': 'S', 'expertise': 'Engineer', 'category': 'Mechanical Engieneer', 'level': 'A', 'email': 'U@com',
+                'phone_no': '0658994521', 'cv': 'CV'
+            }
+        ]
+
     }
 ]
 

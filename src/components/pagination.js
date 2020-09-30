@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import ReactPaginate from 'react-js-pagination';
 
 
@@ -7,31 +7,44 @@ export default class Pagination extends Component {
         super(props)
 
         this.state = {
-            activePage: 1
+            activePage: props.activePage,
+            totalItemsCount: props.totalItemsCount
+        }
+
+        this.handlePageChange = this.handlePageChange.bind(this)
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps !== this.props) {
+            this.setState({
+                activePage: nextProps.activePage,
+                totalItemsCount: nextProps.totalItemsCount
+            })
         }
     }
 
     handlePageChange = (PageNumber) => {
-        this.setState({ activePage: PageNumber })
+        const { onPageChange } = this.props;
+
+        this.setState({
+            activePage: PageNumber
+        }, () => onPageChange(this.state.activePage));
     }
 
-
-
     render() {
+        const { itemsCountPerPage, pageRangeDisplayed } = this.props;
+        const { totalItemsCount, activePage } = this.state;
 
         return (
-            <Fragment>
-                <ReactPaginate
-                    activePage={this.state.activePage}
-                    itemsCountPerPage={1}
-                    pageRangeDisplayed={5}
-                    totalItemsCount={10}
-                    onChange={this.handlePageChange.bind(this)}
-                    itemClass="page-item"
-                    linkClass="page-link"
-                />
-
-            </Fragment>
+            <ReactPaginate
+                activePage={activePage}
+                itemsCountPerPage={itemsCountPerPage}
+                pageRangeDisplayed={pageRangeDisplayed || 5}
+                totalItemsCount={totalItemsCount}
+                onChange={this.handlePageChange}
+                itemClass="page-item"
+                linkClass="page-link"
+            />
         )
     }
 }
