@@ -4,6 +4,7 @@ import { fetchReq } from '../../utils/utils';
 import Search from '../../components/search';
 import ModalOpsTables from '../../components/modalOpsTables';
 import Pagination from '../../components/pagination';
+import { itemsCountPerPage, sliceData } from '../../asset/paginationConfig';
 
 export default class ProjectMatching extends Component {
     constructor(props) {
@@ -12,6 +13,7 @@ export default class ProjectMatching extends Component {
         this.state = {
             data: null,
             filterData: null,
+            displayData: null,
             activePage: 1,
             offset: 0,
             totalItemsCount: 0
@@ -22,53 +24,56 @@ export default class ProjectMatching extends Component {
         this.innerLessHeader = ['ID', 'Title', 'First Name', 'Last Name', 'Expertise', 'Category', 'Level', 'Email', 'Phone No']
         this.innerLessField = ['id', 'title', 'first_name', 'last_name', 'expertise', 'category', 'level', 'email', 'phone_no']
 
-        this.itemsCountPerPage = 1
-
         this.filterDataHandler = this.filterDataHandler.bind(this);
         this.handlePageClick = this.handlePageClick.bind(this);
     }
 
     componentDidMount() {
         fetchReq('/api/fetchProjectMatching').then(data => {
+            const { offset } = this.state;
+            const [totalItemsCount, slice] = sliceData(data, offset);
+
             this.setState({
                 data,
-                filterData: data
-            }, () => this.sliceData());
-            
+                filterData: data,
+                totalItemsCount,
+                displayData: slice
+            })
+
         }).catch(err => console.log(err));
     }
 
-    sliceData(curData) {
-        const { data, filterData, offset } = this.state;
-        const slice = _.slice(data, offset, offset + this.itemsCountPerPage);
-        
-        this.setState({
-            totalItemsCount: data.length,
-            filterData: slice
-        }, ()=>console.log(offset, this.state.totalItemsCount, this.state.filterData))
-    }
-
     filterDataHandler(filterData) {
+        const { offset } = this.state;
+        const [totalItemsCount, slice] = sliceData(filterData, offset);
+
         this.setState({
-            filterData
-        })
+            totalItemsCount,
+            filterData,
+            displayData: slice
+        });
     }
 
     handlePageClick = (pageNumber) => {
         const pageIndex = pageNumber - 1;
-        const offset = pageIndex * this.itemsCountPerPage;
-        
+        const offset = pageIndex * itemsCountPerPage;
+       
         this.setState({
             activePage: pageNumber,
-            offset: offset
+            offset
         }, () => {
-            this.sliceData()
-        });
+            const { offset, filterData } = this.state;
+            const [totalItemsCount, slice] = sliceData(filterData, offset);
 
+            this.setState({
+                totalItemsCount,
+                displayData: slice
+            })
+        });
     };
 
     render() {
-        const { data, filterData, activePage, totalItemsCount } = this.state;
+        const { data, displayData, activePage, totalItemsCount } = this.state;
 
         return (
             <div className="database">
@@ -85,13 +90,13 @@ export default class ProjectMatching extends Component {
                     outerLessField={this.outerLessField}
                     innerLessHeader={this.innerLessHeader}
                     innerLessField={this.innerLessField}
-                    outerData={filterData}
+                    outerData={displayData}
                 />
 
                 <hr />
                 <Pagination
                     activePage={activePage}
-                    itemsCountPerPage={this.itemsCountPerPage}
+                    itemsCountPerPage={itemsCountPerPage}
                     totalItemsCount={totalItemsCount}
                     onPageChange={this.handlePageClick}
                 />

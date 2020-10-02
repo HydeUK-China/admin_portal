@@ -1,3 +1,6 @@
+.table-box {
+  min-height: 50vh;
+}
 .database {
     position: relative;
     margin: auto;

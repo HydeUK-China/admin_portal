@@ -25,7 +25,7 @@ export default class ModalOpsTable extends Component {
         const { data } = this.state;
 
         return (
-            <div>
+            <div className='table-box'>
                 <div className="dataheader_expert">
                     {
                         _.map(rowLessHeader, (item, index) => {
@@ -50,7 +50,6 @@ export default class ModalOpsTable extends Component {
                 }
 
             </div>
-
         );
     }
 

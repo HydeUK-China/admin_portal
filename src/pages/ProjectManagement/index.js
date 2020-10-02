@@ -5,6 +5,7 @@ import Search from '../../components/search';
 import ModalOpsTable from '../../components/modalOpsTable';
 import AddProjectModal from '../../components/addProjectModal';
 import Pagination from '../../components/pagination';
+import { itemsCountPerPage, sliceData } from '../../asset/paginationConfig';
 
 export default class ProjectManagement extends Component {
     constructor(props) {
@@ -13,15 +14,16 @@ export default class ProjectManagement extends Component {
         this.state = {
             data: null,
             filterData: null,
+            displayData: null,
+            activePage: 1,
+            offset: 0,
+            totalItemsCount: 0,
             showAdd: false
         }
 
         this.lessHeader = ['ID', 'Job Title', 'Start Date', 'Employer', 'Area', 'Currency', 'Salary', 'Close Date']
-
         this.lessField = ['id', 'job_title', 'start_date', 'employer', 'area', 'currency', 'salary', 'close_date']
-
         this.moreHeader = ['Featured', 'Job Description', 'Required Expertise', 'Responsibilities', 'Essential skills']
-
         this.moreField = ['featured', 'job_description', 'required_expertise', 'responsibilities', 'essential_skills']
 
         this.filterDataHandler = this.filterDataHandler.bind(this);
@@ -33,18 +35,46 @@ export default class ProjectManagement extends Component {
 
     componentDidMount() {
         fetchReq('/api/fetchProject/all').then(data => {
+            const { offset } = this.state;
+            const [totalItemsCount, slice] = sliceData(data, offset);
+
             this.setState({
                 data,
-                filterData: data
-            })
+                filterData: data,
+                totalItemsCount,
+                displayData: slice
+            });
         }).catch(err => console.log(err));
     }
 
     filterDataHandler(filterData) {
+        const { offset } = this.state;
+        const [totalItemsCount, slice] = sliceData(filterData, offset);
+
         this.setState({
-            filterData
-        })
+            totalItemsCount,
+            filterData,
+            displayData: slice
+        });
     }
+
+    handlePageClick = (pageNumber) => {
+        const pageIndex = pageNumber - 1;
+        const offset = pageIndex * itemsCountPerPage;
+
+        this.setState({
+            activePage: pageNumber,
+            offset
+        }, () => {
+            const { offset, filterData } = this.state;
+            const [totalItemsCount, slice] = sliceData(filterData, offset);
+
+            this.setState({
+                totalItemsCount,
+                displayData: slice
+            })
+        });
+    };
 
     rowDeleteHandler(id) {
         const { data, filterData } = this.state;
@@ -59,6 +89,14 @@ export default class ProjectManagement extends Component {
         this.setState({
             data,
             filterData
+        }, () => {
+            const { offset, filterData } = this.state;
+            const [totalItemsCount, slice] = sliceData(filterData, offset);
+
+            this.setState({
+                totalItemsCount,
+                displayData: slice
+            });
         });
     }
 
@@ -75,18 +113,26 @@ export default class ProjectManagement extends Component {
     }
 
     addHandler(obj) {
-        const { data, filterData } = this.state;
+        const { data } = this.state;
 
         data.push(obj);
         this.setState({
             data,
-            filterData,
+            filterData: data,
             showAdd: false
+        }, () => {
+            const { offset, filterData } = this.state;
+            const [totalItemsCount, slice] = sliceData(filterData, offset);
+
+            this.setState({
+                totalItemsCount,
+                displayData: slice
+            });
         })
     }
 
     render() {
-        const { data, filterData, showAdd } = this.state;
+        const { data, displayData, activePage, totalItemsCount, showAdd } = this.state;
         const { role } = this.props;
 
         return (
@@ -103,7 +149,7 @@ export default class ProjectManagement extends Component {
                 <AddProjectModal show={showAdd} close={this.closeAddHandler} onAdd={this.addHandler} />
 
                 <ModalOpsTable
-                    data={filterData}
+                    data={displayData}
                     rowLessField={this.lessField}
                     rowMoreField={this.moreField}
                     rowLessHeader={this.lessHeader}
@@ -113,7 +159,12 @@ export default class ProjectManagement extends Component {
                     role={role}
                 />
                 <hr />
-                <Pagination />
+                <Pagination
+                    activePage={activePage}
+                    itemsCountPerPage={itemsCountPerPage}
+                    totalItemsCount={totalItemsCount}
+                    onPageChange={this.handlePageClick}
+                />
 
             </div>
         )

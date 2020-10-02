@@ -5,6 +5,7 @@ import ModalOpsTable from '../../components/modalOpsTable';
 import { fetchReq } from '../../utils/utils';
 import AddExpertModal from '../../components/addExpertModal';
 import Pagination from '../../components/pagination';
+import { itemsCountPerPage, sliceData } from '../../asset/paginationConfig';
 
 export default class ExpertManagement extends Component {
     constructor(props) {
@@ -13,20 +14,21 @@ export default class ExpertManagement extends Component {
         this.state = {
             data: null,
             filterData: null,
+            displayData: null,
+            activePage: 1,
+            offset: 0,
+            totalItemsCount: 0,
             showAdd: false
         }
 
         this.lessHeader = ['ID', 'Title', 'First Name', 'Last Name', 'Expertise', 'Category', 'Level', 'Email', 'Phone No']
-
         this.lessField = ['id', 'title', 'first_name', 'last_name', 'expertise', 'category', 'level', 'email', 'phone_no']
-
         this.moreHeader = ['Education', 'Employment', 'Projects', 'Patents',
-        'Field of Speciality', 'Awards', 'Products', 'Publication Date', 'Recent Major Research Projects', 
-        'Collaborative Project Proposal']
-
+            'Field of Speciality', 'Awards', 'Products', 'Publication Date', 'Recent Major Research Projects',
+            'Collaborative Project Proposal']
         this.moreField = ['education', 'employment', 'projects', 'patents',
-        'field_of_speciality', 'awards', 'products', 'publication_date', 'recent_major_research_projects', 
-        'collaborative_project_proposal']
+            'field_of_speciality', 'awards', 'products', 'publication_date', 'recent_major_research_projects',
+            'collaborative_project_proposal']
 
         this.filterDataHandler = this.filterDataHandler.bind(this);
         this.handleToggleAdd = this.handleToggleAdd.bind(this);
@@ -40,18 +42,46 @@ export default class ExpertManagement extends Component {
         const expertId = 1;
         const url = role === '__admin__' ? '/api/fetchExpert/all' : `/api/fetchExpert/${expertId}`
         fetchReq(url).then(data => {
+            const { offset } = this.state;
+            const [totalItemsCount, slice] = sliceData(data, offset);
+
             this.setState({
                 data,
-                filterData: data
-            })
+                filterData: data,
+                totalItemsCount,
+                displayData: slice
+            });
         }).catch(err => console.log(err));
     }
 
     filterDataHandler(filterData) {
+        const { offset } = this.state;
+        const [totalItemsCount, slice] = sliceData(filterData, offset);
+
         this.setState({
-            filterData
-        })
+            totalItemsCount,
+            filterData,
+            displayData: slice
+        });
     }
+
+    handlePageClick = (pageNumber) => {
+        const pageIndex = pageNumber - 1;
+        const offset = pageIndex * itemsCountPerPage;
+
+        this.setState({
+            activePage: pageNumber,
+            offset
+        }, () => {
+            const { offset, filterData } = this.state;
+            const [totalItemsCount, slice] = sliceData(filterData, offset);
+
+            this.setState({
+                totalItemsCount,
+                displayData: slice
+            })
+        });
+    };
 
     rowDeleteHandler(id) {
         const { data, filterData } = this.state;
@@ -62,10 +92,18 @@ export default class ExpertManagement extends Component {
         _.remove(filterData, (item, index) => {
             return item.id == id;
         });
-        
+
         this.setState({
             data,
             filterData
+        }, () => {
+            const { offset, filterData } = this.state;
+            const [totalItemsCount, slice] = sliceData(filterData, offset);
+
+            this.setState({
+                totalItemsCount,
+                displayData: slice
+            });
         });
     }
 
@@ -82,18 +120,26 @@ export default class ExpertManagement extends Component {
     }
 
     addHandler(obj) {
-        const { data, filterData } = this.state;
-        
+        const { data } = this.state;
+
         data.push(obj);
         this.setState({
             data,
-            filterData,
+            filterData: data,
             showAdd: false
+        }, () => {
+            const { offset, filterData } = this.state;
+            const [totalItemsCount, slice] = sliceData(filterData, offset);
+
+            this.setState({
+                totalItemsCount,
+                displayData: slice
+            });
         })
     }
 
     render() {
-        const { data, filterData, showAdd } = this.state;
+        const { data, displayData, activePage, totalItemsCount, showAdd } = this.state;
         const { role } = this.props;
 
         return (
@@ -106,10 +152,10 @@ export default class ExpertManagement extends Component {
                     />
                     {role === '__admin__' ? <button className="search-btn" onClick={this.handleToggleAdd}>Add</button> : null}
                 </div>
-                <AddExpertModal show={showAdd} close={this.closeAddHandler} onAdd={this.addHandler}/>
+                <AddExpertModal show={showAdd} close={this.closeAddHandler} onAdd={this.addHandler} />
 
                 <ModalOpsTable
-                    data={filterData}
+                    data={displayData}
                     rowLessField={this.lessField}
                     rowMoreField={this.moreField}
                     rowLessHeader={this.lessHeader}
@@ -118,8 +164,13 @@ export default class ExpertManagement extends Component {
                     modalHeader={'Expert Info'}
                     role={role}
                 />
-                <hr/>
-                <Pagination/>
+                <hr />
+                <Pagination
+                    activePage={activePage}
+                    itemsCountPerPage={itemsCountPerPage}
+                    totalItemsCount={totalItemsCount}
+                    onPageChange={this.handlePageClick}
+                />
             </div>
         )
     }

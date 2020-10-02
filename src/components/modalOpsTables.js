@@ -8,7 +8,7 @@ export default class ModalOpsTables extends Component {
 
         this.state = {
             outerData: props.outerData,
-            showInfo: false
+            showInfo: Array.from({length: props.outerData}, () => false)
         }
 
         this.handleToggleShow = this.handleToggleShow.bind(this);
@@ -23,15 +23,21 @@ export default class ModalOpsTables extends Component {
         }
     }
 
-    handleToggleShow() {
+    handleToggleShow(index) {
+        const {showInfo} = this.state;
+        showInfo[index] = !showInfo[index];
+        
         this.setState({
-            showInfo: !this.state.showInfo
+            showInfo
         })
     }
 
-    closeModalHandler(hide){
+    closeModalHandler(index, hide){
+        const {showInfo} = this.state;
+        showInfo[index] = hide;
+
         this.setState({
-            showInfo: hide
+            showInfo
         })
     }
 
@@ -40,7 +46,7 @@ export default class ModalOpsTables extends Component {
         const { outerData, showInfo } = this.state;
 
         return (
-            <div>
+            <div className='table-box'>
                 <div className="dataheader_expert">
                     {
                         _.map(outerLessHeader, (item, index) => {
@@ -59,15 +65,16 @@ export default class ModalOpsTables extends Component {
                                             return <label key={`row-${_key}`}>{_value}</label>
                                         })
                                     }
-                                    <button className='more-info-btn' onClick={this.handleToggleShow}> More Info</button>
+                                    <button className='more-info-btn' onClick={() => this.handleToggleShow(index)}> More Info</button>
                                 </div>
 
                                 <TableModal
+                                    key={`row-more-info-${index}`}
                                     tableHeader={innerLessHeader}
                                     rowField={innerLessField}
                                     tableData={item.expertData}
-                                    onClose={this.closeModalHandler}
-                                    show={showInfo}
+                                    onClose={(hide) => this.closeModalHandler(index, hide)}
+                                    show={showInfo[index]}
                                 />
 
                             </div>
