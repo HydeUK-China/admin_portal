@@ -14,17 +14,19 @@ export default class ProjectMatching extends Component {
             data: null,
             filterData: null,
             displayData: null,
+            innerData: null,
             activePage: 1,
             offset: 0,
             totalItemsCount: 0
         }
 
         this.outerLessHeader = ['ID', 'Job Title', 'Start Date', 'Employer', 'Area', 'Currency', 'Salary', 'Close Date']
-        this.outerLessField = ['id', 'job_title', 'start_date', 'employer', 'area', 'currency', 'salary', 'close_date']
+        this.outerLessField = ['project_id', 'job_title', 'start_date', 'employer', 'area', 'currency', 'salary', 'close_date']
         this.innerLessHeader = ['ID', 'Title', 'First Name', 'Last Name', 'Expertise', 'Category', 'Level', 'Email', 'Phone No']
-        this.innerLessField = ['id', 'title', 'first_name', 'last_name', 'expertise', 'category', 'level', 'email', 'phone_no']
+        this.innerLessField = ['expert_id', 'title', 'first_name', 'last_name', 'expertise', 'category', 'level', 'email', 'phone_no']
 
         this.filterDataHandler = this.filterDataHandler.bind(this);
+        this.rowClickHandler = this.rowClickHandler.bind(this);
         this.handlePageClick = this.handlePageClick.bind(this);
     }
 
@@ -40,7 +42,7 @@ export default class ProjectMatching extends Component {
                 displayData: slice
             })
 
-        }).catch(err => console.log(err));
+        }).catch(err => alert(err));
     }
 
     filterDataHandler(filterData) {
@@ -52,6 +54,16 @@ export default class ProjectMatching extends Component {
             filterData,
             displayData: slice
         });
+    }
+
+    rowClickHandler(project_id) {
+        const url = `/api/fetchProjectExpert/${project_id}`
+        fetchReq(url).then(data => {
+            this.setState({
+                innerData: data
+            })
+
+        }).catch(err => alert(err));
     }
 
     handlePageClick = (pageNumber) => {
@@ -73,7 +85,7 @@ export default class ProjectMatching extends Component {
     };
 
     render() {
-        const { data, displayData, activePage, totalItemsCount } = this.state;
+        const { data, displayData, innerData, activePage, totalItemsCount } = this.state;
 
         return (
             <div className="database">
@@ -91,6 +103,9 @@ export default class ProjectMatching extends Component {
                     innerLessHeader={this.innerLessHeader}
                     innerLessField={this.innerLessField}
                     outerData={displayData}
+                    outerDataIdentifier={'project_id'}
+                    onRowClick={this.rowClickHandler}
+                    innerData={innerData}
                 />
 
                 <hr />

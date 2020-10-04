@@ -21,14 +21,16 @@ export default class ExpertManagement extends Component {
             showAdd: false
         }
 
-        this.lessHeader = ['ID', 'Title', 'First Name', 'Last Name', 'Expertise', 'Category', 'Level', 'Email', 'Phone No']
-        this.lessField = ['id', 'title', 'first_name', 'last_name', 'expertise', 'category', 'level', 'email', 'phone_no']
+        this.lessHeader = ['ID', 'Title', 'First Name', 'Last Name', 'Expertise', 'Category', 'Email', 'Phone No']
+        this.lessField = ['expert_id', 'title', 'first_name', 'last_name', 'expertise', 'category', 'email', 'phone_no']
         this.moreHeader = ['Education', 'Employment', 'Projects', 'Patents',
             'Field of Speciality', 'Awards', 'Products', 'Publication Date', 'Recent Major Research Projects',
             'Collaborative Project Proposal']
         this.moreField = ['education', 'employment', 'projects', 'patents',
             'field_of_speciality', 'awards', 'products', 'publication_date', 'recent_major_research_projects',
             'collaborative_project_proposal']
+
+        this.dataIdentifier = 'expert_id';
 
         this.filterDataHandler = this.filterDataHandler.bind(this);
         this.handleToggleAdd = this.handleToggleAdd.bind(this);
@@ -37,11 +39,8 @@ export default class ExpertManagement extends Component {
         this.addHandler = this.addHandler.bind(this);
     }
 
-    componentDidMount() {
-        const { role } = this.props;
-        const expertId = 1;
-        const url = role === '__admin__' ? '/api/fetchExpert/all' : `/api/fetchExpert/${expertId}`
-        fetchReq(url).then(data => {
+    componentDidMount() { 
+        fetchReq('/api/fetchExpert/all').then(data => {
             const { offset } = this.state;
             const [totalItemsCount, slice] = sliceData(data, offset);
 
@@ -51,7 +50,7 @@ export default class ExpertManagement extends Component {
                 totalItemsCount,
                 displayData: slice
             });
-        }).catch(err => console.log(err));
+        }).catch(err => alert(err));
     }
 
     filterDataHandler(filterData) {
@@ -87,10 +86,10 @@ export default class ExpertManagement extends Component {
         const { data, filterData } = this.state;
 
         _.remove(data, (item, index) => {
-            return item.id == id;
+            return item[this.dataIdentifier] == id;
         });
         _.remove(filterData, (item, index) => {
-            return item.id == id;
+            return item[this.dataIdentifier] == id;
         });
 
         this.setState({
@@ -156,6 +155,7 @@ export default class ExpertManagement extends Component {
 
                 <ModalOpsTable
                     data={displayData}
+                    dataIdentifier={this.dataIdentifier}
                     rowLessField={this.lessField}
                     rowMoreField={this.moreField}
                     rowLessHeader={this.lessHeader}

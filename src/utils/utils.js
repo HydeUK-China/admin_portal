@@ -33,11 +33,17 @@ export function getRole() {
   return localStorage.getItem('role');
 }
 
-export function setRole(role) {
-  localStorage.setItem('role', role);
+export function getUid() {
+  return localStorage.getItem('uid');
 }
 
-export function removeRole() {
+export function setUserInfo(data) {
+  localStorage.setItem('role', data.role);
+  localStorage.setItem('uid', data.user_id);
+}
+
+export function removeUserInfo() {
   // Clear user token and profile data from localStorage
   localStorage.removeItem('role');
+  localStorage.removeItem('uid');
 }

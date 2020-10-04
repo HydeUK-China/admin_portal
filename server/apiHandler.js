@@ -24,7 +24,7 @@ router.post('/api/fetchExpert/all', dbOps.fetchExpertAll);
 router.post('/api/fetchExpert/:expertid', dbOps.fetchExpert);
 router.post('/api/fetchEmployer', dbOps.fetchEmployer);
 router.post('/api/fetchProject/all', dbOps.fetchProjectAll);
-// router.post('/api/fetchProject/:projectid', dbOps.fetchProject);
+router.post('/api/fetchProjectExpert/:projectid', dbOps.fetchProjectExpert);
 router.post('/api/fetchExpertProject/:expertid', dbOps.fetchExpertProject);
 router.post('/api/fetchProjectMatching', dbOps.fetchProjectMatching);
 

@@ -68,24 +68,24 @@ function init() {
   }
 }
 
-init();
+// init();
 
-// app.set('connection', mysql.createConnection(dbConfig.rdsClient[__env__]))
-// const client = app.get('connection');
+app.set('connection', mysql.createConnection(dbConfig.rdsClient[__env__]))
+const client = app.get('connection');
 
-// async.series([
-//   function connect(callback) {
-//     client.connect(callback);
-//   },
-//   function use_db(callback) {
-//     client.query(`USE ${dbConfig.database[__env__]}`, callback);
-//   },
-// ], (err, results) => {
-//   if (err) {
-//     console.log('Exception connecting database.');
-//     throw err;
-//   } else {
-//     console.log('Database initialization complete.');
-//     init();
-//   }
-// });
+async.series([
+  function connect(callback) {
+    client.connect(callback);
+  },
+  function use_db(callback) {
+    client.query(`USE ${dbConfig.database[__env__]}`, callback);
+  },
+], (err, results) => {
+  if (err) {
+    console.log('Exception connecting database.');
+    throw err;
+  } else {
+    console.log('Database initialization complete.');
+    init();
+  }
+});

@@ -8,8 +8,11 @@ export default class ModalOpsTables extends Component {
 
         this.state = {
             outerData: props.outerData,
-            showInfo: Array.from({length: props.outerData}, () => false)
+            innerData: props.innerData,
+            showInfo: false
         }
+
+        this.tableFieldTitle = _.zipObject(props.outerLessField, props.outerLessHeader);
 
         this.handleToggleShow = this.handleToggleShow.bind(this);
         this.closeModalHandler = this.closeModalHandler.bind(this);
@@ -18,40 +21,39 @@ export default class ModalOpsTables extends Component {
     componentWillReceiveProps(nextProps) {
         if (nextProps !== this.props) {
             this.setState({
-                outerData: nextProps.outerData
+                outerData: nextProps.outerData,
+                innerData: nextProps.innerData
             })
         }
     }
 
-    handleToggleShow(index) {
-        const {showInfo} = this.state;
-        showInfo[index] = !showInfo[index];
-        
+    handleToggleShow(id) {
+        const { onRowClick } = this.props;
+
         this.setState({
-            showInfo
-        })
+            showInfo: true
+        }, () => onRowClick(id))
     }
 
-    closeModalHandler(index, hide){
-        const {showInfo} = this.state;
-        showInfo[index] = hide;
-
+    closeModalHandler(hide) {
         this.setState({
-            showInfo
+            showInfo: hide
         })
     }
 
     render() {
-        const { outerLessHeader, outerLessField, innerLessHeader, innerLessField } = this.props;
-        const { outerData, showInfo } = this.state;
+        const { outerDataIdentifier, outerLessHeader, outerLessField, innerLessHeader, innerLessField } = this.props;
+        const { outerData, innerData, showInfo } = this.state;
 
         return (
             <div className='table-box'>
                 <div className="dataheader_expert">
                     {
-                        _.map(outerLessHeader, (item, index) => {
-                            return <h6 key={`dataHeader-${index}`}>{item}</h6>
-                        })
+                        outerData && outerData[0] ?
+                            _.map(_.pick(this.tableFieldTitle, _.keys(outerData[0])), (value, key) => {
+                                return <h6 key={`dataHeader-${key}`}>{value}</h6>
+                            })
+                            : null
                     }
                 </div>
 
@@ -65,23 +67,20 @@ export default class ModalOpsTables extends Component {
                                             return <label key={`row-${_key}`}>{_value}</label>
                                         })
                                     }
-                                    <button className='more-info-btn' onClick={() => this.handleToggleShow(index)}> More Info</button>
+                                    <button className='more-info-btn' onClick={() => this.handleToggleShow(item[outerDataIdentifier])}> More Info</button>
                                 </div>
-
-                                <TableModal
-                                    key={`row-more-info-${index}`}
-                                    tableHeader={innerLessHeader}
-                                    rowField={innerLessField}
-                                    tableData={item.expertData}
-                                    onClose={(hide) => this.closeModalHandler(index, hide)}
-                                    show={showInfo[index]}
-                                />
-
                             </div>
                         )
                     })
                 }
-
+                <TableModal
+                    key={`row-more-info`}
+                    rowHeader={innerLessHeader}
+                    rowField={innerLessField}
+                    tableData={innerData}
+                    onClose={(hide) => this.closeModalHandler(hide)}
+                    show={showInfo}
+                />
             </div>
 
         );

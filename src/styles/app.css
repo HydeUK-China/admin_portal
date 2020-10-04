@@ -30,10 +30,9 @@ body {
 .profile-content{
   width: 100%;
   box-shadow: rgba(0,0,0,0.12) 0px 1px 4px 1px;
-  height: 10vh;
+  min-height: 15vh;
   border-radius: 5px;
-  padding-left: 0.5rem;
-  padding-top: 0.5rem;
+  padding: 0.7rem;
 }
 
 .red{

@@ -8,7 +8,7 @@ import { withRouter } from 'react-router';
 import _ from 'lodash';
 import Tab from '../components/tab';
 import { Navbar } from 'react-bootstrap';
-import { removeRole, getRole, fetchReq } from '../utils/utils';
+import { removeUserInfo, getRole, getUid, fetchReq } from '../utils/utils';
 import { path_name, renderRoute } from './tabRouteConfig';
 import 'bootstrap/dist/css/bootstrap.css';
 import '../styles/app.css';
@@ -20,6 +20,7 @@ class App extends Component {
 
     this.state = {
       role: getRole(),
+      uid: getUid(),
       navbarToggler: false
     }
 
@@ -34,8 +35,8 @@ class App extends Component {
   }
 
   getTabs = () => {
-    const { role } = this.state;
-    const pick_tabs = path_name(role)
+    const { role, uid } = this.state;
+    const pick_tabs = path_name(role, uid)
     const links = _.map(pick_tabs, (item, index) => {
       return (<Tab key={`tabs-${index}`}
         path={item.path}
@@ -59,7 +60,7 @@ class App extends Component {
 
     fetchReq('/api/logout')
       .then(data => {
-        removeRole();
+        removeUserInfo();
         this.props.history.push('/login')
       }).catch(msg =>
         alert(msg)
@@ -67,7 +68,7 @@ class App extends Component {
   }
 
   render() {
-    const { role, navbarToggler } = this.state;
+    const { role, uid, navbarToggler } = this.state;
 
     return (
       <div>
@@ -109,7 +110,7 @@ class App extends Component {
             </div>
             
               <Switch>
-                {renderRoute(role)}
+                {renderRoute(role, uid)}
                 <Route path="/mgt">
                   {role === '__admin__' ?
                     <Redirect to='/mgt/admin_dashboard' />

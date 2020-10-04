@@ -83,7 +83,7 @@ export default class InfoEditModal extends Component {
                         <div className='content-general-info'>
                             {showInput ?
                                 _.map(_.pick(data, fileds), (value, key) => {
-                                    if (key === 'id') {
+                                    if (key === 'id' || key === 'expert_id' || key === 'project_id' || key === 'matching_id') {
                                         // readonly input
                                         return (
                                             <div key={`modal-${key}`} className='columns-merge'>
@@ -112,7 +112,7 @@ export default class InfoEditModal extends Component {
                                             <div key={`modal-${key}`} className='columns-merge'>
                                                 <h2>{this.fieldTitle[key]}</h2>
                                                 <input type="date" className="form-control" required
-                                                    defaultValue={value}
+                                                    defaultValue={value !== "" ? new Date(value).toISOString().substr(0,10) : value}
                                                     onChange={(e) => this.handleTextChange(e, key)} />
                                             </div>
                                         )

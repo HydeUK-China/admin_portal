@@ -11,40 +11,44 @@ function login(req, res) {
     const password = req.body.password;
 
     if (email && password) {
-        if ('admin' == email && '123456' == password) {
-            req.session.token = jwtUtil.generateTokenByRole('admin');
-            res.status(200).json({
-                success: true,
-                data: {
-                    role: '__admin__'
+        const sql = `SELECT foreign_user_id, permission_role 
+                    FROM user_credential 
+                    WHERE account_name=? AND account_password=?`;
+
+        res.app.get('connection').query(sql, [email, password], function (err, rows) {
+            if (err) {
+                res.status(400).json({
+                    success: false,
+                    msg: err
+                });
+            } else {
+                if (rows[0]) {
+                    if (rows[0].permission_role == 'admin') {
+                        req.session.token = jwtUtil.generateTokenByRole('admin');
+                        res.status(200).json({
+                            success: true,
+                            data: {
+                                role: '__admin__',
+                                user_id: rows[0].foreign_user_id
+                            }
+                        });
+                    } else {
+                        req.session.token = jwtUtil.generateTokenByRole(rows[0].permission_role);
+                        res.status(200).json({
+                            success: true,
+                            data: {
+                                role: rows[0].permission_role,
+                                user_id: rows[0].foreign_user_id
+                            }
+                        });
+                    }
+                } else {
+                    res.status(400).json({
+                        success: false,
+                        msg: 'failed authorization'
+                    });
                 }
-            });
-        } else if ('expert' == email && '123456' == password) {
-            req.session.token = jwtUtil.generateTokenByRole('expert');
-            res.status(200).json({
-                success: true,
-                data: {
-                    role: 'expert'
-                }
-            });
-        } else if ('employer' == email && '123456' == password) {
-            req.session.token = jwtUtil.generateTokenByRole('employer');
-            res.status(200).json({
-                success: true,
-                data: {
-                    role: 'employer'
-                }
-            });
-        } else {
-            res.status(400).json({
-                success: false,
-                msg: 'failed authorization'
-            });
-        }
-    } else {
-        res.status(400).json({
-            success: false,
-            msg: 'failed authorization'
+            }
         });
     }
 }
@@ -68,19 +72,6 @@ function logout(req, res) {
 }
 
 function expertDashboard(req, res) {
-    // res.app.get('connection').query('SELECT * FROM Applicant_Information', function(err, rows){
-    //     if(err){
-    // res.status(400).json({
-    //     success: false,
-    //     msg: err.sqlMessage
-    // });
-    //     } else {
-    // res.status(200).json({
-    //     success: true,
-    //     data: []
-    // });
-    //     }
-    // })
     const token = req.session.token;
 
     jwtUtil.verifyRoleFromToken(token)
@@ -107,38 +98,112 @@ function expertDashboard(req, res) {
 function fetchExpertAll(req, res) {
     const token = req.session.token;
 
-    // jwtUtil.verifyRoleFromToken(token)
-    //     .then((role) => {
-    //         if (role === 'admin') {
-    //             res.status(200).json({
-    //                 success: true,
-    //                 data: expertData
-    //             })
-    //         } else {
-    //             res.status(400).json({
-    //                 success: false,
-    //                 msg: 'role permission denied'
-    //             })
-    //         }
-    //     }).catch(err => {
-    //         res.status(400).json({
-    //             success: false,
-    //             msg: err
-    //         })
-    //     });
-    res.status(200).json({
-        success: true,
-        data: expertData
-    })
+    jwtUtil.verifyRoleFromToken(token)
+        .then((role) => {
+            if (role === 'admin') {
+                const sql = `SELECT * FROM expert_info`;
+
+                res.app.get('connection').query(sql, function (err, rows) {
+                    if (err) {
+                        res.status(400).json({
+                            success: false,
+                            msg: err
+                        });
+                    } else {
+                        res.status(200).json({
+                            success: true,
+                            data: rows
+                        })
+                    }
+                });
+            } else {
+                res.status(400).json({
+                    success: false,
+                    msg: 'role permission denied'
+                })
+            }
+        }).catch(err => {
+            res.status(400).json({
+                success: false,
+                msg: err
+            })
+        });
 }
 
 function fetchExpert(req, res) {
-    const expertId = req.params.expertid
+    const token = req.session.token;
+    const expertId = req.params.expertid;
 
-    res.status(200).json({
-        success: true,
-        data: expertData[expertId]
-    })
+    jwtUtil.verifyRoleFromToken(token)
+        .then((role) => {
+            if (role) {
+                const sql = `SELECT * FROM expert_info WHERE expert_id=?`;
+
+                res.app.get('connection').query(sql, [expertId], function (err, rows) {
+                    if (err) {
+                        res.status(400).json({
+                            success: false,
+                            msg: err
+                        });
+                    } else {
+                        res.status(200).json({
+                            success: true,
+                            data: rows[0]
+                        })
+                    }
+                });
+            } else {
+                res.status(400).json({
+                    success: false,
+                    msg: 'role permission denied'
+                })
+            }
+        }).catch(err => {
+            res.status(400).json({
+                success: false,
+                msg: err
+            })
+        });
+}
+
+
+function fetchExpertProject(req, res) {
+    const token = req.session.token;
+    const expertId = req.params.expertid;
+
+    jwtUtil.verifyRoleFromToken(token)
+        .then((role) => {
+            if (role) {
+                const sql = `SELECT *  FROM project_matching 
+                            JOIN project_info
+                            ON project_info.project_id = project_matching.project_id
+                            WHERE project_matching.expert_id=?`;
+
+                res.app.get('connection').query(sql, [expertId], function (err, rows) {
+                    if (err) {
+                        res.status(400).json({
+                            success: false,
+                            msg: err
+                        });
+                    } else {
+                        res.status(200).json({
+                            success: true,
+                            data: rows
+                        })
+                    }
+                });
+            } else {
+                res.status(400).json({
+                    success: false,
+                    msg: 'role permission denied'
+                })
+            }
+        }).catch(err => {
+            res.status(400).json({
+                success: false,
+                msg: err
+            })
+        });
 }
 
 function fetchEmployer(req, res) {
@@ -166,35 +231,118 @@ function fetchEmployer(req, res) {
 }
 
 function fetchProjectAll(req, res) {
-    res.status(200).json({
-        success: true,
-        data: projectData
-    });
+    const token = req.session.token;
+
+    jwtUtil.verifyRoleFromToken(token)
+        .then((role) => {
+            if (role === 'admin') {
+                const sql = 'SELECT * FROM project_info';
+
+                res.app.get('connection').query(sql, function (err, rows) {
+                    if (err) {
+                        res.status(400).json({
+                            success: false,
+                            msg: err
+                        });
+                    } else {
+                        res.status(200).json({
+                            success: true,
+                            data: rows
+                        })
+                    }
+                });
+            } else {
+                res.status(400).json({
+                    success: false,
+                    msg: 'role permission denied'
+                })
+            }
+        }).catch(err => {
+            res.status(400).json({
+                success: false,
+                msg: err
+            })
+        });
 }
 
-function fetchProject(req, res) {
-    const projectId = req.params.projectId
+function fetchProjectExpert(req, res) {
+    const token = req.session.token;
+    const projectId = req.params.projectid;
 
-    res.status(200).json({
-        success: true,
-        data: projectData[projectId]
-    });
-}
+    jwtUtil.verifyRoleFromToken(token)
+        .then((role) => {
+            if (role == 'admin') {
+                const sql = `SELECT * FROM project_matching
+                            JOIN expert_info
+                            ON expert_info.expert_id = project_matching.expert_id
+                            WHERE project_matching.project_id=?`;
 
-function fetchExpertProject(req, res) {
-    const expertId = req.params.expertid
-
-    res.status(200).json({
-        success: true,
-        data: expertData[expertId].applications
-    });
+                res.app.get('connection').query(sql, [projectId], function (err, rows) {
+                    if (err) {
+                        res.status(400).json({
+                            success: false,
+                            msg: err
+                        });
+                    } else {
+                        res.status(200).json({
+                            success: true,
+                            data: rows
+                        })
+                    }
+                });
+            } else {
+                res.status(400).json({
+                    success: false,
+                    msg: 'role permission denied'
+                })
+            }
+        }).catch(err => {
+            res.status(400).json({
+                success: false,
+                msg: err
+            })
+        });
 }
 
 function fetchProjectMatching(req, res) {
-    res.status(200).json({
-        success: true,
-        data: projectMatchingData
-    });
+    const token = req.session.token;
+
+    jwtUtil.verifyRoleFromToken(token)
+        .then((role) => {
+            if (role == 'admin') {
+                const sql = `SELECT * FROM (
+                                SELECT *, ROW_NUMBER() OVER (PARTITION BY project_matching.project_id ORDER BY project_matching.matching_id) AS rn
+                                FROM project_matching 
+                            ) AS temp
+                            JOIN project_info
+                            ON project_info.project_id = temp.project_id 
+                            WHERE rn=1`;
+
+                res.app.get('connection').query(sql, function (err, rows) {
+                    if (err) {
+                        res.status(400).json({
+                            success: false,
+                            msg: err
+                        });
+                    } else {
+                        res.status(200).json({
+                            success: true,
+                            data: rows
+                        })
+                    }
+                });
+            } else {
+                res.status(400).json({
+                    success: false,
+                    msg: 'role permission denied'
+                })
+            }
+        }).catch(err => {
+            res.status(400).json({
+                success: false,
+                msg: err
+            })
+        });
 }
 
 module.exports = {
@@ -204,7 +352,7 @@ module.exports = {
     fetchExpertAll,
     fetchExpert,
     fetchProjectAll,
-    fetchProject,
+    fetchProjectExpert,
     fetchExpertProject,
     fetchEmployer,
     fetchProjectMatching

@@ -22,9 +22,11 @@ export default class ProjectManagement extends Component {
         }
 
         this.lessHeader = ['ID', 'Job Title', 'Start Date', 'Employer', 'Area', 'Currency', 'Salary', 'Close Date']
-        this.lessField = ['id', 'job_title', 'start_date', 'employer', 'area', 'currency', 'salary', 'close_date']
+        this.lessField = ['project_id', 'job_title', 'start_date', 'employer', 'area', 'currency', 'salary', 'close_date']
         this.moreHeader = ['Featured', 'Job Description', 'Required Expertise', 'Responsibilities', 'Essential skills']
         this.moreField = ['featured', 'job_description', 'required_expertise', 'responsibilities', 'essential_skills']
+
+        this.dataIdentifier = 'project_id';
 
         this.filterDataHandler = this.filterDataHandler.bind(this);
         this.handleToggleAdd = this.handleToggleAdd.bind(this);
@@ -44,7 +46,7 @@ export default class ProjectManagement extends Component {
                 totalItemsCount,
                 displayData: slice
             });
-        }).catch(err => console.log(err));
+        }).catch(err => alert(err));
     }
 
     filterDataHandler(filterData) {
@@ -80,10 +82,10 @@ export default class ProjectManagement extends Component {
         const { data, filterData } = this.state;
 
         _.remove(data, (item, index) => {
-            return item.id == id;
+            return item[this.dataIdentifier] == id;
         });
         _.remove(filterData, (item, index) => {
-            return item.id == id;
+            return item[this.dataIdentifier] == id;
         });
 
         this.setState({
@@ -150,6 +152,7 @@ export default class ProjectManagement extends Component {
 
                 <ModalOpsTable
                     data={displayData}
+                    dataIdentifier={this.dataIdentifier}
                     rowLessField={this.lessField}
                     rowMoreField={this.moreField}
                     rowLessHeader={this.lessHeader}

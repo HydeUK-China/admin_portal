@@ -55,14 +55,14 @@ export default class JobCard extends Component {
                         <div className="job-card-sec-1">
                             <div className=".col-6 col-m-12 .col-sm-12">
                                 <ul>
-                                    <li className="posted">Last Date</li>
+                                    <li className="posted">Close Date</li>
                                     <li className="company">{close_date}</li>
                                 </ul>
                             </div>
                             <div className=".col-6 col-m-12 .col-sm-12">
                                 <ul>
                                     <li className="posted">Posted</li>
-                                    <li className="company">{this.calculateDayDiff(start_date)} days ago</li>
+                                    <li className="company">{ start_date !== "" ? `${this.calculateDayDiff(start_date)} days ago` : ''} </li>
                                 </ul>
                             </div>
 
@@ -75,9 +75,9 @@ export default class JobCard extends Component {
                                 </ul>
                             </div>
                             <div className=".col-6 col-m-12 .col-sm-12">
-                                <ul>
+                                {/* <ul>
                                     <li className="salary">{`£${salary}`}</li>
-                                </ul>
+                                </ul> */}
                             </div>
                         </div>
                     </div>

@@ -8,26 +8,24 @@ export default class ExpertApplication extends Component {
         super(props)
 
         this.state = {
-            data: null
+            data: []
         }
 
         this.lessHeader = ['ID', 'Job Title', 'Start Date', 'Employer', 'Area', 'Required Expertise', 'Salary', 'Close Date']
-
         this.lessField = ['id', 'job_title', 'start_date', 'employer', 'area', 'required_expertise', 'salary', 'close_date']
-
         this.moreHeader = ['Featured', 'Job Description', 'Responsibilities', 'Essential skills']
-
         this.moreField = ['featured', 'job_description', 'responsibilities', 'essential_skills']
+
+        this.expertId = props.uid;
     }
 
     componentDidMount() {
-        const expertId = 1;
-        const url = `/api/fetchExpertProject/${expertId}`
+        const url = `/api/fetchExpertProject/${this.expertId}`
         fetchReq(url).then(data => {
             this.setState({
                 data
             })
-        }).catch(err => console.log(err));
+        }).catch(err => alert(err));
     }
 
     renderJobcards(){

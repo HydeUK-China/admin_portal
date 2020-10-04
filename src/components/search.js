@@ -27,7 +27,7 @@ export default class Search extends Component {
             let condition = false;
 
             _.forEach(dataFilterableField, (_item, _index) => {
-                condition = condition || item[_item].toString().toLowerCase().includes(filterInput.toLowerCase())
+                condition = condition || (item[_item] && item[_item].toString().toLowerCase().includes(filterInput.toLowerCase()))
             })
             return condition;
         });

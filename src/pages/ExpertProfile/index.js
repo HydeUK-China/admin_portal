@@ -9,34 +9,31 @@ export default class ExpertProfile extends Component {
         super(props)
 
         this.state = {
-            data: null,
+            data: {},
             showInput: false,
             editbutton: 'Edit',
             savebutton: 'Save'
-
         }
 
         this.lessField = ['title', 'first_name', 'category', 'email', 'phone_no', 'linkedin', 'facebook', 'twitter']
-
         this.moreHeader = ['Education', 'Employment', 'Projects', 'Patents',
             'Field of Speciality', 'Awards', 'Products', 'Publication Date', 'Recent Major Research Projects',
             'Collaborative Project Proposal']
-
         this.moreField = ['education', 'employment', 'projects', 'patents',
             'field_of_speciality', 'awards', 'products', 'publication_date', 'recent_major_research_projects',
             'collaborative_project_proposal']
 
+        this.expertId = props.uid;
         this.fieldTitle = _.zipObject(this.moreField, this.moreHeader);
     }
 
     componentDidMount() {
-        const expertId = 1;
-        const url = `/api/fetchExpert/${expertId}`
+        const url = `/api/fetchExpert/${this.expertId}`
         fetchReq(url).then(data => {
             this.setState({
                 data
             })
-        }).catch(err => console.log(err));
+        }).catch(err => alert(err));
     }
 
     handleTextChange(e, key) {

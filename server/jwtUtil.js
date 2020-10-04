@@ -17,7 +17,7 @@ const verifyRoleFromToken = (token) => {
                 }
             });
         } else {
-            reject('token expires')
+            reject('token expires, please relogin')
         }
         
     } )

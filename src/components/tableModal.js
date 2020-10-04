@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
-import ModalOpsRow from './modalOpsRow';
 import { Button, Modal } from 'react-bootstrap';
 
 export default class TableModal extends Component {
@@ -11,6 +10,8 @@ export default class TableModal extends Component {
             show: props.show,
             tableData: props.tableData
         }
+
+        this.tableFieldTitle = _.zipObject(props.rowField, props.rowHeader);
     }
 
     componentWillReceiveProps(nextProps) {
@@ -22,7 +23,7 @@ export default class TableModal extends Component {
         }
     }
 
-    closeModal =() => {
+    closeModal = () => {
         const { onClose } = this.props;
 
         this.setState({
@@ -31,7 +32,7 @@ export default class TableModal extends Component {
     }
 
     render() {
-        const { tableHeader, rowField } = this.props;
+        const { rowHeader, rowField } = this.props;
         const { tableData, show } = this.state;
 
         return (
@@ -40,9 +41,11 @@ export default class TableModal extends Component {
                 <Modal.Body>
                     <div className="dataheader_expert">
                         {
-                            _.map(tableHeader, (item, index) => {
-                                return <h6 key={`dataHeader-${index}`}>{item}</h6>
-                            })
+                            tableData && tableData[0] ?
+                                _.map(_.pick(this.tableFieldTitle, _.keys(tableData[0])), (value, key) => {
+                                    return <h6 key={`dataHeader-${key}`}>{value}</h6>
+                                })
+                                : null
                         }
                     </div>
 
