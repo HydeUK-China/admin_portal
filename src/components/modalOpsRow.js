@@ -12,7 +12,8 @@ export default class ModalOpsRow extends Component {
             data: props.rowData
         }
 
-        this.handleSelect = this.handleSelect.bind(this)
+        this.handleSelect = this.handleSelect.bind(this);
+        this.handleDataChange = this.handleDataChange.bind(this);
     }
 
     componentWillReceiveProps(nextProps) {
@@ -51,9 +52,9 @@ export default class ModalOpsRow extends Component {
 
     render() {
 
-        const { rowLessField, rowMoreField, rowMoreHeader, modalHeader, role } = this.props;
+        const { rowLessField, rowMoreField, rowMoreHeader, modalHeader, role, onEditConfirm } = this.props;
         const { data, selOption, showInfo } = this.state;
-
+ 
         return (
             <div className='database'>
                 <div className="datatable_expert">
@@ -81,6 +82,7 @@ export default class ModalOpsRow extends Component {
                     close={this.closeInfoHandler}
                     allowEdit={role === '__admin__' ? true : false}
                     onDataChange={role === '__admin__' ? this.handleDataChange : null}
+                    onEditConfirm={role === '__admin__' ? onEditConfirm : null}
                     modalHeader={modalHeader}
                     headers={rowMoreHeader}
                     fileds={rowMoreField}

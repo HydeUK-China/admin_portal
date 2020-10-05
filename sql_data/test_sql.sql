@@ -14,5 +14,20 @@ WHERE project_matching.project_id=39;
 
 
 SELECT * FROM project_matching;
-    
-SELECT * FROM expert_info WHERE expert_id IN (12, 17, 10, 11, 26, 16, 56, 23, 14, 15, 116, 114);
+
+
+
+UPDATE project_info  SET start_date='2020/08/30' WHERE project_id=39;
+
+
+-- 12, 17, 10, 11, 26, 16, 56, 23, 14, 15, 116, 114
+SELECT * FROM expert_info;
+SELECT * FROM expert_info WHERE expert_id IN (20);
+DELETE FROM expert_info WHERE expert_id=170;
+
+
+
+SELECT * FROM project_info;
+DELETE FROM project_info WHERE project_id IN (41, 42, 43);
+
+

@@ -19,7 +19,7 @@ function login(req, res) {
             if (err) {
                 res.status(400).json({
                     success: false,
-                    msg: err
+                    msg: err.sqlMessage
                 });
             } else {
                 if (rows[0]) {
@@ -107,12 +107,164 @@ function fetchExpertAll(req, res) {
                     if (err) {
                         res.status(400).json({
                             success: false,
-                            msg: err
+                            msg: err.sqlMessage
                         });
                     } else {
                         res.status(200).json({
                             success: true,
                             data: rows
+                        })
+                    }
+                });
+            } else {
+                res.status(400).json({
+                    success: false,
+                    msg: 'role permission denied'
+                })
+            }
+        }).catch(err => {
+            res.status(400).json({
+                success: false,
+                msg: err
+            })
+        });
+}
+
+function addExpert(req, res) {
+    const token = req.session.token;
+    const record = req.body.record;
+
+    jwtUtil.verifyRoleFromToken(token)
+        .then((role) => {
+            if (role === 'admin') {
+                const sql = `INSERT INTO expert_info
+                            (title, first_name, last_name, gender, nationality, date_of_birth, email, 
+                            phone_no, linkedin, facebook, twitter, expertise, category, source_references,
+                            edu_organization, field_of_speciality, education, employment, membership_of_professional_bodies,
+                            scientific_contribution_and_research_leadersihp, awarded_grants_and_funded_activities,
+                            awards, patents, publications, collaborative_project_proposal)
+                            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+
+                res.app.get('connection').query(sql, [record.title, record.first_name, record.last_name, record.gender,
+                record.nationality, record.date_of_birth, record.email, record.phone_no, record.linkedin, record.facebook,
+                record.twitter, record.expertise, record.category, record.source_references, record.edu_organization,
+                record.field_of_speciality, record.education, record.employment, record.membership_of_professional_bodies,
+                record.scientific_contribution_and_research_leadersihp, record.awarded_grants_and_funded_activities,
+                record.awards, record.patents, record.publications, record.collaborative_project_proposal],
+                    function (err, feedback) {
+                        if (err) {
+                            res.status(400).json({
+                                success: false,
+                                msg: err.sqlMessage
+                            });
+                        } else {
+                            res.status(200).json({
+                                success: true,
+                                data: feedback
+                            })
+                        }
+                    });
+            } else {
+                res.status(400).json({
+                    success: false,
+                    msg: 'role permission denied'
+                })
+            }
+        }).catch(err => {
+            res.status(400).json({
+                success: false,
+                msg: err
+            })
+        });
+}
+
+function editExpert(req, res) {
+    const token = req.session.token;
+    const record = req.body.record;
+
+    jwtUtil.verifyRoleFromToken(token)
+        .then((role) => {
+            if (role) {
+                const sql = `UPDATE expert_info
+                            SET title=?,
+                            first_name=?,
+                            last_name=?,
+                            gender=?,
+                            nationality=?,
+                            date_of_birth=?,
+                            email=?,
+                            phone_no=?,
+                            linkedin=?,
+                            facebook=?,
+                            twitter=?,
+                            expertise=?,
+                            category=?,
+                            source_references=?,
+                            edu_organization=?,
+                            field_of_speciality=?,
+                            education=?,
+                            employment=?,
+                            membership_of_professional_bodies=?,
+                            scientific_contribution_and_research_leadersihp=?,
+                            awarded_grants_and_funded_activities=?,
+                            awards=?,
+                            patents=?,
+                            publications=?,
+                            collaborative_project_proposal=?
+                            WHERE expert_id=?`;
+
+                res.app.get('connection').query(sql, [record.title, record.first_name, record.last_name, record.gender,
+                record.nationality, record.date_of_birth, record.email, record.phone_no, record.linkedin, record.facebook,
+                record.twitter, record.expertise, record.category, record.source_references, record.edu_organization,
+                record.field_of_speciality, record.education, record.employment, record.membership_of_professional_bodies,
+                record.scientific_contribution_and_research_leadersihp, record.awarded_grants_and_funded_activities,
+                record.awards, record.patents, record.publications, record.collaborative_project_proposal, record.expert_id],
+                    function (err, feedback) {
+                        if (err) {
+                            res.status(400).json({
+                                success: false,
+                                msg: err.sqlMessage
+                            });
+                        } else {
+                            res.status(200).json({
+                                success: true,
+                                data: feedback
+                            })
+                        }
+                    });
+            } else {
+                res.status(400).json({
+                    success: false,
+                    msg: 'role permission denied'
+                })
+            }
+        }).catch(err => {
+            res.status(400).json({
+                success: false,
+                msg: err
+            })
+        });
+}
+
+function deleteExpert(req, res) {
+    const token = req.session.token;
+    const expertId = req.params.expertid;
+
+    jwtUtil.verifyRoleFromToken(token)
+        .then((role) => {
+            if (role === 'admin') {
+                const sql = `DELETE FROM expert_info WHERE expert_id=?`;
+
+                res.app.get('connection').query(sql, [expertId], function (err, feedback) {
+                    if (err) {
+                        res.status(400).json({
+                            success: false,
+                            msg: err.sqlMessage
+                        });
+                    } else {
+                        res.status(200).json({
+                            success: true,
+                            data: feedback
                         })
                     }
                 });
@@ -143,7 +295,7 @@ function fetchExpert(req, res) {
                     if (err) {
                         res.status(400).json({
                             success: false,
-                            msg: err
+                            msg: err.sqlMessage
                         });
                     } else {
                         res.status(200).json({
@@ -183,7 +335,7 @@ function fetchExpertProject(req, res) {
                     if (err) {
                         res.status(400).json({
                             success: false,
-                            msg: err
+                            msg: err.sqlMessage
                         });
                     } else {
                         res.status(200).json({
@@ -242,12 +394,136 @@ function fetchProjectAll(req, res) {
                     if (err) {
                         res.status(400).json({
                             success: false,
-                            msg: err
+                            msg: err.sqlMessage
                         });
                     } else {
                         res.status(200).json({
                             success: true,
                             data: rows
+                        })
+                    }
+                });
+            } else {
+                res.status(400).json({
+                    success: false,
+                    msg: 'role permission denied'
+                })
+            }
+        }).catch(err => {
+            res.status(400).json({
+                success: false,
+                msg: err
+            })
+        });
+}
+
+function addProject(req, res) {
+    const token = req.session.token;
+    const record = req.body.record;
+
+    jwtUtil.verifyRoleFromToken(token)
+        .then((role) => {
+            if (role === 'admin') {
+                const sql = `INSERT INTO project_info 
+                            (start_date, professional_field, job_description,
+                            required_expertise, employer, area, salary, currency)
+                            VALUES (?, ?, ?, ?, ?, ?, ?, ?)`;
+
+                res.app.get('connection').query(sql, [record.start_date, record.professional_field, record.job_description, record.required_expertise,
+                record.employer, record.area, record.salary, record.currency],
+                    function (err, rows) {
+                        if (err) {
+                            res.status(400).json({
+                                success: false,
+                                msg: err.sqlMessage
+                            });
+                        } else {
+                            res.status(200).json({
+                                success: true,
+                                data: rows
+                            })
+                        }
+                    });
+            } else {
+                res.status(400).json({
+                    success: false,
+                    msg: 'role permission denied'
+                })
+            }
+        }).catch(err => {
+            res.status(400).json({
+                success: false,
+                msg: err
+            })
+        });
+}
+
+function editProject(req, res) {
+    const token = req.session.token;
+    const record = req.body.record;
+
+    jwtUtil.verifyRoleFromToken(token)
+        .then((role) => {
+            if (role === 'admin') {
+                const sql = `UPDATE project_info 
+                            SET start_date=?,
+                            professional_field=?,
+                            job_description=?,
+                            required_expertise=?,
+                            employer=?,
+                            area=?,
+                            salary=?,
+                            currency=?
+                            WHERE project_id=?`;
+
+                res.app.get('connection').query(sql, [record.start_date, record.professional_field, record.job_description, record.required_expertise,
+                record.employer, record.area, record.salary, record.currency, record.project_id],
+                    function (err, feedback) {
+                        if (err) {
+                            res.status(400).json({
+                                success: false,
+                                msg: err.sqlMessage
+                            });
+                        } else {
+                            res.status(200).json({
+                                success: true,
+                                data: feedback
+                            })
+                        }
+                    });
+            } else {
+                res.status(400).json({
+                    success: false,
+                    msg: 'role permission denied'
+                })
+            }
+        }).catch(err => {
+            res.status(400).json({
+                success: false,
+                msg: err
+            })
+        });
+}
+
+function deleteProject(req, res) {
+    const token = req.session.token;
+    const projectId = req.params.projectid;
+
+    jwtUtil.verifyRoleFromToken(token)
+        .then((role) => {
+            if (role === 'admin') {
+                const sql = `DELETE FROM project_info WHERE project_id=?`;
+
+                res.app.get('connection').query(sql, [projectId], function (err, feedback) {
+                    if (err) {
+                        res.status(400).json({
+                            success: false,
+                            msg: err.sqlMessage
+                        });
+                    } else {
+                        res.status(200).json({
+                            success: true,
+                            data: feedback
                         })
                     }
                 });
@@ -281,7 +557,7 @@ function fetchProjectExpert(req, res) {
                     if (err) {
                         res.status(400).json({
                             success: false,
-                            msg: err
+                            msg: err.sqlMessage
                         });
                     } else {
                         res.status(200).json({
@@ -322,7 +598,7 @@ function fetchProjectMatching(req, res) {
                     if (err) {
                         res.status(400).json({
                             success: false,
-                            msg: err
+                            msg: err.sqlMessage
                         });
                     } else {
                         res.status(200).json({
@@ -350,8 +626,14 @@ module.exports = {
     login,
     logout,
     fetchExpertAll,
+    addExpert,
+    editExpert,
+    deleteExpert,
     fetchExpert,
     fetchProjectAll,
+    addProject,
+    editProject,
+    deleteProject,
     fetchProjectExpert,
     fetchExpertProject,
     fetchEmployer,

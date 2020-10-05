@@ -19,7 +19,7 @@ SELECT * FROM user_credential;
 
 
 CREATE TABLE project_info (
-	project_id int NOT NULL,
+	project_id int NOT NULL auto_increment,
     start_date varchar(300),
     professional_field varchar(300),
     job_description varchar(3000),
@@ -37,7 +37,7 @@ SELECT * FROM project_info;
 
 
 CREATE TABLE expert_info (
-	expert_id int NOT NULL,
+	expert_id int NOT NULL auto_increment,
     title varchar(30),
     first_name varchar(300),
     last_name varchar(300),

@@ -23,7 +23,7 @@ export default class ModalOpsTable extends Component {
 
     render() {
 
-        const { dataIdentifier, rowLessField, rowMoreField, rowLessHeader, rowMoreHeader, modalHeader, role, onRowDelete } = this.props;
+        const { dataIdentifier, rowLessField, rowMoreField, rowLessHeader, rowMoreHeader, modalHeader, role, onRowDelete, onEditConfirm } = this.props;
         const { data } = this.state;
 
         return (
@@ -49,6 +49,7 @@ export default class ModalOpsTable extends Component {
                             rowMoreField={rowLessField.concat(rowMoreField)}
                             rowMoreHeader={rowLessHeader.concat(rowMoreHeader)}
                             onRowDelete={role === '__admin__' ? onRowDelete : null}
+                            onEditConfirm={role === '__admin__' ? onEditConfirm : null}
                             modalHeader={modalHeader}
                         />
                     })

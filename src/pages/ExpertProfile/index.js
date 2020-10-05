@@ -59,10 +59,17 @@ export default class ExpertProfile extends Component {
         const tmp_data = Object.assign(data, {
             ...sidebarData
         });
-        this.setState({
-            data: tmp_data,
-            showInput: isEdit
-        });
+        
+        fetchReq('/api/editExpert', {
+            body: JSON.stringify({
+                record: tmp_data
+            })
+        }).then(feedback => {
+            this.setState({
+                data: tmp_data,
+                showInput: isEdit
+            });
+        }).catch(err => alert(err));
     }
 
     render() {

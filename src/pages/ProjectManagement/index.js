@@ -33,9 +33,14 @@ export default class ProjectManagement extends Component {
         this.closeAddHandler = this.closeAddHandler.bind(this);
         this.rowDeleteHandler = this.rowDeleteHandler.bind(this);
         this.addHandler = this.addHandler.bind(this);
+        this.editConfirmHandler = this.editConfirmHandler.bind(this);
     }
 
     componentDidMount() {
+        this.receiveUpdateData();
+    }
+
+    receiveUpdateData () {
         fetchReq('/api/fetchProject/all').then(data => {
             const { offset } = this.state;
             const [totalItemsCount, slice] = sliceData(data, offset);
@@ -114,23 +119,50 @@ export default class ProjectManagement extends Component {
         })
     }
 
-    addHandler(obj) {
-        const { data } = this.state;
-
-        data.push(obj);
-        this.setState({
-            data,
-            filterData: data,
-            showAdd: false
-        }, () => {
-            const { offset, filterData } = this.state;
-            const [totalItemsCount, slice] = sliceData(filterData, offset);
-
+    addHandler(obj) { 
+        fetchReq('/api/addProject', {
+            body: JSON.stringify({
+                record: obj
+            })
+        }).then(feedback => {
             this.setState({
-                totalItemsCount,
-                displayData: slice
-            });
-        })
+                showAdd: false
+            }, () => this.receiveUpdateData());
+        }).catch(err => alert(err));
+        
+    }
+
+    editConfirmHandler(record) {
+        fetchReq('/api/editProject', {
+            body: JSON.stringify({
+                record
+            })
+        }).then(feedback => {
+            // const { data, filterData } = this.state;
+
+            // const d_index = _.findIndex(data, (item) => {
+            //     return item.project_id === record.project_id;
+            // });
+            // const f_index = _.findIndex(filterData, (item) => {
+            //     return item.project_id === record.project_id;
+            // });
+
+            // data[d_index] = record;
+            // filterData[f_index] = record;
+
+            // this.setState({
+            //     data,
+            //     filterData
+            // }, () => {
+            //     const { offset, filterData } = this.state;
+            //     const [totalItemsCount, slice] = sliceData(filterData, offset);
+
+            //     this.setState({
+            //         totalItemsCount,
+            //         displayData: slice
+            //     });
+            // });
+        }).catch(err => alert(err));
     }
 
     render() {
@@ -158,6 +190,7 @@ export default class ProjectManagement extends Component {
                     rowLessHeader={this.lessHeader}
                     rowMoreHeader={this.moreHeader}
                     onRowDelete={this.rowDeleteHandler}
+                    onEditConfirm={this.editConfirmHandler}
                     modalHeader={'Project Info'}
                     role={role}
                 />

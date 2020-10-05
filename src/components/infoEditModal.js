@@ -50,8 +50,13 @@ export default class InfoEditModal extends Component {
     clickConfirm(e) {
         e.preventDefault();
 
+        const { onEditConfirm } = this.props;
+        const { data } = this.state;
+
         this.setState({
             showInput: !this.state.showInput
+        }, () => {
+            onEditConfirm(data);
         });
     }
 

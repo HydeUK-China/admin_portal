@@ -33,9 +33,7 @@ export default class AddExpertModal extends Component {
         e.preventDefault();
         
         const { onAdd } = this.props;
-        let obj = {
-            'id': 100
-        }
+        let obj = {}
 
         _.forEach(this.allFields, (item, index) => {
             if (this[item].current) {

@@ -21,9 +21,15 @@ router.post('/api/logout', dbOps.logout);
 
 router.post('/api/expertDashboard', dbOps.expertDashboard);
 router.post('/api/fetchExpert/all', dbOps.fetchExpertAll);
+router.post('/api/addExpert', dbOps.addExpert);
+router.post('/api/editExpert', dbOps.editExpert);
+router.post('/api/deleteExpert/:expertid', dbOps.deleteExpert);
 router.post('/api/fetchExpert/:expertid', dbOps.fetchExpert);
 router.post('/api/fetchEmployer', dbOps.fetchEmployer);
 router.post('/api/fetchProject/all', dbOps.fetchProjectAll);
+router.post('/api/addProject', dbOps.addProject);
+router.post('/api/editProject', dbOps.editProject);
+router.post('/api/deleteProject/:projectid', dbOps.deleteProject);
 router.post('/api/fetchProjectExpert/:projectid', dbOps.fetchProjectExpert);
 router.post('/api/fetchExpertProject/:expertid', dbOps.fetchExpertProject);
 router.post('/api/fetchProjectMatching', dbOps.fetchProjectMatching);
