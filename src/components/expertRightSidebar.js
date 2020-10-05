@@ -44,19 +44,9 @@ export default class ExpertRightSidebar extends Component {
         });
     }
 
-    handleInputChange(e, key) {
-        const { data } = this.state;
-
-        const tmp_data = Object.assign(data, {
-            [key]: e.target.value
-        })
-        this.setState({
-            data: tmp_data
-        });
-    }
-
     render() {
         const { showInput, data } = this.state;
+        const { handleInputChange } = this.props;
         const { first_name, category } = data;
         const editContactField = ['phone_no', 'email'];
         const editSocialMediaField = ['linkedin', 'facebook', 'twitter']
@@ -104,7 +94,7 @@ export default class ExpertRightSidebar extends Component {
                                             <li key={`expertinfo-${key}`} className="contact-details-link">
                                                 {key === 'phone_no' ? <i className="fas fa-phone"></i> : <i className="fas fa-envelope"></i>}
                                                 <input defaultValue={value}
-                                                    onChange={(e) => this.handleInputChange(e, key)} />
+                                                    onChange={(e) => handleInputChange(e, key)} />
                                             </li>
                                         )
                                     }) :
@@ -138,7 +128,7 @@ export default class ExpertRightSidebar extends Component {
                                                     (key === 'facebook' ? <i className="fab fa-facebook"></i> :
                                                         <i className="fab fa-twitter"></i>)}
                                                 <input defaultValue={value}
-                                                    onChange={(e) => this.handleInputChange(e, key)} />
+                                                    onChange={(e) => handleInputChange(e, key)} />
                                             </li>
                                         )
                                     }) :

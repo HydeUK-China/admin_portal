@@ -22,8 +22,8 @@ export default class ProjectMatching extends Component {
 
         this.outerLessHeader = ['ID', 'Job Title', 'Start Date', 'Employer', 'Area', 'Salary', 'Currency', 'Close Date']
         this.outerLessField = ['project_id', 'job_title', 'start_date', 'employer', 'area', 'salary', 'currency', 'close_date']
-        this.innerLessHeader = ['ID', 'Title', 'First Name', 'Last Name', 'Expertise', 'Category', 'Level', 'Email', 'Phone No']
-        this.innerLessField = ['expert_id', 'title', 'first_name', 'last_name', 'expertise', 'category', 'level', 'email', 'phone_no']
+        this.innerLessHeader = ['ID', 'Title', 'First Name', 'Last Name', 'Expertise', 'Category']
+        this.innerLessField = ['expert_id', 'title', 'first_name', 'last_name', 'expertise', 'category']
 
         this.filterDataHandler = this.filterDataHandler.bind(this);
         this.rowClickHandler = this.rowClickHandler.bind(this);

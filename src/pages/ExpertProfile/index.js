@@ -108,6 +108,7 @@ export default class ExpertProfile extends Component {
 
                 <ExpertRightSidebar
                     data={_.pick(data, this.lessField)}
+                    handleInputChange={(e, key) => this.handleTextChange(e, key)}
                     handleEdit={this.editHandler}
                     handleConfirm={this.confirmHandler}
                 />
