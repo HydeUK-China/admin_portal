@@ -74,7 +74,7 @@
   .dataheader_project {
     position: relative;
     display: grid;
-    grid-template-columns: 10% 10% 30% 10% 10% 20% 10%;
+    grid-template-columns: 10% 10% 30% 10% 20% 10% 10%;
     border-bottom: 1px solid black;
     margin-top: 5px;
     text-align: center;
@@ -85,7 +85,7 @@
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
     display: grid;
-    grid-template-columns: 10% 10% 30% 10% 10% 20% 10%;
+    grid-template-columns: 10% 10% 30% 10% 20% 10% 10%;
     text-align: center;
   }
   

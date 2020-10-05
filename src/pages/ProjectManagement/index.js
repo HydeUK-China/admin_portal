@@ -21,8 +21,8 @@ export default class ProjectManagement extends Component {
             showAdd: false
         }
 
-        this.lessHeader = ['ID', 'Job Title', 'Start Date', 'Employer', 'Area', 'Currency', 'Salary', 'Close Date']
-        this.lessField = ['project_id', 'job_title', 'start_date', 'employer', 'area', 'currency', 'salary', 'close_date']
+        this.lessHeader = ['ID', 'Job Title', 'Start Date', 'Employer', 'Area', 'Salary', 'Currency', 'Close Date']
+        this.lessField = ['project_id', 'job_title', 'start_date', 'employer', 'area', 'salary', 'currency', 'close_date']
         this.moreHeader = ['Featured', 'Job Description', 'Required Expertise', 'Responsibilities', 'Essential skills']
         this.moreField = ['featured', 'job_description', 'required_expertise', 'responsibilities', 'essential_skills']
 
