@@ -56,7 +56,7 @@
   .dataheader_expert {
     position: relative;
     display: grid;
-    grid-template-columns: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
+    grid-template-columns: 10% 10% 10% 10% 30% 20% 10%;
     border-bottom: 1px solid black;
     margin-top: 5px;
     text-align: center;
@@ -67,7 +67,25 @@
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
     display: grid;
-    grid-template-columns: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
+    grid-template-columns: 10% 10% 10% 10% 30% 20% 10%;
+    text-align: center;
+  }
+
+  .dataheader_project {
+    position: relative;
+    display: grid;
+    grid-template-columns: 10% 10% 30% 10% 10% 20% 10%;
+    border-bottom: 1px solid black;
+    margin-top: 5px;
+    text-align: center;
+  }
+  
+  .datatable_project {
+    position: relative;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    display: grid;
+    grid-template-columns: 10% 10% 30% 10% 10% 20% 10%;
     text-align: center;
   }
   

@@ -23,12 +23,12 @@ export default class ModalOpsTable extends Component {
 
     render() {
 
-        const { dataIdentifier, rowLessField, rowMoreField, rowLessHeader, rowMoreHeader, modalHeader, role, onRowDelete, onEditConfirm } = this.props;
+        const { useClass, dataIdentifier, rowLessField, rowMoreField, rowLessHeader, rowMoreHeader, modalHeader, role, onRowDelete, onEditConfirm } = this.props;
         const { data } = this.state;
 
         return (
             <div className='table-box'>
-                <div className="dataheader_expert">
+                <div className={`dataheader_${useClass}`}>
                     {
                         data && data[0] ?
                             _.map(_.pick(this.lessFieldTitle, _.keys(data[0])), (value, key) => {
@@ -41,6 +41,7 @@ export default class ModalOpsTable extends Component {
                 {
                     _.map(data, (item, index) => {
                         return <ModalOpsRow
+                            useClass={useClass}
                             role={role}
                             key={`dataRow-${index}`}
                             rowData={item}

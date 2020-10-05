@@ -47,7 +47,7 @@ export default class ModalOpsTables extends Component {
 
         return (
             <div className='table-box'>
-                <div className="dataheader_expert">
+                <div className="dataheader_project">
                     {
                         outerData && outerData[0] ?
                             _.map(_.pick(this.tableFieldTitle, _.keys(outerData[0])), (value, key) => {
@@ -61,7 +61,7 @@ export default class ModalOpsTables extends Component {
                     _.map(outerData, (item, index) => {
                         return (
                             <div key={`outerTableRow-${index}`} className='database'>
-                                <div className="datatable_expert">
+                                <div className="datatable_project">
                                     {
                                         _.map(_.pick(item, outerLessField), (_value, _key) => {
                                             return <label key={`row-${_key}`}>{_value}</label>

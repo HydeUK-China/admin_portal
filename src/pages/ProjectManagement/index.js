@@ -40,7 +40,7 @@ export default class ProjectManagement extends Component {
         this.receiveUpdateData();
     }
 
-    receiveUpdateData () {
+    receiveUpdateData() {
         fetchReq('/api/fetchProject/all').then(data => {
             const { offset } = this.state;
             const [totalItemsCount, slice] = sliceData(data, offset);
@@ -84,27 +84,30 @@ export default class ProjectManagement extends Component {
     };
 
     rowDeleteHandler(id) {
-        const { data, filterData } = this.state;
+        const url = `/api/deleteProject/${id}`
+        fetchReq(url).then(feedback => {
+            const { data, filterData } = this.state;
 
-        _.remove(data, (item, index) => {
-            return item[this.dataIdentifier] == id;
-        });
-        _.remove(filterData, (item, index) => {
-            return item[this.dataIdentifier] == id;
-        });
-
-        this.setState({
-            data,
-            filterData
-        }, () => {
-            const { offset, filterData } = this.state;
-            const [totalItemsCount, slice] = sliceData(filterData, offset);
+            _.remove(data, (item, index) => {
+                return item[this.dataIdentifier] == id;
+            });
+            _.remove(filterData, (item, index) => {
+                return item[this.dataIdentifier] == id;
+            });
 
             this.setState({
-                totalItemsCount,
-                displayData: slice
+                data,
+                filterData
+            }, () => {
+                const { offset, filterData } = this.state;
+                const [totalItemsCount, slice] = sliceData(filterData, offset);
+
+                this.setState({
+                    totalItemsCount,
+                    displayData: slice
+                });
             });
-        });
+        }).catch(err => alert(err));
     }
 
     handleToggleAdd = () => {
@@ -119,7 +122,7 @@ export default class ProjectManagement extends Component {
         })
     }
 
-    addHandler(obj) { 
+    addHandler(obj) {
         fetchReq('/api/addProject', {
             body: JSON.stringify({
                 record: obj
@@ -129,7 +132,7 @@ export default class ProjectManagement extends Component {
                 showAdd: false
             }, () => this.receiveUpdateData());
         }).catch(err => alert(err));
-        
+
     }
 
     editConfirmHandler(record) {
@@ -183,6 +186,7 @@ export default class ProjectManagement extends Component {
                 <AddProjectModal show={showAdd} close={this.closeAddHandler} onAdd={this.addHandler} />
 
                 <ModalOpsTable
+                    useClass={'project'}
                     data={displayData}
                     dataIdentifier={this.dataIdentifier}
                     rowLessField={this.lessField}

@@ -52,12 +52,12 @@ export default class ModalOpsRow extends Component {
 
     render() {
 
-        const { rowLessField, rowMoreField, rowMoreHeader, modalHeader, role, onEditConfirm } = this.props;
+        const { useClass, rowLessField, rowMoreField, rowMoreHeader, modalHeader, role, onEditConfirm } = this.props;
         const { data, selOption, showInfo } = this.state;
  
         return (
             <div className='database'>
-                <div className="datatable_expert">
+                <div className={`datatable_${useClass}`}>
                     {_.map(_.pick(data, rowLessField), (value, key) => {
                         return <label key={`row-${key}`}>{value}</label>
                     })
