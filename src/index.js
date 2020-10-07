@@ -9,6 +9,7 @@ import App from './App/App';
 import Login from './pages/Login';
 import {getRole} from './utils/utils';
 import Signup from './pages/Signup';
+import Home from './pages/Home';
 
 
 import './styles/index.css';
@@ -27,7 +28,7 @@ ReactDOM.render(
           <Signup />
         </Route>
         <Route exact path="/home">
-          <Login />
+          <Home />
         </Route>
         <Route exact path="/job">
           <Login />

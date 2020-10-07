@@ -642,3 +642,63 @@ color: var(--dark-second-background);
 .see-more:hover{
 	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
+
+
+#header {
+  height: 10vh;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  /* position: relative; */
+  /* background: pink; */
+}
+
+#header .brand-container {
+  display: flex;
+  z-index: 9;
+}
+
+#header .brand-container .brand {
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  text-decoration: none;
+  padding: 15px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#header .main-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+#header .main-nav .nav-item {
+  font-size: 1rem;
+  text-transform: uppercase;
+  color: white;
+  padding: 0 10px;
+  text-decoration: none;
+  transition: all .3s ease-in-out;
+  font-weight: normal;
+}
+
+#header .main-nav .nav-item:hover {
+  color: #1e3255;
+}
+
+.form-control {
+  padding: 10px !important;
+  border: 2px solid #1b2b9c;
+  font-size: 1rem;
+  box-sizing: border-box;
+  height: auto;
+  border-radius: .25rem;
+  max-width: 539px;
+}

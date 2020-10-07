@@ -1,0 +1,332 @@
+/* -----------------------------
+ Hero section
+ ----------------------------- */
+
+ .home-hero {
+    position: relative;
+    background-image: url('../img/blurred.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 80vh;
+    overflow: hidden;
+  }
+  
+  .hero-content_title {
+    position: absolute;
+    top: 25%;
+    left: 20%;
+    width: 100%;
+    /* padding-left: 6rem; */
+  }
+  
+  .hero-content_title h2 {
+    font-size: 5rem;
+    font-weight: 900;
+    color: white;
+    text-transform: uppercase;
+  }
+  
+  .hero-content_title h5 {
+    font-size: 2rem;
+    color: white;
+    /*  padding-left: 45rem;*/
+    text-transform: uppercase;
+  }
+  
+  .hero-content .callToAction {
+    width: 100%;
+  }
+  
+  .hero-content .callToAction a {
+    position: absolute;
+    top: 65%;
+    left: 21%;
+    text-decoration: none;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: white;
+    text-align: left;
+    letter-spacing: 0.4px;
+    overflow: hidden;
+    transition: all .3s ease-in;
+  }
+  
+  .hero-content .callToAction a:hover {
+    color: #1e3255;
+  }
+  
+  .hero-content .callToAction .ti-arrow-right {
+    font-size: 15px;
+    padding: 10px 10px;
+    transition: all .3s ease-in-out;
+  }
+  
+  .hero-content .callToAction .ti-arrow-right:hover {
+    color: #1e3255;
+  }
+  
+  .hero-content .callToAction .square {
+    position: absolute;
+    top: 65.7%;
+    left: 20.6%;
+    border-radius: 0;
+    height: 25px;
+    width: 25px;
+    background: #eee;
+    opacity: 0.5;
+  }
+  
+  /* -----------------------------
+   Services section
+   ----------------------------- */
+  
+  #services {
+    padding: 40px 0px;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: auto;
+  }
+  
+  #services .allInfo-services {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 50px 15px;
+    display: center;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  
+  #services .allInfo-services .header-services {
+    margin-bottom: 3rem;
+    text-transform: uppercase;
+  }
+  
+  #services .types-services {
+    display: grid;
+    grid-template-columns: 18% 18% 18% 18% 18%;
+    grid-gap: 1.2rem;
+  }
+  
+  #services .types-services .fa {
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  
+  #services .types-services .type-service_header {
+    text-transform: capitalize;
+    margin-bottom: 2.5rem;
+    background-color: #fafafa;
+    box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    height: 260px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    text-decoration: none;
+  }
+  
+  .icon {
+    border-radius: 5px;
+    height: 90px;
+  }
+  
+  /* -----------------------------
+   Featured jobs section
+  ----------------------------- */
+  
+  #featured {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 10rem 0;
+    position: relative;
+  }
+  
+  #featured .header-featured {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #featured .header-featured h1 {
+    text-transform: uppercase;
+    margin-top: 0;
+    margin-bottom: 3rem;
+  }
+  
+  #featured .header-featured .explore-link {
+    margin-left: auto;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-style: normal;
+    color: #222222;
+    font-weight: 400;
+    letter-spacing: 0.4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all .3s ease-in;
+  }
+  
+  .explore-link a:hover {
+    color: #1e58ff;
+  }
+  
+  #featured .explore-link .explore-arrow {
+    font-size: 12px;
+    margin-left: .6rem;
+  }
+  
+  #featured .featured-jobs_grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-column-gap: 0rem;
+    grid-row-gap: 2rem;
+    /* padding: 0 3rem; */
+  }
+  
+  .job-card {
+    display: flex;
+    flex-flow: column;
+    background: #fafafa;
+    padding: 30px 20px;
+    box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.5);
+    width: 230px;
+    cursor: pointer;
+    z-index: 9;
+    color: black;
+    margin: 0;
+  }
+  
+  .featured-jobs_grid a {
+    text-decoration: none;
+    color: black;
+  }
+  
+  .jobCard-info .job-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    text-decoration: none;
+  }
+  
+  .jobCard-info .job-salary {
+    font-size: 1rem;
+    color: #333333;
+    line-height: 1.8;
+  }
+  
+  .jobCard-info .job-status {
+    font-size: 1rem;
+    color: #333333;
+    line-height: 1.8;
+  }
+  
+  /* -----------------------------
+   About us section
+  ----------------------------- */
+  
+  #home-about {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: auto;
+    margin-bottom: 10rem;
+  }
+  
+  .about-image {
+    background-image: url("../img/group-of-people-in-a-meeting.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .about-header {
+    font-size: 6rem;
+    font-weight: 700;
+    color: #1e58ff;
+  }
+  
+  .info {
+    background: #444444;
+    display: block;
+    padding: 50px;
+  }
+  
+  .title_info {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-align: center;
+    letter-spacing: 0.4px;
+  }
+  
+  .para_info {
+    text-align: justify;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 400;
+    line-height: 1.4;
+  }
+  
+  .para {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: #ffffff;
+    line-height: 1.4;
+  }
+  
+  /* -----------------------------
+  industry section
+  ----------------------------- */
+  
+  .industry-grid {
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20%;
+    grid-gap: 3rem;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  
+  .industry-header {
+    margin-bottom: 8px;
+  }
+  
+  .industry-header h1 {
+    text-transform: uppercase;
+    margin-top: 0;
+    margin-bottom: 3rem;
+  }
+  
+  .industry-container {
+    display: flex;
+    flex-flow: column;
+    height: 250px;
+    background: #fafafa;
+    box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.5);
+    padding: 30px 20px;
+  }
+  
+  .industry-background {
+    height: 130px;
+    margin-bottom: 5px;
+  }
+  
+  .industry-label {
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding-bottom: 12px;
+    text-decoration: none;
+    text-align: center;
+  }
