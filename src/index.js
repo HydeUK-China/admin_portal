@@ -8,6 +8,7 @@ import * as serviceWorker from './serviceWorker';
 import App from './App/App';
 import Login from './pages/Login';
 import {getRole} from './utils/utils';
+import Signup from './pages/Signup';
 
 
 import './styles/index.css';
@@ -22,9 +23,27 @@ ReactDOM.render(
         <PrivateRoute path="/mgt">
           <App />
         </PrivateRoute>
+        <Route exact path="/signup">
+          <Signup />
+        </Route>
+        <Route exact path="/home">
+          <Login />
+        </Route>
+        <Route exact path="/job">
+          <Login />
+        </Route>
+        <Route exact path="/applyjob">
+          <Login />
+        </Route>
+        <Route exact path="/contactus">
+          <Login />
+        </Route>
+        <Route exact path="/aboutus">
+          <Login />
+        </Route>
         {/* fallback route */}
         <Route path="/">
-          <Redirect to="/mgt" />
+          <Redirect to="/home" />
         </Route>
       </Switch>
     </BrowserRouter>

@@ -15,6 +15,7 @@ export default class ExpertManagement extends Component {
             data: null,
             filterData: null,
             displayData: null,
+            sortKeys: [],
             activePage: 1,
             offset: 0,
             totalItemsCount: 0,
@@ -38,6 +39,7 @@ export default class ExpertManagement extends Component {
         this.rowDeleteHandler = this.rowDeleteHandler.bind(this);
         this.addHandler = this.addHandler.bind(this);
         this.editConfirmHandler = this.editConfirmHandler.bind(this);
+        this.sortTableHandler = this.sortTableHandler.bind(this);
     }
 
     componentDidMount() {
@@ -148,8 +150,34 @@ export default class ExpertManagement extends Component {
         }).catch(err => alert(err));
     }
 
+    sortTableHandler(key) {
+        const { filterData, sortKeys } = this.state;
+
+        const index = sortKeys.indexOf(key);
+        if (index !== -1) {
+            sortKeys.splice(index, 1);
+        } else {
+            sortKeys.push(key);
+        }
+
+        const temp_data = _.sortBy(filterData, sortKeys);
+        
+        this.setState({
+            filterData: temp_data,
+            sortKeys
+        }, () => {
+            const { offset, filterData } = this.state;
+            const [totalItemsCount, slice] = sliceData(filterData, offset);
+
+            this.setState({
+                totalItemsCount,
+                displayData: slice
+            })
+        })
+    }
+
     render() {
-        const { data, displayData, activePage, totalItemsCount, showAdd } = this.state;
+        const { data, displayData, activePage, totalItemsCount, showAdd, sortKeys } = this.state;
         const { role } = this.props;
 
         return (
@@ -174,6 +202,8 @@ export default class ExpertManagement extends Component {
                     rowMoreHeader={this.moreHeader}
                     onRowDelete={this.rowDeleteHandler}
                     onEditConfirm={this.editConfirmHandler}
+                    onSortTable={this.sortTableHandler}
+                    sortKeys={sortKeys}
                     modalHeader={'Expert Info'}
                     role={role}
                 />

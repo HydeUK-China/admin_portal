@@ -7,7 +7,8 @@ export default class ModalOpsTable extends Component {
         super(props);
 
         this.state = {
-            data: props.data
+            data: props.data,
+            sortKeys: props.sortKeys
         }
 
         this.lessFieldTitle = _.zipObject(props.rowLessField, props.rowLessHeader);
@@ -16,15 +17,16 @@ export default class ModalOpsTable extends Component {
     componentWillReceiveProps(nextProps) {
         if (nextProps !== this.props) {
             this.setState({
-                data: nextProps.data
+                data: nextProps.data,
+                sortKeys: nextProps.sortKeys
             })
         }
     }
 
     render() {
 
-        const { useClass, dataIdentifier, rowLessField, rowMoreField, rowLessHeader, rowMoreHeader, modalHeader, role, onRowDelete, onEditConfirm } = this.props;
-        const { data } = this.state;
+        const { useClass, dataIdentifier, rowLessField, rowMoreField, rowLessHeader, rowMoreHeader, modalHeader, role, onRowDelete, onEditConfirm, onSortTable } = this.props;
+        const { data, sortKeys } = this.state;
 
         return (
             <div className='table-box'>
@@ -32,7 +34,10 @@ export default class ModalOpsTable extends Component {
                     {
                         data && data[0] ?
                             _.map(_.pick(this.lessFieldTitle, _.keys(data[0])), (value, key) => {
-                                return <h6 key={`dataHeader-${key}`}>{value}</h6>
+                                return <h6 key={`dataHeader-${key}`} onClick={() => onSortTable(key)}>
+                                    <span>{value}</span>
+                                    {sortKeys.indexOf(key) !== -1 ? <i className="fa fa-sort-asc" aria-hidden="true"></i> : null}
+                                </h6>
                             })
                             : null
                     }
