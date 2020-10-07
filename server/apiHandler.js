@@ -18,6 +18,7 @@ router.post('/api/post', (req, res) => {
 // ======
 router.post('/api/login', dbOps.login);
 router.post('/api/logout', dbOps.logout);
+router.post('/api/signup', dbOps.signup);
 
 router.post('/api/expertDashboard', dbOps.expertDashboard);
 router.post('/api/fetchExpert/all', dbOps.fetchExpertAll);
@@ -25,6 +26,7 @@ router.post('/api/addExpert', dbOps.addExpert);
 router.post('/api/editExpert', dbOps.editExpert);
 router.post('/api/deleteExpert/:expertid', dbOps.deleteExpert);
 router.post('/api/fetchExpert/:expertid', dbOps.fetchExpert);
+router.post('/api/expertApply', dbOps.expertApply);
 router.post('/api/fetchEmployer', dbOps.fetchEmployer);
 router.post('/api/fetchProject/all', dbOps.fetchProjectAll);
 router.post('/api/addProject', dbOps.addProject);

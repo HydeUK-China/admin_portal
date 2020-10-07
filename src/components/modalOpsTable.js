@@ -8,7 +8,7 @@ export default class ModalOpsTable extends Component {
 
         this.state = {
             data: props.data,
-            sortKeys: props.sortKeys
+            sortKey: props.sortKey
         }
 
         this.lessFieldTitle = _.zipObject(props.rowLessField, props.rowLessHeader);
@@ -18,7 +18,7 @@ export default class ModalOpsTable extends Component {
         if (nextProps !== this.props) {
             this.setState({
                 data: nextProps.data,
-                sortKeys: nextProps.sortKeys
+                sortKey: nextProps.sortKey
             })
         }
     }
@@ -26,7 +26,7 @@ export default class ModalOpsTable extends Component {
     render() {
 
         const { useClass, dataIdentifier, rowLessField, rowMoreField, rowLessHeader, rowMoreHeader, modalHeader, role, onRowDelete, onEditConfirm, onSortTable } = this.props;
-        const { data, sortKeys } = this.state;
+        const { data, sortKey } = this.state;
 
         return (
             <div className='table-box'>
@@ -34,9 +34,9 @@ export default class ModalOpsTable extends Component {
                     {
                         data && data[0] ?
                             _.map(_.pick(this.lessFieldTitle, _.keys(data[0])), (value, key) => {
-                                return <h6 key={`dataHeader-${key}`} onClick={() => onSortTable(key)}>
+                                return <h6 key={`dataHeader-${key}`} className="dataheader-title" onClick={() => onSortTable(key)}>
                                     <span>{value}</span>
-                                    {sortKeys.indexOf(key) !== -1 ? <i className="fa fa-sort-asc" aria-hidden="true"></i> : null}
+                                    {sortKey === key ? <i className="fa fa-sort-asc" aria-hidden="true"></i> : null}
                                 </h6>
                             })
                             : null

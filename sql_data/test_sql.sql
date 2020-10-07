@@ -31,3 +31,7 @@ SELECT * FROM project_info;
 DELETE FROM project_info WHERE project_id IN (41, 42, 43);
 
 
+INSERT INTO expert_info (first_name, last_name, email, phone_no) VALUES ('TEST', 'TEST', 'hh@gmail.com', '123' );
+SELECT expert_id FROM expert_info WHERE first_name='TEST' AND last_name='TEST' AND email='hh@gmail.com' AND phone_no='123';
+
+INSERT INTO project_matching (project_id, expert_id) VALUES ('100', '200' );

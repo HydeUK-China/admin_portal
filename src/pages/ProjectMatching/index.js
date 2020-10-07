@@ -15,6 +15,7 @@ export default class ProjectMatching extends Component {
             filterData: null,
             displayData: null,
             innerData: null,
+            sortKey: 'project_id',
             activePage: 1,
             offset: 0,
             totalItemsCount: 0
@@ -28,6 +29,7 @@ export default class ProjectMatching extends Component {
         this.filterDataHandler = this.filterDataHandler.bind(this);
         this.rowClickHandler = this.rowClickHandler.bind(this);
         this.handlePageClick = this.handlePageClick.bind(this);
+        this.sortTableHandler = this.sortTableHandler.bind(this);
     }
 
     componentDidMount() {
@@ -82,10 +84,28 @@ export default class ProjectMatching extends Component {
                 displayData: slice
             })
         });
-    };
+    }
+
+    sortTableHandler(key) {
+        const { filterData } = this.state;
+        const temp_data = _.sortBy(filterData, key);
+        
+        this.setState({
+            filterData: temp_data,
+            sortKey: key
+        }, () => {
+            const { offset, filterData } = this.state;
+            const [totalItemsCount, slice] = sliceData(filterData, offset);
+
+            this.setState({
+                totalItemsCount,
+                displayData: slice
+            })
+        })
+    }
 
     render() {
-        const { data, displayData, innerData, activePage, totalItemsCount } = this.state;
+        const { data, displayData, innerData, activePage, totalItemsCount, sortKey } = this.state;
 
         return (
             <div className="database">
@@ -103,6 +123,8 @@ export default class ProjectMatching extends Component {
                     innerLessHeader={this.innerLessHeader}
                     innerLessField={this.innerLessField}
                     outerData={displayData}
+                    onSortTable={this.sortTableHandler}
+                    sortKey={sortKey}
                     outerDataIdentifier={'project_id'}
                     onRowClick={this.rowClickHandler}
                     innerData={innerData}

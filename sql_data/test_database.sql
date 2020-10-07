@@ -72,7 +72,7 @@ SELECT * FROM expert_info;
 
 
 CREATE TABLE project_matching (
-	matching_id int NOT NULL,
+	matching_id int NOT NULL auto_increment,
 	project_id int,
     expert_id int,
     supplementary_material_status varchar(300),

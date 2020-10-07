@@ -71,6 +71,59 @@ function logout(req, res) {
     });
 }
 
+function signup(req, res) {
+    const firstname = req.body.firstname;
+    const lastname = req.body.lastname;
+    const email = req.body.email;
+    const password = req.body.password;
+    const phone = req.body.phone;
+    const role = req.body.role;
+
+    const sql = `INSERT INTO expert_info (first_name, last_name, email, phone_no) 
+                VALUES (?, ?, ?, ?)`;
+
+    res.app.get('connection').query(sql, [firstname, lastname, email, phone], function (err, rows) {
+        if (err) {
+            res.status(400).json({
+                success: false,
+                msg: 'failed inserting into expert_info'
+            });
+        } else {
+            const sql = `SELECT expert_id FROM expert_info 
+                        WHERE first_name=? AND last_name=? AND email=? AND phone_no=?`
+            res.app.get('connection').query(sql, [firstname, lastname, email, phone], function (err, rows) {
+                if (err) {
+                    res.status(400).json({
+                        success: false,
+                        msg: 'failed getting user_id'
+                    });
+                } else {
+                    const expertid = rows[0].expert_id;
+                    const sql = `INSERT INTO user_credential (foreign_user_id, account_name, account_password, permission_role) 
+                                    VALUES (?, ?, ?, ?)`;
+                    res.app.get('connection').query(sql, [expertid, `${role}_${expertid}`, password, role], function (err, rows) {
+                        if (err) {
+                            res.status(400).json({
+                                success: false,
+                                msg: 'failed inserting into user_credential'
+                            });
+                        } else {
+                            req.session.token = jwtUtil.generateTokenByRole(role);
+                            res.status(200).json({
+                                success: true,
+                                data: {
+                                    role: role,
+                                    user_id: expertid
+                                }
+                            });
+                        }
+                    });
+                }
+            });
+        }
+    });
+}
+
 function expertDashboard(req, res) {
     const token = req.session.token;
 
@@ -318,6 +371,43 @@ function fetchExpert(req, res) {
         });
 }
 
+function expertApply(req, res) {
+    const expertid = req.body.expertid;
+    const projectid = req.body.projectid;
+
+    jwtUtil.verifyRoleFromToken(token)
+        .then((role) => {
+            if (role) {
+                const sql = `INSERT INTO project_matching (project_id, expert_id) 
+                            VALUES (?, ?)`;
+
+                res.app.get('connection').query(sql, [projectid, expertid], function (err, feedback) {
+                    if (err) {
+                        res.status(400).json({
+                            success: false,
+                            msg: err.sqlMessage
+                        });
+                    } else {
+                        res.status(200).json({
+                            success: true,
+                            data: 'successfully applied'
+                        });
+                    }
+                });
+            } else {
+                res.status(400).json({
+                    success: false,
+                    msg: 'role permission denied'
+                })
+            }
+        }).catch(err => {
+            res.status(400).json({
+                success: false,
+                msg: err
+            })
+        });
+}
+
 
 function fetchExpertProject(req, res) {
     const token = req.session.token;
@@ -387,7 +477,7 @@ function fetchProjectAll(req, res) {
 
     jwtUtil.verifyRoleFromToken(token)
         .then((role) => {
-            if (role === 'admin') {
+            if (role) {
                 const sql = 'SELECT * FROM project_info';
 
                 res.app.get('connection').query(sql, function (err, rows) {
@@ -625,11 +715,13 @@ module.exports = {
     expertDashboard,
     login,
     logout,
+    signup,
     fetchExpertAll,
     addExpert,
     editExpert,
     deleteExpert,
     fetchExpert,
+    expertApply,
     fetchProjectAll,
     addProject,
     editProject,

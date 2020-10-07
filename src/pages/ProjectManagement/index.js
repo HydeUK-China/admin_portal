@@ -15,7 +15,7 @@ export default class ProjectManagement extends Component {
             data: null,
             filterData: null,
             displayData: null,
-            sortKeys: [],
+            sortKey: 'project_id',
             activePage: 1,
             offset: 0,
             totalItemsCount: 0,
@@ -171,20 +171,12 @@ export default class ProjectManagement extends Component {
     }
 
     sortTableHandler(key) {
-        const { filterData, sortKeys } = this.state;
-
-        const index = sortKeys.indexOf(key);
-        if (index !== -1) {
-            sortKeys.splice(index, 1);
-        } else {
-            sortKeys.push(key);
-        }
-
-        const temp_data = _.sortBy(filterData, sortKeys);
+        const { filterData } = this.state;
+        const temp_data = _.sortBy(filterData, key);
         
         this.setState({
             filterData: temp_data,
-            sortKeys
+            sortKey: key
         }, () => {
             const { offset, filterData } = this.state;
             const [totalItemsCount, slice] = sliceData(filterData, offset);
@@ -197,7 +189,7 @@ export default class ProjectManagement extends Component {
     }
 
     render() {
-        const { data, displayData, activePage, totalItemsCount, showAdd, sortKeys } = this.state;
+        const { data, displayData, activePage, totalItemsCount, showAdd, sortKey } = this.state;
         const { role } = this.props;
 
         return (
@@ -224,7 +216,7 @@ export default class ProjectManagement extends Component {
                     onRowDelete={this.rowDeleteHandler}
                     onEditConfirm={this.editConfirmHandler}
                     onSortTable={this.sortTableHandler}
-                    sortKeys={sortKeys}
+                    sortKey={sortKey}
                     modalHeader={'Project Info'}
                     role={role}
                 />

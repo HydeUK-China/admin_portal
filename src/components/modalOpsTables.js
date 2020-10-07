@@ -9,7 +9,8 @@ export default class ModalOpsTables extends Component {
         this.state = {
             outerData: props.outerData,
             innerData: props.innerData,
-            showInfo: false
+            showInfo: false,
+            sortKey: props.sortKey
         }
 
         this.tableFieldTitle = _.zipObject(props.outerLessField, props.outerLessHeader);
@@ -22,7 +23,8 @@ export default class ModalOpsTables extends Component {
         if (nextProps !== this.props) {
             this.setState({
                 outerData: nextProps.outerData,
-                innerData: nextProps.innerData
+                innerData: nextProps.innerData,
+                sortKey: nextProps.sortKey
             })
         }
     }
@@ -42,8 +44,8 @@ export default class ModalOpsTables extends Component {
     }
 
     render() {
-        const { outerDataIdentifier, outerLessHeader, outerLessField, innerLessHeader, innerLessField } = this.props;
-        const { outerData, innerData, showInfo } = this.state;
+        const { outerDataIdentifier, outerLessHeader, outerLessField, innerLessHeader, innerLessField, onSortTable } = this.props;
+        const { outerData, innerData, showInfo, sortKey } = this.state;
 
         return (
             <div className='table-box'>
@@ -51,7 +53,10 @@ export default class ModalOpsTables extends Component {
                     {
                         outerData && outerData[0] ?
                             _.map(_.pick(this.tableFieldTitle, _.keys(outerData[0])), (value, key) => {
-                                return <h6 key={`dataHeader-${key}`}>{value}</h6>
+                                return <h6 key={`dataHeader-${key}`} className="dataheader-title" onClick={() => onSortTable(key)}>
+                                    <span>{value}</span>
+                                    {sortKey === key ? <i className="fa fa-sort-asc" aria-hidden="true"></i> : null}
+                                </h6>
                             })
                             : null
                     }
