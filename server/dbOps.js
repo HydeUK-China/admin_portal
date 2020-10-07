@@ -473,38 +473,21 @@ function fetchEmployer(req, res) {
 }
 
 function fetchProjectAll(req, res) {
-    const token = req.session.token;
+    const sql = 'SELECT * FROM project_info';
 
-    jwtUtil.verifyRoleFromToken(token)
-        .then((role) => {
-            if (role) {
-                const sql = 'SELECT * FROM project_info';
-
-                res.app.get('connection').query(sql, function (err, rows) {
-                    if (err) {
-                        res.status(400).json({
-                            success: false,
-                            msg: err.sqlMessage
-                        });
-                    } else {
-                        res.status(200).json({
-                            success: true,
-                            data: rows
-                        })
-                    }
-                });
-            } else {
-                res.status(400).json({
-                    success: false,
-                    msg: 'role permission denied'
-                })
-            }
-        }).catch(err => {
+    res.app.get('connection').query(sql, function (err, rows) {
+        if (err) {
             res.status(400).json({
                 success: false,
-                msg: err
+                msg: err.sqlMessage
+            });
+        } else {
+            res.status(200).json({
+                success: true,
+                data: rows
             })
-        });
+        }
+    });
 }
 
 function addProject(req, res) {
