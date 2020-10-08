@@ -3,6 +3,7 @@ import _ from 'lodash';
 import { Button, Modal } from 'react-bootstrap';
 import { currencyList } from '../asset/currencyList';
 import { placeholder } from '../asset/placeholder';
+import jsPDF from 'jspdf';
 
 export default class InfoEditModal extends Component {
     constructor(props) {
@@ -74,6 +75,14 @@ export default class InfoEditModal extends Component {
         });
     }
 
+    generatePDF = () => {
+          var pdf = new jsPDF('p', 'pt');
+          var data = document.getElementById("htmlTopdf")
+          var content = data.innerText || data.textContent;
+          pdf.text(content, 40, 40)
+          pdf.save('demo.pdf')
+    }
+
     render() {
         const { fileds, modalHeader, allowEdit } = this.props;
         const { data, show, showInput } = this.state;
@@ -85,7 +94,7 @@ export default class InfoEditModal extends Component {
 
                 <Modal.Body>
                     <form onSubmit={this.clickConfirm}>
-                        <div className='content-general-info'>
+                        <div id='htmlTopdf' className='content-general-info'>
                             {showInput ?
                                 _.map(_.pick(data, fileds), (value, key) => {
                                     if (key === 'id' || key === 'expert_id' || key === 'project_id' || key === 'matching_id') {
@@ -180,7 +189,7 @@ export default class InfoEditModal extends Component {
                                     : <Button onClick={this.clickEdit}> Edit </Button>)
                                 : null
                         }
-                        <Button>Download</Button>
+                        <Button onClick={this.generatePDF}>Download</Button>
                     </form>
                 </Modal.Body>
             </Modal>

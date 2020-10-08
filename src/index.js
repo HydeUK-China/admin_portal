@@ -12,6 +12,8 @@ import Signup from './pages/Signup';
 import Home from './pages/Home';
 import Jobs from './pages/Jobs';
 import ApplyJob from './pages/ApplyJob';
+import ContactUs from './pages/ContactUs';
+import AboutUs from './pages/AboutUs';
 
 import './styles/index.css';
 
@@ -38,10 +40,10 @@ ReactDOM.render(
           <ApplyJob />
         </Route>
         <Route exact path="/contactus">
-          <Login />
+          <ContactUs />
         </Route>
         <Route exact path="/aboutus">
-          <Login />
+          <AboutUs />
         </Route>
         {/* fallback route */}
         <Route path="/">
