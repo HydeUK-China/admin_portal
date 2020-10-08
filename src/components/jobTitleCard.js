@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 import '../styles/jobtitlecard.css';
 
@@ -19,11 +20,11 @@ export default class JobTitleCard extends Component {
     }
 
     render() {
-        const { data } = this.props;
+        const { data, link } = this.props;
         const { employer, salary, start_date } = data;
 
         return (
-            <div className="job-card">
+            <Link className="job-card" to={link}>
                 <i className="fa fa-suitcase"></i>
                 <div className="jobCard-info">
                     <div className="job-title">{employer}</div>
@@ -35,7 +36,7 @@ export default class JobTitleCard extends Component {
                     }
                 </div>
 
-            </div>
+            </Link>
         )
     }
 }

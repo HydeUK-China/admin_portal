@@ -82,7 +82,8 @@ export default class Jobs extends Component {
 
         return _.map(displayData, (value, index) => {
             return <JobTitleCard key={`jobtitlecard-${index}`}
-                        data={value} />
+                        data={value} 
+                        link={`/applyjob/${value.project_id}`}/>
         })
     }
 

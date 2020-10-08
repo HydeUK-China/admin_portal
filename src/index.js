@@ -11,6 +11,7 @@ import {getRole} from './utils/utils';
 import Signup from './pages/Signup';
 import Home from './pages/Home';
 import Jobs from './pages/Jobs';
+import ApplyJob from './pages/ApplyJob';
 
 import './styles/index.css';
 
@@ -33,8 +34,8 @@ ReactDOM.render(
         <Route exact path="/jobs">
           <Jobs />
         </Route>
-        <Route exact path="/applyjob">
-          <Login />
+        <Route exact path="/applyjob/:projectId">
+          <ApplyJob />
         </Route>
         <Route exact path="/contactus">
           <Login />
