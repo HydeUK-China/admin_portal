@@ -1,13 +1,9 @@
-import React, { Component, createRef, Fragment } from 'react';
-import { Link } from 'react-router-dom';
+import React, { Component, createRef } from 'react';
+import { withRouter } from 'react-router';
 import _ from 'lodash';
-import {fetchReq, setUserInfo} from '../utils/utils';
+import { fetchReq, setUserInfo } from '../utils/utils';
 
-
-
-
-
-export default class RegisterForm extends Component {
+class RegisterForm extends Component {
     constructor(props) {
         super(props)
 
@@ -32,6 +28,7 @@ export default class RegisterForm extends Component {
     handleRegister(e) {
         e.preventDefault();
 
+        const props = this.props;
         const firstname = this.firstname;
         const lastname = this.lastname;
         const email = this.email;
@@ -49,72 +46,48 @@ export default class RegisterForm extends Component {
             })
         }).then(data => {
             setUserInfo(data)
-        })
+
+            props.history.replace('/mgt')
+        }).catch(msg =>
+            alert(msg)
+        )
     }
 
-
-
-
     render() {
-
-        const state = this.state;
-
         return (
-            <Fragment>
-                <section className="registerLogin-page">
-                    <div className="content-box container">
-                        <div className="row">
-                            <div className="col-md-6 form-col">
-
-
-                                <Link className="logo" to="/" style={{ 'color': 'black' }}>
-                                    HI TALENTS PORTAL
-              </Link>
-
-                                <div className="registerLogin-title_content">
-                                    <h2>Sign up</h2>
-                                    <h4>Register now and get access to amazing opportunities</h4>
-                                </div>
-                                <form className="registerLogin-form">
-                                    <div className="form-row">
-                                        <div className="col">
-                                            <label>First name</label>
-                                            <input type="text" className="form-control" placeholder="Jane" ref={this.firstname} required />
-                                        </div>
-                                        <div className="col">
-                                            <label>Last name</label>
-                                            <input type="text" className="form-control" placeholder="Doe" ref={this.lastname} required />
-                                        </div>
-                                    </div>
-                                    <div className="form-row">
-                                        <div className="form-group col-md-6">
-                                            <label>Email</label>
-                                            <input type="email" className="form-control" id="inputEmail4" placeholder="name@example.com"
-                                                ref={this.email} required />
-                                        </div>
-                                        <div className="form-group col-md-6">
-                                            <label>Password</label>
-                                            <input type="password" className="form-control" id="inputPassword4" placeholder="******"
-                                                ref={this.password} required />
-                                        </div>
-                                    </div>
-                                    <div className="form-group">
-                                        <label>Phone number</label>
-                                        <input type="tel" className="form-control" id="inputPhoneNumber" placeholder="796-644-8844"
-                                            ref={this.phone} required />
-                                    </div>
-
-                                    <button type="submit" className="apply-btn create_btn" onClick={this.handleRegister}> Create Account</button>
-                                </form>
-                            </div>
-                            <div className="col-md-6 bg-col">
-                                <div className="register-bg_image">
-                                </div>
-                            </div>
-                        </div>
+            <form className="registerLogin-form" onSubmit={this.handleRegister}>
+                <div className="form-row">
+                    <div className="col">
+                        <label>First name</label>
+                        <input type="text" className="form-control" placeholder="Jane" ref={this.firstname} required />
                     </div>
-                </section>
-            </Fragment>
+                    <div className="col">
+                        <label>Last name</label>
+                        <input type="text" className="form-control" placeholder="Doe" ref={this.lastname} required />
+                    </div>
+                </div>
+                <div className="form-row">
+                    <div className="form-group col-md-6">
+                        <label>Email</label>
+                        <input type="email" className="form-control" id="inputEmail4" placeholder="name@example.com"
+                            ref={this.email} required />
+                    </div>
+                    <div className="form-group col-md-6">
+                        <label>Password</label>
+                        <input type="password" className="form-control" id="inputPassword4" placeholder="******"
+                            ref={this.password} required />
+                    </div>
+                </div>
+                <div className="form-group">
+                    <label>Phone number</label>
+                    <input type="tel" className="form-control" id="inputPhoneNumber" placeholder="796-644-8844"
+                        ref={this.phone} required />
+                </div>
+
+                <button type="submit" className="apply-btn create_btn"> Create Account</button>
+            </form>
         )
     }
 }
+
+export default withRouter(RegisterForm)

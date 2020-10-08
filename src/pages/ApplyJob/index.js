@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
 import { fetchReq, getRole, getUid } from '../../utils/utils';
+import RegisterForm from '../../components/RegisterForm';
+import Footer from '../../components/Footer';
 
 import '../../styles/applyjob.css';
 
@@ -44,7 +46,7 @@ class ApplyJob extends Component {
             }).catch(msg =>
                 alert(msg)
             )
-        } if (role === '__admin__') {
+        } else if (role === '__admin__') {
             alert("You are admin and you are not supposed to apply for this job.")
         } else {
             alert("You are not loggedin yet. You need login before applying for this job.")
@@ -53,8 +55,8 @@ class ApplyJob extends Component {
 
     render() {
         const { projectId, expertId, role, project } = this.state;
-        const { job_title, employer, start_date, close_date, salary, job_description, required_expertise, professional_field } = project;
-        console.log('projectId: ', projectId, 'expertId: ', expertId)
+        const { job_title, employer, start_date, close_date, salary, job_description, 
+                required_expertise, professional_field, job_summary, responsibility} = project;
 
         return (
             <div>
@@ -105,7 +107,7 @@ class ApplyJob extends Component {
 
                                 <div className="job-summary">
                                     <p className="para-width">
-                                        {required_expertise}
+                                        {job_summary}
                                     </p>
                                 </div>
 
@@ -118,20 +120,20 @@ class ApplyJob extends Component {
                                 <div className="job-responsibilities">Responsibilities
                                     <ul>
                                         <li className="info-item">
-                                            Onboarding and engagement process with every client.
-                                    </li>
-                                        <li className="info-item">
+                                            {responsibility}
+                                        </li>
+                                        {/* <li className="info-item">
                                             Identify risks to minimise attrition.
-                                    </li>
+                                        </li>
                                         <li className="info-item">
                                             Identify and convert opportunities to up sell and cross sell existing products.
-                                    </li>
+                                        </li>
                                         <li className="info-item">
                                             Create and convert cross sell opportunities.
-                                    </li>
+                                        </li>
                                         <li className="info-item">
                                             Establish and maintain relationship with key client stakeholders.
-                                    </li>
+                                        </li> */}
                                     </ul>
                                 </div>
 
@@ -139,14 +141,14 @@ class ApplyJob extends Component {
                                     Essential skills
                                     <ul>
                                         <li className="info-item">
-                                            Commercially and client focused
-                                    </li>
-                                        <li className="info-item">
+                                            {required_expertise}
+                                        </li>
+                                        {/* <li className="info-item">
                                             Sales and relationship management experience
-                                    </li>
+                                        </li>
                                         <li className="info-item">
                                             Experience working to commercial KPI’s
-                                    </li>
+                                        </li> */}
                                     </ul>
                                 </div>
 
@@ -178,11 +180,13 @@ class ApplyJob extends Component {
 
                             <div className="col-md-6">
                                 <h4 className="form-header">Apply and register your CV now</h4>
-
+                                <RegisterForm />
                             </div>
                         </div>
                     </div>
                 </section>
+
+                <Footer/>
             </div>
         )
     }

@@ -396,6 +396,7 @@ function fetchExpert(req, res) {
 }
 
 function expertApply(req, res) {
+    const token = req.session.token;
     const expertid = req.body.expertid;
     const projectid = req.body.projectid;
 
