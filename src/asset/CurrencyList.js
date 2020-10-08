@@ -1,4 +1,5 @@
 export const currencyList = [
+    "",
     "USD",
     "EUR",
     "JPY",

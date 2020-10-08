@@ -543,12 +543,14 @@ function addProject(req, res) {
         .then((role) => {
             if (role === 'admin') {
                 const sql = `INSERT INTO project_info 
-                            (start_date, professional_field, job_description,
+                            (start_date, close_date, job_title, featured, responsibility,
+                            essential_skills, professional_field, job_description,
                             required_expertise, employer, area, salary, currency)
-                            VALUES (?, ?, ?, ?, ?, ?, ?, ?)`;
+                            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
 
-                res.app.get('connection').query(sql, [record.start_date, record.professional_field, record.job_description, record.required_expertise,
-                record.employer, record.area, record.salary, record.currency],
+                res.app.get('connection').query(sql, [record.start_date, record.close_date, record.job_title, record.featured, record.responsibility,
+                record.essential_skills, record.professional_field, record.job_description, record.required_expertise, record.employer, record.area, 
+                record.salary, record.currency],
                     function (err, rows) {
                         if (err) {
                             res.status(400).json({
@@ -585,6 +587,11 @@ function editProject(req, res) {
             if (role === 'admin') {
                 const sql = `UPDATE project_info 
                             SET start_date=?,
+                            close_date=?,
+                            job_title=?,
+                            featured=?,
+                            responsibility=?,
+                            essential_skills=?,
                             professional_field=?,
                             job_description=?,
                             required_expertise=?,
@@ -594,8 +601,9 @@ function editProject(req, res) {
                             currency=?
                             WHERE project_id=?`;
 
-                res.app.get('connection').query(sql, [record.start_date, record.professional_field, record.job_description, record.required_expertise,
-                record.employer, record.area, record.salary, record.currency, record.project_id],
+                res.app.get('connection').query(sql, [record.start_date, record.close_date, record.job_title, record.featured, record.responsibility, 
+                record.essential_skills, record.professional_field, record.job_description, record.required_expertise, record.employer, record.area, 
+                record.salary, record.currency, record.project_id],
                     function (err, feedback) {
                         if (err) {
                             res.status(400).json({

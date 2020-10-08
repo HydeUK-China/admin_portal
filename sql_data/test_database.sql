@@ -2,7 +2,7 @@ CREATE DATABASE portal_system;
 
 USE portal_system;
 
--- drop table expert_info;
+-- drop table project_matching;
 
 CREATE TABLE user_credential (
 	id int NOT NULL auto_increment,
@@ -20,7 +20,12 @@ SELECT * FROM user_credential;
 
 CREATE TABLE project_info (
 	project_id int NOT NULL auto_increment,
-    start_date varchar(300),
+    start_date varchar(30),
+    close_date varchar(30),
+    job_title varchar(300),
+	featured varchar(1000),
+    responsibility varchar(3000),
+    essential_skills varchar(1000),
     professional_field varchar(300),
     job_description varchar(3000),
     required_expertise varchar(3000),

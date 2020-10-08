@@ -21,14 +21,14 @@ export default class JobTitleCard extends Component {
 
     render() {
         const { data, link } = this.props;
-        const { employer, salary, start_date } = data;
+        const { employer, currency, salary, start_date } = data;
 
         return (
             <Link className="job-card" to={link}>
                 <i className="fa fa-suitcase"></i>
                 <div className="jobCard-info">
                     <div className="job-title">{employer}</div>
-                    <div className="job-salary">{salary}</div>
+                    <div className="job-salary">{currency} {salary}</div>
                     {
                         start_date ?
                             <div className="job-status">Posted {this.calculateDayDiff(start_date)} days</div>

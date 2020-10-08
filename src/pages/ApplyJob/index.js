@@ -54,9 +54,9 @@ class ApplyJob extends Component {
     }
 
     render() {
-        const { projectId, expertId, role, project } = this.state;
-        const { job_title, employer, start_date, close_date, salary, job_description, 
-                required_expertise, professional_field, job_summary, responsibility} = project;
+        const { role, project } = this.state;
+        const { job_title, employer, start_date, close_date, currency, salary, job_description, 
+                required_expertise, professional_field, featured, responsibility, essential_skills} = project;
 
         return (
             <div>
@@ -100,14 +100,14 @@ class ApplyJob extends Component {
                                 </div>
 
                                 <div className="job-details">
-                                    <div className="salary">{salary}</div>
+                                <div className="salary">{currency} {salary}</div>
                                     <div className="status">{start_date !== "" ? `Posted ${start_date} by ${employer}` : ''}</div>
                                     <div className="type">Featured</div>
                                 </div>
 
                                 <div className="job-summary">
                                     <p className="para-width">
-                                        {job_summary}
+                                        {featured}
                                     </p>
                                 </div>
 
@@ -141,7 +141,7 @@ class ApplyJob extends Component {
                                     Essential skills
                                     <ul>
                                         <li className="info-item">
-                                            {required_expertise}
+                                            {essential_skills}
                                         </li>
                                         {/* <li className="info-item">
                                             Sales and relationship management experience

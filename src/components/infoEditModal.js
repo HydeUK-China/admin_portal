@@ -106,7 +106,11 @@ export default class InfoEditModal extends Component {
                                                     defaultValue={value}
                                                     onChange={(e) => this.handleTextChange(e, key)}>
                                                     {_.map(currencyList, (_item, _index) => {
-                                                        return <option key={`currency-${_index}`} value={_item}>{_item}</option>
+                                                        if(_item === ""){
+                                                            return <option key={`currency-${_index}`} value={_item}>Please select</option>
+                                                        } else{
+                                                            return <option key={`currency-${_index}`} value={_item}>{_item}</option>
+                                                        }
                                                     })}
                                                 </select>
                                             </div>
