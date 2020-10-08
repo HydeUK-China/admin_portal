@@ -77,7 +77,7 @@ function signup(req, res) {
     const email = req.body.email;
     const password = req.body.password;
     const phone = req.body.phone;
-    const role = req.body.role;
+    // const role = req.body.role;
 
     const sql = `INSERT INTO expert_info (first_name, last_name, email, phone_no) 
                 VALUES (?, ?, ?, ?)`;
@@ -101,7 +101,7 @@ function signup(req, res) {
                     const expertid = rows[0].expert_id;
                     const sql = `INSERT INTO user_credential (foreign_user_id, account_name, account_password, permission_role) 
                                     VALUES (?, ?, ?, ?)`;
-                    res.app.get('connection').query(sql, [expertid, `${role}_${expertid}`, password, role], function (err, rows) {
+                    res.app.get('connection').query(sql, [expertid, `expert_${expertid}`, password, 'expert'], function (err, rows) {
                         if (err) {
                             res.status(400).json({
                                 success: false,
@@ -113,7 +113,8 @@ function signup(req, res) {
                                 success: true,
                                 data: {
                                     role: role,
-                                    user_id: expertid
+                                    user_id: expertid,
+                                    msg: 'Successfully registered.'
                                 }
                             });
                         }
@@ -213,7 +214,7 @@ function addExpert(req, res) {
                         } else {
                             const sql = `SELECT expert_id FROM expert_info 
                                         WHERE first_name=? AND last_name=? AND email=?`
-                            res.app.get('connection').query(sql, [firstname, lastname, email], function (err, rows) {
+                            res.app.get('connection').query(sql, [record.first_name, record.last_name, record.email], function (err, rows) {
                                 if (err) {
                                     res.status(400).json({
                                         success: false,

@@ -23,7 +23,7 @@ class Login extends Component {
 
     const props = this.props;
     const email = this.email;
-    const pwd = this.password
+    const pwd = this.password;
     
     fetchReq('/api/login', {
       body: JSON.stringify({ 
