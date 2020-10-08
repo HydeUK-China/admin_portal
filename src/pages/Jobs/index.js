@@ -107,7 +107,7 @@ export default class Jobs extends Component {
                             <NavLink className="nav-item" to="/contactus" style={{color: 'white'}}>Contact</NavLink>
                             <div className="sign-in">
                             {role === '__admin__' ?
-                                <NavLink className="nav-item user" to="mgt/admin_dashboard">
+                                <NavLink className="nav-item user" to="/mgt/admin_dashboard">
                                     <div className="fa fa-user-o"></div>
                                 </NavLink>
                                 : 

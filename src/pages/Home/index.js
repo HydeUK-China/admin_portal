@@ -65,10 +65,9 @@ export default class Home extends Component {
                 <section id="top" className="home-hero">
                     <header id="header">
                         <div className="brand-container">
-                            <a className="brand" href="/">
-                            Hyde International Talents
-                        
-                            </a>
+                            <Link className="brand" to="/home">
+                                Hyde International Talents       
+                            </Link>
                         </div>
 
                         <nav className="main-nav">
@@ -78,7 +77,7 @@ export default class Home extends Component {
                             <NavLink className="nav-item" to="/contactus">Contact</NavLink>
                             <div className="sign-in">
                             {role === '__admin__' ?
-                                <NavLink className="nav-item user" to="mgt/admin_dashboard">
+                                <NavLink className="nav-item user" to="/mgt/admin_dashboard">
                                     <div className="fa fa-user-o"></div>
                                 </NavLink>
                                 : 

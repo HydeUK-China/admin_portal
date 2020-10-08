@@ -73,14 +73,20 @@ class App extends Component {
     return (
       <div>
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-          <Link className="navbar-brand" to='/home'>HI TALENTS</Link>
+          <Link className="navbar-brand" to='/mgt'>HI TALENTS</Link>
           <button className="navbar-toggler" onClick={this.toggleNavbar}
             type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className={navbarToggler ? "collapse navbar-collapse show" : "collapse navbar-collapse"}>
             <ul className="nav navbar-nav ml-auto">
-
+            <li className="nav-link">
+              <Link to='/home'>
+                <div style={{color: 'white'}} className="home bg warning">  
+                      <i className="fas fa-home"></i>
+                </div>
+              </Link>  
+              </li>
               <li className="nav-link">
                 <div className="Signout bg warning">
                   <i className="fas fa-sign-out-alt" onClick={this.handleLogout}></i>
