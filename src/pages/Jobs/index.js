@@ -100,15 +100,6 @@ export default class Jobs extends Component {
                             </a>
                         </div>
                         <nav className="main-nav">
-                            {/* <a className="nav-item" href="/" style={{color: 'white'}}>Home</a>
-                            <a className="nav-item" href="/jobPages/category-page.html" style={{color: 'white'}}>Jobs</a>
-                            <a className="nav-item" href="/about-page.html" style={{color: 'white'}}>About</a>
-                            <a className="nav-item" href="/contact-page.html" style={{color: 'white'}}>Contact</a>
-                            <div className="sign-in">
-                            <a className="nav-item user" href="accounts/login.html">
-                                <div className="fa fa-user-o"></div>
-                            </a>
-                            </div> */}
                             <NavLink className="nav-item" to="/home" style={{color: 'white'}}>Home</NavLink>
                             <NavLink className="nav-item" to="/jobs" style={{color: 'white'}}>Jobs</NavLink>
                             <NavLink className="nav-item" to="/aboutus" style={{color: 'white'}}>About</NavLink>
