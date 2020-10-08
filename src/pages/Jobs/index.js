@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
 import _ from 'lodash';
-import { fetchReq } from '../../utils/utils';
+import { fetchReq, getRole } from '../../utils/utils';
 import Search from '../../components/search';
 import Footer from '../../components/Footer';
 import JobTitleCard from '../../components/jobTitleCard';
@@ -14,6 +15,7 @@ export default class Jobs extends Component {
         super(props)
 
         this.state = {
+            role: getRole(),
             projectData: [],
             filterData: [],
             activePage: 1,
@@ -85,7 +87,7 @@ export default class Jobs extends Component {
     }
 
     render() {
-        const { projectData, activePage, totalItemsCount } = this.state;
+        const { projectData, activePage, totalItemsCount, role } = this.state;
 
         return (
             <div>
@@ -98,7 +100,7 @@ export default class Jobs extends Component {
                             </a>
                         </div>
                         <nav className="main-nav">
-                            <a className="nav-item" href="/" style={{color: 'white'}}>Home</a>
+                            {/* <a className="nav-item" href="/" style={{color: 'white'}}>Home</a>
                             <a className="nav-item" href="/jobPages/category-page.html" style={{color: 'white'}}>Jobs</a>
                             <a className="nav-item" href="/about-page.html" style={{color: 'white'}}>About</a>
                             <a className="nav-item" href="/contact-page.html" style={{color: 'white'}}>Contact</a>
@@ -106,6 +108,25 @@ export default class Jobs extends Component {
                             <a className="nav-item user" href="accounts/login.html">
                                 <div className="fa fa-user-o"></div>
                             </a>
+                            </div> */}
+                            <NavLink className="nav-item" to="/home" style={{color: 'white'}}>Home</NavLink>
+                            <NavLink className="nav-item" to="/jobs" style={{color: 'white'}}>Jobs</NavLink>
+                            <NavLink className="nav-item" to="/aboutus" style={{color: 'white'}}>About</NavLink>
+                            <NavLink className="nav-item" to="/contactus" style={{color: 'white'}}>Contact</NavLink>
+                            <div className="sign-in">
+                            {role === '__admin__' ?
+                                <NavLink className="nav-item user" to="mgt/admin_dashboard">
+                                    <div className="fa fa-user-o"></div>
+                                </NavLink>
+                                : 
+                                (role === 'expert' ? 
+                                    <NavLink className="nav-item user" to="/mgt/expert_profile">
+                                        <div className="fa fa-user-o"></div>
+                                    </NavLink>
+                                    : <NavLink className="nav-item user" to="/login">
+                                        <div className="fa fa-user-o"></div>
+                                      </NavLink>)
+                            }                          
                             </div>
                         </nav>       
                     </header>

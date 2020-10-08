@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import _ from 'lodash';
 import { fetchReq, getRole } from '../../utils/utils';
 import Footer from '../../components/Footer';
@@ -58,7 +58,7 @@ export default class Home extends Component {
 
     render() {
         const { role } = this.state;
-        
+
         return (
             <div>
                 <section id="top" className="home-hero">
@@ -181,7 +181,7 @@ export default class Home extends Component {
                         <div className="header-featured">
                             <h1>featured jobs</h1>
                             <span className="explore-square"></span>
-                            <a className="explore-link" href="#">Explore more<span className="explore-arrow ti-arrow-right"></span></a>
+                            <Link className="explore-link" to="/jobs">Explore more<i className="fa fa-arrow-right"></i></Link>
                         </div>
 
                         <article className="featured-jobs_grid">

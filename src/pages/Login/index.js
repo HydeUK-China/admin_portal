@@ -53,6 +53,7 @@ class Login extends Component {
             </div>
             <div className="registerLogin-title_content">
               <h2>Log in</h2>
+              <h4>Don't have an account?<Link to="/signup">Sign up</Link></h4>
             </div>
             <form className="registerLogin-form">
               <div className="form-group ">
