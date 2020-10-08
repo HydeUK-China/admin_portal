@@ -99,7 +99,7 @@ class ApplyJob extends Component {
 
                                 <div className="job-details">
                                     <div className="salary">{salary}</div>
-                                    <div className="status">{ start_date !== "" ? `Posted ${start_date} by ${employer}` : ''}</div>
+                                    <div className="status">{start_date !== "" ? `Posted ${start_date} by ${employer}` : ''}</div>
                                     <div className="type">Featured</div>
                                 </div>
 

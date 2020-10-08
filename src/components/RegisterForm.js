@@ -44,7 +44,8 @@ export default class RegisterForm extends Component {
                 lastname: lastname.current.value,
                 email: email.current.value,
                 password: password.current.value,
-                phone: phone.current.value
+                phone: phone.current.value,
+                role: 'expert'
             })
         }).then(data => {
             setUserInfo(data)
