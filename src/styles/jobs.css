@@ -1,0 +1,134 @@
+/* -----------------------------
+ Hero section
+ ----------------------------- */
+ .category-hero {
+    position: relative;
+    background-image: url('../img/banner.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 1.5;
+    background-position: bottom;
+    width: 100%;
+    height: 40vh;
+    overflow: hidden;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+  }
+  .hero-category_title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .hero-category_title h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: black;
+  }
+  #filter-part {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 5rem;
+  }
+  .filters {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* padding: 10px 15px; */
+  }
+  .dropdown {
+    display: inline-block;
+    position: relative;
+    padding: 0 20px;
+  }
+  .dropdown-menu {
+    position: absolute;
+    left: 10%;
+    background: white;
+    min-width: 110px;
+    border-radius: 0;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
+    z-index: 1;
+    display: none;
+    text-align: center;
+  }
+  .dropdown-menu a {
+    text-decoration: none;
+    text-transform: capitalize;
+    color: black;
+  }
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+  .btn-primary {
+    background: white;
+    color: black;
+    border-radius: 0;
+    border-color: black;
+  }
+  /* .form-control {
+    max-width: 300px;
+    margin-left: auto;
+    border-radius: 0;
+    border-color: black;
+  } */
+  
+  /* -----------------------------
+   Jobs grid section
+   ----------------------------- */
+  .all-jobs {
+    display: grid;
+    /* margin: 5rem 0; */
+    position: relative;
+  }
+  .all-jobs a {
+    text-decoration: none;
+  }
+  .category-shape {
+    position: absolute;
+    left: 0;
+    /* top: 5%; */
+    border-radius: 0;
+    height: 410px;
+    width: 245px;
+    background: #00216d;
+  }
+  .header-grid {
+    display: flex;
+    margin: 3rem 8rem;
+    z-index: 9;
+  }
+  .header-grid a {
+    margin-left: auto;
+  }
+  .header-grid h1 {
+    font-size: 5.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: black;
+  }
+  
+  .category-jobs_grid {
+    min-height: 30vh;
+    display: grid;
+    /* grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); */
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    grid-gap: 2rem;
+    margin: 3rem 7rem;
+  }
+
+  .filters input{
+    max-width: 539px;
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #1b2b9c;
+  }
+
+  .job-card {
+    max-height: 300px;
+    overflow: scroll;
+  }
+  

@@ -10,7 +10,7 @@ import Login from './pages/Login';
 import {getRole} from './utils/utils';
 import Signup from './pages/Signup';
 import Home from './pages/Home';
-
+import Jobs from './pages/Jobs';
 
 import './styles/index.css';
 
@@ -30,8 +30,8 @@ ReactDOM.render(
         <Route exact path="/home">
           <Home />
         </Route>
-        <Route exact path="/job">
-          <Login />
+        <Route exact path="/jobs">
+          <Jobs />
         </Route>
         <Route exact path="/applyjob">
           <Login />

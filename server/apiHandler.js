@@ -29,6 +29,7 @@ router.post('/api/fetchExpert/:expertid', dbOps.fetchExpert);
 router.post('/api/expertApply', dbOps.expertApply);
 router.post('/api/fetchEmployer', dbOps.fetchEmployer);
 router.post('/api/fetchProject/all', dbOps.fetchProjectAll);
+router.post('/api/fetchProject/:projectid', dbOps.fetchProject);
 router.post('/api/addProject', dbOps.addProject);
 router.post('/api/editProject', dbOps.editProject);
 router.post('/api/deleteProject/:projectid', dbOps.deleteProject);

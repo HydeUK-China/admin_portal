@@ -211,10 +211,33 @@ function addExpert(req, res) {
                                 msg: err.sqlMessage
                             });
                         } else {
-                            res.status(200).json({
-                                success: true,
-                                data: feedback
-                            })
+                            const sql = `SELECT expert_id FROM expert_info 
+                                        WHERE first_name=? AND last_name=? AND email=?`
+                            res.app.get('connection').query(sql, [firstname, lastname, email], function (err, rows) {
+                                if (err) {
+                                    res.status(400).json({
+                                        success: false,
+                                        msg: 'failed getting user_id'
+                                    });
+                                } else {
+                                    const expertid = rows[0].expert_id;
+                                    const sql = `INSERT INTO user_credential (foreign_user_id, account_name, account_password, permission_role) 
+                                                    VALUES (?, ?, ?, ?)`;
+                                    res.app.get('connection').query(sql, [expertid, `expert_${expertid}`, record.password, 'expert'], function (err, rows) {
+                                        if (err) {
+                                            res.status(400).json({
+                                                success: false,
+                                                msg: 'failed inserting into user_credential'
+                                            });
+                                        } else {
+                                            res.status(200).json({
+                                                success: true,
+                                                data: feedback
+                                            });
+                                        }
+                                    });
+                                }
+                            });
                         }
                     });
             } else {
@@ -490,6 +513,26 @@ function fetchProjectAll(req, res) {
     });
 }
 
+function fetchProject(req, res) {
+    const projectId = req.params.projectid;
+
+    const sql = 'SELECT * FROM project_info WHERE project_id=?';
+
+    res.app.get('connection').query(sql, [projectId], function (err, rows) {
+        if (err) {
+            res.status(400).json({
+                success: false,
+                msg: err.sqlMessage
+            });
+        } else {
+            res.status(200).json({
+                success: true,
+                data: rows[0]
+            })
+        }
+    });
+}
+
 function addProject(req, res) {
     const token = req.session.token;
     const record = req.body.record;
@@ -706,6 +749,7 @@ module.exports = {
     fetchExpert,
     expertApply,
     fetchProjectAll,
+    fetchProject,
     addProject,
     editProject,
     deleteProject,

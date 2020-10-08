@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
 import _ from 'lodash';
-import { fetchReq } from '../../utils/utils';
+import { fetchReq, getRole } from '../../utils/utils';
 import Footer from '../../components/Footer';
 import JobTitleCard from '../../components/jobTitleCard';
 import searchImg from '../../img/search.svg';
@@ -28,6 +29,7 @@ export default class Home extends Component {
         super(props);
 
         this.state = {
+            role: getRole(),
             projectData: []
         }
 
@@ -55,6 +57,8 @@ export default class Home extends Component {
     }
 
     render() {
+        const { role } = this.state;
+        
         return (
             <div>
                 <section id="top" className="home-hero">
@@ -67,14 +71,24 @@ export default class Home extends Component {
                         </div>
 
                         <nav className="main-nav">
-                            <a className="nav-item" href="/">Home</a>
-                            <a className="nav-item" href="/jobPages/category-page.html">Jobs</a>
-                            <a className="nav-item" href="/about-page.html">About</a>
-                            <a className="nav-item" href="/contact-page.html">Contact</a>
+                            <NavLink className="nav-item" to="/home">Home</NavLink>
+                            <NavLink className="nav-item" to="/jobs">Jobs</NavLink>
+                            <NavLink className="nav-item" to="/aboutus">About</NavLink>
+                            <NavLink className="nav-item" to="/contactus">Contact</NavLink>
                             <div className="sign-in">
-                            <a className="nav-item user" href="accounts/login.html">
-                                <div className="fa fa-user-o"></div>
-                            </a>
+                            {role === '__admin__' ?
+                                <NavLink className="nav-item user" to="mgt/admin_dashboard">
+                                    <div className="fa fa-user-o"></div>
+                                </NavLink>
+                                : 
+                                (role === 'expert' ? 
+                                    <NavLink className="nav-item user" to="/mgt/expert_profile">
+                                        <div className="fa fa-user-o"></div>
+                                    </NavLink>
+                                    : <NavLink className="nav-item user" to="/login">
+                                        <div className="fa fa-user-o"></div>
+                                      </NavLink>)
+                            }                          
                             </div>
                         </nav>
         
@@ -88,7 +102,7 @@ export default class Home extends Component {
                         </div>
                         <div className="callToAction">
                             <span className="square"></span>
-                            <a href="#">Our Services<span className="ti-arrow-right"></span></a>
+                            <a href="#">Our Services <i className="fa fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </section>
