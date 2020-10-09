@@ -47,7 +47,7 @@ export default class ExpertRightSidebar extends Component {
     render() {
         const { showInput, data } = this.state;
         const { handleInputChange } = this.props;
-        const { first_name, category } = data;
+        const { expert_id, first_name, category } = data;
         const editContactField = ['phone_no', 'email'];
         const editSocialMediaField = ['linkedin', 'facebook', 'twitter']
 
@@ -74,10 +74,12 @@ export default class ExpertRightSidebar extends Component {
                     </div>
 
                     <div className="bio">
-                        {/* <span>
+                        <span>
                             <h4>Hello,</h4>
-                        </span> */}
+                        </span>
                         <h1><b>{first_name}</b></h1>
+                        <i>Username: </i>
+                        <p><i>{`expert_${expert_id}`}</i></p>
                         <i>Bio: </i>
                         <p><i>{category}</i></p>
                     </div>
