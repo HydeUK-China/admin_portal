@@ -37,15 +37,15 @@ export default class ContactUs extends Component {
                             <div className="sign-in">
                             {role === '__admin__' ?
                                 <NavLink className="nav-item user" to="/mgt/admin_dashboard">
-                                    <div className="fa fa-user-o"></div>
+                                    <div className="fa fa-user-o" style={{color: 'black'}}></div>
                                 </NavLink>
                                 : 
                                 (role === 'expert' ? 
                                     <NavLink className="nav-item user" to="/mgt/expert_profile">
-                                        <div className="fa fa-user-o"></div>
+                                        <div className="fa fa-user-o" style={{color: 'black'}}></div>
                                     </NavLink>
                                     : <NavLink className="nav-item user" to="/login">
-                                        <div className="fa fa-user-o"></div>
+                                        <div className="fa fa-user-o" style={{color: 'black'}}></div>
                                       </NavLink>)
                             }                          
                             </div>
