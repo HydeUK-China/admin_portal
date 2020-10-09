@@ -35,3 +35,5 @@ INSERT INTO expert_info (first_name, last_name, email, phone_no) VALUES ('TEST',
 SELECT expert_id FROM expert_info WHERE first_name='TEST' AND last_name='TEST' AND email='hh@gmail.com' AND phone_no='123';
 
 INSERT INTO project_matching (project_id, expert_id) VALUES ('100', '200' );
+
+UPDATE project_info SET start_date='2020-07-13' WHERE project_id=40;

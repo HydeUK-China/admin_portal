@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
 import { Button, Modal } from 'react-bootstrap';
+import { isValidDate } from '../utils/utils';
 import { currencyList } from '../asset/currencyList';
 import { placeholder } from '../asset/placeholder';
 import jsPDF from 'jspdf';
@@ -130,7 +131,7 @@ export default class InfoEditModal extends Component {
                                             <div key={`modal-${key}`} className='columns-merge'>
                                                 <h2>{this.fieldTitle[key]}</h2>
                                                 <input type="date" className="form-control" required
-                                                    defaultValue={value !== "" ? new Date(value).toISOString().substr(0,10) : value}
+                                                    defaultValue={isValidDate(value) ? new Date(value).toISOString().substr(0,10) : value}
                                                     onChange={(e) => this.handleTextChange(e, key)} />
                                             </div>
                                         )

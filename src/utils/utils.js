@@ -47,3 +47,7 @@ export function removeUserInfo() {
   localStorage.removeItem('role');
   localStorage.removeItem('uid');
 }
+
+export function isValidDate(d) {
+  return d instanceof Date && !isNaN(d);
+}
