@@ -77,11 +77,31 @@ export default class InfoEditModal extends Component {
     }
 
     generatePDF = () => {
-          var pdf = new jsPDF('p', 'pt');
-          var data = document.getElementById("htmlTopdf")
-          var content = data.innerText || data.textContent;
-          pdf.text(content, 40, 40)
-          pdf.save('demo.pdf')
+        const contents = [];
+        const content = [];
+        const labels = [];
+        var pdf = new jsPDF('p', 'pt');
+        const data_1 = document.getElementById("htmlTopdf")
+
+        const {fileds} = this.props
+        const {data}  = this.state
+
+        for(let k = 0; k <fileds.length; k++){
+            contents.push(data[fileds[k]])      // Extracted data from database table
+          }
+        
+        for(let i = 0; i < data_1.children.length; i++){
+            const temp = data_1.children[i].innerText.split("\n")
+            labels.push(temp[0]);   // Labels related to table columns 
+        }
+        
+        for(let j = 0; j < labels.length; j++){
+            content.push(labels[j] + ':' + contents[j] + '\n'); //Text Formating to put in PDF
+          }
+
+        pdf.text(content, 40, 40)
+        var fileName = contents[2] + contents[3] + '.pdf'
+        pdf.save(fileName)
     }
 
     render() {
