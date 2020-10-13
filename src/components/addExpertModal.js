@@ -3,6 +3,7 @@ import { Button, Modal } from 'react-bootstrap';
 import UploadFile from './uploadFile';
 import _ from 'lodash';
 import { countryList } from '../asset/countryList';
+import { expertDataLessField, expertDataMoreField } from '../asset/dataFieldHeader';
 
 export default class AddExpertModal extends Component {
     constructor(props) {
@@ -12,15 +13,20 @@ export default class AddExpertModal extends Component {
             show: props.show
         }
 
-        this.allFields = ['title', 'first_name', 'last_name', 'expertise', 'category', 'level', 'email', 'password', 'country', 'phone_no',
-            'education', 'employment', 'projects', 'patents',
-            'field_of_speciality', 'awards', 'products', 'publication_date', 'recent_major_research_projects',
-            'collaborative_project_proposal'];
+        this.allFields = this.createFields();
 
         this.createRefByField(this.allFields);
 
         this.closeModal = this.closeModal.bind(this);
         this.handleAdd = this.handleAdd.bind(this);
+    }
+
+    createFields(){
+        let fields = expertDataLessField.concat(expertDataMoreField);
+        _.pullAll(fields, ['expert_id']);
+        fields.push('password')
+
+        return fields;
     }
 
     createRefByField(field) {
@@ -93,8 +99,8 @@ export default class AddExpertModal extends Component {
                             <input type="text" className="form-control" placeholder="Doe" required
                                     ref={this.last_name} />
                             <label>Nationality </label>
-                            <select name="country" className="form-control" required
-                                    ref={this.country}>
+                            <select name="nationality" className="form-control" required
+                                    ref={this.nationality}>
                                 <option value=''>Please Select</option>
                                 {_.map(countryList, (item, index) => {
                                     return <option key={`country-${index}`} value={item}>{item}</option>
@@ -161,21 +167,6 @@ export default class AddExpertModal extends Component {
                         </div>
 
                         <div className='columns-add-merge'>
-                            <h2>Projects</h2>
-                            {/* <div className="grid-info">
-                            <label>Time</label>
-                            <label>Nature and Source of Project</label>
-                            <label>Total amount of budget</label>
-                            <label>No of Participants</label>
-                            <label>Position and Responsibility</label>
-                        </div> */}
-                            <textarea name="projects" className="form-control" rows='5' 
-                                        placeholder="
-                                        1. 20/18/01-20/19/03 | Development of manganese-based lithiumion batteries and supercapacitors (funded by DST/NRF) |$1000,0000 | 25 | R & D Manager and Principal Investigator "
-                                        ref={this.projects} />
-                        </div>
-
-                        <div className='columns-add-merge'>
                             <h2>Patents</h2>
                             {/* <div className="grid-info">
                             <label>Date of Filling</label>
@@ -191,6 +182,20 @@ export default class AddExpertModal extends Component {
                         </div>
 
                         <div className='columns-add-merge'>
+                            <h2>Publications</h2>
+                            {/* <div className="grid-info">
+                            <label>Publication Date</label>
+                            <label>Title of Paper</label>
+                            <label>Publication Media</label>
+                            <label>Number of Authors</label>
+                            <label>Author Rank</label>
+                        </div> */}
+                            <textarea name="pd" className='form-control' rows='5'
+                                placeholder="(E.g. ) Current - Past 2014, ADVANCES IN ENGINEERING RESEARCH, Volume 8, chapter 2, Adsorption Refrigeration, Victoria M. Petrova Editor. Nova Publishers. New York, Ahmed Rezk, Ahmed Elsayed, Saad Mahmoud, and Raya AL-Dadah."
+                                ref={this.publications}/>
+                        </div>
+
+                        <div className='columns-add-merge'>
                             <h2>Field of Speciality</h2>
                             <textarea name="fieldofspecialty" className='form-control' rows='5'
                                     placeholder="Field of Specialty (Main research areas, Previous research results, Industry and international influence)："
@@ -201,34 +206,13 @@ export default class AddExpertModal extends Component {
                             <h2>Awards</h2>
                             <textarea name="awards" placeholder="Awards and Honours" className="form-control" rows='5' 
                                     ref={this.awards}/>
-                        </div>
+                        </div>   
 
                         <div className='columns-add-merge'>
-                            <h2>Products</h2>
-                            <textarea name="products" className='form-control' rows='5'
-                                    placeholder="Product introduction, current industrialization level and industry competitiveness）"
-                                    ref={this.products}/>
-                        </div>
-
-                        <div className='columns-add-merge'>
-                            <h2>Publication Date</h2>
-                            {/* <div className="grid-info">
-                            <label>Publication Date</label>
-                            <label>Title of Paper</label>
-                            <label>Publication Media</label>
-                            <label>Number of Authors</label>
-                            <label>Author Rank</label>
-                        </div> */}
-                            <textarea name="pd" className='form-control' rows='5'
-                                placeholder="(E.g. ) Current - Past 2014, ADVANCES IN ENGINEERING RESEARCH, Volume 8, chapter 2, Adsorption Refrigeration, Victoria M. Petrova Editor. Nova Publishers. New York, Ahmed Rezk, Ahmed Elsayed, Saad Mahmoud, and Raya AL-Dadah."
-                                ref={this.publication_date}/>
-                        </div>
-
-                        <div className='columns-add-merge'>
-                            <h2>Recent Major Research Projects</h2>
+                            <h2>Scientific Contribution And Research Leadership</h2>
                             <textarea name="rmrp" className='form-control' rows='5'
                                     placeholder="(E.g. ) Current - Past Project briefs, innovations compared to existing technologies, current developments and technical difficulties, expected results and industry, and international influence"
-                                    ref={this.recent_major_research_projects}/>
+                                    ref={this.scientific_contribution_and_research_leadership}/>
                         </div>
 
                         <div className='columns-add-merge'>

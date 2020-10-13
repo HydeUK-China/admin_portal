@@ -6,6 +6,7 @@ import ModalOpsTable from '../../components/modalOpsTable';
 import AddProjectModal from '../../components/addProjectModal';
 import Pagination from '../../components/pagination';
 import { itemsCountPerPage, sliceData } from '../../asset/paginationConfig';
+import { projectDataLessField, projectDataLessHeader, projectDataMoreField, projectDataMoreHeader } from '../../asset/dataFieldHeader';
 
 export default class ProjectManagement extends Component {
     constructor(props) {
@@ -22,10 +23,10 @@ export default class ProjectManagement extends Component {
             showAdd: false
         }
 
-        this.lessHeader = ['ID', 'Job Title', 'Employer', 'Area', 'Salary', 'Currency']
-        this.lessField = ['project_id', 'job_title', 'employer', 'area', 'salary', 'currency']
-        this.moreHeader = ['Start Date', 'Close Date', 'Featured', 'Professional Field', 'Job Description', 'Required Expertise', 'Responsibility', 'Essential skills']
-        this.moreField = ['start_date', 'close_date', 'featured', 'professional_field', 'job_description', 'required_expertise', 'responsibility', 'essential_skills']
+        this.lessHeader = projectDataLessHeader;
+        this.lessField = projectDataLessField;
+        this.moreHeader = projectDataMoreHeader;
+        this.moreField = projectDataMoreField;
 
         this.dataIdentifier = 'project_id';
 

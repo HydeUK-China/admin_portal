@@ -2,7 +2,7 @@ CREATE DATABASE portal_system;
 
 USE portal_system;
 
--- drop table project_matching;
+-- drop table expert_info;
 
 CREATE TABLE user_credential (
 	id int NOT NULL auto_increment,
@@ -62,7 +62,7 @@ CREATE TABLE expert_info (
     education varchar(1000),
     employment varchar(1000),
     membership_of_professional_bodies varchar(1000),
-    scientific_contribution_and_research_leadersihp varchar(1000),
+    scientific_contribution_and_research_leadership varchar(1000),
     awarded_grants_and_funded_activities varchar(1000),
     awards varchar(1000),
     patents varchar(1000),

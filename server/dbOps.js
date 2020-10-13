@@ -195,7 +195,7 @@ function addExpert(req, res) {
                             (title, first_name, last_name, gender, nationality, date_of_birth, email, 
                             phone_no, linkedin, facebook, twitter, expertise, category, source_references,
                             edu_organization, field_of_speciality, education, employment, membership_of_professional_bodies,
-                            scientific_contribution_and_research_leadersihp, awarded_grants_and_funded_activities,
+                            scientific_contribution_and_research_leadership, awarded_grants_and_funded_activities,
                             awards, patents, publications, collaborative_project_proposal)
                             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
 
@@ -203,7 +203,7 @@ function addExpert(req, res) {
                 record.nationality, record.date_of_birth, record.email, record.phone_no, record.linkedin, record.facebook,
                 record.twitter, record.expertise, record.category, record.source_references, record.edu_organization,
                 record.field_of_speciality, record.education, record.employment, record.membership_of_professional_bodies,
-                record.scientific_contribution_and_research_leadersihp, record.awarded_grants_and_funded_activities,
+                record.scientific_contribution_and_research_leadership, record.awarded_grants_and_funded_activities,
                 record.awards, record.patents, record.publications, record.collaborative_project_proposal],
                     function (err, feedback) {
                         if (err) {
@@ -282,7 +282,7 @@ function editExpert(req, res) {
                             education=?,
                             employment=?,
                             membership_of_professional_bodies=?,
-                            scientific_contribution_and_research_leadersihp=?,
+                            scientific_contribution_and_research_leadership=?,
                             awarded_grants_and_funded_activities=?,
                             awards=?,
                             patents=?,
@@ -294,7 +294,7 @@ function editExpert(req, res) {
                 record.nationality, record.date_of_birth, record.email, record.phone_no, record.linkedin, record.facebook,
                 record.twitter, record.expertise, record.category, record.source_references, record.edu_organization,
                 record.field_of_speciality, record.education, record.employment, record.membership_of_professional_bodies,
-                record.scientific_contribution_and_research_leadersihp, record.awarded_grants_and_funded_activities,
+                record.scientific_contribution_and_research_leadership, record.awarded_grants_and_funded_activities,
                 record.awards, record.patents, record.publications, record.collaborative_project_proposal, record.expert_id],
                     function (err, feedback) {
                         if (err) {
@@ -336,13 +336,24 @@ function deleteExpert(req, res) {
                     if (err) {
                         res.status(400).json({
                             success: false,
-                            msg: err.sqlMessage
+                            msg: 'failed deleting from expert_info'
                         });
                     } else {
-                        res.status(200).json({
-                            success: true,
-                            data: feedback
-                        })
+                        const sql = `DELETE FROM project_matching WHERE expert_id=?`;
+
+                        res.app.get('connection').query(sql, [expertId], function (err, feedback) {
+                            if (err) {
+                                res.status(400).json({
+                                    success: false,
+                                    msg: 'failed deleting from project_matching'
+                                });
+                            } else {
+                                res.status(200).json({
+                                    success: true,
+                                    data: feedback
+                                })
+                            }
+                        });
                     }
                 });
             } else {
@@ -549,7 +560,7 @@ function addProject(req, res) {
                             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
 
                 res.app.get('connection').query(sql, [record.start_date, record.close_date, record.job_title, record.featured, record.responsibility,
-                record.essential_skills, record.professional_field, record.job_description, record.required_expertise, record.employer, record.area, 
+                record.essential_skills, record.professional_field, record.job_description, record.required_expertise, record.employer, record.area,
                 record.salary, record.currency],
                     function (err, rows) {
                         if (err) {
@@ -601,8 +612,8 @@ function editProject(req, res) {
                             currency=?
                             WHERE project_id=?`;
 
-                res.app.get('connection').query(sql, [record.start_date, record.close_date, record.job_title, record.featured, record.responsibility, 
-                record.essential_skills, record.professional_field, record.job_description, record.required_expertise, record.employer, record.area, 
+                res.app.get('connection').query(sql, [record.start_date, record.close_date, record.job_title, record.featured, record.responsibility,
+                record.essential_skills, record.professional_field, record.job_description, record.required_expertise, record.employer, record.area,
                 record.salary, record.currency, record.project_id],
                     function (err, feedback) {
                         if (err) {

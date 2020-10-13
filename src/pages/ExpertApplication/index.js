@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 import JobCard from '../../components/jobCard';
 import { fetchReq } from '../../utils/utils';
+import { projectDataLessField, projectDataLessHeader } from '../../asset/dataFieldHeader';
 
 export default class ExpertApplication extends Component {
     constructor(props) {
@@ -11,10 +12,10 @@ export default class ExpertApplication extends Component {
             data: []
         }
 
-        this.lessHeader = ['ID', 'Job Title', 'Start Date', 'Employer', 'Area', 'Required Expertise', 'Salary', 'Close Date']
-        this.lessField = ['id', 'job_title', 'start_date', 'employer', 'area', 'required_expertise', 'salary', 'close_date']
-        this.moreHeader = ['Featured', 'Job Description', 'Responsibilities', 'Essential skills']
-        this.moreField = ['featured', 'job_description', 'responsibilities', 'essential_skills']
+        this.lessHeader = ['ID', 'Job Title', 'Employer', 'Area', 'Salary', 'Start Date', 'Close Date']
+        this.lessField = ['project_id', 'job_title', 'employer', 'area', 'salary', 'start_date', 'close_date']
+        this.moreHeader = ['Currency', 'Featured', 'Professional Field', 'Job Description', 'Required Expertise', 'Responsibility', 'Essential skills']
+        this.moreField = [ 'currency', 'featured', 'professional_field', 'job_description', 'required_expertise', 'responsibility', 'essential_skills']
 
         this.expertId = props.uid;
     }

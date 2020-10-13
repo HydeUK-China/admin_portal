@@ -3,6 +3,7 @@ import _ from 'lodash';
 import { Button, Modal } from 'react-bootstrap';
 import { isValidDate } from '../utils/utils';
 import { currencyList } from '../asset/currencyList';
+import { countryList } from '../asset/countryList';
 import { placeholder } from '../asset/placeholder';
 import jsPDF from 'jspdf';
 
@@ -77,30 +78,19 @@ export default class InfoEditModal extends Component {
     }
 
     generatePDF = () => {
+        const { fileds } = this.props;
+        const { data }  = this.state;
+
         const contents = [];
-        const content = [];
-        const labels = [];
-        var pdf = new jsPDF('p', 'pt');
-        const data_1 = document.getElementById("htmlTopdf")
-
-        const {fileds} = this.props
-        const {data}  = this.state
-
-        for(let k = 0; k <fileds.length; k++){
-            contents.push(data[fileds[k]])      // Extracted data from database table
-          }
+        const pdf = new jsPDF('p', 'pt');
+        const fieldTitle = this.fieldTitle;
         
-        for(let i = 0; i < data_1.children.length; i++){
-            const temp = data_1.children[i].innerText.split("\n")
-            labels.push(temp[0]);   // Labels related to table columns 
-        }
-        
-        for(let j = 0; j < labels.length; j++){
-            content.push(labels[j] + ':' + contents[j] + '\n'); //Text Formating to put in PDF
-          }
+        _.forEach(fileds, (key) => {
+            contents.push(fieldTitle[key] + ': ' + data[key]||'')
+        })
 
-        pdf.text(content, 40, 40)
-        var fileName = contents[2] + contents[3] + '.pdf'
+        pdf.text(contents, 40, 40)
+        const fileName = data[fileds[2]] + data[fileds[3]] + '.pdf'
         pdf.save(fileName)
     }
 
@@ -140,6 +130,24 @@ export default class InfoEditModal extends Component {
                                                             return <option key={`currency-${_index}`} value={_item}>Please select</option>
                                                         } else{
                                                             return <option key={`currency-${_index}`} value={_item}>{_item}</option>
+                                                        }
+                                                    })}
+                                                </select>
+                                            </div>
+                                        )
+                                    } else if (key === 'nationality') {
+                                        // required select
+                                        return (
+                                            <div key={`modal-${key}`} className='columns-merge'>
+                                                <h2>{this.fieldTitle[key]}</h2>
+                                                <select className="form-control" required
+                                                    defaultValue={value}
+                                                    onChange={(e) => this.handleTextChange(e, key)}>
+                                                    {_.map(countryList, (_item, _index) => {
+                                                        if(_item === ""){
+                                                            return <option key={`nationality-${_index}`} value={_item}>Please select</option>
+                                                        } else{
+                                                            return <option key={`nationality-${_index}`} value={_item}>{_item}</option>
                                                         }
                                                     })}
                                                 </select>

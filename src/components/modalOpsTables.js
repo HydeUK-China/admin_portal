@@ -44,7 +44,7 @@ export default class ModalOpsTables extends Component {
     }
 
     render() {
-        const { outerDataIdentifier, outerLessHeader, outerLessField, innerLessHeader, innerLessField, onSortTable } = this.props;
+        const { outerDataIdentifier, outerLessHeader, outerLessField, innerLessHeader, innerLessField, innerMoreField, innerMoreHeader, onSortTable } = this.props;
         const { outerData, innerData, showInfo, sortKey } = this.state;
 
         return (
@@ -82,6 +82,8 @@ export default class ModalOpsTables extends Component {
                     key={`row-more-info`}
                     rowHeader={innerLessHeader}
                     rowField={innerLessField}
+                    downloadField={innerMoreField}
+                    downloadHeader={innerMoreHeader}
                     tableData={innerData}
                     onClose={(hide) => this.closeModalHandler(hide)}
                     show={showInfo}

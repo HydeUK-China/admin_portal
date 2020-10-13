@@ -32,28 +32,21 @@ export default class TableModal extends Component {
         }, () => onClose(this.state.show));
     }
 
-    generatePDF = (e) => {
-          const labels = [];
-          const contents = [];
-          var pdf = new jsPDF('p', 'pt');
-          var data_1 = document.getElementById("htopdf")
-          var recordId = e.target.value
-          const {tableData} = this.state
-          const {rowField} = this.props
+    generatePDF = (index) => {
+        const { tableData } = this.state;
+        const { downloadField, downloadHeader } = this.props;
 
-          for(let k = 0; k <rowField.length; k++){
-            contents.push(tableData[recordId][rowField[k]])
-          }
-          for(let i = 0; i < data_1.children.length; i++){
-                labels.push(data_1.children[i].innerText);
-            }
-          var content = [];
-          for (let j = 0; j < labels.length; j++){
-            content.push(labels[j] + ':' + contents[j] + '\n');
-          }
-          pdf.text(content, 40, 40)
-          var fileName = contents[2] + contents[3] + '.pdf'
-          pdf.save(fileName)
+        const contents = [];
+        const pdf = new jsPDF('p', 'pt');
+        const downloadFieldTitle = _.zipObject(downloadField, downloadHeader);
+
+        _.forEach(downloadField, (key) => {
+            contents.push(downloadFieldTitle[key] + ': ' + tableData[index][key] || '')
+        })
+
+        pdf.text(contents, 40, 40)
+        const fileName = tableData[index][downloadField[2]] + tableData[index][downloadField[3]] + '.pdf'
+        pdf.save(fileName)
     }
 
     render() {
@@ -85,7 +78,7 @@ export default class TableModal extends Component {
                                             })
 
                                         }
-                                    <button value={`${index}`} onClick={e => this.generatePDF(e, "value")} className='more-info-btn'>Download</button>
+                                        <button onClick={() => this.generatePDF(index)} className='more-info-btn'>Download</button>
                                     </div>
                                 </div>
                             )

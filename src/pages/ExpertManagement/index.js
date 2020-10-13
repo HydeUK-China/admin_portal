@@ -6,6 +6,7 @@ import { fetchReq } from '../../utils/utils';
 import AddExpertModal from '../../components/addExpertModal';
 import Pagination from '../../components/pagination';
 import { itemsCountPerPage, sliceData } from '../../asset/paginationConfig';
+import { expertDataLessField, expertDataLessHeader, expertDataMoreField, expertDataMoreHeader } from '../../asset/dataFieldHeader';
 
 export default class ExpertManagement extends Component {
     constructor(props) {
@@ -22,14 +23,10 @@ export default class ExpertManagement extends Component {
             showAdd: false
         }
 
-        this.lessHeader = ['ID', 'Title', 'First Name', 'Last Name', 'Expertise', 'Category']
-        this.lessField = ['expert_id', 'title', 'first_name', 'last_name', 'expertise', 'category']
-        this.moreHeader = ['Email', 'Phone No', 'Education', 'Employment', 'Projects', 'Patents',
-            'Field of Speciality', 'Awards', 'Products', 'Publication Date', 'Recent Major Research Projects',
-            'Collaborative Project Proposal']
-        this.moreField = ['email', 'phone_no', 'education', 'employment', 'projects', 'patents',
-            'field_of_speciality', 'awards', 'products', 'publication_date', 'recent_major_research_projects',
-            'collaborative_project_proposal']
+        this.lessHeader = expertDataLessHeader;
+        this.lessField = expertDataLessField;
+        this.moreHeader = expertDataMoreHeader;
+        this.moreField = expertDataMoreField;
 
         this.dataIdentifier = 'expert_id';
 

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import _ from 'lodash';
 import { currencyList } from '../asset/currencyList';
+import { projectDataLessField, projectDataMoreField } from '../asset/dataFieldHeader';
 
 export default class AddExpertModal extends Component {
     constructor(props) {
@@ -11,13 +12,19 @@ export default class AddExpertModal extends Component {
             show: props.show
         }
 
-        this.allFields = ['job_title', 'start_date', 'employer', 'area', 'required_expertise', 'currency', 'salary', 'close_date',
-            'featured', 'job_description', 'responsibilities', 'essential_skills'];
+        this.allFields = this.createFields();
 
         this.createRefByField(this.allFields);
 
         this.closeModal = this.closeModal.bind(this);
         this.handleAdd = this.handleAdd.bind(this);
+    }
+
+    createFields(){
+        let fields = projectDataLessField.concat(projectDataMoreField);
+        _.pullAll(fields, ['project_id']);
+
+        return fields;
     }
 
     createRefByField(field) {
@@ -89,7 +96,7 @@ export default class AddExpertModal extends Component {
 
                         <div className='columns-add'>
                             <label>Salary</label>
-                            <select name="currencylist" className="form-control" required
+                            <select name="currencylist" className="form-control" defaultValue='GBP' required
                             ref={this.currency}>
                                 {_.map(currencyList, (item, index) => {
                                     return <option key={`currency-${index}`} value={item}>{item}</option>
@@ -107,6 +114,12 @@ export default class AddExpertModal extends Component {
                             <h2>Featured</h2>
                             <textarea name="featured" className="form-control" rows='5' placeholder="Amazon Advertising operates at the intersection of advertising and ecommerce and offers advertisers a rich array of innovative advertising solutions across Amazon’s mobile and desktop websites, proprietary devices and the Amazon Advertising Platform."
                                 ref={this.featured} />
+                        </div>
+
+                        <div className='columns-add-merge'>
+                            <h2>Professional Field</h2>
+                            <textarea name="professional_field" className="form-control" rows='5' placeholder="ecommerce"
+                                ref={this.professional_field} />
                         </div>
 
                         <div className='columns-add-merge'>

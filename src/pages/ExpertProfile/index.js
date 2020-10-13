@@ -16,11 +16,11 @@ export default class ExpertProfile extends Component {
         }
 
         this.lessField = ['expert_id', 'title', 'first_name', 'category', 'email', 'phone_no', 'linkedin', 'facebook', 'twitter']
-        this.moreHeader = ['Education', 'Employment', 'Projects', 'Patents',
-            'Field of Speciality', 'Awards', 'Products', 'Publication Date', 'Recent Major Research Projects',
+        this.moreHeader = ['Education', 'Employment', 'Patents', 'Publications',
+            'Field of Speciality', 'Awards', 'Scientific Contribution And Research Leadership',
             'Collaborative Project Proposal']
-        this.moreField = ['education', 'employment', 'projects', 'patents',
-            'field_of_speciality', 'awards', 'products', 'publication_date', 'recent_major_research_projects',
+        this.moreField = ['education', 'employment', 'patents', 'publications',
+            'field_of_speciality', 'awards', 'scientific_contribution_and_research_leadership',
             'collaborative_project_proposal']
 
         this.expertId = props.uid;

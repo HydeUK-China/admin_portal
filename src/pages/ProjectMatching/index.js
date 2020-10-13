@@ -5,6 +5,7 @@ import Search from '../../components/search';
 import ModalOpsTables from '../../components/modalOpsTables';
 import Pagination from '../../components/pagination';
 import { itemsCountPerPage, sliceData } from '../../asset/paginationConfig';
+import { projectDataLessField, projectDataLessHeader, expertDataLessField, expertDataLessHeader, expertDataMoreField, expertDataMoreHeader } from '../../asset/dataFieldHeader';
 
 export default class ProjectMatching extends Component {
     constructor(props) {
@@ -21,10 +22,12 @@ export default class ProjectMatching extends Component {
             totalItemsCount: 0
         }
 
-        this.outerLessHeader = ['ID', 'Job Title', 'Employer', 'Area', 'Salary', 'Currency']
-        this.outerLessField = ['project_id', 'job_title', 'employer', 'area', 'salary', 'currency']
-        this.innerLessHeader = ['ID', 'Title', 'First Name', 'Last Name', 'Expertise', 'Category']
-        this.innerLessField = ['expert_id', 'title', 'first_name', 'last_name', 'expertise', 'category']
+        this.outerLessHeader = projectDataLessHeader;
+        this.outerLessField = projectDataLessField;
+        this.innerLessHeader = expertDataLessHeader;
+        this.innerLessField = expertDataLessField;
+        this.innerMoreHeader = expertDataMoreHeader;
+        this.innerMoreField = expertDataMoreField;
 
         this.filterDataHandler = this.filterDataHandler.bind(this);
         this.rowClickHandler = this.rowClickHandler.bind(this);
@@ -122,6 +125,8 @@ export default class ProjectMatching extends Component {
                     outerLessField={this.outerLessField}
                     innerLessHeader={this.innerLessHeader}
                     innerLessField={this.innerLessField}
+                    innerMoreHeader={this.innerLessHeader.concat(this.innerMoreHeader)}
+                    innerMoreField={this.innerLessField.concat(this.innerMoreField)}
                     outerData={displayData}
                     onSortTable={this.sortTableHandler}
                     sortKey={sortKey}
