@@ -23,7 +23,9 @@ CREATE TABLE project_info (
     start_date varchar(30),
     close_date varchar(30),
     job_title varchar(300),
-	featured varchar(1000),
+    organization_info varchar(1000),
+    show_employer_name varchar(1),
+	featured varchar(1),
     responsibility varchar(3000),
     essential_skills varchar(1000),
     professional_field varchar(300),
@@ -52,7 +54,7 @@ CREATE TABLE expert_info (
     email varchar(30), 
     phone_no varchar(30), 
     linkedin varchar(100), 
-    facebook varchar(100), 
+    skype varchar(100), 
     twitter varchar(100),
     expertise varchar(3000),
     category varchar(300),
@@ -68,6 +70,7 @@ CREATE TABLE expert_info (
     patents varchar(1000),
     publications varchar(1000),
     collaborative_project_proposal varchar(1000),
+    cv_file_path varchar(500),
     primary key (expert_id)
 );
 
@@ -80,6 +83,7 @@ CREATE TABLE project_matching (
 	matching_id int NOT NULL auto_increment,
 	project_id int,
     expert_id int,
+    application_complete varchar(1),
     supplementary_material_status varchar(300),
     talent_project_demand_status varchar(300),
     project_matching_phase varchar(3000),

@@ -1,7 +1,7 @@
-﻿expert_id,title,first_name,last_name,gender,nationality,date_of_birth,email,phone_no,linkedin,facebook,twitter,expertise,category,source_references,edu_organization,field_of_speciality,education,employment,membership_of_professional_bodies,scientific_contribution_and_research_leadership,awarded_grants_and_funded_activities,awards,patents,publications,collaborative_project_proposal
-1,Dr,Anisa,Mahomed,Male,,,,,,,,Chemical Engineering and Chemistry,Chemical Engineering,Aston University's website,Aston University,,,,,,,,,,
-2,Dr,Jude,Onwudili,Male,,,,,,,,Chemical Engineering and Chemistry,Chemical Engineering,Aston University's website,Aston University,,,,,,,,,,
-3,Dr,Qingchun,Yuan,Male,,,,,,,,Chemical Engineering and Chemistry,Chemical Engineering,Aston University's website,Aston University,,,,,,,,,,
+﻿expert_id,title,first_name,last_name,gender,nationality,date_of_birth,email,phone_no,linkedin,skype,twitter,expertise,category,source_references,edu_organization,field_of_speciality,education,employment,membership_of_professional_bodies,scientific_contribution_and_research_leadership,awarded_grants_and_funded_activities,awards,patents,publications,collaborative_project_proposal,cv_file_path
+1,Dr,Anisa,Mahomed,Male,,,,,,,,Chemical Engineering and Chemistry,Chemical Engineering,Aston University's website,Aston University,,,,,,,,,,,
+2,Dr,Jude,Onwudili,Male,,,,,,,,Chemical Engineering and Chemistry,Chemical Engineering,Aston University's website,Aston University,,,,,,,,,,,
+3,Dr,Qingchun,Yuan,Male,,,,,,,,Chemical Engineering and Chemistry,Chemical Engineering,Aston University's website,Aston University,,,,,,,,,,,
 4,Dr,Ahmed,Rezk,Male,Egyptian,26/08/1982,,,,,,Mechanical Engineering,Mechanical Engineering,Aston University's website,Aston University,AGILE ADSORPTION THERMAL ENERGY STORAGE USING GRAPHENE; GraphAds,"2018-2019: Post Graduate Certificate in Learning & Teaching for higher education (PGCert) - Aston University. 
 2009-2012: PhD Mechanical Engineering - University of Birmingham; United Kingdom. 
 2005-2008: MSc Mechanical Engineering - Alexandria University; Egypt. 1999-2004: BSc Mechanical Engineering - Alexandria University; Egypt.","2017-Present: Lecturer - Mechanical Engineering and Design; Aston University; Birmingham; UK. 
@@ -75,7 +75,7 @@ cooling; International Journal of Heat and Mass Transfer; 5 (2012) 7366-7374.
 system equipped with helically coiled evaporator and condenser; Journal of Mechanical Engineering Science. 226
 (2012) 724-737.
 13. A Elsayed; R K. AL-Dadah; S Mahmoud; A Rezk. Investigation of flow boiling heat transfer inside small diameter
-helically coiled tubes. International Journal of Refrigeration; 35 (2012) 2179-2187.",
+helically coiled tubes. International Journal of Refrigeration; 35 (2012) 2179-2187.",,
 5,Dr,J. Gregory,Swadener,Male,,,,,,,,Mechanical Engineering,Mechanical Engineering,Aston University's website,Aston University,"Nanomechanics; adhesion; fracture; fatigue; nanoindentation;
 deformation; radiation effects; and materials for energy production","2013 P.G.C. Professional Practice in Higher Education; Aston University
 1998 Ph.D. Engineering Mechanics; The University of Texas at Austin Dissertation: ÏPrimary fracture toughness mechanisms of a glass/epoxy interfaceÓ Dissertation Director: Kenneth. M. Liechti
@@ -365,11 +365,11 @@ Deshmukh; S. C. (2018); ÏUsing three-dimensional rapid prototyping in
 the design and development of orthopaedic screws in standardised pull-
 out tests;Ó Proceedings of the IMechE; Part H: Journal of Engineering
 
-Medicine; Available online 11 May 2018.",
-6,,Mansour,Qubeissi,Male,,,,,,,,Mechanical; Aerospace and Automotive Engineering,Mechanical Engineering,Coventry University's website,Coventry University,,,,,,,,,,
-7,Dr,Mathias,Foo,Male,,,,,,,,Mechanical; Aerospace and Automotive Engineering,Mechanical Engineering,Coventry University's website,Coventry University,,,,,,,,,,
-8,,Masoumeh,Faraji,Male,,,,,,,,Mechanical; Aerospace and Automotive Engineering,Mechanical Engineering,Coventry University's website,Coventry University,,,,,,,,,,
-9,,Ali Hossain Alewai,Daraji,Male,,,,,,,,Mechanical; Aerospace and Automotive Engineering,Mechanical Engineering,Coventry University's website,Coventry University,,,,,,,,,,
+Medicine; Available online 11 May 2018.",,
+6,,Mansour,Qubeissi,Male,,,,,,,,Mechanical; Aerospace and Automotive Engineering,Mechanical Engineering,Coventry University's website,Coventry University,,,,,,,,,,,
+7,Dr,Mathias,Foo,Male,,,,,,,,Mechanical; Aerospace and Automotive Engineering,Mechanical Engineering,Coventry University's website,Coventry University,,,,,,,,,,,
+8,,Masoumeh,Faraji,Male,,,,,,,,Mechanical; Aerospace and Automotive Engineering,Mechanical Engineering,Coventry University's website,Coventry University,,,,,,,,,,,
+9,,Ali Hossain Alewai,Daraji,Male,,,,,,,,Mechanical; Aerospace and Automotive Engineering,Mechanical Engineering,Coventry University's website,Coventry University,,,,,,,,,,,
 10,,Hafiz,Ahmed,Male,Bangladeshi,31/12/1989,,,,,,Mechanical; Aerospace and Automotive Engineering,Mechanical Engineering,Coventry University's website,Coventry University,Control of Power Electronics and Renewable Energy System; Mechatronics and Robotics.,"September 2019 PGCert in Academic Practice in Higher Education; Coventry University; UK
 September 2016 Ph.D. in Control Engineering; Inria/University of Lille; France
 July 2013 M.Sc. in Control Engineering; University of Grenoble; France
@@ -539,7 +539,7 @@ machines of direct-driven generator with EMETOR and FLUX 2D; In Business Enginee
 Industrial Applications Colloquium (BEIAC); 2012 IEEE; pp. 74-79.
 C16. H. Ahmed et al.; Identification d'un modÀle dynamique du bloom phytoplanctonique bas»
 sur des mesures á haute fr»quence; Schmitt; F.G. et Lefebvre A. (Eds.) /Mesures haute
-r»solution dans l'environnement marin cŸtier/; Presses du CNRS (2016)",
+r»solution dans l'environnement marin cŸtier/; Presses du CNRS (2016)",,
 11,Dr,Raja Mazuir Bin Raja Ahsan,Shah,Male,,07/04/1970,,,,,,Mechanical; Aerospace and Automotive Engineering,Mechanical Engineering,Coventry University's website,Coventry University,,"University of Warwick; United Kingdom Doctor of Philosophy (PhD); Engineering; 2009 - 2013; Grade: Pass
 Universiti Teknologi MARA; Malaysia Bachelor of Engineering (BEng) Honours; Mechanical; 1992 - 1995","Associate Professor in Electric Vehicle Technology (1 st January 2019 to present); Coventry University
 Visiting Professor at University Teknologi Petronas; Malaysia (Jan 2020 - Dec 2020)
@@ -678,7 +678,7 @@ Bin Raja Ahsan Shah; R. M.; Jones; R. P.; Cheng; C.; Dhadyalla; G.; Pawar; J.; &
 low fidelity nonlinear model of 4WD torsional stiffness at tip-in/tip-out. In Proceedings of FISITA 2010
 World Automotive Congress (pp. 1-8). FISITA 2010 World Automotive Congress.
 Bin Raja Ahsan Shah; R. M. (2008). Development of Gray Cast Iron Cylinder Block for Passenger
-Vehicle. In Research On Vehicle Technologies (pp. 105-120). Malaysia: Penerbit UTM.",
+Vehicle. In Research On Vehicle Technologies (pp. 105-120). Malaysia: Penerbit UTM.",,
 12,Prof,David Luigi,Fuschi,Male,Italian,02/12/1963,,,,,,Project Management,Project Management,Coventry University's website,Coventry University,IT/ICT; Engineeging & Consultancy,"2020 Coventry University (PgCert in Academic Practice in Higher Education - expected completion 2021)
 2009 - 2014 University of Reading; UK (PhD - Systems Engineering & Computer Science) Thesis on creative-media-design work-flow management
 1999 - 2000 SDA-Bocconi; Milan; Italy (eMBA - ICT System Management - Distinction)
@@ -918,7 +918,7 @@ Research Interest & Plans - The current areas of research focus are Project Mana
 First of all; I intend to push forward my current research on sustainability; circular economy and innovation; including the aspects of business innovation/acceleration in these areas and at their interconnection.
 I also intend to work on the possibilities offered by contact less technologies for the authentication and provision of services as well as the opportunities to extend and exploit systems already in place in industrial and commercial places to enhance security and safety as well as to empower better management of the site logistics using sensing and actuating devices in combination with IoT. The usage of RFID and NFC technologies could be used for providing new customersÌ experience as well as for monitoring and tracking in specific context where this is beneficial and allowed. 
 Furthermore; IÌm interested in pushing forwards the research that IÌve carried out in relation to the usage of RFID technologies in museums for the full integration of security; asset management and visitor experience. I am looking to the next 20 years as my research horizon in which I would like to achieve some major result in this domain proving that technology; culture and social sciences can profitably work together to significantly enhance the quality of life of everyone around the world as well as support and promote economic growth.
-Vision for an Informatics in Computing Program Development - I strongly believe that education is at the basis of socio-economic as well as human development. What we learn has to become part of our self; help us shape us as individuals; citizens and contributors to the development of culture and the society. IÌve been deeply involved in the IEEE-ACM joint definition of a world-wide accredited undergraduate curriculum for SW engineering and believe that the approach adopted for achieving such endeavour is potentially the best way forward for establishing a new education programme. IÌm well aware that the pace of evolution in the domain is fast and therefore it will be difficult to keep the mapping of the knowledge domain up-to-date; at the same time IÌm also deeply convinced that the related challenge should not be sufficient to discourage from taking up the endeavour. I believe in teamwork and multi-disciplinary and IÌm a strong supporter of the need for professionals working with software at all levels to gain a good systemic view and a basic understanding of other disciplines they have to cooperate with. If appointed I will engage in the development of a programme that will be based on the mapping of the present knowledge in the domain. The snapshot of the knowledge base will have to be developed in cooperation with other colleagues and professionals so as to be as accurate as possible; depending on the required delivery time-frame the course will then be developed by mapping available content and complemented with ad-hoc prepared content where available one will not be sufficient. Cooperation with IEEE and ACM will be sought after hopefully leading to an experience similar to the one of the Graduate Software Engineering Reference Curriculum [GSwERC]."
+Vision for an Informatics in Computing Program Development - I strongly believe that education is at the basis of socio-economic as well as human development. What we learn has to become part of our self; help us shape us as individuals; citizens and contributors to the development of culture and the society. IÌve been deeply involved in the IEEE-ACM joint definition of a world-wide accredited undergraduate curriculum for SW engineering and believe that the approach adopted for achieving such endeavour is potentially the best way forward for establishing a new education programme. IÌm well aware that the pace of evolution in the domain is fast and therefore it will be difficult to keep the mapping of the knowledge domain up-to-date; at the same time IÌm also deeply convinced that the related challenge should not be sufficient to discourage from taking up the endeavour. I believe in teamwork and multi-disciplinary and IÌm a strong supporter of the need for professionals working with software at all levels to gain a good systemic view and a basic understanding of other disciplines they have to cooperate with. If appointed I will engage in the development of a programme that will be based on the mapping of the present knowledge in the domain. The snapshot of the knowledge base will have to be developed in cooperation with other colleagues and professionals so as to be as accurate as possible; depending on the required delivery time-frame the course will then be developed by mapping available content and complemented with ad-hoc prepared content where available one will not be sufficient. Cooperation with IEEE and ACM will be sought after hopefully leading to an experience similar to the one of the Graduate Software Engineering Reference Curriculum [GSwERC].",
 13,Dr,Daniil,Yurchenko,Male,British/Russian,23/09/1972,,,,,,Mechanical Engineering; Process and Energy Engineering and Physical Sciences,Mechanical Engineering,Heriot-Watt University's website,Heriot-Watt University,Dynamics and Vibrations; Experimental Dynamics; Dynamics of Soft Electroactive Polymers; Machine Dynamics; Noise and Vibration Mitigation; Nonlinear and Stochastic Dynamics; Systems Reliability; GPU Computing; Stochastic and Optimal Control; with application in Energy Harvesting; Railway and Earthquake Engineering; Biomedical modelling and mathematical modelling of complex systems.,"Doctor of Science (Habilitation); December 2006; Russia. Title: Mathematical Modeling in Problems of Stochastic Structural Dynamics.
 Doctor of Philosophy in Structural Mechanics; May 2001. Worcester Polytechnic Institute; Mechanical Engineering Department; Worcester; USA.
 Master of Science in Mechanical and Aerospace Engineering; May 1998. Worcester Polytechnic Institute; Mechanical Engineering Department; Worcester; USA.
@@ -966,7 +966,7 @@ The Council of the Russian Federation President for young scientists (only 10 we
 9. L Serdukova; R Kuske; D.Yurchenko. Post-grazing dynamics of a vibro-impacting energy generator. arXiv preprint arXiv:2003.02167; 2020
 10. CL Zhang; ZH Lai; XX Rao; JW Zhang; D.Yurchenko. Energy harvesting from a novel contact- type dielectric elastomer generator. Energy Conversion and Management 205; 2020
 11. J Wang; L Geng; S Zhou; Z Zhang; Z Lai; D.Yurchenko. Design; modeling and experiments of broadband tristable galloping piezoelectric energy harvester. Acta Mechanica Sinica; 1-14; 2020
-",
+",,
 14,Dr,Jeannie Ziang Yie,Tan,Female,Malaysia,09/03/1987,,,,,,Material Science,Material Science,Heriot-Watt University's website,Heriot-Watt University,Materials for Renewable Energy,"July 2013 - August 2017: Doctor of Philosophy in Chemistry; University of Melbourne; Victoria; Australia.
 September 2010 - March 2013 - Master of Engineering in Materials Science & Engineering; Zhejiang University; PeopleÌs Republic of China.
 July 2007 - August 2010 - Bachelor of Technology in Bio-resource; Paper & Coatings; Universiti Sains Malaysia; Penang; Malaysia.","September 2017 - now: Research associate at Heriot-Watt University.
@@ -1201,7 +1201,7 @@ Journal Energy Procedia
 Authors Meltiani Belekoukia; Jeannie Z Y Tan; John M. Andreson; Huizhi Wang; Mercedes
 
 Maroto-Valer; Jin Xuan
-DOI 10.1016/j.egypro.2019.01.573",I am ambitious to develop my research career in the utilization of CO2 to produce sustainable energy for the society. Currently; I am working on the utilization of CO2 to produce fuels and other chemicals; such as cyclic carbonates; which is an important chemicals for pharmaceutical industry and Li-battery. I look forward to the development of the integrated solar fuel and Li-CO2 battery; aiming to develop a practical yet sustainable system for long haul transportation. The integration of these two systems would also open another new research area for researchers to collaborate and explore novel development of sustainable energy.
+DOI 10.1016/j.egypro.2019.01.573",I am ambitious to develop my research career in the utilization of CO2 to produce sustainable energy for the society. Currently; I am working on the utilization of CO2 to produce fuels and other chemicals; such as cyclic carbonates; which is an important chemicals for pharmaceutical industry and Li-battery. I look forward to the development of the integrated solar fuel and Li-CO2 battery; aiming to develop a practical yet sustainable system for long haul transportation. The integration of these two systems would also open another new research area for researchers to collaborate and explore novel development of sustainable energy.,
 15,Dr,Morteza,Amjadi,Male,,,,,,,,Mechanical Engineering; Process and Energy Engineering and Physical Sciences,Mechanical Engineering,Heriot-Watt University's website,Heriot-Watt University,,"12/2014-09/2018 Max Planck Institute for Intelligent Systems Germany
 09/2012-08/2014 Korea Advanced Institute of Science & Technology (KAIST) South Korea
 09/2007-03/2012 Iran University of Science & Technology (IUST) Iran","05/2019-present Heriot-Watt University UK
@@ -1355,7 +1355,7 @@ Bio (BAMN2013); 2013; South Korea (Oral).
 
 C12. A. Pichitpajongkit; M. Amjadi; D. Yang; J. Lee; H. Eom; W. Kamonkhantikul; I. Park ÏSilver
 Nanowire Network based Stretchable Strain SensorÓ; 15th Korean MEMS Conference; 2013; South
-Korea (Oral).",
+Korea (Oral).",,
 16,Prof,Marc Phillipe Yves,Desmulliez,Male,French,21/11/1963,,,,,,Mechanical Engineering; Process and Energy Engineering and Physical Sciences,Mechanical Engineering,Heriot-Watt University's website,Heriot-Watt University,"Nature Inspired Manufacturing
 Novel Manufacturing Processes
 Medical Device Manufacturing
@@ -1473,7 +1473,7 @@ o 1 Highly Commended Award Paper at the Literati Network Awards for Excellence
 o 10 Keynote Articles
 o 10 Invited Articles
 o 3 Best Paper Awards
-o 2 Student Outstanding Paper Awards",
+o 2 Student Outstanding Paper Awards",,
 17,Prof,George,Goussetis,Male,Greek,17/02/1976,,,,,,Electronic and Electrical Engineering,Electrical and Electronic Engineering,Heriot-Watt University's website,Heriot-Watt University,Wireless&Satellite Communications,"1999-2002 PhD in Electronic and Electrical Engineering University of Westminster; London; United Kingdom
 1999-2002 BSc in Physics University College London; London; United Kingdom
 1993-1998 Diploma (MEng) in Electrical Engineering and Computer Science National Technical University of Athens; Greece","2018- Head of Institute of Sensors Signals and Systems Heriot-Watt University
@@ -1559,7 +1559,7 @@ Bell Labs Prize 2016 winner (3rd place); December 2016 https://www.bell-labs.com
 Antenna Theory Award; EuCAP 2012; 26-30 March 2012; Prague; Czech Republic
 ESA Young Engineer of the Year Award; October 2011; Nordwijk; the Netherlands
 Best Student Paper Award; EuCAP 2011; 11-15 April 2011; Rome; Italy",,"Google Scholar: https://scholar.google.co.uk/citations?user=HFZXlOMAAAAJ&amp;hl=en :
-Heriot-Watt profile: https://researchportal.hw.ac.uk/en/persons/george-goussetis",
+Heriot-Watt profile: https://researchportal.hw.ac.uk/en/persons/george-goussetis",,
 18,Dr,Dimitrios,Anagnostou,Male,,,,,,,,Engineering; Physical Sciences; Sensors; Signals and Systems,Engineering; Physical Sciences; Sensors; Signals and Systems,Heriot-Watt University's website,Heriot-Watt University,,"2006 Post-Doctoral Fellow; Georgia Institute of Technology; USA Reconfigurable; conformal; flexible antenna arrays; RF packaging; MEMS. 
 2005 PhD Electrical and Computer Engineering; Univ. of New Mexico; USA PhD Dissertation on MEMS reconfigurable antennas; synthesis using neural networks
 2002 MSc Electrical and Computer Engineering; Univ. of New Mexico; USA
@@ -2082,13 +2082,15 @@ C23. C. G. Christodoulou; D. Anagnostou; L. F. Feldner; ÏRe-configurable Antenn
 Workshop on Anti-counterfeiting; Security; Identification. Antenna Technology: Small Antennas and
 Metamaterials; Xiamen; China April 16-18; 2007; Page(s): 9 - 12.
 2006 or earlier
-C22. C. G. Christodoulo",
-,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,
+C22. C. G. Christodoulo",,
+,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,
 19,Dr,Mathini,Sellathurai,Male,British & Canadian,,,,,,,Engineering; Physical Sciences; Sensors; Signals and Systems,Engineering; Physical Sciences; Sensors; Signals and Systems,Heriot-Watt University's website,Heriot-Watt University,,"2013: PGCHET (PG Certificate Higher Education Teaching); Queen University Belfast; UK
 2001: Ph.D. in Electrical and Computer Engineering; McMaster University; Hamilton; Canada. Won the ÏBest PhD Thesis AwardÓ from Natural Sciences and Engineering Research Council (NSERC) Canada.
 1997: Licentiate Degree in Electrical Engineering (Image Processing and Applications); Royal Institute of Technology; Stockholm; Sweden","03/15- 04/18 Chair and Head of Electrical; Electronic and Computer Engineering; Heriot-Watt University; UK
@@ -2208,7 +2210,7 @@ Transactions on Communications. 66; 5; p. 1955-1969 15 p. May 2018. (20 citation
 Podilchak ; Colum Tucker ; Kieran Maccoll ; Yelzhas Zhaksylyk ; MarÃa GarcÃa-
 Vigueras ; Mathini Sellathurai ; George Goussetis; Dual-Polarized Aperture-Coupled Patch
 
-Antennas With Application to Retrodirective and Monopulse Arrays; IEEE Access; 2020",
+Antennas With Application to Retrodirective and Monopulse Arrays; IEEE Access; 2020",,
 20,Dr,David,Flynn,Male,,,,,,,,Engineering; Physical Sciences; Sensors; Signals and Systems,Engineering; Physical Sciences; Sensors; Signals and Systems,Heriot-Watt University's website,Heriot-Watt University,,"Heriot-Watt University 2003-2006 PhD ÏThe Manufacturing and Characterisation of Microscale Magnetic ComponentsÓ.
 Heriot-Watt University 2002-2003 Master of Science in Microsystems Engineering with Distinction. I received one of only three
 Heriot-Watt University 1998-2002 Bachelor of Engineering in Electrical and Electronic Engineering","Professor; Heriot-Watt University 2018-Present
@@ -2233,8 +2235,8 @@ member of the Scottish Power Energy Networks (SPEN) stakeholder group.",,,"2020 
 2017 Converge Challenge Prize
 2006-2007 IET Leslie H Paddle Prize
 2004 Robinson Scholarship
-2003 IEE Postgraduate Scholarship",,,
-21,Dr,Wei,Li,Male,,,,,,,,Electronic and Electrical Engineering,Electrical and Electronic Engineering,The University of York's website,The University of York's website,,,,,,,,,,
+2003 IEE Postgraduate Scholarship",,,,
+21,Dr,Wei,Li,Male,,,,,,,,Electronic and Electrical Engineering,Electrical and Electronic Engineering,The University of York's website,The University of York's website,,,,,,,,,,,
 22,,Florimond,Gueniat,Male,,19/11/1984,,,,,,fluid mechanics and computer science,Computer Science,Birmingham City University's website,Birmingham City University,,"Univ. Paris Sud Orsay; France PhD in Mechanical Engineering 2010 - 2013
 Univ. Paris Sud Orsay; France Bachelor and Master degree of Mechanical Engineering 2008 - 2010
 Bachelor and Master degrees from Paris-Sud Univ.
@@ -2304,7 +2306,7 @@ F. Gueniat; L. Pastur; F. Lusseyran; and T. Faure. ÏOp ? erateur de Koopman et 
 a un ` ecoulement de cavit ? eÓ. In: ? Actes des Rencontres du Non-Lineaire ? . Editions du Non-Lineaire; 2011; pp. 87-92. ?
 F. Lusseyran; F. Gueniat; J. Basley; C. Douay; L. Pastur; T. Faure; and P. Schmid. ÏFlow coherent structures and frequency ?
 signature: application of the dynamic modes decomposition to open cavity flowÓ. In: Journal of Physics: Conference series.
-Vol. 318. 4. 2011; p. 042036.",
+Vol. 318. 4. 2011; p. 042036.",,
 23,Dr,Alireza,Mousavi,Male,British,,,,,,,Materials and Manufacturing Engineering,Material and Manufacturing Engineering,Brunel University's website,Brunel University London,"Key areas of research and development interest: Mathematical Modelling and Simulation; Applied Control and Computing; concentrating in three main areas:
 Real-Time Systems encompassing Data Acquisition; Sensitivity Analysis; and Systems Modelling. Using our own Machine Learning techniques coupled with Deep Learning and other Data- Driven methodologies in Cyber Physical Systems. The applications and some of the projects we have/are engaged in for example; in the Aerospace and Aviation (Flight Data Analysis; Scenario Analysis; Fault Diagnostics; and Predictive Maintenance); Image processing for security scanners; Automotive (Control and Optimisation of Fuel Injection Systems; Electronic Stability Program (ESP); Electronic Control Units (ECU); Electronic Braking Systems industries. Further applications in real-time performance monitoring and optimisation of Power Plants and Factory Performance Optimisation; including Robotics and Automation of production and assembly of extremely small scale (?).
 Systems Modelling and Simulation: Application of discrete event modelling and simulation for measuring and optimisation of plant/shopfloor performance optimisation. Measurement of key performance indicators in industrial systems including manufacturing; health care; retail; logistics; and service industry. Linking internal resource performance with external and environmental factors (secondary models) such as customer satisfaction; environmental impact and complex socio-economics factors.
@@ -2448,7 +2450,7 @@ Other written and published work
 2. Railway System Capacity Planning based on Statistical Analysis; Machine Learning and Discrete- Event Simulation (2020) to be uploaded on www.brunel.ac.uk/~emstaam (draft available)
 3. Electronic Business Systems - Modern Enterprise: Design; Manage and Lead [Course Book forUG] (2014) available as printed.
 4. INTRODUCTION TO SYSTEMS MODELLING AND SIMULATION - 4th Edition (online access) [Course Book for PG] (2015). available at: www.brunel.ac.uk/~emstaam teaching section; Systems Modelling and Simulation.
-",
+",,
 24,Dr,Shouxun,Ji,Male,,30/08/1982,,,,,,Materials and Manufacturing Engineering,Material and Manufacturing Engineering,Brunel University's website,Brunel University London,"Novel aluminium alloys and magnesium alloys from alloy design; constituent control and
 manufacturing process; to the microstructure and mechanical properties of materials
 Solidification and microstructural evolution of metallic materials
@@ -2989,8 +2991,8 @@ and Composites""; ed. by G.L. Chiarmetta; Turin; Italy; 2000;pp723-729.
 16/17
 [155] Z Fan and S Ji; Development of rheomoulding of light alloys; in ""Proc. the 6th Intl Conf. on
 Semi-Solid Processing of Alloys and Composites""; ed. by G.L. Chiarmetta; Turin; Italy; 2000;
-pp61-67.",
-25,Dr,Yanmeng,Xu,Male,,,,,,,,Materials and Manufacturing Engineering,Material and Manufacturing Engineering,Brunel University's website,Brunel University London,,,,,,,,,,
+pp61-67.",,
+25,Dr,Yanmeng,Xu,Male,,,,,,,,Materials and Manufacturing Engineering,Material and Manufacturing Engineering,Brunel University's website,Brunel University London,,,,,,,,,,,
 26,Dr,Rafiq,Swash,Male,,,,,,,,Materials and Manufacturing Engineering,Material and Manufacturing Engineering,Brunel University's website,Brunel University London,"Artificial Intelligent and expert systems
 Autonomous vehicle and robotics; IOT
 Additive manufacturing and Nano technologies
@@ -3209,8 +3211,8 @@ InteractionÓ; 9th International Conference on 3D Immersive Imaging (IC3D). 11-1
 [10] H. Ozan; N; Boulgouris; M.R. Swash ÏGait Recognition Based on Holoscopic 3D Gait Energy
 ImageÓ; 9th International Conference on 3D Immersive Imaging (IC3D). 11-13 Dec; 2017",""" I am happy to explore various options such as setting up a new autonomy and Ai labs focusing on industrial automation or Innovative Sensing lab. I have a strong industrial network with intensive academic background. My research empower robotics; Ai; security; manufacturing; entertainment and AR/VR.
 
-#CompanyFounder: Scalable sensing technology to empower future technology including additive manufacture and robotics. """
-27,Professor,Sergey,Mikhailov,Male,,,,,,,,Mathematics and Structural Integrity,Material and Manufacturing Engineering,Brunel University's website,Brunel University London,,,,,,,,,,
+#CompanyFounder: Scalable sensing technology to empower future technology including additive manufacture and robotics. """,
+27,Professor,Sergey,Mikhailov,Male,,,,,,,,Mathematics and Structural Integrity,Material and Manufacturing Engineering,Brunel University's website,Brunel University London,,,,,,,,,,,
 28,Dr,Atta,Haq,Male,,,,,,,,Faculty Of Computing; Eng. & Built Env.,Material and Manufacturing Engineering,University of Ulster's wesbite,University of Ulster,"My research interests and activities span over the following major domains;
 Nanocrystals/quantum Dots; Alloyed Nanocrystals and Nanocomposites
 Microplasma reactors at atmospheric pressures; Plasma-liquid chemistry
@@ -3280,7 +3282,7 @@ Atta Ul Haq; Je Moon Yun; Won Jun Lee; Joonwon Lim; Sang Ouk Kim; ÏMetal Oxides
 Polyaniline Hybrid NanostructuresÓ Poster at Polymer Science and Technology; 12-13th April; 2012.
 
 Atta Ul Haq; Eun Young Choi; Sang Ouk Kim; ÏGraphene Preparation and its CharacterizationÓ; 3rd International
-Conference on Frontiers of Advanced Engineering Materials; Oral at FAEM-08; 15-17th Dec. 2008; Lahore; Pakistan.",
+Conference on Frontiers of Advanced Engineering Materials; Oral at FAEM-08; 15-17th Dec. 2008; Lahore; Pakistan.",,
 29,Professor,Hari,Nadendla,Male,British,,,,,,,Materials and Manufacturing Engineering,Material and Manufacturing Engineering,Brunel University's website,Brunel University London,,"PGCert in Learning and Teaching in Higher Education; Brunel University (2009).
 Ph. D (Superconducting materials) Defense Metallurgical Research Lab.; Univ. Hyderabad; India (1998).
 M. Sc (Physics &amp; Advanced Electronics); University of Hyderabad; India (1992).
@@ -3308,7 +3310,7 @@ Young researcher participant award 55 th Nobel laureates meeting (Lindau; 2005).
 CSIR Research Fellowship (June&#39;95 - April&#39; 98); Scientific and Industrial Research Fellowship; India.
 National Special Research Fellow Award (SeptÌ 92 - Mar&#39;94); Defense Metallurgical research lab; India.
 National Merit Award (based on M.Sc result) (May 91); National Physical Laboratory; New Delhi; India",6 internationals patents; 3 of them lead to commercialisation activity and licensed to industry.,"Authored / co-authored &gt;220 publications in international peer reviewed journals; Nature
-Materials; ACS nano; Scientific Reports; Acta Mat.; Met Trans; J. Alloys &amp;Comp. Mat &amp; Design; APL; JAP; PRB; SuST etc.",
+Materials; ACS nano; Scientific Reports; Acta Mat.; Met Trans; J. Alloys &amp;Comp. Mat &amp; Design; APL; JAP; PRB; SuST etc.",,
 30,Professor,Eileen,Harkin-Jones,Female,,07/02/1962,,,,,,Faculty Of Computing; Eng. & Built Env.,Material and Manufacturing Engineering,University of Ulster's wesbite,University of Ulster,Polymers & Composites. Work includes development of new materials for aerospace; automotive; biomedical and additive manufacturing industries. Process development and control. Sustainable manufacturing.,"1992 PhD Mechanical Engineering; QueenÌs University Belfast.
 1988 PGCE Physics & Maths; QueenÌs University Belfast
 1983 BEng (1st Class Hons) Mechanical Engineering; University College Dublin.
@@ -3378,7 +3380,7 @@ Engineering & Physical Sciences Research Council EPSRC Thermal management in pol
 Fellow of the Irish Academy of Engineering; Ireland
 Sichuan University High end foreign teacher
 Distinguished Engineering Graduate 2018 University College Dublin; Ireland
-",,,
+",,,,
 31,Dr,James,Uhomoibhi,Male,,,,,,,,Faculty Of Computing; Eng. & Built Env.,Computing Engineer,University of Ulster's wesbite,University of Ulster,,"Professional:
 2013 FCHERP Centre for Higher Education Research and Practice
 2012 FBCS BCS; The Chartered Institute for IT
@@ -3432,8 +3434,8 @@ EPS (European Physical Society); EOS (European Optical Society); IEEE; IET (Inst
 2011 Award for Global Achievements in Engineering Education and Research iNEER; The International Network for Engineering Education and Research
 2009 BCS Long Service Award BCS; The Chartered Institute for IT",,"Journal Papers and International Peer Reviewed Conference Publications (125); Books/Proceedings
 Edited; Book Chapters and Reviews (28); International Keynote Addresses; Invited Research Talks
-and Presentations (40); International Reports (5)",
-32,Dr,Srinivasu,Puttaswamy,Male,,,,,,,,Faculty Of Computing; Eng. & Built Env.,Computing Engineer,University of Ulster's wesbite,University of Ulster,,,,,,,,,,
+and Presentations (40); International Reports (5)",,
+32,Dr,Srinivasu,Puttaswamy,Male,,,,,,,,Faculty Of Computing; Eng. & Built Env.,Computing Engineer,University of Ulster's wesbite,University of Ulster,,,,,,,,,,,
 33,Dr,Kun,Dou,Male,"PeopleÌs Republic of
 China",,,,,,,Materials and Manufacturing Engineering,Material and Manufacturing Engineering,Brunel University's website,Brunel University London,"1 Integrated computational materials engineering (ICME) for metal casting process.
 2 Multiphase modelling of fluid flow; heat transfer and solidification in metal
@@ -3591,7 +3593,7 @@ Mechanics of Materials; 2019.
 
 ; Qing Liu. Influence of boron and titanium contents on the
 evolution of hot ductility for medium carbon 60Si2Mn steel. Metals and
-Materials International; 2019.",
+Materials International; 2019.",,
 34,Dr,Giulio,Alfano,Male,,,,,,,,Materials and Manufacturing Engineering,Material and Manufacturing Engineering,Brunel University's website,Brunel University London,"Nonlinear finite-element analysis of solids and structures;
 Fracture mechanics: modelling experimental testing;
 Modelling and testing of adhesive joints and composite delamination;
@@ -3830,7 +3832,7 @@ Plasticity: Fundamentals and Applications; Pts 1 and 2 (pp. 548-553). Barcelona;
 Center Numerical Methods Engineering.
 [C22] Romano; G.; & Alfano; G. (1995). Multivaluedness in structural mechanics with applications to
 plasticity. In M. H. Aliabadi; & C. Alessandri (Eds.); Contact Mechanics II (pp. 19-28). Ferrara;
-Italy: Computational Mechanics Publications Ltd.",
+Italy: Computational Mechanics Publications Ltd.",,
 35,Dr,Yuchun,Xu,Male,,,,,,,,Mechanical Engineering,Mechanical Engineering,Aston University's website,Aston University,,"Harbin Institute of Technology; P. R. China
 1993-1999: PhD (combined with MSc) in Manufacturing Engineering (Full Time)
 1989-1993: BEng (Hons) in Automotive Engineering (1st Class; Full Time)","July 2017 - Senior Lecturer (Associate Professor) in Manufacturing Engineering; School of Engineering and Applied Science; Aston University; Birmingham; UK. 
@@ -4001,8 +4003,8 @@ CycleÓ; the 46th AIAA Aerospace Sciences Meeting and Exhibit; January 2008; Ren
 AIAA2008-1123.
 X. Tan; Y. Xu; J. Early; J. Wang; R. Curran; S. Raghunathan; ÏA Framework for Systematically Estimating
 Life Cycle Cost for Integrated WingÓ; the 7th AIAA Aviation Technology; Integration and Operations
-Conference (ATIO2007); AIAA2007-7809.",
-36,Mr,Alireza,Valizadeh,Male,,,,,,,,Mechanical and Aerospace Engineering,Mechanical Engineering,Brunel University's website,Brunel University London,,,,,,,,,,
+Conference (ATIO2007); AIAA2007-7809.",,
+36,Mr,Alireza,Valizadeh,Male,,,,,,,,Mechanical and Aerospace Engineering,Mechanical Engineering,Brunel University's website,Brunel University London,,,,,,,,,,,
 37,,Shuaib Khan M,Pharma,Male,Canadian,,,,,,,Pharmaceutical Researcher,Biomechanical Engineering,Indeed,Indeed,,Doctoral Degree,"Research Scientist; Himalaya Global Research Scientist Himalaya Global - Dubai; AE July 2014 to Present
 Research Scientist The Himalaya Drug Company - Bengaluru; Karnataka April 2014 to July 2014",,,,"Executive Diploma in Regulatory Affairs
 March 2019 to March 2021 Basic Life support skills
@@ -4153,7 +4155,7 @@ CycleÓ; the 46th AIAA Aerospace Sciences Meeting and Exhibit; January 2008; Ren
 AIAA2008-1123.
 X. Tan; Y. Xu; J. Early; J. Wang; R. Curran; S. Raghunathan; ÏA Framework for Systematically Estimating
 Life Cycle Cost for Integrated WingÓ; the 7th AIAA Aviation Technology; Integration and Operations
-Conference (ATIO2007); AIAA2007-7809.",
+Conference (ATIO2007); AIAA2007-7809.",,
 38,,Richard,Paul,Male,,,,,,,,Technology Researcher,Researcher,Indeed,Indeed,,"PhD in Computer Science and Artificial Intelligence in Computer Science and Artificial Intelligence Edinburgh University January 2003 to October 2006
 MSc in Artificial Intelligence and Operations Research Imperial College London September 1994 to September 1995
 MSc in Computer Science and Electronic Engineering University College London September 1993 to September 1994
@@ -4170,7 +4172,7 @@ Chief Technical Architect for Multi-Media Messaging Technical Architect Vodafone
 IT Consultant PA Consulting October 1997 to January 1999
 Management and Technology Strategy Consultant Booz Allen Hamilton October 1995 to October 1997
 Robert Flemmings bank derivatives department September 1994 to September 1995
-Scientific projects 1992 - 1995",,,,,,,
+Scientific projects 1992 - 1995",,,,,,,,
 39,,ANJANA,SHARMA,Female,,01/06/1983,,,,,,Food and life Science,Researcher,Indeed,Indeed,Scientific curation/ Indexing /Data mining in food & life sciences journals; Scientific writing and Editing; Food Databases; R&D; New Product Development; Food Quality Control; Food and Retail backend operations; Food marketing; Sale operations (Life Sciences),"Ph.D. Food Technology. Bundelkhand University; Jhansi; India (Awarded in 2010)
 M.Sc. Food Science and Technology (2004-2006)
 B.Sc Biology (2001-2004) Rohilkhand University; Bareilly; India","Company name: Molecular Connections Private Limited; Bangalore; India. Duration: November 2012 to November 2018 (5 years + 1-year contract)
@@ -4178,7 +4180,7 @@ Company Name: National Dairy Research Institute; Bangalore; India Duration: May 
 Institute: Indian Veterinary Research Institute; Bareilly; India. Role: Research Associate Duration: January to October 2008",,,,,,"A. National/ International Research Publications: 3
 B. Papers presented in International / National Conferences / Symposia
 International Conference / Symposia: 4
-National Conference / Symposia: 5",
+National Conference / Symposia: 5",,
 40,Dr,Xiaolei,Liu,Male,,,,,,,,Computer Science,Computer Science,Indeed,Indeed,,"Doctor of Philosophy in Photovoltaic Engineering University of New South Wales 2010-2015
 Master of Engineering Science in Photovoltaic Engineering University of New South Wales 2009-2010
 Graduate Diploma of Information Science University of New South Wales 2002-2003
@@ -4320,7 +4322,7 @@ http://dx.doi.org/10.1557/opl.2014.208.
 16. Ning Song; Xiaojing Hao; Jialiang Huang; Ziheng Liu; Xiaolei Liu; Shujuan Huang; and
 Martin Green; Film thickness and substrate temperature effects on sputtered Al:ZnO
 window layer for Cu2ZnSnS4 thin film solar cells in Optoelectronic and Microelectronic
-Materials & Devices (COMMAD) Conference; 2012; p. 153-154.",
+Materials & Devices (COMMAD) Conference; 2012; p. 153-154.",,
 41,,Deji,Aremu,Male,,,,,,,,Mechanical; Aerospace and Automotive Engineering,Mechanical Engineering,Coventry University's website,Coventry University,,"Loughborough University (Wolfson School) Loughborough; UK PhD: Mechanical and Manufacturing Engineering Dec. 2008 - Dec. 2013
 Warwick University (Warwick Manufacturing Group) Coventry; UK MSc: Manufacturing Systems Engineering Oct. 2006 - Oct. 2007
 Obafemi Awolowo University (Faculty of Technology) Ile-Ife; Nigeria BSc: Metallurgical and Material Engineering Jan. 1999 - Dec. 2005
@@ -4356,8 +4358,8 @@ OpenFoam Essential Computational Fluid Dynamics: Certificate of completion.
 MSc Marc Advanced: Certificate of the MSc Institute of Technology.
 Session Chair at 2016 Society of Experimental Mechanics Conference; Orlando Florida: Certificate of Appreciation.
 Loughborough University PhD Scholarship.
-Warwick University Sub-Saharan African Postgraduate Scholarship.",,,
-42,Professor,Paul,Maguire,Male,,,,,,,,Faculty Of Computing; Eng. & Built Env.,Computing Engineer,University of Ulster's wesbite,University of Ulster,,,,,,,,,,
+Warwick University Sub-Saharan African Postgraduate Scholarship.",,,,
+42,Professor,Paul,Maguire,Male,,,,,,,,Faculty Of Computing; Eng. & Built Env.,Computing Engineer,University of Ulster's wesbite,University of Ulster,,,,,,,,,,,
 43,Professor,Pagona,Papakonstantinou,Male,,,,,,,,Faculty Of Computing; Eng. & Built Env.,Computing Engineer,University of Ulster's wesbite,University of Ulster,Multifunctional structural batteries for electric transportation,,,,,Recent and Current grants awarded by the PI(i) Air Force Office of Scientific Research (AFOSR ); ÏNovel graphene-based multifunctional hierarchical composite aerostructures with enhanced fracture toughness and bulk conductivityÓ £148;903 (2017- 2020) (PI: P. Papakonstantinou). (ii) EPSRC (EP/T024437/1); ÏMulti-User X-ray Diffraction (XRD) Core EquipmentÓ £100;000 (2020-2021) (CoI: P. Papakonstantinou). (iii) Abbott Diabetes Care & Department of Education (DfE); Co-operative Awards in Science & Technology (CAST); ÏFlexible skin sweat electrochemical sensing utilizing laser induced grapheneÓ; £57;280 (2019-2022) (PI: P. Papakonstantinou). (iv) Invest Northern Ireland; ÏGraphene electrode-WP9Ó; £179.353 (2015-2020) (CoI : P. Papakonstantinou). (v) Invest Northern Ireland-Proof of Concept; ÏSilicon doped graphene wear and corrosion resistant coatings on steelÓ; £105;965 (2017-2019). (PI: P. Papakonstantinou).(vi) UK Government; Belfast City Region Deal ÏAdvanced Manufacturing Innovation Centre (AMIC)Ó; £30.8M. (CoI: P.Papakonstantinou). (vii) British Council; Institutional Links; ID: 216182787; Newton Fund; ÏPaper-based microfluidic electrochemical biosensor for detection of miRNA biomarkers towards early diagnosis of lung cancerÓ; £200;000 (2016-2018) (PI: P. Papakonstantinou). (viii) British Council; Newton Bhabha PhD placement fund. ÏMultifunctional 2D materialsÓ £10;200 (2018) (PI: P. Papakonstantinou).(ix) EPSRC Mid-Range Facility; ÏPump PrimerÓ; UK National Ion Beam Centre; ÏElectrical doping in 2D semiconductors through ion implantationÓ; £10K (2017-2018) (PI: P. Papakonstantinou). (x)Northern Ireland-Proof of Concept; ÏGraphene corrosion inhibiting coatingÓ; £103;988 (2013-2016).(PI: P. Papakonstantinou (xi) 3 DEL/CVRS PhD studentships; (Since 2018) .,"Invited Fellow of the Royal Society of Chemistry (FRSC) through ÎLeaders in the FieldÌ scheme for my contributions in the field of nanomaterials and nanoscience (2014).
 Recipient of Royal Academy of Engineering/Leverhulme Trust Senior Fellowship (2012); Recipient of Distinguished Research Fellowship from the University of Ulster (2003).
 Member of EPSRC Interview Panel for various calls.
@@ -4413,9 +4415,9 @@ ultrathin diamond nanorodsÓ; ACS Nano; 3 (2009) 1032-1038 (113 citations).
 12. Shang; N.G.; Papakonstantinou; P.; McMullan; M.; Chu; M.; Stamboulis; A.; Potenza; A.; Dhesi;
 S.S.; Marchetto; H. ÏCatalyst-free efficient growth; orientation and biosensing properties of
 multilayer graphene nanoflake films with sharp edge planesÓ; Advanced Functional Materials; 18
-(2008) 3506-3514.",
-44,Professor,Manolis,Gavaises,Male,,,,,,,,Mechanical Engineering and Aeronautics,Mechanical Engineering,the university's website,City; University of London,,,,,,,,,,
-45,Dr,Feng,Fu,Male,,,,,,,,Civil Engineering,Civil Engineering,the university's website,City; University of London,,,,,,,,,,
+(2008) 3506-3514.",,
+44,Professor,Manolis,Gavaises,Male,,,,,,,,Mechanical Engineering and Aeronautics,Mechanical Engineering,the university's website,City; University of London,,,,,,,,,,,
+45,Dr,Feng,Fu,Male,,,,,,,,Civil Engineering,Civil Engineering,the university's website,City; University of London,,,,,,,,,,,
 46,Dr,Tarek,Jomaa,Male,Lebanese,19/07/1986,,,,,,Motorsport Engineering,Motorsport Engineer,Derby university's website,Derby University,,"Jan. 2014 - Dec. 2016 Doctorate in industrial engineering Universitá degli studi di Padova; industrial engineering department - Via Venezia 1; 35100 Padova
 Nov. 2009 - Feb. 2011 Specialized master in advanced automotive engineering Institut Sup»rieur du Mans - 44 Avenue Fr»d»ric Auguste Bartholdi; 72000 Le Mans
 Sept. 2004 - Sept. 2009 Diploma in mechanical engineering Lebanese University; faculty of engineering - Choueifat; Lebanon","Oct. 2018 - present Programme leader of Motorsport engineering University of Derby - Markeaton St; Derby DE22 3AW
@@ -4424,7 +4426,7 @@ Jan. 2017 - Dec.2017 Mechanical design & vehicle dynamics engineer JAS Motorspor
 Jan. 2014 - Dec. 2016 R & D Industrial engineer Universitá degli studi di Padova; industrial engineering department - Via Venezia 1; 35100 Padova
 Oct. 2011 - Mar. 2013 Consultant engineer
 Feb. 2011 - Sep. 2011 Motorsport engineer",,,,Motorsport engineer certificate from M. Henri Pescarolo.,,"The effect of the inflation pressure of tyres on motorcycle weave stability: experiments and
-simulation; Vehicle System Dynamics; 3 August 2016",
+simulation; Vehicle System Dynamics; 3 August 2016",,
 47,Professor,Zhiyin,Yang,Male,British,27/02/1963,,,,,,Mechanical and Manufacturing Engineering,Mechanical Engineering,Derby university's website,Derby University,"? Large-Eddy Simulation (LES)
 ? Computational Fluid Dynamics (CFD)
 ? Turbulence; flow stability and transition
@@ -4452,7 +4454,7 @@ Loughborough UTC CFD combustion work (RR; 2007-2008; £12;500)
 Reynolds Stress Modelling in unstructured CFD codes (RR; 2008 - 2009; £34;000)
 HPCx resources and support for the LESUK_3 Consortium (EPSRC; 2006 - 2009; £61;542)
 SAMULET_Project_2: Combustion system for low environment impact (EPSRC; 2009 - 2013; £734;149)
-Evaporative cooling of internal combustion engines (EPSRC; with support from Ford and Ricardo; 2015 - 2019; £671;814)",,,,
+Evaporative cooling of internal combustion engines (EPSRC; with support from Ford and Ricardo; 2015 - 2019; £671;814)",,,,,
 48,Dr,Foivos,Koukouvinis,Male,Greek,14/01/1986,,,,,,Mechanical Engineering and Aeronautics,Mechanical Engineering,the university's website,City; University of London,,"2008-2012: Ph.D. Mechanical Engineering; National Technical University of Athens (NTUA)
 2008-2010: Post-graduate studies; School of Electrical and Computer Engineering National Technical University of Athens; Greece.
 2003-2008: 5-year Diploma in Mechanical Engineering; School of Mechanical Engineering; National Technical University of Athens; Greece.","CURRENT POSITION
@@ -4725,8 +4727,8 @@ turbine™; 4th Spheric Workshop proceedings; Nantes; France; 2009.
 
 39. Stamatelos F.; Koukouvinis P.; Anagnostopoulos J.; Papantonis. D.; ¥Numerical simulation of
 incompressible flows using the Smoothed Particle Hydrodynamics method™; FLOW 2008
-conference proceedings; Kozani; 2008; Greece.",
-49,Professor,Xiongwei,Ni,Male,,,,,,,,Mechanical Engineering; Process and Energy Engineering and Physical Sciences,Mechanical Engineering,Heriot-Watt University's website,Heriot-Watt University,,,,,,,,,,
+conference proceedings; Kozani; 2008; Greece.",,
+49,Professor,Xiongwei,Ni,Male,,,,,,,,Mechanical Engineering; Process and Energy Engineering and Physical Sciences,Mechanical Engineering,Heriot-Watt University's website,Heriot-Watt University,,,,,,,,,,,
 50,Dr,Jun,Xia,Male,,,,,,,,Mechanical and Aerospace Engineering,Mechanical Engineering,Brunel University's website,Brunel University London,,"Ph.D. in Mechanical Engineering; University of Southampton; Oct. 2007
 M.Sc. in Mechanical and Energy Engineering; Zhejiang University; China; Feb. 1999
 B.Eng. in Mechanical and Energy Engineering; Zhejiang University; Jul. 1996","Senior Lecturer; Oct. 2015 - present; Brunel University
@@ -4800,8 +4802,8 @@ sions in large-eddy simulation of a preheated pulverised-coal turbulent jet flam
 chemistryÓ; COMBUSTION THEORY AND MODELLING 22 (2018) 203-236.
 (8) J. Shinjo; J. Xia; ÏCombustion characteristics of a single decane/ethanol emulsion droplet and a
 droplet group under puffing conditionsÓ; PROCEEDINGS OF THE COMBUSTION INSTITUTE
-36 (2017) 2513-2521.",
-51,Professor,Sheng,Dai,Male,,,,,,,,Chemical Engineering,Chemical Engineering,Brunel University's website,Brunel University London,,,,,,,,,,
+36 (2017) 2513-2521.",,
+51,Professor,Sheng,Dai,Male,,,,,,,,Chemical Engineering,Chemical Engineering,Brunel University's website,Brunel University London,,,,,,,,,,,
 52,Dr,Apostolos,Pesyridis,Male,,,,,,,,Mechanical and Aerospace Engineering,Mechanical Engineering,Brunel University's website,Brunel University London,"Sustainable Transportation and Energy Technologies including:
 1. Industrial power generation
 2. Distributed power generation
@@ -5197,7 +5199,7 @@ TURBO EXPO 2005.
 86. Pesiridis; A.; Szymko; S.; Rajoo; S.; & Martinez-Botas; R. F. (2004). Development of
 Active Flow Control in a Turbocharger Turbine for Emission Reduction. In Internal
 Combustion Engine Performance and Emissions Conference. Institution of Mechanical
-Engineers.",
+Engineers.",,
 53,,Mahmoud,Khader,Male,,,,,,,,Mechanical Engineering and Aeronautics,Mechanical Engineering,the university's website,City; University of London,,"2019 Associate Fellowship in Higher Education City; University of London (UK)
 2013-2017 PhD City; University of London (UK)
 2005-2010 BSc Birzeit University (Palestine)","April 2019- present Research Associate City; University of London
@@ -5216,7 +5218,7 @@ S. Salah; M. A. Khader; A. I. Sayma and M. White; ÏMean-Line Design of a Superc
 ASME Turbo Expo; London; UK; 2020.
 O. Aqel; M. A. Khader; M. White and A. I. Sayma; ÏInvestigating the effect of using CO2-TiCl4 blends as working
 fluids on the turbine design for a 100 MWe power plant;Ó in the 7th International Supercritical CO2 Power Cycles
-Symposium; San Antonio; Texas; 2020.",
+Symposium; San Antonio; Texas; 2020.",,
 54,,Mostafiz,Rahman,Male,Australian,,,,,,,Mechanical; Aerospace and Automotive Engineering,Mechanical Engineering,Coventry University's website,Coventry University,,"Coventry University; Coventry; United Kingdom Doctor of Philosophy Ph.D.) 2015
 International Laboratory of Air Quality and Health (ILAQH); Queensland University of Technology (QUT); Brisbane; Queensland 4001; Australia B.Sc. in Mechanical Engineering 2007","Lecturer in Mechanical and Automotive Engineering April 2019- till to date School of Mechanical; Aerospace and Automotive Engineering
 Associate January 2020 - till to date Research Centre: Future Transportation for Cities(FTC)
@@ -5324,7 +5326,7 @@ Bangladesh
 6. 8 th Australia- New Zealand Aerosol Workshop at 26-27 November 2012 Sydney; NSW; Australia
 7. Future fuel Australia work shop at July 19-20; 2011; Brisbane; QLD; Australia
 8. International Conference on Mechanical Engineering 2009 (ICME2009) 26- 28 December 2009;
-Dhaka; Bangladesh",
+Dhaka; Bangladesh",,
 55,Dr,Ioannis,Karathanassis,Male,Greek,,,,,,,Mechanical Engineering and Aeronautics,Mechanical Engineering,the university's website,City; University of London,"Secondary instabilities of streamwise vortex flows
 Trailing edge noise
 Rapid-distortion theory
@@ -5463,7 +5465,7 @@ heat exchanging devices employing tubes with 180deg bends (in Greek); Proc. 8
 
 th Hellenic Conf. Fluid
 
-Flow Phenomena; 2012; Volos; Greece.",
+Flow Phenomena; 2012; Volos; Greece.",,
 56,Dr,Mohammed,Afsar,Male,British,06/11/1979,,,,,,Mechanical And Aerospace Engineering,Mechanical Engineering,University of the Strathclyde Glasgow's Website,University of the Strathclyde Glasgow,"Secondary instabilities of streamwise vortex flows
 Trailing edge noise
 Rapid-distortion theory
@@ -6087,9 +6089,9 @@ developed in the form of a series of research projects and teaching modules. Hen
 bringing our group to China would be a perfect opportunity to develop these areas.
 We hope that our experience in CFD; theoretical Fluid dynamics and Applied
 Mathematics also will hopefully add to the excellent world-leading profile of
-research present in the Fluid dynamics community in China."
-57,Dr,Mijndert Van der,Spek,Male,,,,,,,,Mechanical Engineering; Process and Energy Engineering and Physical Sciences,Mechanical Engineering,Heriot-Watt University's website,Heriot-Watt University,,,,,,,,,,
-58,Dr,Mark,Heslop,Male,,,,,,,,Chemical And Process Engineering,Chemical Engineering,University of the Strathclyde Glasgow's Website,University of the Strathclyde Glasgow,,,,,,,,,,
+research present in the Fluid dynamics community in China.",
+57,Dr,Mijndert Van der,Spek,Male,,,,,,,,Mechanical Engineering; Process and Energy Engineering and Physical Sciences,Mechanical Engineering,Heriot-Watt University's website,Heriot-Watt University,,,,,,,,,,,
+58,Dr,Mark,Heslop,Male,,,,,,,,Chemical And Process Engineering,Chemical Engineering,University of the Strathclyde Glasgow's Website,University of the Strathclyde Glasgow,,,,,,,,,,,
 59,Dr,Hany,Hassanin,Male,,,,,,,,Mechanical Engineering,Mechanical Engineering,Indeed,Liverpool University,,"Fellow of the Higher Education Academy (FHEA); 2016.
 PhD in mechanical engineering; University of Birmingham; 2011. 
 MSc in Mechanical Engineering; Helwan University; Egypt; 2005
@@ -6185,7 +6187,7 @@ H. Hassanin and K. Jiang; ""Infiltration-processed; functionally graded Material
 A. Mohammadkhani; H. Hassanin; C. Anthony; K. Jiang; ÏFormation of Three Dimensional Nanopattern Via Nanosphere Lithography and Soft Lithography"" The 37th International Conference on Micro & Nano Engineering (MNE 2011); Berlin; Germany; 19 September to 23 September 2011.
 H. Hassanin; A. Mohammadkhani; and K. Jiang; ÏCeramic Nanocomposite by Electrodeposition of Nickel into Porous Alumina Matrix"" IEEE NANO 2012.
 H. Hassanin; M. Attallah; M. Wickins; N. Adkins; Selective laser melting of hot isotactic pressing canisters using Fe powder; Materials Science & Technology; MS&T; October 12-16; USA; 2014.
-Hany Hassanin; Younes Younes; Samir El-Demerdash and Al Adl Rabeih;""Evaluation of Local Humps and a New Hump Design"" Egyptian Military technical faculty Conference; Cairo; Egypt; May 2006.",
+Hany Hassanin; Younes Younes; Samir El-Demerdash and Al Adl Rabeih;""Evaluation of Local Humps and a New Hump Design"" Egyptian Military technical faculty Conference; Cairo; Egypt; May 2006.",,
 60,,Seyed Elyas,Razzaghi,Male,,,,,,,,Bio-Systems Engineering,Biomechanical Engineering,Indeed,Islamic Azad University - isfahan,,"Ph.D. in Bio-Systems Engineering University of Tehran 2018
 M.Sc. in Mechanical Engineering of Farm Machineries University of Tehran 2009
 B.Sc. in Mechanical Engineering University of Shahrekord 2001
@@ -6254,7 +6256,7 @@ Head of Technical Office in China-Ware Industry
 Commercial work experience:
 Director Manager
 2002 to 2003
-in a rural cooperative company.",,,,,,,
+in a rural cooperative company.",,,,,,,,
 61,,Chawki,Abdessemed,Male,,,,,,,,Aerodynamics Engineering,Electrical and Electronic Engineering,Indeed,Rolls-Royce UTC; Cranfield University; Cranfield,,"PhD in Aerospace/Aerodynamics University of the West of England - Bristol March 2016 to June 2019
 Mechanics research Riga Technical University - Riga; LV September 2013 to March 2016
 Msc in Aeronautics & Aerospace Technology Riga Technical University - Riga; LV September 2012 to August 2013
@@ -6263,7 +6265,7 @@ Bachelor in Aeronautics University of Batna 2 September 2008 to August 2011","Re
 CAE and HPC Specialist University of the West of England - Bristol September 2016 to September 2019
 PhD Researcher University of the West of England - Bristol April 2016 to June 2019
 Aerodynamics Engineer (CAE/CFD) Leonardo Helicopters - Bristol January 2018 to July 2018
-Research Engineer Riga Technical University - Riga; LV September 2014 to April 2016",,,,,,https://www.researchgate.net/profile/Chawki_Abdessemed,
+Research Engineer Riga Technical University - Riga; LV September 2014 to April 2016",,,,,,https://www.researchgate.net/profile/Chawki_Abdessemed,,
 62,Dr,Ali,Khaghani,Male,,,,,,,,Precision Engineering and Nanotechnology,Material and Manufacturing Engineering,Indeed,Brunel University,,"PhD in Precision Engineering Brunel University - London November 2016 to March 2020
 MSc in Advanced Engineering Design Brunel University - London September 2015 to September 2016
 BSc in Mechanical Engineering Design London South Bank University - London September 2010 to July 2013
@@ -6286,14 +6288,14 @@ freeform-surfaces-using-the-slow-tool-servo-sts/
 
 June 2019
 euspen; Lamdamap 13th international conference&exhibition; Calibration;Coordinate measuring
-machine (CMM);Metrology;",
+machine (CMM);Metrology;",,
 63,Dr,Mohammadreza,Azimi,Male,,,,,,,,Making Mobile Biometrics More Reliable,Biomechanical Engineering,Indeed,warsaw university of technology,,"M.Sc. in Mechanical Engineering in supervision Tarbiat Modares University - Tehran; IR 2015
 B.Sc. in Mechanical Engineering in Mechanical Engineering Babol Noshirvani University of Technology 2012
 Bachelor in dissertation Pre-University School in Mathematics and Physics","Python Programmer warsaw university of technology October 2017 to Present under Grant Agreement No. 675087; Project tle: ""Making Mobile Biometrics More Reliable""; warsaw university of technology 3 months scien fic secondment
 Kent University - Canterbury 2018 to 2018 UK; under guidance of Dr. Richard Guest
 Python programmer; Early Stage Researcher 2017 to 2017
 AMBER; EU Horizon volunteer lab experience; in collaboration with Professor Rouzbeh Riazi University of Tehran (no contract) 2015 to 2017
-Scien fic Manager; Rah Arvine Machine Aria Yusef Abad - Tehran; IR 2015 to 2016",,,,,,,
+Scien fic Manager; Rah Arvine Machine Aria Yusef Abad - Tehran; IR 2015 to 2016",,,,,,,,
 64,Dr,Lokesh,Anand,Male,British,,,,,,,Product Engineer,Product Engineer,Indeed,FORD Motor Company; Powertrain Integration Management; UK,,"Corporate Finance; London Business School (LBS) Jan 2016 - March 2016
 MBA (Master of Business Administration); Hull University Business School (HUBS) Sept 2009 - Oct 2010
 Diploma in Strategic Management & Leadership; CMI (UK) Sept 2009 - Oct 2010
@@ -6361,21 +6363,21 @@ Explored and initiated market penetration into the construction and security sec
 regional sales revenue by 20%
 Co-ordinate a team of 6 distributor channels of industrial equipmentÌs
 Managed tendering process including commercial and technical content
-Developed Business strategy and engaged senior stakeholder for North India region",,,,,,,
+Developed Business strategy and engaged senior stakeholder for North India region",,,,,,,,
 65,Dr,Ashwin,Kristnama,Male,Derby,,,,,,,Advanced Composites in Research Experience; Aeronautical Engineering,Researcher,Indeed,Rolls-Royce,,"PhD in Advanced Composites in Research Experience University of Bristol September 2014 to September 2019
 MEng in Aeronautical Engineering University of Bristol October 2010 to June 2014
 Levels in Mathematics College du Saint-Esprit January 2008 to November 2009","Project Engineer Rolls-Royce January 2020 to Present
-Teaching support assistant University of Bristol; UK - Bristol September 2015 to December 2018",,,,,,,
+Teaching support assistant University of Bristol; UK - Bristol September 2015 to December 2018",,,,,,,,
 66,Dr,KWON,RAUSIS,Male,,,,,,,,GEO-ENVIRONMENTAL ENGINEER,,Indeed,Polytechnic University of Catalonia; Barcelona; Spain,,"Polytechnic University of Catalonia; Barcelona; Spain PhD candidate in Environmental Engineering Apr Î17-May Î20
 Polytechnic University of Catalonia & University of Barcelona; Spain Msc. Geological Engineering (Graduated with honours) Sep Î14-Jul Î16
 Polytechnic University of Catalonia & University of Barcelona; Spain Bsc. Geological Engineering Sep Î09-Jul Î14","Institute of Energy Technologies (INTE); Barcelona; Spain Research technician Sep Î16- Mar Î17
 ERASMUS+) and PhD positions; awarding a highly competitive PhD fellowship. Barcelona Research Centre in Multiscale Science and Engineering (BRCMSE); Barcelona; Spain Research intern Sep Î15-Jul Î16
 Ikerlur Geology and Geotechnical Engineering & University of Barcelona; Spain Research assistant Jan Î15-Jul Î15
-Tongil S.A.; Barcelona; Spain Database Developer Sep Î11-Jul Î12",,,,,,,
+Tongil S.A.; Barcelona; Spain Database Developer Sep Î11-Jul Î12",,,,,,,,
 67,Dr,Parham,Momeni,Male,,,,,,,,Computational Fluid Dynamics,Computing Engineer,Indeed,"R&D Senior Engineer
 Doosan Babcock",,"PhD University of Manchester
 MSc in Thermal Power and Fluids Engineering UMIST
-BSc in Mechanical engineering Sharif University",R&D Senior Engineer Doosan Babcock September 2008 to Present,,,,CEng (Engineering Council UK) September 2015 to Present,,,
+BSc in Mechanical engineering Sharif University",R&D Senior Engineer Doosan Babcock September 2008 to Present,,,,CEng (Engineering Council UK) September 2015 to Present,,,,
 68,,imran,irshad,Male,,,,,,,,Infotainment System Engineer at Faurecia Automotive,Computer Science,Indeed,Jaguar Land Rover (Gaydon),Automotive; NVH; Acoustics; Thermal Engineering,"Bachelor of Science - BS Electronics Engineering Sir Syed University of Engineering- 2004. 
 Lab-VIEW - Core 1 and Core 2 training-National Instruments; 2016 (National instruments)
 FMA and DFMEA-Level-3 Failure Mode Avoidance (FMA) including DFMEA. 2014 (Ford UK)
@@ -6392,7 +6394,7 @@ January-2019 to January 2020 McLaren Automotive (Resident) Infotainment System E
 August-2016 to December 2018 Jaguar Land Rover Gaydon Infotainment and Connected Car -System Engineer - Design and Development 
 January-2013 to July 2016 Axell Wireless; Chesham Electronic System Engineer 
 April-2011 to December 2012 Ford Technical Centre UK EDS Project Engineer 
-September 2008 to January 2011 Uxbridge College Lecturer and Team Leader for Higher Education and WBL",,,,,,,
+September 2008 to January 2011 Uxbridge College Lecturer and Team Leader for Higher Education and WBL",,,,,,,,
 69,Dr,Sunny,Narayan,Male,,,,,,,,"Noise and vibration characteristics of a
 micro car diesel engine",Mechanical Engineering,Indeed,Qassim University (ABET accredited); Saudi Arabia,"ICRG PAK-UK gateway: Multiscale combined lubricant-surface optimisation for energy efficiency and socio-
 economic gain- 2019 (Rs. 100 million); Pakistan partners: Jamal Umer (PI); Prof Shahid Rafique (Co-PI);
@@ -6520,7 +6522,7 @@ Lambert Academic Publishing.; ISBN: 978?3659778476
 [5]Sumit Sharma; Vipul Gupta; Sunny Narayan: Computer Aided Design Techniques for Designing of
 Autogenous Mills. 08/2015; LAP Lambert Academic Publishing.; ISBN: 9783659760945
 [6]Sunny Narayan; Gupta Aman; Singh Ranjeet: Designing; construction and working of novel thermal
-pumps.07/2015; LAP LAMBERT Academic Publishing.; ISBN: 978?3?659?71500?6",
+pumps.07/2015; LAP LAMBERT Academic Publishing.; ISBN: 978?3?659?71500?6",,
 70,Dr,Jamal,Umer,Male,,06/12/1988,,,,,,Electrical & Manufacturing Engineering,Electrical and Electronic Engineering,Indeed,"Loughborough
 University; Loughborough",,"Aug 2015-Jan 2020 Doctor of Philosophy
 Sep 2010- Aug 2012 Masters in Engineering
@@ -6579,7 +6581,7 @@ using atomic force microscopyÓ; 15th TriboUK 2018: The impact of Tribology in t
 2018 ; Sheffield UK
 Umer; J.; Morris; N.; Leighton; M.; Rahmani; R.; Howell-Smith; S.; and Balakrishnan; S.; ÏNano-scale investigation of frictional
 characteristics of tribo-films in sliding contacts of representative in-cylinder conditionsÓ; Sixth World Tribology Congress; 17-22 Sep 2017;
-Beijing; China",
+Beijing; China",,
 71,Dr,Manu,Puliyaneth,Male,,,,,,,,Mechanical Engineering,Mechanical Engineering,University of the Strathclyde Glasgow's Website,University of the Strathclyde Glasgow,,"Doctor of Philosophy (Ph.D.); Mechanical Engineering 2016-Present University of Strathclyde; Glasgow; Scotland; UK 
 Master of Science (MSc.); Mechanical Engineering 2012 University of Nottingham; Nottingham; UK 
 Bachelor of Technology (B.Tech); Mechanical Engineering 2010 Amrita Vishwa Vidyapeetham; Tamil Nadu; India","Teaching Assistant University of Strathclyde; Glasgow; Scotland; UK Nov 2016-Present
@@ -6590,7 +6592,7 @@ M. Puliyaneth; D. Barbera; H. Chen & F. Xuan; ÏStudy of ratchet limit and cycli
 M. Puliyaneth; H. Chen & and W. Luan; ÏCreep Fatigue Damage Assessment of V-Butt Weld Pipe With an Extended Direct Steady Cycle AnalysisÓ; Proceedings of the ASME PVP Conference; 2018; https://doi.org/10.1115/PVP2018-84568
 M. Puliyaneth; H. Chen & and W. Luan; ÏCyclic Plasticity Analysis of Welded Joint With Welding Residual Stress Using the Direct MethodÓ; Proceedings of the ASME PVP Conference Volume 6A: Materials and Fabrication; 2019; https://doi.org/10.1115/PVP2019-93228
 M. Puliyaneth; Chen; H. & Weiling; L. ÏA parametric study on the creep-cyclic plasticity mechanism of welded flange jointsÓ; ASME 2020 Pressure Vessels and Piping Conference. PVP2020-21022 (In press)
-M. Puliyaneth; Jackson; G.; Chen; H. & Liu; Y. ÏThe Linear Matching Method and Its Software Tool for Creep Fatigue Damage AssessmentÓ; Direct Methods: Methodological Progress and Engineering Applications; Lecture Notes in Applied and Computational Mechanics (In press)",
+M. Puliyaneth; Jackson; G.; Chen; H. & Liu; Y. ÏThe Linear Matching Method and Its Software Tool for Creep Fatigue Damage AssessmentÓ; Direct Methods: Methodological Progress and Engineering Applications; Lecture Notes in Applied and Computational Mechanics (In press)",,
 72,Dr,Nicol∑s,Larrosa,Male,,,,,,,,Mechanical Engineering,Mechanical Engineering,Indeed,University of Bristol,,"PhD in Microstructural Fracture Mechanics Universidad de Sevilla November 2012
 MEng in Mechanical Engineer Masters Universidad de Mar del Plata July 2005","Lecturer in Structural Integrity ; Department of Mechanical Engineering
 University of Bristol - Bristol
@@ -6714,18 +6716,18 @@ Maintenance.
 Publications in refereed Journals (last 10 publications):
 J1. Larrosa N.O.; Wang W.; Read N.; Loretto M.H.; Evans C.; Carr J; Tradowsky U.; Attallah M.M
 Mechanics
-1979 to 1987",,,,,,,
+1979 to 1987",,,,,,,,
 73,Dr,Alice,Zhang,Male,,,,,,,,Engineer/Print Specialist,Engineer,Indeed,Ricoh UK Products Limited,,"PhD in Design & Development University of Leeds
 Master of Science in Advanced Coloration & Finishing Technology in Colour Chemistry University of Leeds
 Bachelor of Science in Printing & Packaging Engineering in Applied Chemistry Beijing Institute of Graphic Communication","Engineer/Print Specialist Ricoh UK Products Limited - Telford 2014 to Present
-Application Technologist P2i Limited 2011 to 2012",,,,,,,
+Application Technologist P2i Limited 2011 to 2012",,,,,,,,
 74,,Antonio,De Santis,Male,,,,,,,,Master in Fluid Dynamics and Propulsion in Fluid Dynamics and Propulsion/Aerospace Engineering,Aerospace Engineering,Indeed,Alten Ltd,,"Master in Fluid Dynamics and Propulsion in Fluid Dynamics and Propulsion ""Roma Tre"" University - Rome; IT March 2014
 Aerospace Engineering ""La Sapienza"" University - Rome; IT December 2009","Project leader -A+-Product Development Management Reliability Alten Ltd - Derby December 2019 to April 2020
 Bombardier transportation; Derby; UK December 2019-April 2020 Contract-On behalf of Alten Ltd; London; UK.
 Project manager/Researcher Muscat; OM October 2018 to 2020
 Researcher/Module Coordinator Ministry of Defence; MTC - Muscat; OM October 2015 to October 2019
 Research Engineer Leonardo; Brindisi plant - Brindisi; IT October 2013 to January 2014
-Researcher E.N.E.A.; C.R. ""La Casaccia"" - Rome; IT March 2009 to September 2009",,,,,,,
+Researcher E.N.E.A.; C.R. ""La Casaccia"" - Rome; IT March 2009 to September 2009",,,,,,,,
 75,Dr,Sharon,Sharif,Male,,,,,,,,Aerospace Engineering,Mechanical Engineering,Indeed,Kingston University London,,"PhD in Research Kingston University London 2018 to Present
 MPhil in Research Kingston University London 2018 to 2019
 MSc in Design of a future generation long-range Aircraft Kingston University London 2016 to 2017
@@ -6746,14 +6748,14 @@ Working alongside the manager in order to drive the business
 Hitting targets and implementing strategies to improve sales
 Stock controlling and dealing with suppliers
 Providing excellent customer service including handling queries and complaints
-Completing daily aftersales banking",,,,,,,
+Completing daily aftersales banking",,,,,,,,
 76,,Ganarupan,Satha,Male,,,,,,,,Biomechanical Engineering,Biomechanical Engineering,Indeed,Kingston University,,"Licentiate of Engineering in Engineering Mechanics Linkàping University October 2010 to March 2014
 MSc in Mechanical Engineering Linkàping University August 2005 to June 2010","Postdoctoral Research Fellow Kingston University - London August 2017 to Present
 Purchasing Engineer Sesame Access Systems - Weybridge July 2019 to October 2019
 Stress Engineer Saab group - Linkàping; SE April 2014 to May 2015
 Library Assistant Linkàping University Library - SE January 2009 to February 2011
 Research Assistant Linkàping University - SE January 2010 to September 2010
-Undergraduate Mentor in Mathematics Linkàping University - SE August 2008 to December 2008",,,,,,,
+Undergraduate Mentor in Mathematics Linkàping University - SE August 2008 to December 2008",,,,,,,,
 77,,Lukasz,Zywczyk,Male,British,,,,,,,Engineering,Engineer,Indeed,Autoflame Ltd,,"Oct 2009- Sep 2015
 PhD in Chemical and Process Engineering; full-time studies; Department of Integrated Engineering Processes; Faculty of Chemical and Process Engineering; Warsaw University of Technology; PhD dissertation: -Modelling of dynamics of fractal-like aerosol aggregatesÓ.
 Oct 2002- Jun 2007
@@ -6761,7 +6763,7 @@ Master of Science in Engineering; full-time studies; Faculty of Chemical and Pro
 Jan 2017- Jan 2018 Assistant Professor; Institute of Fundamental Technological Research; Polish Academy of Science; Warsaw; Poland
 Dec 2015 - Feb 2017 Engineer/Programmer; Institute of Power Engineering; Thermal Processes Department; Warsaw; Poland
 Feb 2006 - Jul 2006 Laboratory Assistant - Apprenticeship; KRKA Poland sp. z o. o.; Quality Control Department; Warsaw; Poland",,,,"Sep 2014- region development - scholarship and support for Mazovian PhD students
-Oct 2013-Scholarship of Marshal of Mazovian District. Science development",,,
+Oct 2013-Scholarship of Marshal of Mazovian District. Science development",,,,
 78,,GILLES TCHANA,TOFFE,Male,,,,,,,,Mechanical Engineering,Mechanical Engineering,Indeed,University of Brighton,,"PhD in General Engineering (Pending) Sept.2014 - Jun.2020 
 Professional Academic Development programme (CPAD) Fellowship Master of Engineering in Mechanical Engineering Sept.2010 - Jun.2013 
 University of Brighton FD in Mechanical and Manufacturing Engineering Sept.2008 - Jul.2010 
@@ -6777,27 +6779,27 @@ Project Title: Intelligent water systems with southern water Oct.2012 -Jun.2013
 Project Title: Characterization of natural and synthetic Oct.2011 - Jun.2012
 Composite Materials 
 Project Title: Manufacturing systems using CAD/CAM Oct.2009 - Jun.2010
-Inventor Software and CNC Milling Machine",,,,,
+Inventor Software and CNC Milling Machine",,,,,,
 79,Dr,Adel,Rhuma,Male,,,,,,,,Computer Engineering,Computing Engineer,Indeed,Loughborough University,,"PhD in Computer Vision Loughborough University 2009 to 2014
 English English Academy - Cardiff 2008 to 2009
 Msc University of Dundee 2001 to 2003
 BSc in Computer Engineering Engineering Academy 1991 to 1998","Loughborough University 2009 to 2014 UK
 Libyan Centre for Remote Sensing and Space Science - Tripoli; LY 2005 to 2008 Libya
 Imagine software; PCI Geomatics software; MapInfo software; CorelDraw software; Photoshop software and ArcGIS software Student Projects supervision to gain a BSc Computer Department; Tripoli University 2004 to 2006
-Managing the department of study and examinations Data entry for Geographic Information Systems (GIS) from different sources Biruni Remote Sensing Centre - Tripoli; LY 1998 to 2005",,,,,,,
+Managing the department of study and examinations Data entry for Geographic Information Systems (GIS) from different sources Biruni Remote Sensing Centre - Tripoli; LY 1998 to 2005",,,,,,,,
 80,Mr,Noel,Wood,Male,,,,,,,,Electronic and Communications Engineering,Electrical and Electronic Engineering,Indeed,Bombardier,,University of Kent MEng Electronics and Communications Engineering (2009- 2013),"Bombardier Transportation Build Support Product Development Manager (Aventra Product Family) June 2019 - Present
 Bombardier Transportation Project Engineer (London Overground) June 2018 - June 2019
 Pennant International Group PLC Project Engineer (Military Defence) 
 Petards Group PLC Project Engineer (Railway Engineering) January - December 2017
 Babcock International Group PLC Project Engineer (Design and Safety Technical Lead) October 2015 - January 2017
-Electrical & Electronic Engineering Graduate (Marine Engineering) October 2013- October 2015",,,,,,,
+Electrical & Electronic Engineering Graduate (Marine Engineering) October 2013- October 2015",,,,,,,,
 81,Dr,Marco,Brillanti,Male,,,,,,,,Clinical Medicine Research (Computational Medicine),Researcher,Indeed,"Imperial College London
 ",,"2016 - 2020 PhD. Clinical Medicine Research (Computational Medicine) Imperial College London
 2010 - 2013 MSc. Electronics Engineering (Biomedical) Universitá Politecnica delle Marche (Italy)
 2002 - 2008 BEng. Electronics Engineering Universitá Politecnica delle Marche (Italy)","IAG; Image Analysis Group - Algorithm and Software Developer Jan 2020 - Jun 2020
 Imperial College London - PhD candidate in Clinical Medicine Research Oct 2016 - Jan 2020
 Colak International - Biomedical Engineer Nov 2014 - Aug 2016
-UNIVPM (Italy) - Electronics Engineer Sep 2013 - Oct 2014",,,,,,,
+UNIVPM (Italy) - Electronics Engineer Sep 2013 - Oct 2014",,,,,,,,
 82,Dr,Mujahid Samad,Suhaeb,Male,Indonesian,,,,,,,Aerodynamics Engineering,Electrical and Electronic Engineering,Indeed,JAKARTA AEROSPACE,,"Loughborough University PhD; Aeronautical & Automotive Engineering ? (2001 - 2004) University of Bristol
 M.Sc.in Aerospace Engineering; Design; Manufacture and Management ? (1995 - 1996)
 Universitas Hasanuddin B. Eng. [Hons]; Mechanical Engineering ? (1977 - 1982)","JAKARTA AEROSPACE [JAe] CEO/Managing Director January 2008 - Present Greater Jakarta Area; Indonesia
@@ -6810,7 +6812,7 @@ Aerodynamics Conference 2012;
 ISBN: 978-1-62276-219-4
 'Aerodynamics of Battle-Damaged
 Finite-Aspect-Ratio Wings';Journal of
-Aircraft; Vol.46; No.3;",
+Aircraft; Vol.46; No.3;",,
 83,Dr,Vanesa,Garcia,Male,,,,,,,,Automatic Control,Electrical and Electronic Engineering,Indeed,Fin-Tek corporation,,"Ph.D. in Automatic Control Polytechnic University of Catalonia September 2005 to October 2007
 Bachelor in Electronic Engineering degree in Spanish Ministry of Education Polytechnic University of Catalonia November 2004 to September 2005
 Bachelor in Electronic Engineering in Education University of Rosario March 1996 to March 2003","Electrical Engineer Fin-Tek corporation May 2019 to Present
@@ -6821,7 +6823,7 @@ Project Engineer Hydra Electric - US June 2012 to July 2013
 Research Fellow Institut de Rob⁄tica i Informática Industrial - ES January 2006 to April 2012
 Project Engineer Cartif Foundation November 2004 to December 2006
 Sales Engineer Eng Bertini Inc March 2001 to October 2004
-Teaching Assistant National University of Rosario (UNR). Argentina March 1999 to April 2003",,,,,,,
+Teaching Assistant National University of Rosario (UNR). Argentina March 1999 to April 2003",,,,,,,,
 84,Dr,Carmine,Clemente,Male,Italian,14/01/1985,,,,,,Electronic and Electrical Engineering,Electrical and Electronic Engineering,University of the Strathclyde Glasgow's Website,University of the Strathclyde Glasgow,,"July 2013-PhD in signal processing - Department of Electronic and Electrical Engineering; University Of Strathclyde - Glasgow;UK
 February 2009-Laurea Specialistica (MSc) degree in Telecommunications Engineering - Universit `a degli Studi del Sannio - Benevento
 November 2006- Laurea degree (BSc) in Telecommunications Engineering; Universit ?a del Sannio - Benevento; 110/110 cum laude.
@@ -7473,10 +7475,10 @@ Curriculum Vitae: Carmine Clemente 17
 June 2010; Aachen; Germany.
 -2009 IEEE Workshop on Signal Processing Systems; October 07-09 2009; Tampere-Finland.
 -2009 IEEE International Geoscience and Remote Sensing Symposium; July 13-17 2009;
-Cape Town-South Africa.",
-85,Professor,Michael,Grimble,Male,,,,,,,,Electronic and Electrical Engineering,Electrical and Electronic Engineering,University of the Strathclyde Glasgow's Website,University of the Strathclyde Glasgow,,,,,,,,,,
-86,Mr,Charalampos,LOUKAS,Male,,,,,,,,Electronic and Electrical Engineering,Electrical and Electronic Engineering,University of the Strathclyde Glasgow's Website,University of the Strathclyde Glasgow,,,,,,,,,,
-87,Mr,Xu,Jiang,Male,,,,,,,,Electronic and Electrical Engineering,Electrical and Electronic Engineering,University of the Strathclyde Glasgow's Website,University of the Strathclyde Glasgow,,,,,,,,,,
+Cape Town-South Africa.",,
+85,Professor,Michael,Grimble,Male,,,,,,,,Electronic and Electrical Engineering,Electrical and Electronic Engineering,University of the Strathclyde Glasgow's Website,University of the Strathclyde Glasgow,,,,,,,,,,,
+86,Mr,Charalampos,LOUKAS,Male,,,,,,,,Electronic and Electrical Engineering,Electrical and Electronic Engineering,University of the Strathclyde Glasgow's Website,University of the Strathclyde Glasgow,,,,,,,,,,,
+87,Mr,Xu,Jiang,Male,,,,,,,,Electronic and Electrical Engineering,Electrical and Electronic Engineering,University of the Strathclyde Glasgow's Website,University of the Strathclyde Glasgow,,,,,,,,,,,
 88,Dr,JINGYAN (Jeremy),He,Male,,,,,,,,Material Science,Material Science,Indeed,Arvia Technology,,"Oct; 1997-Aug; 2000 PhD in Materials Science and Engineering
 Sept; 1988-Feb; 1991 MSc in Materials Science and Engineering
 Sept; 1980-Jul; 1984 BEng in Inorganic Nonmetal Materials
@@ -7506,7 +7508,7 @@ Hydrothermal Synthesis and Morphology Control of Boehmite; High Pressure Researc
 Si3N4/SiCp Multiphase Ceramic Composite and Cutting Properties of Its Cutting Tool; Rare Metals; 21[5] (1997) 1.
 A Study on Si3N4 Ceramic Cutting Tools; Proceedings of 3rd Annual Symposium on Powder Metallurgy; Chinese Powder Metallurgy Society; China.
 
-",
+",,
 89,Dr,Darshan,Kaila,Male,,,,,,,,Corneal endothelial membrane transport,Tissue Engineering,Indeed,UNIVERSITY OF PORTSMOUTH EYE CLINIC,,"PhD in Corneal endothelial membrane transport; Cardiff University 1993
 MPhil in Corneal epithelial redox fluorometry; Cardiff University 1989
 BSc in Optometry & Visual Science; Aston University - Birmingham 1983
@@ -7519,7 +7521,7 @@ OPTOMETRIST; TREAT EYE CENTRE; 2000 to 2005
 OPTOMETRIST; Brisbane QLD; 1996 to 1998
 VISITING LECTURER CLINICAL TUTOR in CL; DEPT OPTOM VIS SCIENCE; CITY UNIVERSITY - London 1994 to 1996
 RESEARCH OPTOMETRIST; DEPT. OPTOMETRY & VISUAL SCIENCE - Cardiff 1986 to 1994
-",,,,,,,
+",,,,,,,,
 90,Master,Somya Somalina,Panda,Male,,,,,,,,Mechanical Engineering,Mechanical Engineering,Indeed,CAD Technician,,"MSc - Master Degree in Mechanical Engineering Gdansk University of Technology - Gdansk October 2017 to May 2019
 Btech in Mechanical Engineering; Biju Patnaik University of Technology - Orissa; June 2006 to May 2010
 ","CAD Technician; Balconette - United Kingdom April 2019 to Present
@@ -7531,13 +7533,13 @@ Design Engineer; Bevcon Wayors Pvt Ltd - Hyderabad; Telangana December 2010 to M
 Employee of the Month; June 2015
 Bevcon Icon Award 2013
 Six Sigma Green Belt; July 2020 to Present
-",,,
-91,Dr,Khaled,Elgeneidy,Male,,,,,,,,Engineering,Engineer,,University of Lincoln,,,,,,,,,,
-92,Dr,P,Bhattacharya,Male,,,,,,,,Mechanical Engineering,Mechanical Engineering,,The Univeristy of Sheffield,,,,,,,,,,
-93,Professor,Yuyuan,Zhao,Male,,,,,,,,Mechanical ; Materials & aerospace Engineer,Mechanical Engineering,Univesity of Liverpool's Website,Univesity of Liverpool,,,,,,,,,,
-94,D,Daniel,Walker,Male,,,,,,,,Mechanical ; Materials & aerospace Engineer,Mechanical Engineering,Univesity of Liverpool's Website,Univesity of Liverpool,,,,,,,,,,
-95,Prof,John,Mottershead,Male,,,,,,,,Mechanical ; Materials & aerospace Engineer,Mechanical Engineering,Univesity of Liverpool's Website,Univesity of Liverpool,,,,,,,,,,
-96,Prof,Huajiang,Ouyang,Male,,,,,,,,Mechanical ; Materials & aerospace Engineer,Mechanical Engineering,Univesity of Liverpool's Website,Univesity of Liverpool,,,,,,,,,,
+",,,,
+91,Dr,Khaled,Elgeneidy,Male,,,,,,,,Engineering,Engineer,,University of Lincoln,,,,,,,,,,,
+92,Dr,P,Bhattacharya,Male,,,,,,,,Mechanical Engineering,Mechanical Engineering,,The Univeristy of Sheffield,,,,,,,,,,,
+93,Professor,Yuyuan,Zhao,Male,,,,,,,,Mechanical ; Materials & aerospace Engineer,Mechanical Engineering,Univesity of Liverpool's Website,Univesity of Liverpool,,,,,,,,,,,
+94,D,Daniel,Walker,Male,,,,,,,,Mechanical ; Materials & aerospace Engineer,Mechanical Engineering,Univesity of Liverpool's Website,Univesity of Liverpool,,,,,,,,,,,
+95,Prof,John,Mottershead,Male,,,,,,,,Mechanical ; Materials & aerospace Engineer,Mechanical Engineering,Univesity of Liverpool's Website,Univesity of Liverpool,,,,,,,,,,,
+96,Prof,Huajiang,Ouyang,Male,,,,,,,,Mechanical ; Materials & aerospace Engineer,Mechanical Engineering,Univesity of Liverpool's Website,Univesity of Liverpool,,,,,,,,,,,
 97,Dr,Sebastiano,Fichera,Male,,,,,,,,Mechanical ; Materials & aerospace Engineer,Mechanical Engineering,Univesity of Liverpool's Website,Univesity of Liverpool,,"2018 Fellow of the Higher Education Academy (FHEA)
 2013 PhD in Experimental Aeroelasticity (Engineering); Politecnico di Milano (Italy)
 2011 Italian Chartered Engineer equivalent
@@ -7579,9 +7581,9 @@ Conference proceedings
 ÏExperimental and numerical study of nonlinear dynamic behaviour of an aerofoilÓ; Fichera; S.; Jiffri; S.; Wei; X.; Da Ronch; A.; Tantaroudas; N.; & Mottershead; J. E. (2014). In Proceedings of International Conference on Noise and Vibration Engineering (ISMA2014)/International Conference on Uncertainty in Structural Dynamics (USD2014); (pp. 3609-3618). DOI: 10.1016/j.jfluidstructs.2014.02.011
 ÏHigh order harmonic balance applied to an aeroelastic T-tail model with a control surface freeplayÓ; Fichera; S.; & Ricci; S. (2013). In 54th AIAA/ASME/ASCE/AHS/ASC Structures; Structural Dynamics; and Materials Conference. American Institute of Aeronautics and Astronautics.
 ÏExperimental and numerical investigation of the behaviour of a tail with control surface freeplayÓ; Fichera; S.; Quaranta; G.; & Ricci; S. (2012). In Collection of Technical Papers- AIAA/ASME/ASCE/AHS/ASC Structures; Structural Dynamics and Materials Conference.
-",
-98,Dr,David,Dennis,Male,,,,,,,,Mechanical ; Materials & aerospace Engineer,Mechanical Engineering,Univesity of Liverpool's Website,Univesity of Liverpool,,,,,,,,,,
-99,Professor,R,Dwyer-Joyce,Male,,,,,,,,Mechanical Engineering,Mechanical Engineering,,The Univeristy of Sheffield,,,,,,,,,,
+",,
+98,Dr,David,Dennis,Male,,,,,,,,Mechanical ; Materials & aerospace Engineer,Mechanical Engineering,Univesity of Liverpool's Website,Univesity of Liverpool,,,,,,,,,,,
+99,Professor,R,Dwyer-Joyce,Male,,,,,,,,Mechanical Engineering,Mechanical Engineering,,The Univeristy of Sheffield,,,,,,,,,,,
 100,Ms,Anna,Chambers,,British,,,,,,,Artificial Intelligence,Computer Science,Indeed,SE and AmI,,"2009-2014 Software Engineering and AmI research project 
 2008 - MSc Artificial Intelligence at Bangor University
 2004 - BSc(Hons)IT&Comp(Open) in IT and computing at Open University
@@ -7589,7 +7591,7 @@ Conference proceedings
 
 ",,,,,,,"http://www.scirp.org/journal/jsea/ 
 http://www.scirp.org/journal/PaperInformation.aspx?PaperID=45226#.VBqkdRb6edF
-",
+",,
 101,Dr,christian,mallon,,,,,,,,,Chemical Engineering,Chemical Engineering,Indeed,"Self Employed Online Automotive Products
 ",,"2013 - E-MBA Executive Masters in Business Administration
 2006 - PhD in Chemical Engineering (High Temperature Corrosion/Fuel Cells)
@@ -7604,7 +7606,7 @@ http://www.scirp.org/journal/PaperInformation.aspx?PaperID=45226#.VBqkdRb6edF
 2011 - 2012; PERA Project Scientist
 2010 - 2011; Baker Hughes (GE Company) Global Chemical Material Engineer
 
-",,,,,,,
+",,,,,,,,
 102,Dr,Alireza,Razavi,,,,,,,,,Aeronautics,Mechanical Engineering,Indeed,Imperial College London,,"Ph.D. Dept. of Aeronautics; Imperial College London 2020
 M.Sc. Dept. of Mechanical Eng.; Sheffield Hallam University 2014
 BSc. Dept. of Mechanical Eng.; Shiraz Azad University 2011
@@ -7613,13 +7615,13 @@ Private Pilot License (PPL) Shiraz International Airport & Aviation College 2011
 ","Postdoc (Aeronautics) Imperial College London 11/2019- 07/2020
 Mechanical Engineering (Internship) Iran Khodro (Car manufacturer) - Shiraz 10/2010- 11/2010
 Mechanical Engineering (Internship) Shiraz Gas Turbine Power Plant - Shiraz 01/2010 - 05/2010
-",,,,,,,
-103,Dr,E,Alborzi,,,,,,,,,Mechanical Engineering,Mechanical Engineering,The Univeristy of Sheffield's Website,The Univeristy of Sheffield,,,,,,,,,,
-104,Dr,Vili,Panov,,,,,,,,,Engineering,Engineer,University of Lincoln's Website,University of Lincoln,,,,,,,,,,
-105,Dr,J,Szuhanszki,,,,,,,,,Mechanical Engineering,Mechanical Engineering,The Univeristy of Sheffield's Website,The Univeristy of Sheffield,,,,,,,,,,
-106,Miss,Neda,Azarmehr,,,,,,,,,Computer Science,Computer Science,University of Lincoln's Website,University of Lincoln,,,,,,,,,,
-107,Dr,Gary,Wood,Male,,,,,,,,Mechanical Engineering,Mechanical Engineering,The Univeristy of Sheffield's Website,The Univeristy of Sheffield,,,,,,,,,,
-108,Mr,Qingwei,Liu,,,,,,,,,Engineering,Engineer,University of Lincoln's Website,University of Lincoln,,,,,,,,,,
+",,,,,,,,
+103,Dr,E,Alborzi,,,,,,,,,Mechanical Engineering,Mechanical Engineering,The Univeristy of Sheffield's Website,The Univeristy of Sheffield,,,,,,,,,,,
+104,Dr,Vili,Panov,,,,,,,,,Engineering,Engineer,University of Lincoln's Website,University of Lincoln,,,,,,,,,,,
+105,Dr,J,Szuhanszki,,,,,,,,,Mechanical Engineering,Mechanical Engineering,The Univeristy of Sheffield's Website,The Univeristy of Sheffield,,,,,,,,,,,
+106,Miss,Neda,Azarmehr,,,,,,,,,Computer Science,Computer Science,University of Lincoln's Website,University of Lincoln,,,,,,,,,,,
+107,Dr,Gary,Wood,Male,,,,,,,,Mechanical Engineering,Mechanical Engineering,The Univeristy of Sheffield's Website,The Univeristy of Sheffield,,,,,,,,,,,
+108,Mr,Qingwei,Liu,,,,,,,,,Engineering,Engineer,University of Lincoln's Website,University of Lincoln,,,,,,,,,,,
 109,,Olawole,Farotimi,,,,,,,,,metallic and composite stress engineering,Material and Manufacturing Engineering,indeed,AIM ALTITUDE,,MSc in Composite Material Imperial College London,"2018 - 2019 AIM ALTITUDE Position - Stress Engineer
 2018 - 2019 NIO Position - Material CAE Engineer
 2017 - 2018 FAR COMPOSITE Position - Analysis Engineer
@@ -7630,8 +7632,8 @@ Composite Stress Engineer ;Outer Inner Rear Spar (O-IRS) 2012 to 2013
 Stress Engineer LEARJET 2012 to 2012 
 Stress Engineer ; Avionic Rack 2009 to 2010
 
-",,,,,,,
-110,Dr,Volfango,Bertola,,,,,,,,,Mechanical ; Materials & aerospace Engineer,Mechanical Engineering,Univesity of Liverpool's Website,Univesity of Liverpool,,,,,,,,,,
+",,,,,,,,
+110,Dr,Volfango,Bertola,,,,,,,,,Mechanical ; Materials & aerospace Engineer,Mechanical Engineering,Univesity of Liverpool's Website,Univesity of Liverpool,,,,,,,,,,,
 111,Dr,Mehran,Masdari,Male,Iranian,29/08/1978,,,,,,Aerodynamics,Aerospace Engineering,Indeed,Faculty of New Sciences and Technologies; University of Tehran;,,"Sep 2004-Sep 2011 PhD Degree in Aerodynamics; Sharif University of Technology; Tehran (Iran)
 Sep 2000-Sep 2002 MSc Degree in Aerospace Engineering-Aerodynamics; Sharif University of Technology; Tehran (Iran)
 09/1996-09/2001 BSc Degree in Aeospace Engineering; Sharif University of Technology
@@ -7728,7 +7730,7 @@ Mehran Masdari; Seyedmajid Mehrnia; Arshia Tabrizian; ÏNumerical Study of Effec
 Tabrizian; M.Masdari; F.Ejtehadi; ÏFrequency Analysis of a Supercritical Airfoil Boundary Layer Using Discrete Wavelet TransformÓ; 8th International Conference on Electrical; Computer; Mechanical and Mechatronics Engineering (ICE2018); Istanbul; Turkey; February 8-9 2018.
 Mahbod Seyednia; Mehran Masdari; Shidvash Vakilipour; ÏNumerical Investigation of a Pitching Wind TurbineAirfoil Using Oscillating Freestream in OpenFOAMÓ; 8th International Conference on Electrical; Computer; Mechanical and Mechatronics Engineering (ICE2018); Istanbul; Turkey; February 8-9 2018.
 Mojtaba Tahani; Mehran Masdari; Hamidreza Eivazi; Mirhamed Salehi; ÏPower Augmentation and Optimization of Gas Turbine performance by Inlet Fogging and Wet Compression Analysis AlgorithmÓ; 7/10/19 © European Union; 2002-2019 | http://europass.cedefop.europa.eu Page 7 / 8 11th International Exergy; Energy and Environment Symposium (IEEES-11); July 14-18; 2019; Chennai; India.
-",
+",,
 112,,Sriram,Swaminathan,,,,,,,,,Mechanical Design Engineer,Mechanical Engineering,Indeed,VEE BEE FILTRATION U.K LTD,,"Master of business Administration- EMBA in Oil and Gas Management Robert Gordon university - Aberdeen - Aberdeen September 2017 to Present
 MS in Research The University of Tennessee - Knoxville; TN United States August 2005 to January 2007
 M.ENG in Mechanical Engineering Memorial University of Newfoundland June 2003 to August 2005
@@ -7741,7 +7743,7 @@ ENGINEER II American Bureau of Shipping - Houston; TX January 2007 to February 2
 Researcher/ Teaching Assistant; The University of Tennessee Knoxville - Knoxville; TN August 2005 to January 2007 United States
 Project Associate Structural Engineering Research Centre - Chennai; Tamil Nadu January 2003 to June 2003
 
-",,,,,,,
+",,,,,,,,
 113,Dr,Gilbert,Tang,,,,,,,,,Robotics; Manufacturing Systems; Mechatronics & Advanced Controls; Product and Service Design; Sensor Technologies,Mechatronics Engineering,Cranfield University's website,Cranfield University,,"PhD (PT) in Industrial Human-Robot Collaboration at Cranfield University (2012-2016)
 MSc in Manufacturing Management at Cranfield University (2009-2010)
 BEng (Hons) Degree in Mechanical Engineering at Oxford Brookes University (2005-2009)
@@ -7756,8 +7758,8 @@ Tang; G.; Webb; P. (2018). Human-Robot Interaction in Aerospace Manufacturing. H
 Tang; G.; Asif; S.; & Webb; P. (2015). The integration of contactless static pose recognition and dynamic hand motion tracking control system for industrial human and robot collaboration. Industrial Robot: An International Journal; 42(5); 416-428.
 Tang; G.; & Webb; P. (2018). The Design and Evaluation of an Ergonomic Contactless Gesture Control System for Industrial Robots. Journal of Robotics; 2018.
 Tang; G.; Webb; P.; & Thrower; J. (2018). The development and evaluation of Robot Light Skin: a novel robot signalling system to improve communication in industrial human-robot collaboration. Robotics and Computer Integrated Manufacturing.
-",
-114,Professor,Ivan,Glesk,,,,,,,,,Electronic and Electrical Engineering,Electrical and Electronic Engineering,University of the Strathclyde Glasgow's Website,University of the Strathclyde Glasgow,,,,,,,,,,
+",,
+114,Professor,Ivan,Glesk,,,,,,,,,Electronic and Electrical Engineering,Electrical and Electronic Engineering,University of the Strathclyde Glasgow's Website,University of the Strathclyde Glasgow,,,,,,,,,,,
 115,Dr,Mahdieh,Sadabadi,,,,,,,,,Automatic Control and Systems Engineering,Engineer,University of Sheffield 's website,University of Sheffield,,"2011- 2016 Ph.D. in Systems and Control Theory; Electrical Engineering Department; Swiss Federal Institute of Technology in Lausanne (EPFL); Lausanne; Switzerland.
 2004-2007 M.Sc. (Distinction) in Systems and Control Theory; Electrical Engineering Department; Amirkabir University of Technology (Tehran Polytechnic); Tehran; Iran.
 2000-2004 B.Sc. (Distinction) in Electronics; Electrical Engineering Department; Amirkabir University of Technology (Tehran Polytechnic); Tehran; Iran.
@@ -7846,8 +7848,8 @@ Manuscripts in Preparation/Submitted for Review
 Technical Reports and Theses
 [1] M. S. Sadabadi; ÏFixed-structure Control of LTI Systems with Polytopic-type Uncertainty: Application to Inverter-interfaced Microgrids;Ó PhD Thesis; Swiss Federal Institute of Technology in Lausanne (EPFL); February 2016. Link: https://infoscience.epfl.ch/record/215861
 [2] M. S. Sadabadi and A. Karimi; ÏFixed-order Controller Design of Linear System
-",
-116,,Martyn,Hill,,,,,,,,,Application of ultrasound standing wave fields for augmentation of cartilage bioengineering strategies,Engineer,University of Southampton's website,University of Southampton,,,,,,,,,,
+",,
+116,,Martyn,Hill,,,,,,,,,Application of ultrasound standing wave fields for augmentation of cartilage bioengineering strategies,Engineer,University of Southampton's website,University of Southampton,,,,,,,,,,,
 117,,KOSARAJU,MANOHAR,,Indian,,,,,,,AEROSPACE ENGINEERING,Aerospace Engineering,indeed,UNIVERSITY OF HERTFORDSHIRE; UK,,"UNIVERSITY OF HERTFORDSHIRE; UK 2019 - PRESENT MASTERÌS IN AEROSPACE ENGINEERING
 LITTLE FLOWER SCHOOL; INDIA UPTO 10TH CLASS 2000 - 2012 CGPA - 9.3/10
 NARAYANA JUNIOR COLLEGE; INDIA INTERMEDIATE/+2 2012 - 2014 PERCENTAGE - 96.7/100
@@ -7857,8 +7859,8 @@ VELTECH DR. RR & DR.SR TECHNICAL UNIVERSITY; INDIA 2014 - 2018 B. TECH IN AERONA
 
 ","WORKED AS INTERN AT NANYANGTECHNOLOGICAL UNIV; SINGAPORE
 STARTED WORKING IN BOOTSOPTICIANS; STEVENAGE (UK) FROMMARCH;2019
-",,,,,,,
-118,Dr,Sam,Tipper,Female,,,,,,,,Chemistry,Chemical Engineering,,University of Lincoln,,,,,,,,,,
+",,,,,,,,
+118,Dr,Sam,Tipper,Female,,,,,,,,Chemistry,Chemical Engineering,,University of Lincoln,,,,,,,,,,,
 119,Professor,Stefan,Przyborski,Male,,,,,,,,Bioscience,,,Durham University,,"Post-graduate Certificate in Higher Education; Durham University; 2005
 Doctor of Philosophy; University of Sheffield; UK; 1992
 Bachelor of Science (Hons); Anatomy &amp; Cell Biology; University of Sheffield; UK; 1989
@@ -7885,18 +7887,18 @@ Biotechnology Centre for Excellence in Life Sciences Business Start-up Award; 20
 Royal Society of Edinburgh Enterprise / BBSRC Fellowship; 2008
 Department of Trade and Industry SMART Awards; 2003; 2007
 Society for Experimental Biology; Presidential Medal for contribution to Cell Biology; 2001
-",,,
-120,,Brian,Davies,Male,,,,,,,,Medical Robotics,,Imperial College London's website,Imperial College London,,,,,,,,,,
-121,,Antony,Wilkinson,,,,,,,,,Electrical and Electronic Engineering,Electrical and Electronic Engineering,University of Hull's website,University of Hull,,,,,,,,,,
-122,Prof.,Wiebe,Van Der Hoek,,,,,,,,,Computer Science,Computer Science,,University of Liverpool,,,,,,,,,,
-123,,Suan,Hui Pu,,,,,,,,,Mechatronics Engineering,Engineer,University of Southampton's website,University of Southampton,,,,,,,,,,
-124,Mr,Abdalkarim,Mohtasib,,,,,,,,,Computer Science,Computer Science,,University of Lincoln,,,,,,,,,,
-125,,Mehrdad,Asadi,Male,,,,,,,,Mechanical Engineering,Mechanical Engineering,Anglia Ruskin University 's website,Anglia Ruskin University,,,,,,,,,,
-126,Professor,Kyle,Jiang,,,,,,,,,Mechanical Engineering,Mechanical Engineering,University of Birmingham's website,University of Birmingham,,,,,,,,,,
-127,Dr,Ayse,Kucukyilmaz,,,,,,,,,Computer Science,Computer Science,,University of Nottingham,,,,,,,,,,
-128,,Riccardo,Secoli,,,,,,,,,Neurosurgical and rehabilitation Robotics,,Imperial College London's website,Imperial College London,,,,,,,,,,
-129,Dr,Mehdi,Jangi,,,,,,,,,Mechanical Engineering,Mechanical Engineering,University of Birmingham's website,University of Birmingham,,,,,,,,,,
-130,Dr,Tasnim,Munshi,,,,,,,,,Chemistry,Chemical Engineering,,University of Lincoln,,,,,,,,,,
+",,,,
+120,,Brian,Davies,Male,,,,,,,,Medical Robotics,,Imperial College London's website,Imperial College London,,,,,,,,,,,
+121,,Antony,Wilkinson,,,,,,,,,Electrical and Electronic Engineering,Electrical and Electronic Engineering,University of Hull's website,University of Hull,,,,,,,,,,,
+122,Prof.,Wiebe,Van Der Hoek,,,,,,,,,Computer Science,Computer Science,,University of Liverpool,,,,,,,,,,,
+123,,Suan,Hui Pu,,,,,,,,,Mechatronics Engineering,Engineer,University of Southampton's website,University of Southampton,,,,,,,,,,,
+124,Mr,Abdalkarim,Mohtasib,,,,,,,,,Computer Science,Computer Science,,University of Lincoln,,,,,,,,,,,
+125,,Mehrdad,Asadi,Male,,,,,,,,Mechanical Engineering,Mechanical Engineering,Anglia Ruskin University 's website,Anglia Ruskin University,,,,,,,,,,,
+126,Professor,Kyle,Jiang,,,,,,,,,Mechanical Engineering,Mechanical Engineering,University of Birmingham's website,University of Birmingham,,,,,,,,,,,
+127,Dr,Ayse,Kucukyilmaz,,,,,,,,,Computer Science,Computer Science,,University of Nottingham,,,,,,,,,,,
+128,,Riccardo,Secoli,,,,,,,,,Neurosurgical and rehabilitation Robotics,,Imperial College London's website,Imperial College London,,,,,,,,,,,
+129,Dr,Mehdi,Jangi,,,,,,,,,Mechanical Engineering,Mechanical Engineering,University of Birmingham's website,University of Birmingham,,,,,,,,,,,
+130,Dr,Tasnim,Munshi,,,,,,,,,Chemistry,Chemical Engineering,,University of Lincoln,,,,,,,,,,,
 131,,Maxim,Zadnipryanets,,,,,,,,,Aerospace Engineering,Aerospace Engineering,indeed,Universidad Europea de Madrid,,"Universidad Europea de Madrid Madrid; Spain; Master of Science; Aerospace Engineering 2021 Year
 Universidad Europea de Madrid Madrid; Spain; BachelorÌs degree in Aerospace Engineering.
 
@@ -7905,12 +7907,12 @@ Universidad Europea de Madrid Madrid; Spain; BachelorÌs degree in Aerospace Eng
 ",,"Unmanned Aerospace Vehicle Club (UEM) Madrid; Spain; Associate Jul 2017 Year - Present
 Red Cross Moscow; Russia Volunteer Jul 2018 Year - Sep 2018 Year
 
-",,,,,
-132,Dr,Sebastian,Wild,,,,,,,,,Computer Science,Computer Science,,University of Liverpool,,,,,,,,,,
-133,Miss,Carla,Taylor-Rutterford,,,,,,,,,Computer Science,Computer Science,,University of Lincoln,,,,,,,,,,
-134,Mr,Laurence,Elliott,,,,,,,,,Computer Science,Computer Science,,University of Lincoln,,,,,,,,,,
-135,Professor,Prof Michael,Fisher,Male,,,,,,,,Computer Science,Computer Science,,University of Liverpool,,,,,,,,,,
-136,Dr,Dmitry,Lukyanov,,,,,,,,,Chemical Engineering,Chemical Engineering,*,The University of Bath,,,,,,,,,,
+",,,,,,
+132,Dr,Sebastian,Wild,,,,,,,,,Computer Science,Computer Science,,University of Liverpool,,,,,,,,,,,
+133,Miss,Carla,Taylor-Rutterford,,,,,,,,,Computer Science,Computer Science,,University of Lincoln,,,,,,,,,,,
+134,Mr,Laurence,Elliott,,,,,,,,,Computer Science,Computer Science,,University of Lincoln,,,,,,,,,,,
+135,Professor,Prof Michael,Fisher,Male,,,,,,,,Computer Science,Computer Science,,University of Liverpool,,,,,,,,,,,
+136,Dr,Dmitry,Lukyanov,,,,,,,,,Chemical Engineering,Chemical Engineering,*,The University of Bath,,,,,,,,,,,
 137,Dr,Javier,Munguia Valenzuela,Male,,,,,,,,Design Manufacture & Materials,,*,Newcastle University,,"2009 PhD. Mechanical Engineering. Polytechnic University of Catalonia (Barcelona-TECH; Spain).
 2006 MSc. Department of Engineering Projects Polytechnic University of Catalonia (Barcelona; Spain) Rapid Prototyping for Product design innovation and process engineering.
 2002 BEng. Industrial and manufacturing Engineering. Technological Institute of Hermosillo (Sonora; M»xico)
@@ -7943,11 +7945,11 @@ Solid Free Form Fabrication Symposium. Austin; Texas; EE.UU. Aug. 2016. Ï3D pri
 2015 Munguia et.al (2015) Additive manufacturing techniques and applications in customised O&P products. ISPO World Congress 2015; 22-25 June; Lyon; France Munguia; J (2015) Aplicaciones de impresi€n 3D en el sector de la Salud. Challenging Skills
 Conference. SENA Popay∑n; Colombia
 2014 Manufacturing the Future Conference 2014 Glasgow Science Centre. ÏArthroscopic delivery of bio-active materials: a preliminary studyÓ. Javier MunguÃa1* and Kenny Dalgarno. RMPD seminar - RVI Medical Physics 24th July 2014 (Royal Victoria Infirmary; Newcastle; UK) Ï3D Printing: Current trends and medical applicationsÓ. J Munguia
-",
-138,Dr,James,Hitchcock,,,,,,,,,Chemical Engineering,Chemical Engineering,*,University of Leeds,,,,,,,,,,
-139,Mr,Faruk,Mayere,,,,,,,,,Chemistry,Chemical Engineering,fmayere@lincoln.ac.uk,University of Lincoln,,,,,,,,,,
-140,Dr,Daniel,Espino,,,,,,,,,Mechanical Engineering,Mechanical Engineering,d.m.espino@bham.ac.uk,University of Birmingham,,,,,,,,,,
-141,Dr,Heriberto,Cuayahuitl Portilla,Male,,,,,,,,Computer Science,Computer Science,hcuayahuitl@lincoln.ac.uk,University of Lincoln,,,,,,,,,,
+",,
+138,Dr,James,Hitchcock,,,,,,,,,Chemical Engineering,Chemical Engineering,*,University of Leeds,,,,,,,,,,,
+139,Mr,Faruk,Mayere,,,,,,,,,Chemistry,Chemical Engineering,fmayere@lincoln.ac.uk,University of Lincoln,,,,,,,,,,,
+140,Dr,Daniel,Espino,,,,,,,,,Mechanical Engineering,Mechanical Engineering,d.m.espino@bham.ac.uk,University of Birmingham,,,,,,,,,,,
+141,Dr,Heriberto,Cuayahuitl Portilla,Male,,,,,,,,Computer Science,Computer Science,hcuayahuitl@lincoln.ac.uk,University of Lincoln,,,,,,,,,,,
 142,Dr,Christopher,A Hallsworth,Male,,,,,,,,Statistics,Statistic,c.hallsworth@imperial.ac.uk,Imperial College London,,"2006 - 2010 PhD; Statistical Genetics University of Oxford
 2005 - 2007 MPhil; Computational Biology University of Cambridge
 2001 - 2004 BA; Mathematics with First Class Honours University of Oxford
@@ -7964,7 +7966,7 @@ Oct 2008 - Jun 2010 Retained Lecturer in Mathematics St HughÌs College; Univers
 ",,,,,"McKenna L; Marks EM; Hallsworth CA; et al.; 2017; Mindfulness-Based Cognitive Therapy as a Treatment for Chronic Tinnitus: A Randomized Controlled Trial; Psychotherapy and Psychosomatics; Vol:86; ISSN:0033-3190; Pages:351-361
 Mikhailova A; Adams N; Hallsworth CA; et al.; 2018 Unsupervised deep learning for instrumented infrastructure: a case study; International Conference on Smart Infrastructure and Construction 
 Marks; E.; Hallsworth; C. and McKenna; L.; 2019. Cognitive behavioural therapy for insomnia (CBTi) as a treatment for tinnitus-related insomnia: protocol for a ran- domised controlled trial. Trials; 20(1); p.667.
-",
+",,
 143,Dr,Manu,Puliyaneth,,,,,,,,,Mechanical & Aerospace Engineering,Mechanical Engineering,manupuliyaneth@gmail.com,University of Strathclyde,,"Doctor of Philosophy (Ph.D.); Mechanical & Aerospace Engineering? 2016-Present University of Strathclyde; Glasgow; Scotland; UK 
 
 Master of Science (MSc.); Mechanical Engineering?2012?University of Nottingham; Nottingham; UK 
@@ -7982,7 +7984,7 @@ M. Puliyaneth; H. Chen & and W. Luan; ÏCreep Fatigue Damage Assessment of V-But
 M. Puliyaneth; H. Chen & and W. Luan; ÏCyclic Plasticity Analysis of Welded Joint With Welding Residual Stress Using the Direct MethodÓ; Proceedings of the ASME PVP Conference Volume 6A: Materials and Fabrication; 2019; https://doi.org/10.1115/PVP2019-93228
 M. Puliyaneth; Chen; H. & Weiling; L. ÏA parametric study on the creep-cyclic plasticity mechanism of welded flange jointsÓ; ASME 2020 Pressure Vessels and Piping Conference. PVP2020-21022 (In press)
 M. Puliyaneth; Jackson; G.; Chen; H. & Liu; Y. ÏThe Linear Matching Method and Its Software Tool for Creep Fatigue Damage AssessmentÓ; Direct Methods: Methodological Progress and Engineering Applications; Lecture Notes in Applied and Computational Mechanics (In press)
-",
+",,
 144,Mr,Marios,Loumpas,,,,,,,,,Cyber-crime,Computer Science,m.loumpas@outlook.com,Global Consultancies,,"29.9.2014 - 19.02.2015 Title of qualification awarded: PGCE in IT for the Oil and Gas Industry
 Mark: Merit (Score: 60-70%)
 Educational Institute: The Robert Gordon University; Aberdeen; UK
@@ -8025,7 +8027,7 @@ current information security standards","01.12.2017 - Now Position held: Cyber S
 01.10.2009 - 12.02.2010 Position held: Trainer of English Language in NewTechnologies / Contractor
 13.02.2008 - 12.02.2009 Position held: Cyber Security Project Manager / Mandatory Military Services
 
-",,,,,,,
+",,,,,,,,
 145,Dr,Saeed,Pakazad,,,,,,,,,"biomedical and elec- 
 trical engineering",Biomechanical Engineering,saeedpakazad7_p2k@indeedemail.com,Hoofddrop,,"PhD in Biomedical Engineering and Microsystems;Delft University of Technology - Delft; NL; juni 2015
 Master of Science in Biomedical Engineering-Bioinstrumentation specialization; Delft University of Technology - Delft; NL; augustus 2010
@@ -8037,7 +8039,7 @@ Nanotechnology Researcher; Hybrid Printed Electronics - Holst; NL; december 2015
 Research Fellow;Microsystem and Devices group; Philips Research - Eindhoven; NL september 2010 to juni 2015; Eindhoven; Netherlands
 Intern; Microsystem and Devices group; Philips Research - Eindhoven; NL september 2009 tot augustus 2010; Eindhoven; Netherlands
 
-",,,,,,,
+",,,,,,,,
 146,Dr,Ke,Deng,,,,,,,,,Energy & Mechanical Engineering,Mechanical Engineering,,Strategy as Ecology Consultancy Limited,,"PhD in Physics;University of Cambridge - Cambridge;October 2015 to April 2020
 Credential of Readiness in Business; Economics and Financial Accounting; Harvard Business School Online - Boston; MA;March 2018 to August 2018
 Master's in Nuclear Energy;University of Cambridge - London;October 2012 to October 2013
@@ -8057,7 +8059,7 @@ Sun Hung Kai Kwoks Scholar;April 2012
 
 ",,"Dye Nanoaggregate Structures in MK-2; N3; and N749 Dye???TiO2 Interfaces That Represent Dye-Sensitized Solar Cell Working Electrodes http://doi.org/10.1021/acsaem.9b02002 December 2019
 Electrolyte/dye/TiO2 interfacial structures of dye-sensitized solar cells revealed by in-situ neutron reflectometry with contrast matching Establishing Relationships Between Dye???TiO2 Interfacial Structure and Dye- Sensitized Solar-Cell Fabrication Parameters Using High-Throughput X-rayReflectometry
-",
+",,
 147,Professor,Ranjan,Banerjee,,,,,,,,,Mechanical Engineering and Aeronautics,Mechanical Engineering,j.r.banerjee@city.ac.uk,City; University of London,"Structural Dynamics and Aeroelasticity
 Dynamic Stiffness Formulation
 Aircraft Design
@@ -8247,7 +8249,7 @@ Banerjee; J.R. and Ananthapuvirajah; A. Free flexural vibration of tapered beams
 Banerjee; J.R. and Ananthapuvirajah; A. Commentary on; ÏDiscussion on ÎFree vibration of functionally graded beams and frameworks using the dynamic stiffness methodÌ by Banerjee et al.; Journal of Sound and Vibration 442; pp. 34-47; 2018Ó; Journal of Sound and Vibration; Vol. 466; Article No. UNSP 114986; 2020.
 Banerjee; J.R.; Ananthapuvirajah; A. and Papkov; S.O. Dynamic stiffness matrix of a conical bar using the Rayleigh-Love theory with applications. European Journal of Mechanics A- Solids; Vol. 83; Article No. 104020; 2020.
 Xie; Longtao; Wang Shaoyun; Ding Junlei; Banerjee J. Ranjan and Wang; Ji. An accurate beam theory and its first-order approximation in free vibration analysis. Journal of Sound and Vibration Vol. 485; Article No. 115567; 2020.
-",
+",,
 148,Dr,Chinedum,Mgbemena,,,,,,,,,Mechanical Engineer,Mechanical Engineering,chinedummgbemena2_xe3@indeedemail.com,Nnamdi Azikiwe University,,"PhD in Mechanical Engineering; Nnamdi Azikiwe University;May 2015 to Present
 Doctor of Philosophy in Mechanical Engineering; Nnamdi Azikiwe University; May 2015
 Master of Engineering in Mechanical Engineering; Nnamdi Azikiwe University; September 2010
@@ -8256,10 +8258,10 @@ School Certificate in West African Examination Council; St. Charles Special Scie
 Certificate in Aba; Constitution Crescent Primary School; 1987
 ","Visiting Researcher/Academic; Centre for Enhanced Composites & Structures - Cranfield; June 2016 to June 2017
 
-",,,,,,,
-149,Dr,Robert,G. Aykroyd,,,,,,,,,Statistics,Statistic,R.G.Aykroyd@leeds.ac.uk,Leeds University,,,,,,,,,,
-150,Professor,Matt,Jones,,,,,,,,,Computer Science,Computer Science,matt.jones@swansea.ac.uk,Swansea University,,,,,,,,,,
-151,Dr,Bashir,Al-Diri,,,,,,,,,Computer Science,Computer Science,baldiri@lincoln.ac.uk,University of Lincoln,,,,,,,,,,
+",,,,,,,,
+149,Dr,Robert,G. Aykroyd,,,,,,,,,Statistics,Statistic,R.G.Aykroyd@leeds.ac.uk,Leeds University,,,,,,,,,,,
+150,Professor,Matt,Jones,,,,,,,,,Computer Science,Computer Science,matt.jones@swansea.ac.uk,Swansea University,,,,,,,,,,,
+151,Dr,Bashir,Al-Diri,,,,,,,,,Computer Science,Computer Science,baldiri@lincoln.ac.uk,University of Lincoln,,,,,,,,,,,
 152,Prof,Stefanos,Kollias,,,,,,,,,Computer Science,Computer Science,skollias@lincoln.ac.uk,University of Lincoln,,"World leading research activity in the fields of intelligent systems; semantic image & video analysis; particularly on machine learning and deep neural networks.
 Leader of the Machine Learning Research Group in University of Lincoln; performing research in Deep Learning and its use in a variety of applications.
 2019 - Expert of CLAIRE Network for Trustworthy AI in Europe and of European Commission TAILOR project for blending AI; DL and optimization in trusted ways.
@@ -8278,7 +8280,7 @@ Scalable Test Suite for Dynamic Multi-objective Optimization; IEEE Cybernetics; 
 Deep Bayesian Self-Training; Neural Computing and Applications; 2019
 34th AAAI Conf. on AI; Capsule Routing via Variational Bayes; 2020 (top Conference)
 FISA; 3D CNNs for Reactor Perturbation Unfolding & Anomaly Detection; 2019 (award)
-",
+",,
 153,Dr,Gordon,Ross,,British,08/11/1982,,,,,,Statistics,Statistic,Gordon.Ross@ed.ac.uk,The University of Edinburgh,,"2007 - 2011 PhD Statistics; Imperial College London;
 2003 - 2007 MSci Mathematics; Imperial College London
 ","September 2017 - Present; Lecturer (Assistant Professor); University of Edinburgh. Permanent contract.
@@ -8321,10 +8323,10 @@ G. J. Ross; D. K. Tasoulis; N. M. Adams - Exponentially Weighted Moving Average 
 G. J. Ross; D. K. Tasoulis; N. M. Adams - A Nonparametric Change-Point Model for Streaming Data; Technometrics; 2011
 G. J. Ross; D. K. Tasoulis; N. M. Adams; D. J. Hand - Online Annotation and Prediction for Regime Switching Data Streams; Proceedings of the 24th Annual ACM Symposium on Applied Computing; 2009
 D. K. Tasoulis; G. J. Ross; N. M. Adams - Visualising the Cluster Structure of Data Streams; Advancesin Intelligent Data Analysis; 2007
-",
-154,Dr,Daniel,Paulin,,,,,,,,,Bayesian statistics;,Statistic,dpaulin@ed.ac.uk,The University of Edinburgh,,,,,,,,,,
-155,Dr,Lanpeng,Ji,,,,,,,,,Statistics,Statistic,L.Ji@leeds.ac.uk,Leeds University,,,,,,,,,,
-156,Professor,Kit,Dodson,,,,,,,,,statistics,Statistic,kit.dodson@manchester.ac.uk,The Manchester College,,,,,,,,,,
+",,
+154,Dr,Daniel,Paulin,,,,,,,,,Bayesian statistics;,Statistic,dpaulin@ed.ac.uk,The University of Edinburgh,,,,,,,,,,,
+155,Dr,Lanpeng,Ji,,,,,,,,,Statistics,Statistic,L.Ji@leeds.ac.uk,Leeds University,,,,,,,,,,,
+156,Professor,Kit,Dodson,,,,,,,,,statistics,Statistic,kit.dodson@manchester.ac.uk,The Manchester College,,,,,,,,,,,
 157,Dr,Rory,Cave,,,,,,,,,Microbiology,Biomechanical Engineering,"rorycave3@gmail.com
 
 ",University of reading and CHAIN biotechnology,,"2016-2019 University of East London; Degree: PhD Microbiology
@@ -8341,7 +8343,7 @@ D. K. Tasoulis; G. J. Ross; N. M. Adams - Visualising the Cluster Structure of D
 2013-2014 MRes (Postgraduate) student at Nottingham Trent University 
 2012-2013Microbiology laboratory technician at 2 Sisters food Group
 
-",,,,,,,
+",,,,,,,,
 158,Dr,Abhinivesh,Beechook,,,,,,,,,Fluid Mechanics/Aerospace Engineering,Aerospace Engineering,abhinivesh22@gmail.com,Coventry University,,"2016 - Present PhD Aerospace Engineering Coventry University; UK
 2014 - 2016 MScR Aerospace Engineering Coventry University; UK
 2013 - 2015 PgCert Higher Education Professional Practice Coventry University; UK
@@ -8366,11 +8368,11 @@ H. Medina; A. Beechook; J. Saul; S. Porter; S. Aleksandrova and S. Benjamin. Ope
 Beechook and J. Wang. Aerodynamic analysis of variable cant angle winglets for improved aircraft performance. 19th International Conference on Automation and Computing; London; 1-6; 2013. https://ieeexplore.ieee.org/document/6662041
 Beechook; H. Medina; S. Aleksandrova and S. Benjamin. A cost-effective and user-friendly inflow condition for investigating natural transition with large-eddy simulation. Manuscript submitted; under review; 2020.
 Beechook; H. Medina; S. Aleksandrova and S. Benjamin. Towards a new framework for estimating initial amplitudes of Tollmien-Schlichting waves in boundary layers. Manuscript in preparation; 2020.
-",
-159,Dr,Bo,Luo,,,,,,,,,Automatic Control and Systems Engineering,Engineer,b.luo@sheffield.ac.uk,University of Sheffield,,,,,,,,,,
-160,Professor,Jorg,Feldmann,,,,,,,,,New Materials,Material Science,Joerg.feldmann@uni-graz.at,University of Aberdeen,,,,,,,,,,
-161,Dr,Luisa,Cutillo,,,,,,,,,Statistics,Statistic,L.Cutillo@leeds.ac.uk,Leeds University,,,,,,,,,,
-162,Dr,Prajamitra,Bhuyan,,,,,,,,,Statistics,Statistic,p.bhuyan@imperial.ac.uk,Imperial College London,,,,,,,,,,
+",,
+159,Dr,Bo,Luo,,,,,,,,,Automatic Control and Systems Engineering,Engineer,b.luo@sheffield.ac.uk,University of Sheffield,,,,,,,,,,,
+160,Professor,Jorg,Feldmann,,,,,,,,,New Materials,Material Science,Joerg.feldmann@uni-graz.at,University of Aberdeen,,,,,,,,,,,
+161,Dr,Luisa,Cutillo,,,,,,,,,Statistics,Statistic,L.Cutillo@leeds.ac.uk,Leeds University,,,,,,,,,,,
+162,Dr,Prajamitra,Bhuyan,,,,,,,,,Statistics,Statistic,p.bhuyan@imperial.ac.uk,Imperial College London,,,,,,,,,,,
 163,Dr,Dimitrios,Kollias,,,,,,,,,Computer Science,Computer Science,D.Kollias@greenwich.ac.uk,Greenwich University,,"Institution name: Department of Computing; Imperial College London; London; UK
 Subject name: Deep Learning for Behaviour Recognition and Generation
 Qualification type: Doctoral degree
@@ -8544,7 +8546,7 @@ lopatis; ÌInterweaving deep learning and semantic techniques for emotion analys
 machine interactionÌ; 10th International Workshop on Semantic and Social Media Adaptation
 
 and Personalization (SMAP); 2015
-Oral Presentation",
+Oral Presentation",,
 164,,Ugo,Ubochi,,,,,,,,,Mechanical & Nuclear Engineering,Mechanical Engineering,nubochy@yahoo.com,Sellafield BEP Project delivering HVAC System,,"2006: MSc - Mechanical Engineering; Nottingham Trent University; UK 
 2002: B.Tech (Hons) - Industrial Design; Federal University of Technology; Akure; Nigeria
 
@@ -8594,7 +8596,7 @@ Track-It System Project; Containexx UK (Royal Mail Automated Centres UK) (2006-2
 Food Process factory design and construction; Braudok Nigeria (2002 - 2004)
 Agip Oil Flow Station Construction; Homan Nigeria (2000-2001)
 HVAC/Steam Plant Projects at Eleme Petrochemical Refinery; Port Harcourt; Nigeria (1995-2000)
-",,,,,
+",,,,,,
 165,Dr,Mehdi,Shabani,,,,,,,,,Materials Engineer,Material and Manufacturing Engineering,mehshabani@gmail.com,CCFE; Culham Science Centre; Abingdon; UK,,"Materials Engineer; CCFE; Culham Science Centre; Abingdon; UK; September 2019-onwards.
 Post-doc R&D Materials Researcher in connection with BOSCH. Aveiro Institute of Materials; Aveiro; Portugal; May 2017-May 2019.
 Ph.D. of Materials Science & Engineering; Aveiro University; Aveiro; Portugal March 2011-March 2016.
@@ -8637,11 +8639,11 @@ M. Shabani; C.S. Abreu; F.J. Oliveira; J.R. Gomes; R.F. Silva; Tribosystems base
 M. Shabani; F.J. Oliveira; R.F. Silva; Multilayer of micro/nanocrystalline diamond film growth in a large area CVD system; 5th. CICECO Meeting; 18-19 April 2013; Aveiro; Portugal.
 M. Shabani; F.J. Oliveira; R.F. Silva; Growth rate improvement of micro/nanocrystalline diamond films in a large area CVD reactor; 4th. CICECOMeeting; 2-3 May 2012; Aveiro; Portugal.
 M. Shabani; E. Ariza; L.A. Rocha; Metal-ceramic interfaces for dental restorations; 2nd. Workshop on Biotribology; 5-9 May 2009; Paris; France. 10. M. Shabani; M.H. Paydar; M.M. Moshksar; Tribological behavior of SiC particle- reinforced copper matrix composites produced by powder metallurgy route; MSE 08; 1-4 September 2008; Nurnberg; Germany.
-",
-166,Dr,Ana Jorge,Sobrido,,,,,,,,,Advanced Materials,Mechanical Engineering,a.sobrido@qmul.ac.uk,Queen Mary University,,,,,,,,,,
-167,Dr,Rafael,Castrejon-Pita,,,,,,,,,Advanced Materials,Mechanical Engineering,r.castrejonpita@qmul.ac.uk,Queen Mary University,,,,,,,,,,
-168,Dr,Patrick,Cullen,,,,,,,,,Advanced Materials,Mechanical Engineering,p.cullen@qmul.ac.uk,Queen Mary University,,,,,,,,,,
-169,Professor,Christl,Donnelly,,,,,,,,,Statistics,Statistic,christl.donnelly@stats.ox.ac.uk,University of Oxford,,,,,,,,,,
+",,
+166,Dr,Ana Jorge,Sobrido,,,,,,,,,Advanced Materials,Mechanical Engineering,a.sobrido@qmul.ac.uk,Queen Mary University,,,,,,,,,,,
+167,Dr,Rafael,Castrejon-Pita,,,,,,,,,Advanced Materials,Mechanical Engineering,r.castrejonpita@qmul.ac.uk,Queen Mary University,,,,,,,,,,,
+168,Dr,Patrick,Cullen,,,,,,,,,Advanced Materials,Mechanical Engineering,p.cullen@qmul.ac.uk,Queen Mary University,,,,,,,,,,,
+169,Professor,Christl,Donnelly,,,,,,,,,Statistics,Statistic,christl.donnelly@stats.ox.ac.uk,University of Oxford,,,,,,,,,,,
 170,Dr,Sergey,Karabasov,,,,,,,,,Advanced Materials,Mechanical Engineering,s.karabasov@qmul.ac.uk,Queen Mary University,,,"August 2015 - September 2020; Reader in Computational Modelling; QMUL
 June 2010-present; Visiting Research Professor in Moscow TsAGI Acoustics Division; Russia
 Postgraduate Certificate in Academic Practice; Queen Mary University of London; July 2016
@@ -8750,9 +8752,9 @@ of finite-difference scheme with space-split time derivative for the Korteweg-de
 Goloviznin VM and Karabasov SA (2000) ÏDiscrete mathematical models with space split time derivative of two-phase fluid filtration.Ó Izvest. Acad. Nayk (Journ. of Rus. Acad of Sci.). Ser. Energetic; N.4.
 Goloviznin VM and Karabasov SA (1998) ÏNon-linear correction of the Cabaret scheme.Ó Comp. Math. V.10. N.12. pp.107-123.
 
-",
-171,Dr,Michael,Farnsworth,,,,,,,,,Automatic Control,Control Engineer,m.j.farnsworth@sheffield.ac.uk,University of Sheffield,,,,,,,,,,
-172,Dr,Moschos,Papananias,,,,,,,,,Automatic Control and Systems Engineering,Engineer,m.papananias@sheffield.ac.uk,University of Sheffield,,,,,,,,,,
+",,
+171,Dr,Michael,Farnsworth,,,,,,,,,Automatic Control,Control Engineer,m.j.farnsworth@sheffield.ac.uk,University of Sheffield,,,,,,,,,,,
+172,Dr,Moschos,Papananias,,,,,,,,,Automatic Control and Systems Engineering,Engineer,m.papananias@sheffield.ac.uk,University of Sheffield,,,,,,,,,,,
 173,Dr,Compatangelo,Ernesto,,Italian,,,,,,,Computing Science,Computer Science,ernesto@compatangelo.name,University of Aberdeen,,"1993-1996 Dottorato (PhD) in Artificial Intelligent Systems Politecnico di Milano; Italy + Italian Ministry for University and Research
 1986-1989 Perfezionamento in Scienze Molecolari Applicate (3-year MSc in Solid State Sciences) Scuola Normale Superiore; Pisa; Italy
 1979-1985 Diploma di Laurea (BSc Hons) in Physics University of Rome ÎLa SapienzaÌ; Italy
@@ -8771,4 +8773,4 @@ Goloviznin VM and Karabasov SA (1998) ÏNon-linear correction of the Cabaret sch
 1991 - 1996 Software Engineering and Information Systems Consultant A range of SMEs located in Central Italy
 1989 - 1991 System Analyst Research & Development; Elettronica S.P.A.; Roma; Italy
 
-",,,,,
+",,,,,,
