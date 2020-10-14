@@ -84,13 +84,13 @@ class App extends Component {
                 <NavLink className="nav-link" to="/home">Home</NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to="/aboutus">About Us</NavLink>
-              </li>
-              <li className="nav-item">
                 <NavLink className="nav-link" to="/jobs">Jobs</NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to="/contactus">Contact Us</NavLink>
+                <NavLink className="nav-link" to="/aboutus">About</NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/contactus">Contact</NavLink>
               </li>
               <li className="nav-item">
                 <div className="nav-link Signout bg warning">
