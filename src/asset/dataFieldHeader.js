@@ -29,9 +29,9 @@ export const projectDataLessHeader= [
 ]
 
 export const projectDataMoreField = [
-    'start_date', 'close_date', 'featured', 'professional_field', 'job_description', 'required_expertise', 'responsibility', 'essential_skills'
+    'show_employer_name', 'start_date', 'close_date', 'organization_info', 'professional_field', 'job_description', 'required_expertise', 'responsibility', 'essential_skills'
 ]
 
 export const projectDataMoreHeader = [
-    'Start Date', 'Close Date', 'Featured', 'Professional Field', 'Job Description', 'Required Expertise', 'Responsibility', 'Essential skills'
+    'Show Employer Name', 'Start Date', 'Close Date', 'Organization Infomation', 'Professional Field', 'Job Description', 'Required Expertise', 'Responsibility', 'Essential Skills'
 ]

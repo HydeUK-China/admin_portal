@@ -1,5 +1,7 @@
 export const placeholder = {
     'title': "Dr",
+    'first_name': "Jane",
+    'last_name': "Doe",
     'email': "name@example.com",
     'expertise': "Chemical Engineering",
     'category': "Engineering",
@@ -17,10 +19,10 @@ export const placeholder = {
     'employer': "Amazon",
     'area': "United Kingdom",
     'salary': "35,000 - 45,000",
-    'featured': "Amazon Advertising operates at the intersection of advertising and ecommerce and offers advertisers a rich array of innovative advertising solutions across Amazon’s mobile and desktop websites, proprietary devices and the Amazon Advertising Platform.",
+    'organization_info': "Amazon Advertising operates at the intersection of advertising and ecommerce and offers advertisers a rich array of innovative advertising solutions across Amazon’s mobile and desktop websites, proprietary devices and the Amazon Advertising Platform.",
     'professional_field': 'ecommerce',
     'job_description': "In this role you will be working within the SME team of Account Managers, taking ownership of the management of a portfolio of SME clients and engaging with to ensure renewals and upsells.",
     'required_expertise': "Management, Data, SQL",
-    'responsibilities': " -Onboarding and engagement process with every client.   -Identify risks to minimise attrition.   -Identify and convert opportunities to up sell and cross sell existing products.   -Create and convert cross sell opportunities.   -Establish and maintain relationship with key client stakeholders. ",
+    'responsibility': " -Onboarding and engagement process with every client.   -Identify risks to minimise attrition.   -Identify and convert opportunities to up sell and cross sell existing products.   -Create and convert cross sell opportunities.   -Establish and maintain relationship with key client stakeholders. ",
     'essential_skills': "-Commercially and client focused   -Sales and relationship management experience   -Experience working to commercial KPI’s"
 }

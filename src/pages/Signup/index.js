@@ -1,15 +1,24 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router';
+import { setUserInfo } from '../../utils/utils';
 import { Link } from 'react-router-dom';
 import RegisterForm from '../../components/RegisterForm';
 import Footer from '../../components/Footer';
 
-export default class Signup extends Component {
+class Signup extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
 
         }
+
+        this.registerCallback = this.registerCallback.bind(this);
+    }
+
+    registerCallback(data) {
+        setUserInfo(data);
+        this.props.history.replace('/mgt');
     }
 
     render() {
@@ -27,7 +36,10 @@ export default class Signup extends Component {
                                 <h2>Sign up</h2>
                                 <h4>Register now and get access to amazing opportunities</h4>
                             </div>
-                            <RegisterForm />
+                            <RegisterForm
+                                registerCallback={this.registerCallback}
+                                confirmButtonText="Create Account"
+                            />
                         </div>
                         <div className="col-md-6 bg-col">
                             <div className="register-bg_image">
@@ -40,3 +52,5 @@ export default class Signup extends Component {
         )
     }
 }
+
+export default withRouter(Signup)

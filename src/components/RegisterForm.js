@@ -1,9 +1,8 @@
 import React, { Component, createRef } from 'react';
-import { withRouter } from 'react-router';
 import _ from 'lodash';
-import { fetchReq, setUserInfo } from '../utils/utils';
+import { fetchReq } from '../utils/utils';
 
-class RegisterForm extends Component {
+export default class RegisterForm extends Component {
     constructor(props) {
         super(props)
 
@@ -26,9 +25,10 @@ class RegisterForm extends Component {
     }
 
     handleRegister(e) {
+        const { registerCallback } = this.props;
+
         e.preventDefault();
 
-        const props = this.props;
         const firstname = this.firstname;
         const lastname = this.lastname;
         const email = this.email;
@@ -45,15 +45,15 @@ class RegisterForm extends Component {
                 role: 'expert'
             })
         }).then(data => {
-            setUserInfo(data)
-
-            props.history.replace('/mgt')
-        }).catch(msg =>
-            alert(msg)
-        )
+            registerCallback(data);
+        }).catch(msg => {
+            alert(msg);
+        });
     }
 
     render() {
+        const { confirmButtonText } = this.props;
+
         return (
             <form className="registerLogin-form" onSubmit={this.handleRegister}>
                 <div className="form-row">
@@ -84,10 +84,8 @@ class RegisterForm extends Component {
                         ref={this.phone} required />
                 </div>
 
-                <button type="submit" className="apply-btn create_btn"> Create Account</button>
+                <button type="submit" style={{maxWidth: 'inherit'}} className="apply-btn create_btn"> {confirmButtonText} </button>
             </form>
         )
     }
 }
-
-export default withRouter(RegisterForm)

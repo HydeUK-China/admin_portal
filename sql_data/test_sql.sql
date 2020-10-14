@@ -38,4 +38,6 @@ INSERT INTO project_matching (project_id, expert_id) VALUES ('100', '200' );
 
 UPDATE project_info SET start_date='2020-07-13' WHERE project_id=40;
 
-DELETE FROM project_matching WHERE matching_id IN (75, 76, 77, 78, 79, 80);
+DELETE FROM project_matching WHERE matching_id IN (76, 78, 79);
+
+UPDATE project_matching SET application_complete='Y'  WHERE matching_id IN (76);

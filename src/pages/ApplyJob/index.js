@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
-import { fetchReq, getRole, getUid } from '../../utils/utils';
+import { fetchReq, getRole, getUid, setUserInfo } from '../../utils/utils';
 import RegisterForm from '../../components/RegisterForm';
+import LoginForm from '../../components/loginForm';
 import Footer from '../../components/Footer';
 
 import '../../styles/applyjob.css';
+import Feedback from 'react-bootstrap/esm/Feedback';
 
 class ApplyJob extends Component {
     constructor(props) {
@@ -15,10 +17,13 @@ class ApplyJob extends Component {
             role: getRole(),
             projectId: props.match.params.projectId,
             expertId: (getRole() === 'expert' && getUid()) ? getUid() : null,
-            project: {}
+            project: {},
+            showJoinus: false,
+            statusForApply: 'register'
         }
 
         this.applyNow = this.applyNow.bind(this);
+        this.applyCallback = this.applyCallback.bind(this);
     }
 
     componentDidMount() {
@@ -49,14 +54,50 @@ class ApplyJob extends Component {
         } else if (role === '__admin__') {
             alert("You are admin and you are not supposed to apply for this job.")
         } else {
-            alert("You are not loggedin yet. You need login before applying for this job.")
+            // alert("You are not loggedin yet. You need login before applying for this job.")
+            this.setState({
+                showJoinus: true
+            }, () => {
+                window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+            });
+        }
+    }
+
+    applyCallback(data) {
+        setUserInfo(data);
+        const expertId = (getRole() === 'expert' && getUid()) ? getUid() : null;
+        const { projectId, statusForApply } = this.state;
+
+        if (expertId) {
+            fetchReq('/api/expertApply', {
+                body: JSON.stringify({
+                    expertid: expertId,
+                    projectid: projectId
+                })
+            }).then(feedback => {
+                setUserInfo(data);
+
+                this.setState({
+                    role: getRole(),
+                    expertId
+                }, () => {
+                    if (statusForApply === 'register') {
+                        this.props.history.replace('/mgt');
+    
+                    } else if (statusForApply === 'login') {
+                        alert(feedback)
+                    }
+                })
+            }).catch(msg =>
+                alert(msg)
+            )
         }
     }
 
     render() {
-        const { role, project } = this.state;
-        const { job_title, employer, start_date, close_date, currency, salary, job_description, 
-                required_expertise, professional_field, featured, responsibility, essential_skills} = project;
+        const { role, project, statusForApply } = this.state;
+        const { job_title, employer, show_employer_name, start_date, close_date, currency, salary, job_description,
+            required_expertise, professional_field, organization_info, responsibility, essential_skills } = project;
 
         return (
             <div>
@@ -100,18 +141,18 @@ class ApplyJob extends Component {
                                 </div>
 
                                 <div className="job-details">
-                                <div className="salary">{currency} {salary}</div>
-                                    <div className="status">{start_date !== "" ? `Posted ${start_date} by ${employer}` : ''}</div>
-                                    <div className="type">Featured</div>
+                                    <div className="salary">{currency} {salary}</div>
+                                    <div className="status">{`Posted ${start_date} by ${show_employer_name === 'Y' ? employer : 'admin'}`}</div>
+                                    {/* <div className="type">Featured</div> */}
                                 </div>
 
                                 <div className="job-summary">
                                     <p className="para-width">
-                                        {featured}
+                                        {organization_info}
                                     </p>
                                 </div>
 
-                                <div className="job-description">Job description
+                                <div className="job-description">Job Description
                                     <p className="para-width">
                                         {job_description}
                                     </p>
@@ -138,7 +179,7 @@ class ApplyJob extends Component {
                                 </div>
 
                                 <div className="job-skills">
-                                    Essential skills
+                                    Essential Skills
                                     <ul>
                                         <li className="info-item">
                                             {essential_skills}
@@ -158,35 +199,50 @@ class ApplyJob extends Component {
                     </div>
                 </section>
 
-                <section id="applyTo-job">
-                    <span className="joinUs-shape"></span>
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-md-6">
-                                <div className="testimonialHeader">
-                                    <h1><span style={{ color: 'white' }}>Jo</span>in <span style={{ display: 'block' }}><span
-                                        style={{ color: 'white' }}>U</span>s.</span></h1>
-                                </div>
-                                <div className="clientTestimonial">
-                                    <i className="fa fa-quote-left" aria-hidden="true"></i>
-                                    <h2 className="quote">
-                                        "It opens up a whole world of opportunities, to meet new people,
-                                        be close to work and in general, have a better quality of life".
+                { role ? null
+                    :
+                    <div className={this.state.showJoinus ? 'showContent content ' : 'content'} >
+                        <section id="applyTo-job">
+                            <span className="joinUs-shape"></span>
+                            <div className="container">
+                                <div className="row">
+                                    <div className="col-md-6">
+                                        <div className="testimonialHeader">
+                                            <h1><span style={{ color: 'white' }}>Jo</span>in <span style={{ display: 'block' }}><span
+                                                style={{ color: 'white' }}>U</span>s.</span></h1>
+                                        </div>
+                                        <div className="clientTestimonial">
+                                            <i className="fa fa-quote-left" aria-hidden="true"></i>
+                                            <h2 className="quote">
+                                                "It opens up a whole world of opportunities, to meet new people,
+                                                be close to work and in general, have a better quality of life".
                                     </h2>
-                                    <p><b>Mary</b></p>
-                                    <p>Researcher</p>
+                                            <p><b>Mary</b></p>
+                                            <p>Researcher</p>
+                                        </div>
+                                    </div>
+
+                                    <div className="col-md-6">
+                                        <h4 className="form-header">Apply and <a className="switch-form" onClick={() => this.setState({ statusForApply: statusForApply === 'login' ? 'register' : 'login' })}>{statusForApply}</a> now</h4>
+                                        {
+                                            statusForApply === 'register' ?
+                                                <RegisterForm
+                                                    registerCallback={this.applyCallback}
+                                                    confirmButtonText="Apply & Create Account"
+                                                />
+                                                : <LoginForm
+                                                    loginCallback={this.applyCallback}
+                                                    confirmButtonText="Apply & Login"
+                                                />
+                                        }
+                                    </div>
                                 </div>
                             </div>
-
-                            <div className="col-md-6">
-                                <h4 className="form-header">Apply and register your CV now</h4>
-                                <RegisterForm />
-                            </div>
-                        </div>
+                        </section>
                     </div>
-                </section>
+                }
 
-                <Footer/>
+                <Footer />
             </div>
         )
     }

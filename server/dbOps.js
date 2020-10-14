@@ -155,7 +155,7 @@ function fetchExpertAll(req, res) {
     jwtUtil.verifyRoleFromToken(token)
         .then((role) => {
             if (role === 'admin') {
-                const sql = `SELECT * FROM expert_info`;
+                const sql = `SELECT * FROM expert_info ORDER BY expert_id desc`;
 
                 res.app.get('connection').query(sql, function (err, rows) {
                     if (err) {
@@ -193,14 +193,14 @@ function addExpert(req, res) {
             if (role === 'admin') {
                 const sql = `INSERT INTO expert_info
                             (title, first_name, last_name, gender, nationality, date_of_birth, email, 
-                            phone_no, linkedin, facebook, twitter, expertise, category, source_references,
+                            phone_no, linkedin, skype, twitter, expertise, category, source_references,
                             edu_organization, field_of_speciality, education, employment, membership_of_professional_bodies,
                             scientific_contribution_and_research_leadership, awarded_grants_and_funded_activities,
                             awards, patents, publications, collaborative_project_proposal)
                             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
 
                 res.app.get('connection').query(sql, [record.title, record.first_name, record.last_name, record.gender,
-                record.nationality, record.date_of_birth, record.email, record.phone_no, record.linkedin, record.facebook,
+                record.nationality, record.date_of_birth, record.email, record.phone_no, record.linkedin, record.skype,
                 record.twitter, record.expertise, record.category, record.source_references, record.edu_organization,
                 record.field_of_speciality, record.education, record.employment, record.membership_of_professional_bodies,
                 record.scientific_contribution_and_research_leadership, record.awarded_grants_and_funded_activities,
@@ -272,7 +272,7 @@ function editExpert(req, res) {
                             email=?,
                             phone_no=?,
                             linkedin=?,
-                            facebook=?,
+                            skype=?,
                             twitter=?,
                             expertise=?,
                             category=?,
@@ -291,7 +291,7 @@ function editExpert(req, res) {
                             WHERE expert_id=?`;
 
                 res.app.get('connection').query(sql, [record.title, record.first_name, record.last_name, record.gender,
-                record.nationality, record.date_of_birth, record.email, record.phone_no, record.linkedin, record.facebook,
+                record.nationality, record.date_of_birth, record.email, record.phone_no, record.linkedin, record.skype,
                 record.twitter, record.expertise, record.category, record.source_references, record.edu_organization,
                 record.field_of_speciality, record.education, record.employment, record.membership_of_professional_bodies,
                 record.scientific_contribution_and_research_leadership, record.awarded_grants_and_funded_activities,
@@ -414,20 +414,78 @@ function expertApply(req, res) {
     jwtUtil.verifyRoleFromToken(token)
         .then((role) => {
             if (role) {
-                const sql = `INSERT INTO project_matching (project_id, expert_id) 
-                            VALUES (?, ?)`;
+                const sql = `SELECT * FROM project_matching 
+                            WHERE project_id=? AND expert_id=?`;
 
-                res.app.get('connection').query(sql, [projectid, expertid], function (err, feedback) {
+                res.app.get('connection').query(sql, [projectid, expertid], function (err, rows) {
                     if (err) {
                         res.status(400).json({
                             success: false,
                             msg: err.sqlMessage
                         });
                     } else {
-                        res.status(200).json({
-                            success: true,
-                            data: 'successfully applied'
-                        });
+                        if (rows.length > 0) {
+                            res.status(400).json({
+                                success: false,
+                                msg: "you already applied"
+                            });
+                        } else {
+                            const sql = `SELECT * FROM expert_info WHERE expert_id=?`;
+
+                            res.app.get('connection').query(sql, [expertid], function (err, rows) {
+                                if (err) {
+                                    res.status(400).json({
+                                        success: false,
+                                        msg: err.sqlMessage
+                                    });
+                                } else {
+                                    if (rows.length > 0) {
+                                        const education = rows[0].education;
+                                        const employment = rows[0].employment;
+                                        const field_of_speciality = rows[0].field_of_speciality;
+
+                                        if (education && employment && field_of_speciality) {
+                                            const sql = `INSERT INTO project_matching (project_id, expert_id, application_complete) 
+                                            VALUES (?, ?, ?)`;
+
+                                            res.app.get('connection').query(sql, [projectid, expertid, 'Y'], function (err, feedback) {
+                                                if (err) {
+                                                    res.status(400).json({
+                                                        success: false,
+                                                        msg: err.sqlMessage
+                                                    });
+                                                } else {
+                                                    res.status(200).json({
+                                                        success: true,
+                                                        data: 'successfully applied'
+                                                    });
+                                                }
+                                            });
+                                        } else {
+                                            const sql = `INSERT INTO project_matching (project_id, expert_id, application_complete) 
+                                            VALUES (?, ?, ?)`;
+
+                                            res.app.get('connection').query(sql, [projectid, expertid, 'N'], function (err, feedback) {
+                                                if (err) {
+                                                    res.status(400).json({
+                                                        success: false,
+                                                        msg: err.sqlMessage
+                                                    });
+                                                } else {
+                                                    res.status(200).json({
+                                                        success: true,
+                                                        data: 'successfully applied, but you need fill your info to complete the application'
+                                                    });
+                                                }
+                                            });
+                                        }
+                                    }
+
+                                }
+                            });
+
+
+                        }
                     }
                 });
             } else {
@@ -509,7 +567,7 @@ function fetchEmployer(req, res) {
 }
 
 function fetchProjectAll(req, res) {
-    const sql = 'SELECT * FROM project_info';
+    const sql = 'SELECT * FROM project_info ORDER BY project_id desc';
 
     res.app.get('connection').query(sql, function (err, rows) {
         if (err) {
@@ -554,14 +612,14 @@ function addProject(req, res) {
         .then((role) => {
             if (role === 'admin') {
                 const sql = `INSERT INTO project_info 
-                            (start_date, close_date, job_title, featured, responsibility,
+                            (start_date, close_date, job_title, organization_info, responsibility,
                             essential_skills, professional_field, job_description,
-                            required_expertise, employer, area, salary, currency)
-                            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+                            required_expertise, employer, show_employer_name, area, salary, currency)
+                            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
 
-                res.app.get('connection').query(sql, [record.start_date, record.close_date, record.job_title, record.featured, record.responsibility,
-                record.essential_skills, record.professional_field, record.job_description, record.required_expertise, record.employer, record.area,
-                record.salary, record.currency],
+                res.app.get('connection').query(sql, [record.start_date, record.close_date, record.job_title, record.organization_info, record.responsibility,
+                record.essential_skills, record.professional_field, record.job_description, record.required_expertise, record.employer, record.show_employer_name,
+                record.area, record.salary, record.currency],
                     function (err, rows) {
                         if (err) {
                             res.status(400).json({
@@ -600,21 +658,22 @@ function editProject(req, res) {
                             SET start_date=?,
                             close_date=?,
                             job_title=?,
-                            featured=?,
+                            organization_info=?,
                             responsibility=?,
                             essential_skills=?,
                             professional_field=?,
                             job_description=?,
                             required_expertise=?,
                             employer=?,
+                            show_employer_name=?,
                             area=?,
                             salary=?,
                             currency=?
                             WHERE project_id=?`;
 
-                res.app.get('connection').query(sql, [record.start_date, record.close_date, record.job_title, record.featured, record.responsibility,
-                record.essential_skills, record.professional_field, record.job_description, record.required_expertise, record.employer, record.area,
-                record.salary, record.currency, record.project_id],
+                res.app.get('connection').query(sql, [record.start_date, record.close_date, record.job_title, record.organization_info, record.responsibility,
+                record.essential_skills, record.professional_field, record.job_description, record.required_expertise, record.employer, record.show_employer_name,
+                record.area, record.salary, record.currency, record.project_id],
                     function (err, feedback) {
                         if (err) {
                             res.status(400).json({
@@ -628,6 +687,58 @@ function editProject(req, res) {
                             })
                         }
                     });
+            } else {
+                res.status(400).json({
+                    success: false,
+                    msg: 'role permission denied'
+                })
+            }
+        }).catch(err => {
+            res.status(400).json({
+                success: false,
+                msg: err
+            })
+        });
+}
+
+function completeExpertApplication(req, res) {
+    const token = req.session.token;
+    const expertId = req.params.expertid;
+
+    jwtUtil.verifyRoleFromToken(token)
+        .then((role) => {
+            if (role) {
+                const sql = `SELECT * FROM project_matching WHERE expert_id=?`;
+
+                res.app.get('connection').query(sql, [expertId], function (err, rows) {
+                    if (err) {
+                        res.status(400).json({
+                            success: false,
+                            msg: err.sqlMessage
+                        });
+                    } else {
+                        if (rows.length > 0) {
+                            const matching_id_list = rows.map(item => item.matching_id).join(',');
+                            const sql = `UPDATE project_matching 
+                                        SET application_complete=?
+                                        WHERE matching_id IN (${matching_id_list})`;
+
+                            res.app.get('connection').query(sql, ['Y'], function (err, feedback) {
+                                if (err) {
+                                    res.status(400).json({
+                                        success: false,
+                                        msg: err.sqlMessage
+                                    });
+                                } else {
+                                    res.status(200).json({
+                                        success: true,
+                                        data: feedback
+                                    })
+                                }
+                            });
+                        }
+                    }
+                });
             } else {
                 res.status(400).json({
                     success: false,
@@ -688,7 +799,7 @@ function fetchProjectExpert(req, res) {
                 const sql = `SELECT * FROM project_matching
                             JOIN expert_info
                             ON expert_info.expert_id = project_matching.expert_id
-                            WHERE project_matching.project_id=?`;
+                            WHERE project_matching.project_id=? AND project_matching.application_complete='Y'`;
 
                 res.app.get('connection').query(sql, [projectId], function (err, rows) {
                     if (err) {
@@ -729,7 +840,7 @@ function fetchProjectMatching(req, res) {
                             ) AS temp
                             JOIN project_info
                             ON project_info.project_id = temp.project_id 
-                            WHERE rn=1`;
+                            WHERE rn=1 AND temp.application_complete='Y'`;
 
                 res.app.get('connection').query(sql, function (err, rows) {
                     if (err) {
@@ -766,6 +877,7 @@ module.exports = {
     fetchExpertAll,
     addExpert,
     editExpert,
+    completeExpertApplication,
     deleteExpert,
     fetchExpert,
     expertApply,

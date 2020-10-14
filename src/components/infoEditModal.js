@@ -79,14 +79,14 @@ export default class InfoEditModal extends Component {
 
     generatePDF = () => {
         const { fileds } = this.props;
-        const { data }  = this.state;
+        const { data } = this.state;
 
         const contents = [];
         const pdf = new jsPDF('p', 'pt');
         const fieldTitle = this.fieldTitle;
-        
+
         _.forEach(fileds, (key) => {
-            contents.push(fieldTitle[key] + ': ' + data[key]||'')
+            contents.push(fieldTitle[key] + ': ' + data[key] || '')
         })
 
         pdf.text(contents, 40, 40)
@@ -117,6 +117,19 @@ export default class InfoEditModal extends Component {
                                                     defaultValue={value} />
                                             </div>
                                         )
+                                    } else if (key === 'show_employer_name') {
+                                        // required select
+                                        return (
+                                            <div key={`modal-${key}`} className='columns-merge'>
+                                                <h2>{this.fieldTitle[key]}</h2>
+                                                <select className="form-control" required
+                                                    defaultValue={value}
+                                                    onChange={(e) => this.handleTextChange(e, key)}>
+                                                    <option value='Y'>Yes</option>
+                                                    <option value='N'>No</option>
+                                                </select>
+                                            </div>
+                                        )
                                     } else if (key === 'currency') {
                                         // required select
                                         return (
@@ -126,9 +139,9 @@ export default class InfoEditModal extends Component {
                                                     defaultValue={value}
                                                     onChange={(e) => this.handleTextChange(e, key)}>
                                                     {_.map(currencyList, (_item, _index) => {
-                                                        if(_item === ""){
+                                                        if (_item === "") {
                                                             return <option key={`currency-${_index}`} value={_item}>Please select</option>
-                                                        } else{
+                                                        } else {
                                                             return <option key={`currency-${_index}`} value={_item}>{_item}</option>
                                                         }
                                                     })}
@@ -144,9 +157,9 @@ export default class InfoEditModal extends Component {
                                                     defaultValue={value}
                                                     onChange={(e) => this.handleTextChange(e, key)}>
                                                     {_.map(countryList, (_item, _index) => {
-                                                        if(_item === ""){
+                                                        if (_item === "") {
                                                             return <option key={`nationality-${_index}`} value={_item}>Please select</option>
-                                                        } else{
+                                                        } else {
                                                             return <option key={`nationality-${_index}`} value={_item}>{_item}</option>
                                                         }
                                                     })}
@@ -159,7 +172,7 @@ export default class InfoEditModal extends Component {
                                             <div key={`modal-${key}`} className='columns-merge'>
                                                 <h2>{this.fieldTitle[key]}</h2>
                                                 <input type="date" className="form-control" required
-                                                    defaultValue={isValidDate(value) ? new Date(value).toISOString().substr(0,10) : value}
+                                                    defaultValue={isValidDate(value) ? new Date(value).toISOString().substr(0, 10) : value}
                                                     onChange={(e) => this.handleTextChange(e, key)} />
                                             </div>
                                         )
@@ -175,7 +188,7 @@ export default class InfoEditModal extends Component {
                                                     onChange={(e) => this.handleTextChange(e, key)} />
                                             </div>
                                         )
-                                    } else if (key === 'phone_no' || key === 'level' ){
+                                    } else if (key === 'phone_no' || key === 'level') {
                                         // non-required input
                                         return (
                                             <div key={`modal-${key}`} className='columns-merge'>
@@ -205,7 +218,7 @@ export default class InfoEditModal extends Component {
                                     return (
                                         <div key={`modal-${key}`} className='columns-merge'>
                                             <h2>{this.fieldTitle[key]}</h2>
-                                            <div>{value}</div>
+                                            <div>{value === 'Y' ? 'Yes' : (value === 'N' ? 'No' : value)}</div>
                                         </div>
                                     )
                                 })

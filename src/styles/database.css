@@ -48,8 +48,8 @@
   
   .showContent {
     background-color: lavender;
-    padding: 2rem 2rem;
-    height: 300px;
+    padding: 1rem 2rem;
+    height: auto;
     overflow-y: scroll;
   }
 

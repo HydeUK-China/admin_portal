@@ -3,6 +3,7 @@ import { Button, Modal } from 'react-bootstrap';
 import UploadFile from './uploadFile';
 import _ from 'lodash';
 import { countryList } from '../asset/countryList';
+import { placeholder } from '../asset/placeholder';
 import { expertDataLessField, expertDataMoreField } from '../asset/dataFieldHeader';
 
 export default class AddExpertModal extends Component {
@@ -90,13 +91,13 @@ export default class AddExpertModal extends Component {
                                 <option value='Professor'>Professor</option>
                             </select>
                             <label>First Name</label>
-                            <input type="text" className="form-control" placeholder="Jane" required
+                            <input type="text" className="form-control" placeholder={placeholder.first_name} required
                                     ref={this.first_name} />
                         </div>
 
                         <div className='columns-add'>
                             <label>Last Name</label>
-                            <input type="text" className="form-control" placeholder="Doe" required
+                            <input type="text" className="form-control" placeholder={placeholder.last_name} required
                                     ref={this.last_name} />
                             <label>Nationality </label>
                             <select name="nationality" className="form-control" required
@@ -110,7 +111,7 @@ export default class AddExpertModal extends Component {
 
                         <div className='columns-add'>
                             <label>Email</label>
-                            <input type="email" className="form-control" placeholder="name@example.com" required 
+                            <input type="email" className="form-control" placeholder={placeholder.email} required 
                                     ref={this.email}/>
                             <label>Password</label>
                             <input type="password" className="form-control" placeholder="******" required 
@@ -119,18 +120,18 @@ export default class AddExpertModal extends Component {
 
                         <div className='columns-add'>
                             <label>Expertise</label>
-                            <input type="text" className="form-control" placeholder="Chemical Engineering" required 
+                            <input type="text" className="form-control" placeholder={placeholder.expertise} required 
                                     ref={this.expertise}/>
 
                             <label>Category</label>
-                            <input type="text" className="form-control" placeholder="Engineering" required 
+                            <input type="text" className="form-control" placeholder={placeholder.category} required 
                                     ref={this.category}/>
 
                         </div>
 
                         <div className='columns-add'>
                             <label>Phone number</label>
-                            <input type="tel" className="form-control" placeholder="+44 08844 734551" 
+                            <input type="tel" className="form-control" placeholder={placeholder.phone_no} 
                                     ref={this.phone_no}/>
                             <label>Upload CV</label>
                             <UploadFile />
@@ -139,85 +140,49 @@ export default class AddExpertModal extends Component {
 
                         <div className='columns-add-merge'>
                             <h2>Education</h2>
-                            {/* <div className="grid-info">
-                            <label>Degree</label>
-                            <label>Time</label>
-                            <label>Country</label>
-                            <label>University</label>
-                            <label>Major</label>
-                        </div> */}
-                            <textarea name="education" className="form-control" rows='5' 
-                                    placeholder="(E.g.) Current - Past
-                                    1. Bachelor 1988/09 – 1992/07 china Peking University Mechanical Engineering"
+                            <textarea name="education" className="form-control" rows='5' placeholder={placeholder.education}
                                     ref={this.education}/>
                         </div>
 
                         <div className='columns-add-merge'>
                             <h2>Employment</h2>
-                            {/* <div className="grid-info">
-                            <label>Postion</label>
-                            <label>Time</label>
-                            <label>Country</label>
-                            <label>Employer</label>
-                        </div> */}
-                            <textarea name="working" className="form-control" rows='5' 
-                                    placeholder="(E.g. ) Current - Past
-                                    1. Principal Reseracher 20/14/09-20/17/12 USA General Electric Company"
+                            <textarea name="working" className="form-control" rows='5' placeholder={placeholder.employment}
                                     ref={this.employment}/>
                         </div>
 
                         <div className='columns-add-merge'>
                             <h2>Patents</h2>
-                            {/* <div className="grid-info">
-                            <label>Date of Filling</label>
-                            <label>Publication Number</label>
-                            <label>Patent Title</label>
-                            <label>State of Organization</label>
-                            <label>Assignee</label>
-                        </div> */}
-                            <textarea name="patent" id="patentID" className="form-control" rows='5'
-                                    placeholder="(E.g. ) Current - Past
-                                    1. Date Filling (2018) | Publication Number(#98120393) | Patent Title (General Electric Cooker) | Organization (Company C) | Assignee (Company C Chairman) "
+                            <textarea name="patent" id="patentID" className="form-control" rows='5' placeholder={placeholder.patents}
                                     ref={this.patents}/>
                         </div>
 
                         <div className='columns-add-merge'>
                             <h2>Publications</h2>
-                            {/* <div className="grid-info">
-                            <label>Publication Date</label>
-                            <label>Title of Paper</label>
-                            <label>Publication Media</label>
-                            <label>Number of Authors</label>
-                            <label>Author Rank</label>
-                        </div> */}
-                            <textarea name="pd" className='form-control' rows='5'
-                                placeholder="(E.g. ) Current - Past 2014, ADVANCES IN ENGINEERING RESEARCH, Volume 8, chapter 2, Adsorption Refrigeration, Victoria M. Petrova Editor. Nova Publishers. New York, Ahmed Rezk, Ahmed Elsayed, Saad Mahmoud, and Raya AL-Dadah."
+                            <textarea name="pd" className='form-control' rows='5' placeholder={placeholder.publications}
                                 ref={this.publications}/>
                         </div>
 
                         <div className='columns-add-merge'>
                             <h2>Field of Speciality</h2>
-                            <textarea name="fieldofspecialty" className='form-control' rows='5'
-                                    placeholder="Field of Specialty (Main research areas, Previous research results, Industry and international influence)："
+                            <textarea name="field_of_speciality" className='form-control' rows='5' placeholder={placeholder.field_of_speciality}
                                     ref={this.field_of_speciality}/>
                         </div>
 
                         <div className='columns-add-merge'>
                             <h2>Awards</h2>
-                            <textarea name="awards" placeholder="Awards and Honours" className="form-control" rows='5' 
+                            <textarea name="awards" className="form-control" rows='5' placeholder={placeholder.awards}
                                     ref={this.awards}/>
                         </div>   
 
                         <div className='columns-add-merge'>
                             <h2>Scientific Contribution And Research Leadership</h2>
-                            <textarea name="rmrp" className='form-control' rows='5'
-                                    placeholder="(E.g. ) Current - Past Project briefs, innovations compared to existing technologies, current developments and technical difficulties, expected results and industry, and international influence"
+                            <textarea name="rmrp" className='form-control' rows='5' placeholder={placeholder.scientific_contribution_and_research_leadership}
                                     ref={this.scientific_contribution_and_research_leadership}/>
                         </div>
 
                         <div className='columns-add-merge'>
                             <h2>Collaborative Project Proposal</h2>
-                            <textarea name="cpp" placeholder="Project Proposal With China" className='form-control' rows='5'
+                            <textarea name="cpp" className='form-control' rows='5' placeholder={placeholder.collaborative_project_proposal}
                                     ref={this.collaborative_project_proposal}/>
                         </div>
                         <Button type="submit" className='apply-btn'>Add User</Button>

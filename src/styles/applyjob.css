@@ -166,3 +166,9 @@
   font-weight: 500;
   margin-bottom: 1.5rem;
 }
+
+.switch-form{
+  color: blue !important;
+  text-decoration-line: underline !important;
+  cursor: pointer;
+}

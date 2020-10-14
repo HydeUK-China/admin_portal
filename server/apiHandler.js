@@ -24,6 +24,7 @@ router.post('/api/expertDashboard', dbOps.expertDashboard);
 router.post('/api/fetchExpert/all', dbOps.fetchExpertAll);
 router.post('/api/addExpert', dbOps.addExpert);
 router.post('/api/editExpert', dbOps.editExpert);
+router.post('/api/completeExpertApplication/:expertid', dbOps.completeExpertApplication);
 router.post('/api/deleteExpert/:expertid', dbOps.deleteExpert);
 router.post('/api/fetchExpert/:expertid', dbOps.fetchExpert);
 router.post('/api/expertApply', dbOps.expertApply);

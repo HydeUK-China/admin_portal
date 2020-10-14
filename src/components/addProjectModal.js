@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import _ from 'lodash';
 import { currencyList } from '../asset/currencyList';
+import { placeholder } from '../asset/placeholder';
 import { projectDataLessField, projectDataMoreField } from '../asset/dataFieldHeader';
 
 export default class AddExpertModal extends Component {
@@ -20,7 +21,7 @@ export default class AddExpertModal extends Component {
         this.handleAdd = this.handleAdd.bind(this);
     }
 
-    createFields(){
+    createFields() {
         let fields = projectDataLessField.concat(projectDataMoreField);
         _.pullAll(fields, ['project_id']);
 
@@ -35,7 +36,7 @@ export default class AddExpertModal extends Component {
 
     handleAdd(e) {
         e.preventDefault();
-        
+
         const { onAdd } = this.props;
         let obj = {}
 
@@ -77,12 +78,24 @@ export default class AddExpertModal extends Component {
                     <form onSubmit={this.handleAdd}>
                         <div className='columns-add'>
                             <label>Job Title</label>
-                            <input type='text' placeholder="Accountant Manager" required
+                            <input type='text' className="form-control" placeholder={placeholder.job_title} required
                                 ref={this.job_title} />
+                            <label>Area</label>
+                            <input type="text" className="form-control" placeholder={placeholder.area} required
+                                ref={this.area} />
+                        </div>
+
+                        <div className='columns-add'>
                             <label>Employer</label>
-                            <input type='text' placeholder="Amazon" required
+                            <input type='text' className="form-control" placeholder={placeholder.employer} required
                                 ref={this.employer} />
 
+                            <label>Show Employer Name</label>
+                            <select name='show_employer_name' className="form-control" defaultValue='Y' required
+                                ref={this.show_employer_name}>
+                                <option value='Y'>Yes</option>
+                                <option value='N'>No</option>
+                            </select>
                         </div>
 
                         <div className='columns-add'>
@@ -97,7 +110,7 @@ export default class AddExpertModal extends Component {
                         <div className='columns-add'>
                             <label>Salary</label>
                             <select name="currencylist" className="form-control" defaultValue='GBP' required
-                            ref={this.currency}>
+                                ref={this.currency}>
                                 {_.map(currencyList, (item, index) => {
                                     return <option key={`currency-${index}`} value={item}>{item}</option>
                                 })}
@@ -105,54 +118,40 @@ export default class AddExpertModal extends Component {
                             <input type="text" className="form-control" placeholder="35,000 - 45,000" required
                                 ref={this.salary} />
                         </div>
-                        <div className='columns-add'> 
-                            <label>Area</label>
-                            <input type="text" className="form-control" placeholder="United Kingdom" required
-                                ref={this.area} /></div>
 
                         <div className='columns-add-merge'>
-                            <h2>Featured</h2>
-                            <textarea name="featured" className="form-control" rows='5' placeholder="Amazon Advertising operates at the intersection of advertising and ecommerce and offers advertisers a rich array of innovative advertising solutions across Amazon’s mobile and desktop websites, proprietary devices and the Amazon Advertising Platform."
-                                ref={this.featured} />
+                            <h2>Organization Infomation</h2>
+                            <textarea name="organization_info" className="form-control" rows='5' placeholder={placeholder.organization_info}
+                                ref={this.organization_info} />
                         </div>
 
                         <div className='columns-add-merge'>
                             <h2>Professional Field</h2>
-                            <textarea name="professional_field" className="form-control" rows='5' placeholder="ecommerce"
+                            <textarea name="professional_field" className="form-control" rows='5' placeholder={placeholder.professional_field}
                                 ref={this.professional_field} />
                         </div>
 
                         <div className='columns-add-merge'>
                             <h2>Job Description</h2>
-                            <textarea name="job_description" className="form-control" rows='5' placeholder="In this role you will be working within the SME team of Account Managers, taking ownership of the management of a portfolio of SME clients and engaging with to ensure renewals and upsells."
+                            <textarea name="job_description" className="form-control" rows='5' placeholder={placeholder.job_description}
                                 ref={this.job_description} />
                         </div>
 
                         <div className='columns-add-merge'>
                             <h2>Required Expertise</h2>
-                            <textarea name="required_expertise" className="form-control" rows='5' placeholder="Management, Data, SQL"
+                            <textarea name="required_expertise" className="form-control" rows='5' placeholder={placeholder.required_expertise}
                                 ref={this.required_expertise} />
                         </div>
 
                         <div className='columns-add-merge'>
                             <h2>Responsibilities</h2>
-                            <textarea name="responsibilities" id="projectID" className="form-control" rows='5'
-                                placeholder="
-                                    -Onboarding and engagement process with every client.
-                                    -Identify risks to minimise attrition.
-                                    -Identify and convert opportunities to up sell and cross sell existing products.
-                                    -Create and convert cross sell opportunities.
-                                    -Establish and maintain relationship with key client stakeholders. "
-                                ref={this.responsibilities} />
+                            <textarea name="responsibilities" id="projectID" className="form-control" rows='5' placeholder={placeholder.responsibility}
+                                ref={this.responsibility} />
                         </div>
 
                         <div className='columns-add-merge'>
                             <h2>Essential skills</h2>
-                            <textarea name="essential_skills" id="patentID" className="form-control" rows='5'
-                                placeholder="
-                                -Commercially and client focused
-                                -Sales and relationship management experience
-                                -Experience working to commercial KPI’s"
+                            <textarea name="essential_skills" id="patentID" className="form-control" rows='5' placeholder={placeholder.essential_skills}
                                 ref={this.essential_skills} />
                         </div>
                         <Button className='apply-btn' type="submit">Add Job</Button>
