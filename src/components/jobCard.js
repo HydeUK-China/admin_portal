@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import InfoEditModal from '../components/infoEditModal';
+import { isValidDate } from '../utils/utils';
 
 export default class JobCard extends Component {
     constructor(props) {
@@ -39,11 +40,12 @@ export default class JobCard extends Component {
     render() {
         const { moreField, moreHeader, role } = this.props;
         const { data, showInfo } = this.state;
-        const { job_title, employer, start_date, close_date, salary } = data;
+        const { job_title, employer, start_date, close_date, application_complete } = data;
 
         return (
             <div className="col-m-6 col-sm-6">
-                <div className="job-card ">
+                <div className="job-card">
+                    {application_complete == 'N' ? <span className="warning-text">Incomplete application</span> : null}
                     <div className="job-card-header">
                         <ul className="header-list">
                             <li className="header-item">
@@ -62,7 +64,7 @@ export default class JobCard extends Component {
                             <div className=".col-6 col-m-12 .col-sm-12">
                                 <ul>
                                     <li className="posted">Posted</li>
-                                    <li className="company">{ start_date !== "" ? `${this.calculateDayDiff(start_date)} days ago` : ''} </li>
+                                    <li className="company">{ isValidDate(start_date) ? `${this.calculateDayDiff(start_date)} days ago` : ''} </li>
                                 </ul>
                             </div>
 

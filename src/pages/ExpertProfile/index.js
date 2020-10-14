@@ -15,16 +15,19 @@ export default class ExpertProfile extends Component {
             savebutton: 'Save'
         }
 
-        this.lessField = ['expert_id', 'title', 'first_name', 'category', 'email', 'phone_no', 'linkedin', 'facebook', 'twitter']
-        this.moreHeader = ['Education', 'Employment', 'Patents', 'Publications',
-            'Field of Speciality', 'Awards', 'Scientific Contribution And Research Leadership',
+        this.lessField = ['expert_id', 'title', 'first_name', 'category', 'email', 'phone_no', 'linkedin', 'skype', 'twitter']
+        this.moreHeader = ['Education', 'Employment', 'Field of Speciality', 'Patents', 'Publications',
+            'Awards', 'Scientific Contribution And Research Leadership',
             'Collaborative Project Proposal']
-        this.moreField = ['education', 'employment', 'patents', 'publications',
-            'field_of_speciality', 'awards', 'scientific_contribution_and_research_leadership',
+        this.moreField = ['education', 'employment', 'field_of_speciality', 'patents', 'publications',
+            'awards', 'scientific_contribution_and_research_leadership',
             'collaborative_project_proposal']
 
         this.expertId = props.uid;
+        this.requiredFields = ['education', 'employment', 'field_of_speciality'];
         this.fieldTitle = _.zipObject(this.moreField, this.moreHeader);
+
+        this.confirmHandler = this.confirmHandler.bind(this);
     }
 
     componentDidMount() {
@@ -33,6 +36,13 @@ export default class ExpertProfile extends Component {
             this.setState({
                 data
             })
+
+            const _url = `/api/fetchExpertProject/${this.expertId}`;
+            fetchReq(_url).then(data => {
+                const { completeAppMsger } = this.props;
+                completeAppMsger(data[0].application_complete);
+            }).catch(err => console.log(err));
+
         }).catch(err => alert(err));
     }
 
@@ -47,29 +57,41 @@ export default class ExpertProfile extends Component {
         });
     }
 
-    editHandler = (isEdit) => {
-        this.setState({
-            showInput: isEdit
-        })
+    editHandler = (showInput) => {
+        this.setState(showInput)
     };
 
-    confirmHandler = (isEdit, sidebarData) => {
+    confirmHandler = (sidebarData) => {
         const { data } = this.state;
-
+        const { completeAppMsger } = this.props;
+    
         const tmp_data = Object.assign(data, {
             ...sidebarData
         });
-        
-        fetchReq('/api/editExpert', {
-            body: JSON.stringify({
-                record: tmp_data
-            })
-        }).then(feedback => {
-            this.setState({
-                data: tmp_data,
-                showInput: isEdit
-            });
-        }).catch(err => alert(err));
+
+        let condition = true;
+        _.forEach(this.requiredFields, key => {
+            condition = condition && tmp_data[key];
+        });
+
+        if (condition) {
+            fetchReq('/api/editExpert', {
+                body: JSON.stringify({
+                    record: tmp_data
+                })
+            }).then(feedback => {
+                const url = `/api/completeExpertApplication/${this.expertId}`
+                fetchReq(url).then(feedback => {
+                    this.setState({
+                        data: tmp_data,
+                        showInput: false
+                    }, () => completeAppMsger('Y'))
+                }).catch(err => alert(err));
+
+            }).catch(err => alert(err));
+        } else {
+            alert("please fill in required fields")
+        }
     }
 
     render() {
@@ -80,18 +102,23 @@ export default class ExpertProfile extends Component {
                 <div className="profile">
                     {
                         showInput ?
+
                             _.map(_.pick(data, this.moreField), (value, key) => {
                                 return (
                                     <div key={`expertinfo-${key}`}>
-                                        <h3 className='label-tag'>{this.fieldTitle[key]}</h3>
+                                        <h3 className='label-tag'>
+                                            {this.fieldTitle[key]} {this.requiredFields.indexOf(key) !== -1 ? <span className="warning-text">*</span> : null}
+                                        </h3>
                                         <textarea className='profile-content'
                                             row='2'
                                             defaultValue={value}
                                             placeholder={placeholder[key]}
-                                            onChange={(e) => this.handleTextChange(e, key)}></textarea>
+                                            onChange={(e) => this.handleTextChange(e, key)}
+                                            required={this.requiredFields.indexOf(key) !== -1 ? true : false} ></textarea>
                                     </div>
                                 )
                             })
+
                             :
                             _.map(_.pick(data, this.moreField), (value, key) => {
                                 return (
@@ -108,6 +135,7 @@ export default class ExpertProfile extends Component {
 
                 <ExpertRightSidebar
                     data={_.pick(data, this.lessField)}
+                    showInput={showInput}
                     handleInputChange={(e, key) => this.handleTextChange(e, key)}
                     handleEdit={this.editHandler}
                     handleConfirm={this.confirmHandler}

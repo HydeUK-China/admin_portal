@@ -8,7 +8,7 @@ export default class ExpertRightSidebar extends Component {
 
         this.state = {
             data: { first_name: '', category: '' },
-            showInput: false
+            showInput: props.showInput
         }
 
         this.clickEdit = this.clickEdit.bind(this);
@@ -18,30 +18,24 @@ export default class ExpertRightSidebar extends Component {
     componentWillReceiveProps(nextProps) {
         if (nextProps !== this.props) {
             this.setState({
-                data: nextProps.data
+                data: nextProps.data,
+                showInput: nextProps.showInput
             })
         }
     }
 
-    clickEdit() {
+    clickEdit(e) {
+        e.preventDefault();
         const { handleEdit } = this.props;
 
-        this.setState({
-            showInput: true
-        }, () => {
-            handleEdit(this.state.showInput)
-        });
+        handleEdit({showInput: true})
     }
 
     clickConfirm() {
         const { data } = this.state;
         const { handleConfirm } = this.props;
 
-        this.setState({
-            showInput: false
-        }, () => {
-            handleConfirm(this.state.showInput, data)
-        });
+        handleConfirm(data)
     }
 
     render() {
@@ -49,7 +43,7 @@ export default class ExpertRightSidebar extends Component {
         const { handleInputChange } = this.props;
         const { expert_id, first_name, category } = data;
         const editContactField = ['phone_no', 'email'];
-        const editSocialMediaField = ['linkedin', 'facebook', 'twitter']
+        const editSocialMediaField = ['linkedin', 'skype', 'twitter']
 
         return (
             <div className="right-sidebar">
@@ -64,7 +58,7 @@ export default class ExpertRightSidebar extends Component {
                                     // </div>
                                     : <div className='center'> </div>
                             }
-                            {showInput ? <label className='red'>*Notice: Images size no more than 2MB</label> : null}
+                            {showInput ? <label className='red'>* Notice: Images size no more than 2MB</label> : null}
                         </div>
                         <div className='upper_profile'>
                             {showInput ?
@@ -127,7 +121,7 @@ export default class ExpertRightSidebar extends Component {
                                         return (
                                             <li key={`expertinfo-${key}`} className="follow-me-link">
                                                 {key === 'linkedin' ? <i className="fa fa-linkedin"></i> :
-                                                    (key === 'facebook' ? <i className="fab fa-facebook"></i> :
+                                                    (key === 'skype' ? <i className="fab fa-skype"></i> :
                                                         <i className="fab fa-twitter"></i>)}
                                                 <input defaultValue={value}
                                                     onChange={(e) => handleInputChange(e, key)} />
@@ -138,7 +132,7 @@ export default class ExpertRightSidebar extends Component {
                                         return (
                                             <li key={`expertinfo-${key}`} className="follow-me-link">
                                                 {key === 'linkedin' ? <i className="fa fa-linkedin"></i> :
-                                                    (key === 'facebook' ? <i className="fab fa-facebook"></i> :
+                                                    (key === 'skype' ? <i className="fab fa-skype"></i> :
                                                         <i className="fab fa-twitter"></i>)}
                                                 <span>{value}</span>
                                             </li>

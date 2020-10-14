@@ -21,11 +21,13 @@ class App extends Component {
     this.state = {
       role: getRole(),
       uid: getUid(),
-      navbarToggler: false
+      navbarToggler: false,
+      showWarning: false
     }
 
     this.toggleNavbar = this.toggleNavbar.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
+    this.completeAppMsger = this.completeAppMsger.bind(this);
   }
 
   toggleNavbar() {
@@ -34,15 +36,23 @@ class App extends Component {
     })
   }
 
-  getTabs = () => {
-    const { role, uid } = this.state;
-    const pick_tabs = path_name(role, uid)
-    const links = _.map(pick_tabs, (item, index) => {
-      return (<Tab key={`tabs-${index}`}
-        path={item.path}
-        name={item.name}
-        icon={item.icon} />)
+  completeAppMsger(applicationComplete) {
+    this.setState({
+      showWarning: applicationComplete === 'Y' ? false : true
     })
+  }
+
+  getTabs() {
+    const { role, uid, showWarning } = this.state;
+    const pick_tabs = path_name(role, uid, this.completeAppMsger);
+
+    const links = _.map(pick_tabs, (value, key) => {
+      return (<Tab key={`tabs-${key}`}
+        path={value.path}
+        name={value.name}
+        icon={value.icon}
+        showWarning={key === 'expert_application' && showWarning} />)
+    });
 
     return (
       <div id="wrapper">
@@ -121,7 +131,7 @@ class App extends Component {
             </div>
 
             <Switch>
-              {renderRoute(role, uid)}
+              {renderRoute(role, uid, this.completeAppMsger)}
               <Route path="/mgt">
                 {role === '__admin__' ?
                   <Redirect to='/mgt/admin_dashboard' />

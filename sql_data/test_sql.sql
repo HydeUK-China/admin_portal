@@ -29,7 +29,7 @@ DELETE FROM expert_info WHERE expert_id=170;
 
 
 SELECT * FROM project_info;
-DELETE FROM project_info WHERE project_id IN (41, 42, 43);
+SELECT * FROM project_info WHERE project_id IN (41, 40, 42, 39);
 
 
 INSERT INTO expert_info (first_name, last_name, email, phone_no) VALUES ('TEST', 'TEST', 'hh@gmail.com', '123' );
@@ -41,4 +41,4 @@ UPDATE project_info SET start_date='2020-07-13' WHERE project_id=40;
 
 DELETE FROM project_matching WHERE matching_id IN (76, 78, 79);
 
-UPDATE project_matching SET application_complete='Y'  WHERE matching_id IN (76);
+UPDATE project_matching SET application_complete='N'  WHERE matching_id IN (80, 81, 82);
