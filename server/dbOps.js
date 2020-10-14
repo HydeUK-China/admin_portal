@@ -835,12 +835,13 @@ function fetchProjectMatching(req, res) {
         .then((role) => {
             if (role == 'admin') {
                 const sql = `SELECT * FROM (
-                                SELECT *, ROW_NUMBER() OVER (PARTITION BY project_matching.project_id ORDER BY project_matching.matching_id) AS rn
+                                SELECT *, ROW_NUMBER() OVER (PARTITION BY project_matching.project_id ORDER BY project_matching.matching_id DESC) AS rn
                                 FROM project_matching 
                             ) AS temp
                             JOIN project_info
                             ON project_info.project_id = temp.project_id 
-                            WHERE rn=1 AND temp.application_complete='Y'`;
+                            WHERE rn=1 AND temp.application_complete='Y'
+                            ORDER BY temp.matching_id DESC`;
 
                 res.app.get('connection').query(sql, function (err, rows) {
                     if (err) {

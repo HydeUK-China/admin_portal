@@ -8,7 +8,8 @@ export default class ModalOpsTable extends Component {
 
         this.state = {
             data: props.data,
-            sortKey: props.sortKey
+            sortKey: props.sortKey,
+            sortOrder: props.sortOrder
         }
 
         this.lessFieldTitle = _.zipObject(props.rowLessField, props.rowLessHeader);
@@ -18,7 +19,8 @@ export default class ModalOpsTable extends Component {
         if (nextProps !== this.props) {
             this.setState({
                 data: nextProps.data,
-                sortKey: nextProps.sortKey
+                sortKey: nextProps.sortKey,
+                sortOrder: nextProps.sortOrder
             })
         }
     }
@@ -26,7 +28,7 @@ export default class ModalOpsTable extends Component {
     render() {
 
         const { useClass, dataIdentifier, rowLessField, rowMoreField, rowLessHeader, rowMoreHeader, modalHeader, role, onRowDelete, onEditConfirm, onSortTable } = this.props;
-        const { data, sortKey } = this.state;
+        const { data, sortKey, sortOrder } = this.state;
 
         return (
             <div className='table-box'>
@@ -36,7 +38,11 @@ export default class ModalOpsTable extends Component {
                             _.map(_.pick(this.lessFieldTitle, _.keys(data[0])), (value, key) => {
                                 return <h6 key={`dataHeader-${key}`} className="dataheader-title" onClick={() => onSortTable(key)}>
                                     <span>{value}</span>
-                                    {sortKey === key ? <i className="fa fa-sort-asc" aria-hidden="true"></i> : null}
+                                    {sortKey === key ? 
+                                        (sortOrder === 'asc' ? 
+                                            <i className="fa fa-sort-asc" aria-hidden="true"></i> :
+                                            <i className="fa fa-sort-desc" aria-hidden="true"></i>)
+                                    : null}
                                 </h6>
                             })
                             : null

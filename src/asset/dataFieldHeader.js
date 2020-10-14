@@ -3,7 +3,7 @@ export const expertDataLessField = [
 ]
 
 export const expertDataLessHeader = [
-    'ID', 'Title', 'First Name', 'Last Name', 'Expertise', 'Category'
+    'Expert ID', 'Title', 'First Name', 'Last Name', 'Expertise', 'Category'
 ]
 
 export const expertDataMoreField = [
@@ -25,7 +25,7 @@ export const projectDataLessField = [
 ]
 
 export const projectDataLessHeader= [
-    'ID', 'Job Title', 'Employer', 'Area', 'Salary', 'Currency'
+    'Project ID', 'Job Title', 'Employer', 'Area', 'Salary', 'Currency'
 ]
 
 export const projectDataMoreField = [
@@ -34,4 +34,12 @@ export const projectDataMoreField = [
 
 export const projectDataMoreHeader = [
     'Show Employer Name', 'Start Date', 'Close Date', 'Organization Infomation', 'Professional Field', 'Job Description', 'Required Expertise', 'Responsibility', 'Essential Skills'
+]
+
+export const projectMatchingDataLessField = [
+    'matching_id', 'project_id', 'job_title', 'employer', 'area', 'salary'
+]
+
+export const projectMatchingDataLessHeader= [
+    'Matching ID', 'Project ID', 'Job Title', 'Employer', 'Area', 'Salary'
 ]

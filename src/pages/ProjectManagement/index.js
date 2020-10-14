@@ -17,6 +17,7 @@ export default class ProjectManagement extends Component {
             filterData: null,
             displayData: null,
             sortKey: 'project_id',
+            sortOrder: 'desc',
             activePage: 1,
             offset: 0,
             totalItemsCount: 0,
@@ -172,12 +173,15 @@ export default class ProjectManagement extends Component {
     }
 
     sortTableHandler(key) {
-        const { filterData } = this.state;
-        const temp_data = _.sortBy(filterData, key);
-        
+        const { filterData, sortKey, sortOrder } = this.state;
+
+        const order = key === sortKey ? _.filter(['desc', 'asc'], o => o !== sortOrder)[0] : 'desc';
+        const temp_data = _.orderBy(filterData, key, order);
+
         this.setState({
             filterData: temp_data,
-            sortKey: key
+            sortKey: key,
+            sortOrder: order
         }, () => {
             const { offset, filterData } = this.state;
             const [totalItemsCount, slice] = sliceData(filterData, offset);
@@ -190,7 +194,7 @@ export default class ProjectManagement extends Component {
     }
 
     render() {
-        const { data, displayData, activePage, totalItemsCount, showAdd, sortKey } = this.state;
+        const { data, displayData, activePage, totalItemsCount, showAdd, sortKey, sortOrder } = this.state;
         const { role } = this.props;
 
         return (
@@ -218,6 +222,7 @@ export default class ProjectManagement extends Component {
                     onEditConfirm={this.editConfirmHandler}
                     onSortTable={this.sortTableHandler}
                     sortKey={sortKey}
+                    sortOrder={sortOrder}
                     modalHeader={'Project Info'}
                     role={role}
                 />

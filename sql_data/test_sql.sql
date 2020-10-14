@@ -1,10 +1,11 @@
 SELECT * FROM (
-	SELECT *, ROW_NUMBER() OVER (PARTITION BY project_matching.project_id ORDER BY project_matching.matching_id) AS rn
+	SELECT *, ROW_NUMBER() OVER (PARTITION BY project_matching.project_id ORDER BY project_matching.matching_id DESC) AS rn
     FROM project_matching 
 ) AS temp
 JOIN project_info
 ON project_info.project_id = temp.project_id 
-WHERE rn=1;
+WHERE rn=1 AND temp.application_complete='Y'
+ORDER BY temp.matching_id DESC;
 
 
 SELECT * FROM project_matching
