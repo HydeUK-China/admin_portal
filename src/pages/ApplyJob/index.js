@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
+import _ from 'lodash';
 import { fetchReq, getRole, getUid, setUserInfo } from '../../utils/utils';
 import RegisterForm from '../../components/RegisterForm';
 import LoginForm from '../../components/loginForm';
 import Footer from '../../components/Footer';
 
 import '../../styles/applyjob.css';
-import Feedback from 'react-bootstrap/esm/Feedback';
 
 class ApplyJob extends Component {
     constructor(props) {
@@ -54,7 +54,6 @@ class ApplyJob extends Component {
         } else if (role === '__admin__') {
             alert("You are admin and you are not supposed to apply for this job.")
         } else {
-            // alert("You are not loggedin yet. You need login before applying for this job.")
             this.setState({
                 showJoinus: true
             }, () => {
@@ -223,12 +222,12 @@ class ApplyJob extends Component {
                                     </div>
 
                                     <div className="col-md-6">
-                                        <h4 className="form-header">Apply and <a className="switch-form" onClick={() => this.setState({ statusForApply: statusForApply === 'login' ? 'register' : 'login' })}>{statusForApply}</a> now</h4>
+                                        <h4 className="form-header">Switch to Apply and <a className="switch-form" onClick={() => this.setState({ statusForApply: statusForApply === 'login' ? 'register' : 'login' })}>{statusForApply === 'login' ? 'Register' : 'Login' }</a> </h4>
                                         {
                                             statusForApply === 'register' ?
                                                 <RegisterForm
                                                     registerCallback={this.applyCallback}
-                                                    confirmButtonText="Apply & Create Account"
+                                                    confirmButtonText="Apply & Register"
                                                 />
                                                 : <LoginForm
                                                     loginCallback={this.applyCallback}
