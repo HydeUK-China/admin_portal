@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {
   Switch,
   Route,
-  Link, Redirect
+  Link, Redirect, NavLink
 } from 'react-router-dom';
 import { withRouter } from 'react-router';
 import _ from 'lodash';
@@ -80,15 +80,20 @@ class App extends Component {
           </button>
           <div className={navbarToggler ? "collapse navbar-collapse show" : "collapse navbar-collapse"}>
             <ul className="nav navbar-nav ml-auto">
-            <li className="nav-link">
-              <Link to='/home'>
-                <div style={{color: 'white'}} className="home bg warning">  
-                      <i className="fas fa-home"></i>
-                </div>
-              </Link>  
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/home">Home</NavLink>
               </li>
-              <li className="nav-link">
-                <div className="Signout bg warning">
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/aboutus">About Us</NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/jobs">Jobs</NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/contactus">Contact Us</NavLink>
+              </li>
+              <li className="nav-item">
+                <div className="nav-link Signout bg warning">
                   <i className="fas fa-sign-out-alt" onClick={this.handleLogout}></i>
                 </div>
               </li>
@@ -114,18 +119,18 @@ class App extends Component {
             <div className="row">
               {this.getTabs()}
             </div>
-            
-              <Switch>
-                {renderRoute(role, uid)}
-                <Route path="/mgt">
-                  {role === '__admin__' ?
-                    <Redirect to='/mgt/admin_dashboard' />
-                    : <Redirect to='/mgt/expert_profile' />
-                  }
-                </Route>
-              </Switch>
-            </div>
-          
+
+            <Switch>
+              {renderRoute(role, uid)}
+              <Route path="/mgt">
+                {role === '__admin__' ?
+                  <Redirect to='/mgt/admin_dashboard' />
+                  : <Redirect to='/mgt/expert_profile' />
+                }
+              </Route>
+            </Switch>
+          </div>
+
 
         </main>
       </div>

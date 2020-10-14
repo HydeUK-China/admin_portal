@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
 
 import '../styles/footer.css';
 
@@ -22,8 +23,8 @@ export default class Footer extends Component {
                         <div className="address">
                             <ul>
                                 <li>
-                                    <div className="fa fa-phone"></div>+44 (0) 207 038 7865<div
-                                        className="fa fa-envelope" style={{'marginLeft': '8px'}}></div>uk@hyde-china.com
+                                    <div className="fa fa-phone"></div> &nbsp; +44 (0) 207 038 7865<div
+                                        className="fa fa-envelope" style={{'marginLeft': '8px'}}></div>&nbsp; contact@hyde-china.com
                                 </li>
                                 <li>
                                     International (UK) 37th Floor, One Canada Square
@@ -35,16 +36,16 @@ export default class Footer extends Component {
                     <div className="support">
                         <div className="title">support</div>
                         <div className="help">
-                            <i><a href="#"><span className="faq">faq</span></a></i>
+                            <NavLink to=""><i><span className="faq">faq</span></i></NavLink>
 
-                            <i><a href="privacy.html"><span className="privacy">privacy</span></a></i>
+                            <NavLink to="../privacy.html"> <i><span className="privacy">privacy</span></i></NavLink>
 
-                            <i><a href="terms.html"><span className="terms">terms</span></a></i>
+                            <NavLink to="../terms.html"> <i><span className="terms">terms</span></i></NavLink>
                         </div>
                     </div>
                 </div>
                 <div className="copyright">
-                    <p>All rights reserved &copy;. Powered by the <i>Hyde International Talents (HIT)</i></p>
+                    All rights reserved &copy;. Powered by the <i>Hyde International Talents (HIT)</i>
                 </div>
             </div>
         )

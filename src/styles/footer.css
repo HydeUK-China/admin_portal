@@ -41,11 +41,12 @@
     text-transform: capitalize;
 }
 
-.copyright p {
+.copyright {
     color: white;
     font-family: sans-serif;
     font-weight: 700;
     font-size: 0.8rem;
     background-color: #00216d;
     text-align: center;
+    padding-bottom: 10px;
 }

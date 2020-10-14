@@ -225,7 +225,7 @@ export default class Home extends Component {
                         </p>          
                     </div>
                 </section>
- 
+                 <section id ="industry">
                 <div className="container">
                     <div className="industry-header">
                         <h1>Main Industry</h1>
@@ -283,7 +283,7 @@ export default class Home extends Component {
                         </div>
                     </article>
                 </div>
-
+            </section>
                 <Footer/>
             </div>
         )

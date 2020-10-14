@@ -92,7 +92,6 @@
   #services .allInfo-services {
     margin-left: auto;
     margin-right: auto;
-    padding: 50px 15px;
     display: center;
     justify-content: flex-start;
     align-items: flex-start;
@@ -144,8 +143,8 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin: 10rem 0;
     position: relative;
+    padding: 0px 0px 0px 40px;
   }
   
   #featured .header-featured {
@@ -188,7 +187,6 @@
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     grid-column-gap: 0rem;
     grid-row-gap: 2rem;
-    /* padding: 0 3rem; */
   }
   
   .job-card {
@@ -238,7 +236,8 @@
     display: grid;
     grid-template-columns: 50% 50%;
     grid-template-rows: auto;
-    margin-bottom: 10rem;
+    
+    padding: 40px 0px;
   }
   
   .about-image {
@@ -289,9 +288,10 @@
   /* -----------------------------
   industry section
   ----------------------------- */
-  
+  #industry{
+    padding:40px 0px ;
+  }
   .industry-grid {
-    padding: 2rem;
     display: grid;
     grid-template-columns: 20% 20% 20% 20%;
     grid-gap: 3rem;
@@ -300,7 +300,7 @@
   }
   
   .industry-header {
-    margin-bottom: 8px;
+    margin-bottom: 4px;
   }
   
   .industry-header h1 {
