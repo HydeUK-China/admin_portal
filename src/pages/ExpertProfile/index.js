@@ -10,6 +10,7 @@ export default class ExpertProfile extends Component {
 
         this.state = {
             data: {},
+            applicationComplete: null,
             showInput: false,
             editbutton: 'Edit',
             savebutton: 'Save'
@@ -39,8 +40,12 @@ export default class ExpertProfile extends Component {
 
             const _url = `/api/fetchExpertProject/${this.expertId}`;
             fetchReq(_url).then(data => {
+                const applicationComplete = data[0].application_complete
+                this.setState({
+                    applicationComplete
+                })
                 const { completeAppMsger } = this.props;
-                completeAppMsger(data[0].application_complete);
+                completeAppMsger(applicationComplete);
             }).catch(err => console.log(err));
 
         }).catch(err => alert(err));
@@ -84,7 +89,8 @@ export default class ExpertProfile extends Component {
                 fetchReq(url).then(feedback => {
                     this.setState({
                         data: tmp_data,
-                        showInput: false
+                        showInput: false,
+                        applicationComplete: 'Y'
                     }, () => completeAppMsger('Y'))
                 }).catch(err => alert(err));
 
@@ -95,7 +101,7 @@ export default class ExpertProfile extends Component {
     }
 
     render() {
-        const { showInput, data } = this.state;
+        const { showInput, data, applicationComplete } = this.state;
 
         return (
             <div>
@@ -107,7 +113,8 @@ export default class ExpertProfile extends Component {
                                 return (
                                     <div key={`expertinfo-${key}`}>
                                         <h3 className='label-tag'>
-                                            {this.fieldTitle[key]} {this.requiredFields.indexOf(key) !== -1 ? <span className="warning-text">*</span> : null}
+                                            {this.fieldTitle[key]} 
+                                            {this.requiredFields.indexOf(key) !== -1 ? (applicationComplete === 'N' ? <span className="warning-text">* please fill this field to complete application</span> : <span className="warning-text">*</span> ) : null}
                                         </h3>
                                         <textarea className='profile-content'
                                             row='2'
@@ -123,7 +130,9 @@ export default class ExpertProfile extends Component {
                             _.map(_.pick(data, this.moreField), (value, key) => {
                                 return (
                                     <div key={`expertinfo-${key}`}>
-                                        <h3 className='label-tag'>{this.fieldTitle[key]}</h3>
+                                        <h3 className='label-tag'>
+                                            {this.fieldTitle[key]} {this.requiredFields.indexOf(key) !== -1 && applicationComplete === 'N' ? <span className="warning-text">* please fill this field to complete application</span> : null}
+                                        </h3>
                                         <section className='profile-content'>
                                             {value}
                                         </section>

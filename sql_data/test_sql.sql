@@ -18,7 +18,7 @@ SELECT * FROM project_matching;
 
 
 
-UPDATE project_info  SET start_date='2020/08/30' WHERE project_id=39;
+UPDATE expert_info  SET education='' WHERE expert_id=170;
 
 
 -- 12, 17, 10, 11, 26, 16, 56, 23, 14, 15, 116, 114
@@ -41,4 +41,4 @@ UPDATE project_info SET start_date='2020-07-13' WHERE project_id=40;
 
 DELETE FROM project_matching WHERE matching_id IN (76, 78, 79);
 
-UPDATE project_matching SET application_complete='N'  WHERE matching_id IN (80, 81, 82);
+UPDATE project_matching SET application_complete='N'  WHERE matching_id IN (75);

@@ -605,6 +605,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .warning-text{
+  font-size: 16px;
   color: red;
   text-align: left;
   font-weight: bold;

@@ -65,32 +65,34 @@ class ApplyJob extends Component {
     applyCallback(data) {
         setUserInfo(data);
         const expertId = (getRole() === 'expert' && getUid()) ? getUid() : null;
-        const { projectId, statusForApply } = this.state;
 
-        if (expertId) {
-            fetchReq('/api/expertApply', {
-                body: JSON.stringify({
-                    expertid: expertId,
-                    projectid: projectId
-                })
-            }).then(feedback => {
-                setUserInfo(data);
+        this.setState({
+            role: getRole(),
+            expertId
+        }, () => {
+            const { projectId, statusForApply } = this.state;
 
-                this.setState({
-                    role: getRole(),
-                    expertId
-                }, () => {
+            if (expertId) {
+                fetchReq('/api/expertApply', {
+                    body: JSON.stringify({
+                        expertid: expertId,
+                        projectid: projectId
+                    })
+                }).then(feedback => {
                     if (statusForApply === 'register') {
                         this.props.history.replace('/mgt');
-    
+
                     } else if (statusForApply === 'login') {
                         alert(feedback)
                     }
-                })
-            }).catch(msg =>
-                alert(msg)
-            )
-        }
+                }).catch(msg =>
+                    alert(msg)
+                )
+            } else {
+                alert("only expert can apply")
+            }
+        })
+
     }
 
     render() {
@@ -222,7 +224,7 @@ class ApplyJob extends Component {
                                     </div>
 
                                     <div className="col-md-6">
-                                        <h4 className="form-header">Switch to Apply and <a className="switch-form" onClick={() => this.setState({ statusForApply: statusForApply === 'login' ? 'register' : 'login' })}>{statusForApply === 'login' ? 'Register' : 'Login' }</a> </h4>
+                                        <h4 className="form-header">Switch to Apply and <a className="switch-form" onClick={() => this.setState({ statusForApply: statusForApply === 'login' ? 'register' : 'login' })}>{statusForApply === 'login' ? 'Register' : 'Login'}</a> </h4>
                                         {
                                             statusForApply === 'register' ?
                                                 <RegisterForm
