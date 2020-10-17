@@ -382,7 +382,7 @@ body::-webkit-scrollbar-thumb {
   text-decoration: none;
 }
 .sidebar-nav li {
-  text-indent: 20px;
+  text-indent: 10px;
 }
 .sidebar-nav li a {
   text-decoration: none;
@@ -740,4 +740,11 @@ color: var(--dark-second-background);
   height: auto;
   border-radius: .25rem;
   max-width: 539px;
+}
+
+.top-right-badge{
+  position: absolute;
+  top: -2px;
+  right: -20px;
+  color: red;
 }

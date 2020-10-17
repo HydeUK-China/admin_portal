@@ -37,12 +37,13 @@ export default class Search extends Component {
 
     render() {
         const { filterInput } = this.state;
+        const { placeholder } = this.props;
 
         return (
             <input
                 value={filterInput}
                 onChange={this.handleGlobalFilterChange}
-                placeholder={"Global search"}
+                placeholder={placeholder || "Global search"}
             />
         )
     }

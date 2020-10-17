@@ -178,7 +178,7 @@ export default class ExpertManagement extends Component {
                 <div className="search">
                     <Search
                         fullData={data}
-                        dataFilterableField={this.lessField}
+                        dataFilterableField={this.lessField.concat(this.moreField)}
                         filterDataHandler={this.filterDataHandler}
                     />
                     {role === '__admin__' ? <button className="search-btn" onClick={this.handleToggleAdd}>Add</button> : null}

@@ -4,6 +4,7 @@ import { Button, Modal } from 'react-bootstrap';
 import { isValidDate } from '../utils/utils';
 import { currencyList } from '../asset/currencyList';
 import { countryList } from '../asset/countryList';
+import { jobTypeList } from '../asset/jobTypeList';
 import { placeholder } from '../asset/placeholder';
 import jsPDF from 'jspdf';
 
@@ -130,6 +131,22 @@ export default class InfoEditModal extends Component {
                                                 </select>
                                             </div>
                                         )
+                                    } else if (key === 'job_type') {
+                                        // required select
+                                        return (
+                                            <div key={`modal-${key}`} className='columns-merge'>
+                                                <h2>{this.fieldTitle[key]}</h2>
+                                                <select className="form-control" required
+                                                    defaultValue={value}
+                                                    onChange={(e) => this.handleTextChange(e, key)}>
+                                                    {
+                                                        _.map(jobTypeList, (_item, _index) => {
+                                                            return <option key={`job_type-${_index}`} value={_item}>{_item}</option>
+                                                        })
+                                                    }
+                                                </select>
+                                            </div>
+                                        )
                                     } else if (key === 'currency') {
                                         // required select
                                         return (
@@ -218,7 +235,7 @@ export default class InfoEditModal extends Component {
                                     return (
                                         <div key={`modal-${key}`} className='columns-merge'>
                                             <h2>{this.fieldTitle[key]}</h2>
-                                            <div>{value === 'Y' ? 'Yes' : (value === 'N' ? 'No' : value)}</div>
+                                            <div className="newline-text">{value === 'Y' ? 'Yes' : (value === 'N' ? 'No' : value)}</div>
                                         </div>
                                     )
                                 })

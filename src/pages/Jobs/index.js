@@ -23,8 +23,9 @@ export default class Jobs extends Component {
             totalItemsCount: 0,
         }
 
-        this.lessField = ['project_id', 'job_title', 'start_date', 'employer', 'area', 'salary', 'currency', 'close_date'];
-        this.itemsCountPerPage = 10;
+        this.lessField = ['project_id', 'job_title', 'job_type', 'job_description', 'professional_field', 'organization_info', 'essential_skills',
+                         'start_date', 'employer', 'location', 'salary', 'currency', 'close_date', 'required_expertise', 'responsibility'];
+        this.itemsCountPerPage = 20;
 
         this.filterDataHandler = this.filterDataHandler.bind(this);
         this.handlePageClick = this.handlePageClick.bind(this);
@@ -79,12 +80,23 @@ export default class Jobs extends Component {
 
     getProjectList(){
         const { displayData } = this.state;
+        let rows = []
+        let jobcards = []
 
-        return _.map(displayData, (value, index) => {
-            return <JobTitleCard key={`jobtitlecard-${index}`}
-                        data={value} 
-                        link={`/applyjob/${value.project_id}`}/>
-        })
+        _.forEach(displayData, (item, index) => {    
+            jobcards.push(<JobTitleCard key={`jobtitlecard-${index}`}
+                                        data={item} 
+                                        link={`/applyjob/${item.project_id}`}/>);
+
+            if ((index % 5 === 4) || (displayData.length === index + 1)){
+                rows.push(<div key={`jobtitlecardrows-${index}`} className="row" style={{marginBottom: 30}}>
+                        {[...jobcards]}
+                    </div>)
+                jobcards = []          
+            }
+        });
+
+        return rows;
     }
 
     render() {
@@ -163,6 +175,7 @@ export default class Jobs extends Component {
                                 fullData={projectData}
                                 dataFilterableField={this.lessField}
                                 filterDataHandler={this.filterDataHandler}
+                                placeholder={"search job title, job types, industry, salary"}
                             />
                         </div>
                     </div>
@@ -176,10 +189,8 @@ export default class Jobs extends Component {
                             <span style={{color: 'white'}}>Op</span>portunities</span>
                         </h1>
                     </div>
-                    <div className="container-fluid">
-                        <div className="category-jobs_grid">
-                            {this.getProjectList()}
-                        </div>
+                    <div className="container-fluid"> 
+                        {this.getProjectList()}
 
                         <Pagination
                             activePage={activePage}

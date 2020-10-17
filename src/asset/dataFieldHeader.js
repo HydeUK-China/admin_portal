@@ -21,25 +21,25 @@ export const expertDataMoreHeader = [
 
 
 export const projectDataLessField = [
-    'project_id', 'job_title', 'employer', 'location', 'salary', 'currency'
+    'project_id', 'job_title', 'job_type', 'employer', 'location', 'salary'
 ]
 
 export const projectDataLessHeader= [
-    'Project ID', 'Job Title', 'Employer', 'Location', 'Salary', 'Currency'
+    'Project ID', 'Job Title', 'Job Type', 'Employer', 'Location', 'Salary'
 ]
 
 export const projectDataMoreField = [
-    'show_employer_name', 'start_date', 'close_date', 'organization_info', 'professional_field', 'job_description', 'required_expertise', 'responsibility', 'essential_skills'
+    'currency', 'show_employer_name', 'start_date', 'close_date', 'organization_info', 'professional_field', 'job_description', 'required_expertise', 'responsibility', 'essential_skills'
 ]
 
 export const projectDataMoreHeader = [
-    'Show Employer Name', 'Start Date', 'Close Date', 'Organization Infomation', 'Professional Field', 'Job Description', 'Required Expertise', 'Responsibility', 'Essential Skills'
+    'Currency', 'Show Employer Name', 'Start Date', 'Close Date', 'Organization Infomation', 'Professional Field', 'Job Description', 'Required Expertise', 'Responsibility', 'Essential Skills'
 ]
 
 export const projectMatchingDataLessField = [
-    'matching_id', 'project_id', 'job_title', 'employer', 'location', 'salary'
+    'matching_id', 'project_id', 'job_title', 'job_type', 'employer', 'location', 'salary'
 ]
 
 export const projectMatchingDataLessHeader= [
-    'Matching ID', 'Project ID', 'Job Title', 'Employer', 'Location', 'Salary'
+    'Matching ID', 'Project ID', 'Job Title', 'Job Type', 'Employer', 'Location', 'Salary'
 ]

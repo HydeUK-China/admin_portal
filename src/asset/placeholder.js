@@ -17,7 +17,7 @@ export const placeholder = {
 
     'job_title': "Accountant Manager",
     'employer': "Amazon",
-    'area': "United Kingdom",
+    'location': "United Kingdom",
     'salary': "35,000 - 45,000",
     'organization_info': "Amazon Advertising operates at the intersection of advertising and ecommerce and offers advertisers a rich array of innovative advertising solutions across Amazon’s mobile and desktop websites, proprietary devices and the Amazon Advertising Platform.",
     'professional_field': 'ecommerce',

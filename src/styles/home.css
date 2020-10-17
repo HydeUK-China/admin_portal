@@ -39,10 +39,24 @@
     width: 100%;
   }
   
-  .hero-content .callToAction a {
+  .hero-content .callToAction a.service {
     position: absolute;
     top: 65%;
     left: 21%;
+    text-decoration: none;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: white;
+    text-align: left;
+    letter-spacing: 0.4px;
+    overflow: hidden;
+    transition: all .3s ease-in;
+  }
+
+  .hero-content .callToAction a.job {
+    position: absolute;
+    top: 65%;
+    left: 41%;
     text-decoration: none;
     font-size: 1.4rem;
     font-weight: 500;
@@ -67,10 +81,21 @@
     color: #1e3255;
   }
   
-  .hero-content .callToAction .square {
+  .hero-content .callToAction .square1 {
     position: absolute;
     top: 65.7%;
     left: 20.6%;
+    border-radius: 0;
+    height: 25px;
+    width: 25px;
+    background: #eee;
+    opacity: 0.5;
+  }
+
+  .hero-content .callToAction .square2 {
+    position: absolute;
+    top: 65.7%;
+    left: 40.6%;
     border-radius: 0;
     height: 25px;
     width: 25px;
