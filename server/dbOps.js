@@ -513,7 +513,8 @@ function fetchExpertProject(req, res) {
                 const sql = `SELECT *  FROM project_matching 
                             JOIN project_info
                             ON project_info.project_id = project_matching.project_id
-                            WHERE project_matching.expert_id=?`;
+                            WHERE project_matching.expert_id=?
+                            ORDER BY project_matching.matching_id desc`;
 
                 res.app.get('connection').query(sql, [expertId], function (err, rows) {
                     if (err) {

@@ -12,8 +12,8 @@ export default class ExpertApplication extends Component {
             data: []
         }
 
-        this.lessHeader = ['ID', 'Job Title', 'Employer', 'Area', 'Salary', 'Start Date', 'Close Date']
-        this.lessField = ['project_id', 'job_title', 'employer', 'area', 'salary', 'start_date', 'close_date']
+        this.lessHeader = ['ID', 'Job Title', 'Job Type', 'Employer', 'Location', 'Salary', 'Start Date', 'Close Date']
+        this.lessField = ['project_id', 'job_title', 'job_type', 'employer', 'location', 'salary', 'start_date', 'close_date']
         this.moreHeader = ['Currency', 'Organization Infomation', 'Professional Field', 'Job Description', 'Required Expertise', 'Responsibility', 'Essential skills']
         this.moreField = [ 'currency', 'organization_info', 'professional_field', 'job_description', 'required_expertise', 'responsibility', 'essential_skills']
 
