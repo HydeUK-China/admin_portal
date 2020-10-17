@@ -1,6 +1,7 @@
 import React, { Component, createRef } from 'react';
 import _ from 'lodash';
 import { fetchReq } from '../utils/utils';
+import { countryList } from '../asset/countryList';
 
 export default class RegisterForm extends Component {
     constructor(props) {
@@ -10,7 +11,7 @@ export default class RegisterForm extends Component {
 
         }
 
-        this.allFields = ['firstname', 'lastname', 'email', 'password', 'phone'];
+        this.allFields = ['firstname', 'lastname', 'nationality', 'email', 'password', 'phone'];
 
         this.createRefByField(this.allFields);
 
@@ -31,6 +32,7 @@ export default class RegisterForm extends Component {
 
         const firstname = this.firstname;
         const lastname = this.lastname;
+        const nationality = this.nationality;
         const email = this.email;
         const password = this.password;
         const phone = this.phone;
@@ -39,6 +41,7 @@ export default class RegisterForm extends Component {
             body: JSON.stringify({
                 firstname: firstname.current.value,
                 lastname: lastname.current.value,
+                nationality: nationality.current.value,
                 email: email.current.value,
                 password: password.current.value,
                 phone: phone.current.value,
@@ -68,23 +71,36 @@ export default class RegisterForm extends Component {
                 </div>
                 <div className="form-row">
                     <div className="form-group col-md-6">
+                        <label>Nationality </label>
+                        <select name="nationality" className="form-control" required
+                            ref={this.nationality}>
+                            <option value=''>Please Select</option>
+                            {_.map(countryList, (item, index) => {
+                                return <option key={`country-${index}`} value={item}>{item}</option>
+                            })}
+                        </select>
+                    </div>
+                    <div className="form-group col-md-6">
                         <label>Email</label>
                         <input type="email" className="form-control" id="inputEmail4" placeholder="name@example.com"
                             ref={this.email} required />
                     </div>
+
+                </div>
+                <div className="form-row">
                     <div className="form-group col-md-6">
                         <label>Password</label>
                         <input type="password" className="form-control" id="inputPassword4" placeholder="******"
                             ref={this.password} required />
                     </div>
-                </div>
-                <div className="form-group">
-                    <label>Phone number</label>
-                    <input type="tel" className="form-control" id="inputPhoneNumber" placeholder="796-644-8844"
-                        ref={this.phone} required />
+                    <div className="form-group col-md-6">
+                        <label>Phone number</label>
+                        <input type="tel" className="form-control" id="inputPhoneNumber" placeholder="796-644-8844"
+                            ref={this.phone} required />
+                    </div>
                 </div>
 
-                <button type="submit" style={{maxWidth: 'inherit'}} className="apply-btn create_btn"> {confirmButtonText} </button>
+                <button type="submit" style={{ maxWidth: 'inherit' }} className="apply-btn create_btn"> {confirmButtonText} </button>
             </form>
         )
     }

@@ -38,7 +38,8 @@ body {
 
 .red{
   position: absolute;
-  top: 60%;
+  top: 22%;
+  width: 100px;
   padding-left: 5px;
   background: black;
   border-radius: 8px;
@@ -48,10 +49,22 @@ body {
 }
 
 .upper_profile{
-  position: relative;
-  width: 100%;
   display: grid;
   grid-template-columns: 60% 40%;
+  width: 100%;
+  position: relative;
+  padding-top: 1rem;
+  padding-left: 1rem;
+}
+
+.upper_profile_left{
+  position: relative;
+  width: 60%;
+}
+
+.bio{
+  position: relative;
+  width: 40%;
 }
 
 .label-tag{

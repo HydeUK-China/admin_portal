@@ -7,7 +7,7 @@ export default class ExpertRightSidebar extends Component {
         super(props)
 
         this.state = {
-            data: { first_name: '', category: '' },
+            data: { first_name: '', expertise: '' },
             showInput: props.showInput
         }
 
@@ -28,7 +28,7 @@ export default class ExpertRightSidebar extends Component {
         e.preventDefault();
         const { handleEdit } = this.props;
 
-        handleEdit({showInput: true})
+        handleEdit({ showInput: true })
     }
 
     clickConfirm() {
@@ -41,15 +41,15 @@ export default class ExpertRightSidebar extends Component {
     render() {
         const { showInput, data } = this.state;
         const { handleInputChange } = this.props;
-        const { expert_id, first_name, category } = data;
+        const { nationality, first_name, expertise } = data;
         const editContactField = ['phone_no', 'email'];
         const editSocialMediaField = ['linkedin', 'skype', 'twitter']
 
         return (
             <div className="right-sidebar">
                 <div className="right-sidebar-wrapper">
-                    <div className="row">
-                        <div className="upper_profile">
+                    <div className='upper_profile'>
+                        <div className="upper_profile_left">
                             {
                                 showInput ?
                                     <input type='file' className='center' />
@@ -59,25 +59,24 @@ export default class ExpertRightSidebar extends Component {
                                     : <div className='center'> </div>
                             }
                             {showInput ? <label className='red'>* Notice: Images size no more than 2MB</label> : null}
-                        </div>
-                        <div className='upper_profile'>
+
                             {showInput ?
                                 <button className='btn' onClick={this.clickConfirm}>Save</button>
                                 : <button className="btn" onClick={this.clickEdit}>Edit</button>
                             }</div>
-                    </div>
 
-                    <div className="bio">
-                        <span>
-                            <h4>Hello,</h4>
-                        </span>
-                        <h1><b>{first_name}</b></h1>
-                        <i>Username: </i>
-                        <p><i>{`expert_${expert_id}`}</i></p>
-                        <i>Bio: </i>
-                        <p><i>{category}</i></p>
-                    </div>
 
+                        <div className="bio">
+                            <span>
+                                <h4>Hello,</h4>
+                            </span>
+                            <h1><b>{first_name}</b></h1>
+                            <i>Nationality: </i>
+                            <p><i>{nationality}</i></p>
+                            <i>Bio: </i>
+                            <p><i>{expertise}</i></p>
+                        </div>
+                    </div>
                     <div className="contact-details">
                         <ul className="contact-details-list">
                             <li className="contact-details-head">
@@ -105,7 +104,7 @@ export default class ExpertRightSidebar extends Component {
                             }
                         </ul>
                     </div>
-                    
+
                     <div className="follow-me">
                         <ul className="follow-me-list">
                             {

@@ -16,7 +16,7 @@ export default class ExpertProfile extends Component {
             savebutton: 'Save'
         }
 
-        this.lessField = ['expert_id', 'title', 'first_name', 'category', 'email', 'phone_no', 'linkedin', 'skype', 'twitter']
+        this.lessField = ['expert_id', 'title', 'first_name', 'nationality','expertise', 'email', 'phone_no', 'linkedin', 'skype', 'twitter']
         this.moreHeader = ['Education', 'Employment', 'Field of Speciality', 'Patents', 'Publications',
             'Awards', 'Scientific Contribution And Research Leadership',
             'Collaborative Project Proposal']
