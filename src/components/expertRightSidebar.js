@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
 import UploadFile from '../components/uploadFile';
+import { countryList } from '../asset/countryList';
 
 export default class ExpertRightSidebar extends Component {
     constructor(props) {
@@ -72,7 +73,14 @@ export default class ExpertRightSidebar extends Component {
                             </span>
                             <h1><b>{first_name}</b></h1>
                             <i>Nationality: </i>
-                            <p><i>{nationality}</i></p>
+                            {showInput ?  <select name="nationality" className="form-control_profileEdit" required
+                                    onChange={(e) => handleInputChange(e, 'nationality')}>
+                                <option value=''>Please Select</option>
+                                {_.map(countryList, (item, index) => {
+                                    return <option key={`country-${index}`} value={item}>{item}</option>
+                                })}
+                            </select>: <p><i>{nationality}</i></p>}
+                            
                             <i>Bio: </i>
                             <p><i>{expertise}</i></p>
                         </div>

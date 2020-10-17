@@ -742,6 +742,18 @@ color: var(--dark-second-background);
   max-width: 539px;
 }
 
+.form-control_profileEdit {
+  padding: 10px !important;
+  border: 2px solid #1b2b9c;
+  font-size: 1rem;
+  box-sizing: border-box;
+  height: auto;
+  border-radius: .25rem;
+  width: 100px;
+}
+
+
+
 .top-right-badge{
   position: absolute;
   top: -2px;
