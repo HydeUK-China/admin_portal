@@ -79,10 +79,10 @@ function signup(req, res) {
     const phone = req.body.phone;
     const role = req.body.role;
 
-    const sql = `INSERT INTO expert_info (first_name, last_name,nationality, email, phone_no) 
+    const sql = `INSERT INTO expert_info (first_name, last_name, email, phone_no) 
                 VALUES (?, ?, ?, ?)`;
 
-    res.app.get('connection').query(sql, [firstname, lastname, nationality, email, phone], function (err, rows) {
+    res.app.get('connection').query(sql, [firstname, lastname, email, phone], function (err, rows) {
         if (err) {
             res.status(400).json({
                 success: false,
@@ -90,8 +90,8 @@ function signup(req, res) {
             });
         } else {
             const sql = `SELECT expert_id FROM expert_info 
-                        WHERE first_name=? AND last_name=? AND nationality=? AND email=? AND phone_no=?`
-            res.app.get('connection').query(sql, [firstname, lastname,nationality, email, phone], function (err, rows) {
+                        WHERE first_name=? AND last_name=? AND email=? AND phone_no=?`
+            res.app.get('connection').query(sql, [firstname, lastname, email, phone], function (err, rows) {
                 if (err) {
                     res.status(400).json({
                         success: false,
