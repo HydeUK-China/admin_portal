@@ -42,7 +42,7 @@ export default class Home extends Component {
     receiveUpdateData() {
         fetchReq('/api/fetchProject/all').then(data => {
             this.setState({
-                projectData: _.slice(data, 0, 6)
+                projectData: _.slice(data, 0, 9)
             })
         }).catch(err => alert(err));
     }
