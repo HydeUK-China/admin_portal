@@ -80,9 +80,9 @@ export default class AddExpertModal extends Component {
                             <label>Job Title</label>
                             <input type='text' className="form-control" placeholder={placeholder.job_title} required
                                 ref={this.job_title} />
-                            <label>Area</label>
-                            <input type="text" className="form-control" placeholder={placeholder.area} required
-                                ref={this.area} />
+                            <label>Location</label>
+                            <input type="text" className="form-control" placeholder={placeholder.location} required
+                                ref={this.location} />
                         </div>
 
                         <div className='columns-add'>

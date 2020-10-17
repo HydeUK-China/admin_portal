@@ -614,12 +614,12 @@ function addProject(req, res) {
                 const sql = `INSERT INTO project_info 
                             (start_date, close_date, job_title, organization_info, responsibility,
                             essential_skills, professional_field, job_description,
-                            required_expertise, employer, show_employer_name, area, salary, currency)
+                            required_expertise, employer, show_employer_name, location, salary, currency)
                             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
 
                 res.app.get('connection').query(sql, [record.start_date, record.close_date, record.job_title, record.organization_info, record.responsibility,
                 record.essential_skills, record.professional_field, record.job_description, record.required_expertise, record.employer, record.show_employer_name,
-                record.area, record.salary, record.currency],
+                record.location, record.salary, record.currency],
                     function (err, rows) {
                         if (err) {
                             res.status(400).json({
@@ -666,14 +666,14 @@ function editProject(req, res) {
                             required_expertise=?,
                             employer=?,
                             show_employer_name=?,
-                            area=?,
+                            location=?,
                             salary=?,
                             currency=?
                             WHERE project_id=?`;
 
                 res.app.get('connection').query(sql, [record.start_date, record.close_date, record.job_title, record.organization_info, record.responsibility,
                 record.essential_skills, record.professional_field, record.job_description, record.required_expertise, record.employer, record.show_employer_name,
-                record.area, record.salary, record.currency, record.project_id],
+                record.location, record.salary, record.currency, record.project_id],
                     function (err, feedback) {
                         if (err) {
                             res.status(400).json({
