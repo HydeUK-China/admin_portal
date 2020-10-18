@@ -93,10 +93,10 @@ export default class ProjectManagement extends Component {
             const { data, filterData } = this.state;
 
             _.remove(data, (item, index) => {
-                return item[this.dataIdentifier] == id;
+                return item[this.dataIdentifier] === id;
             });
             _.remove(filterData, (item, index) => {
-                return item[this.dataIdentifier] == id;
+                return item[this.dataIdentifier] === id;
             });
 
             this.setState({

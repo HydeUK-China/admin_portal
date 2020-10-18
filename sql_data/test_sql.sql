@@ -41,4 +41,6 @@ UPDATE project_info SET start_date='2020-07-13' WHERE project_id=40;
 
 DELETE FROM project_matching WHERE matching_id IN (76, 78, 79);
 
-UPDATE project_matching SET application_complete='N'  WHERE matching_id IN (75);
+UPDATE project_matching SET application_complete='N'  WHERE matching_id IN (80);
+
+UPDATE user_credential SET account_password='123456' WHERE id=30;

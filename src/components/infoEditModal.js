@@ -232,12 +232,24 @@ export default class InfoEditModal extends Component {
                                 })
                                 :
                                 _.map(_.pick(data, fileds), (value, key) => {
-                                    return (
-                                        <div key={`modal-${key}`} className='columns-merge'>
-                                            <h2>{this.fieldTitle[key]}</h2>
-                                            <div className="newline-text">{value === 'Y' ? 'Yes' : (value === 'N' ? 'No' : value)}</div>
-                                        </div>
-                                    )
+                                    if (key === 'employer' && data.show_employer_name === 'N') {
+                                        return null;
+                                    } else if (key === 'show_employer_name' || key === 'application_complete' || key === 'featured') {
+                                        return (
+                                            <div key={`modal-${key}`} className='columns-merge'>
+                                                <h2>{this.fieldTitle[key]}</h2>
+                                                <div className="newline-text">{value === 'Y' ? 'Yes' : (value === 'N' ? 'No' : value)}</div>
+                                            </div>
+                                        )
+                                    } else {
+                                        return (
+                                            <div key={`modal-${key}`} className='columns-merge'>
+                                                <h2>{this.fieldTitle[key]}</h2>
+                                                <div className="newline-text">{value}</div>
+                                            </div>
+                                        )
+                                    }
+
                                 })
                             }
                         </div>

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { isValidDate } from '../utils/utils';
 
 import '../styles/jobtitlecard.css';
 
@@ -37,27 +36,27 @@ export default class JobTitleCard extends Component {
                         <div className=".col-6 col-m-12 .col-sm-12">
                             <ul>
                                 <li className="posted">Salary</li>
-                                <li className="salary">{currency} {salary}</li>
+                                <li className="date">{currency} {salary}</li>
                             </ul>
                         </div>
                         <div className=".col-6 col-m-12 .col-sm-12">
                             <ul>
                                 <li className="posted">Job Type</li>
-                                <li className="salary">{job_type}</li>
+                                <li className="date">{job_type}</li>
                             </ul>
                         </div>
                     </div>
                     <div className="job-card-sec-1">
                         <div className=".col-6 col-m-12 .col-sm-12">
                             <ul>
-                                <li className="posted">Close Date</li>
-                                <li className="date">{close_date}</li>
+                                <li className="posted">Start Date</li>
+                                <li className="date">{start_date} </li>
                             </ul>
                         </div>
                         <div className=".col-6 col-m-12 .col-sm-12">
                             <ul>
-                                <li className="posted">Posted</li>
-                                <li className="date">{isValidDate(start_date) ? `${this.calculateDayDiff(start_date)} days ago` : ''} </li>
+                                <li className="posted">Close Date</li>
+                                <li className="date">{close_date}</li>
                             </ul>
                         </div>
                     </div>

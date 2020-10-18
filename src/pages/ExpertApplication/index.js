@@ -35,22 +35,27 @@ export default class ExpertApplication extends Component {
         let rows = []
         let jobcards = []
 
-        _.forEach(data, (item, index) => {    
+        if(data.length > 0){
+            _.forEach(data, (item, index) => {    
             
-            jobcards.push(<JobCard key={`jobcards-${index}`}
-                                    role={role}
-                                    moreField={this.lessField.concat(this.moreField)}
-                                    moreHeader={this.lessHeader.concat(this.moreHeader)}
-                                    data={item}/>)
-            if ((index % 4 === 3) || (data.length === index + 1)){
-                rows.push(<div key={`jobcardrows-${index}`} className="row">
-                        {[...jobcards]}
-                    </div>)
-                jobcards = []          
-            }
-        });
-
-        return rows;
+                jobcards.push(<JobCard key={`jobcards-${index}`}
+                                        role={role}
+                                        moreField={this.lessField.concat(this.moreField)}
+                                        moreHeader={this.lessHeader.concat(this.moreHeader)}
+                                        data={item}/>)
+                if ((index % 4 === 3) || (data.length === index + 1)){
+                    rows.push(<div key={`jobcardrows-${index}`} className="row">
+                            {[...jobcards]}
+                        </div>)
+                    jobcards = []          
+                }
+            });
+    
+            return rows;
+        } else {
+            return <div style={{color: 'darkgrey', fontSize: '1rem'}}>You haven't applied to any jobs yet.</div>
+        }
+        
     }
 
     render() {
