@@ -10,6 +10,7 @@ CREATE TABLE user_credential (
     account_name varchar(50) NOT NULL,
     account_password varchar(30) NOT NULL,
     permission_role varchar(30) NOT NULL,
+    reset_password_token varchar(50),
     primary key (id)
 );
 
