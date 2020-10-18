@@ -65,8 +65,8 @@ export default class Home extends Component {
                 <section id="top" className="home-hero">
                     <header id="header">
                         <div className="brand-container">
-                            <Link className="brand" to="/home">
-                                Hyde International Talents       
+                            <Link className=" nav-brand brand" to="/home">
+                            HI Talents       
                             </Link>
                         </div>
 

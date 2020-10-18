@@ -25,7 +25,7 @@ export default class ContactUs extends Component {
                       <header id="header">
                         <div className="brand-container">
                             <Link className="brand" to="/home">
-                                Hyde International Talents       
+                                HI Talents       
                             </Link>
                         </div>
 
@@ -56,10 +56,11 @@ export default class ContactUs extends Component {
                       <div className="row">
                         <div className="col-sm-12 col-md-6">
                           <div className="page-title_content">
-                            <h1>Contact <span style={{display:'block'}}>us</span></h1>
+                            
                           </div>
                         </div>
                         <div className="col-sm-12 col-md-6 margin-top">
+                        <h1 className="mb-2">Contact us</h1>
                           <h4 className="contact-form_header">Let us know we can help you.</h4>
                           <form>
                             <div className="form-group">

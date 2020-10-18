@@ -16,6 +16,9 @@ import ContactUs from './pages/ContactUs';
 import AboutUs from './pages/AboutUs';
 
 import './styles/index.css';
+import Privacy from './pages/Privacy';
+import Cookies from './pages/Cookies';
+import TermsOfService from './pages/TermsOfService';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -44,6 +47,15 @@ ReactDOM.render(
         </Route>
         <Route exact path="/aboutus">
           <AboutUs />
+        </Route>
+        <Route exact path="/privacy-policy">
+          <Privacy />
+        </Route>
+        <Route exact path="/cookies-policy">
+          <Cookies />
+        </Route>
+        <Route exact path="/Terms-of-service">
+          <TermsOfService />
         </Route>
         {/* fallback route */}
         <Route path="/">

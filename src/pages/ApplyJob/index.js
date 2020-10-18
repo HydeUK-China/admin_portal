@@ -106,7 +106,7 @@ class ApplyJob extends Component {
                     <header id="header">
                         <div className="brand-container">
                             <Link className="brand" to="/home">
-                                Hyde International Talents
+                                HI Talents
                             </Link>
                         </div>
                         <nav className="main-nav">

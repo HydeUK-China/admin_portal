@@ -19,13 +19,13 @@ export default class AboutUs extends Component {
       const { role } = this.state;  
         return (
                   <div>
-                    <section id="top" className="about-header">
-                      <div className="side-image">
+                    <section id="top" className="about-header ">
+                      <div className="side-image ">
                       </div>
                       <header id="header">
                         <div className="brand-container">
                             <Link className="brand" to="/home">
-                                Hyde International Talents       
+                            HI Talents       
                             </Link>
                         </div>
 

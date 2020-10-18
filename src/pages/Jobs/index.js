@@ -96,7 +96,7 @@ export default class Jobs extends Component {
                     <header id="header">
                         <div className="brand-container">
                             <a className="brand" href="/">
-                            Hyde International Talents
+                            HI Talents
                         
                             </a>
                         </div>
