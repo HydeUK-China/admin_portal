@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const dbOps = require('./dbOps');
 const s3Ops = require('./s3Ops');
+const pswOps = require('./pswOps');
 
 router.get('/api/get', (req, res) => {
     const name = req.query.name;
@@ -38,7 +39,11 @@ router.post('/api/fetchProjectExpert/:projectid', dbOps.fetchProjectExpert);
 router.post('/api/fetchExpertProject/:expertid', dbOps.fetchExpertProject);
 router.post('/api/fetchProjectMatching', dbOps.fetchProjectMatching);
 
-router.post('/api/file/upload', s3Ops.uploadFile)
-router.get('/api/file/:filename', s3Ops.downloadFile)
+router.post('/api/file/upload', s3Ops.uploadFile);
+router.get('/api/file/:filename', s3Ops.downloadFile);
+
+router.post('/api/forgotPassword', pswOps.forgotPassword);
+router.post('/api/resetPassword/:token', pswOps.resetPassword);
+router.post('/api/updatePassword', pswOps.updatePassword);
 
 module.exports = router;
