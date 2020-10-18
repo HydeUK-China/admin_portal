@@ -89,7 +89,7 @@ export default class Jobs extends Component {
                                         link={`/applyjob/${item.project_id}`}/>);
 
             if ((index % 5 === 4) || (displayData.length === index + 1)){
-                rows.push(<div key={`jobtitlecardrows-${index}`} className="row" style={{marginBottom: 30}}>
+                rows.push(<div key={`jobtitlecardrows-${index}`} className="category-jobs_grid" style={{marginBottom: 30}}>
                         {[...jobcards]}
                     </div>)
                 jobcards = []          

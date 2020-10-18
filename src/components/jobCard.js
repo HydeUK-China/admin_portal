@@ -58,13 +58,13 @@ export default class JobCard extends Component {
                             <div className=".col-6 col-m-12 .col-sm-12">
                                 <ul>
                                     <li className="posted">Close Date</li>
-                                    <li className="company">{close_date}</li>
+                                    <li className="date">{close_date}</li>
                                 </ul>
                             </div>
                             <div className=".col-6 col-m-12 .col-sm-12">
                                 <ul>
                                     <li className="posted">Posted</li>
-                                    <li className="company">{ isValidDate(start_date) ? `${this.calculateDayDiff(start_date)} days ago` : ''} </li>
+                                    <li className="date">{ isValidDate(start_date) ? `${this.calculateDayDiff(start_date)} days ago` : ''} </li>
                                 </ul>
                             </div>
 

@@ -648,11 +648,15 @@ body::-webkit-scrollbar-thumb {
 	margin: 2px;
 }
 .job-card> .job-card-header ul li{
-padding:2px;
+  padding:2px;
+}
+.job-card> .job-card-header ul li.company{
+  padding:2px;
+  height: 120px;
 }
 .header-list{
-text-align: left;
-color: var(--dark-second-background);
+  text-align: left;
+  color: var(--dark-second-background);
 }
 .job-card-sec-1{
 	display: flex;
