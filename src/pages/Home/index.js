@@ -42,7 +42,7 @@ export default class Home extends Component {
     receiveUpdateData() {
         fetchReq('/api/fetchProject/all').then(data => {
             this.setState({
-                projectData: _.slice(data, 0, 6)
+                projectData: _.slice(data, 0, 9)
             })
         }).catch(err => alert(err));
     }
@@ -101,8 +101,11 @@ export default class Home extends Component {
                             <h5>with the Free Flow of Knowledge Sharing</h5>
                         </div>
                         <div className="callToAction">
-                            <span className="square"></span>
-                            <a href="#">Our Services <i className="fa fa-arrow-right"></i></a>
+                            <span className="square1"></span>
+                            <Link to="/aboutus" className="service">Our Services <i className="fa fa-arrow-right"></i></Link>
+
+                            <span className="square2"></span>
+                            <Link to="/jobs" className="job">Featured jobs <i className="fa fa-arrow-right"></i></Link>
                         </div>
                     </div>
                 </section>

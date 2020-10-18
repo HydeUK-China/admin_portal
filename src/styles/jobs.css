@@ -130,5 +130,6 @@
   .job-card {
     max-height: 500px;
     overflow: hidden;
+    margin-right: 20px;
   }
   

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import _ from 'lodash';
 import { currencyList } from '../asset/currencyList';
+import { jobTypeList } from '../asset/jobTypeList';
 import { placeholder } from '../asset/placeholder';
 import { projectDataLessField, projectDataMoreField } from '../asset/dataFieldHeader';
 
@@ -80,9 +81,14 @@ export default class AddExpertModal extends Component {
                             <label>Job Title</label>
                             <input type='text' className="form-control" placeholder={placeholder.job_title} required
                                 ref={this.job_title} />
-                            <label>Area</label>
-                            <input type="text" className="form-control" placeholder={placeholder.area} required
-                                ref={this.area} />
+
+                            <label>Job Type</label>
+                            <select name="job_type" className="form-control" defaultValue='full time' required
+                                ref={this.job_type}>
+                                {_.map(jobTypeList, (item, index) => {
+                                    return <option key={`job_type-${index}`} value={item}>{item}</option>
+                                })}
+                            </select>
                         </div>
 
                         <div className='columns-add'>
@@ -105,6 +111,12 @@ export default class AddExpertModal extends Component {
                             <label>Close Date</label>
                             <input type="date" className="form-control" required
                                 ref={this.close_date} />
+                        </div>
+
+                        <div className='columns-add'>
+                            <label>Location</label>
+                            <input type="text" className="form-control" placeholder={placeholder.location} required
+                                ref={this.location} />
                         </div>
 
                         <div className='columns-add'>

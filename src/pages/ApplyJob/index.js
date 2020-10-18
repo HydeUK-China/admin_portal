@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
-import _ from 'lodash';
 import { fetchReq, getRole, getUid, setUserInfo } from '../../utils/utils';
 import RegisterForm from '../../components/RegisterForm';
 import LoginForm from '../../components/loginForm';

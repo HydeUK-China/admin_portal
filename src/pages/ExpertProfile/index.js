@@ -16,7 +16,7 @@ export default class ExpertProfile extends Component {
             savebutton: 'Save'
         }
 
-        this.lessField = ['expert_id', 'title', 'first_name', 'category', 'email', 'phone_no', 'linkedin', 'skype', 'twitter']
+        this.lessField = ['expert_id', 'title', 'first_name', 'nationality','expertise', 'email', 'phone_no', 'linkedin', 'skype', 'twitter']
         this.moreHeader = ['Education', 'Employment', 'Field of Speciality', 'Patents', 'Publications',
             'Awards', 'Scientific Contribution And Research Leadership',
             'Collaborative Project Proposal']
@@ -40,12 +40,22 @@ export default class ExpertProfile extends Component {
 
             const _url = `/api/fetchExpertProject/${this.expertId}`;
             fetchReq(_url).then(data => {
-                const applicationComplete = data[0].application_complete
-                this.setState({
-                    applicationComplete
-                })
-                const { completeAppMsger } = this.props;
-                completeAppMsger(applicationComplete);
+                if(data[0]){
+                    const applicationComplete = data[0].application_complete
+                    this.setState({
+                        applicationComplete
+                    })
+                    const { completeAppMsger } = this.props;
+                    completeAppMsger(applicationComplete);
+                } else {
+                    const applicationComplete = 'N'
+                    this.setState({
+                        applicationComplete
+                    })
+                    const { completeAppMsger } = this.props;
+                    completeAppMsger(applicationComplete);
+                }
+                
             }).catch(err => console.log(err));
 
         }).catch(err => alert(err));
@@ -113,8 +123,8 @@ export default class ExpertProfile extends Component {
                                 return (
                                     <div key={`expertinfo-${key}`}>
                                         <h3 className='label-tag'>
-                                            {this.fieldTitle[key]} 
-                                            {this.requiredFields.indexOf(key) !== -1 ? (applicationComplete === 'N' ? <span className="warning-text">* please fill this field to complete application</span> : <span className="warning-text">*</span> ) : null}
+                                            {this.fieldTitle[key]} &nbsp;
+                                            {this.requiredFields.indexOf(key) !== -1 ? (!value && applicationComplete === 'N' ? <span className="warning-text">* please fill this field to complete application</span> : <span className="warning-text">*</span> ) : null}
                                         </h3>
                                         <textarea className='profile-content'
                                             row='2'
@@ -131,7 +141,8 @@ export default class ExpertProfile extends Component {
                                 return (
                                     <div key={`expertinfo-${key}`}>
                                         <h3 className='label-tag'>
-                                            {this.fieldTitle[key]} {this.requiredFields.indexOf(key) !== -1 && applicationComplete === 'N' ? <span className="warning-text">* please fill this field to complete application</span> : null}
+                                            {this.fieldTitle[key]} &nbsp;
+                                            {this.requiredFields.indexOf(key) !== -1 ? (!value && applicationComplete === 'N' ? <span className="warning-text">* please fill this field to complete application</span> : <span className="warning-text">*</span> ) : null}
                                         </h3>
                                         <section className='profile-content'>
                                             {value}

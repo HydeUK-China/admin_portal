@@ -7,7 +7,7 @@ USE portal_system;
 CREATE TABLE user_credential (
 	id int NOT NULL auto_increment,
 	foreign_user_id int NOT NULL,
-    account_name varchar(30) NOT NULL,
+    account_name varchar(50) NOT NULL,
     account_password varchar(30) NOT NULL,
     permission_role varchar(30) NOT NULL,
     primary key (id)
@@ -23,6 +23,7 @@ CREATE TABLE project_info (
     start_date varchar(30),
     close_date varchar(30),
     job_title varchar(300),
+    job_type varchar(30),
     organization_info varchar(1000),
     show_employer_name varchar(1),
 	featured varchar(1),
@@ -32,7 +33,7 @@ CREATE TABLE project_info (
     job_description varchar(3000),
     required_expertise varchar(3000),
     employer varchar(300),
-    area varchar(300),
+    location varchar(300),
     salary varchar(3000),
     currency varchar(10),
     primary key (project_id)

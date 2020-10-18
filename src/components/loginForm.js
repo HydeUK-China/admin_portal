@@ -42,8 +42,8 @@ export default class LoginForm extends Component {
         return (
             <form className="registerLogin-form">
                 <div className="form-group ">
-                    <label>Username</label>
-                    <input type="email" className="form-control" ref={this.email} placeholder="username" />
+                    <label>Email</label>
+                    <input type="email" className="form-control" ref={this.email} placeholder="email" />
                 </div>
                 <div className="form-group">
                     <label>Password</label>

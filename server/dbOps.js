@@ -7,7 +7,7 @@ const employerData = fakeData.employerData;
 const projectMatchingData = fakeData.projectMatchingData
 
 function login(req, res) {
-    const email = req.body.email;
+    const email = req.body.email.toLowerCase();
     const password = req.body.password;
 
     if (email && password) {
@@ -74,7 +74,7 @@ function logout(req, res) {
 function signup(req, res) {
     const firstname = req.body.firstname;
     const lastname = req.body.lastname;
-    const email = req.body.email;
+    const email = req.body.email.toLowerCase();
     const password = req.body.password;
     const phone = req.body.phone;
     const role = req.body.role;
@@ -101,7 +101,7 @@ function signup(req, res) {
                     const expertid = rows[0].expert_id;
                     const sql = `INSERT INTO user_credential (foreign_user_id, account_name, account_password, permission_role) 
                                     VALUES (?, ?, ?, ?)`;
-                    res.app.get('connection').query(sql, [expertid, `${role}_${expertid}`, password, role], function (err, rows) {
+                    res.app.get('connection').query(sql, [expertid, email, password, role], function (err, rows) {
                         if (err) {
                             res.status(400).json({
                                 success: false,
@@ -200,7 +200,7 @@ function addExpert(req, res) {
                             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
 
                 res.app.get('connection').query(sql, [record.title, record.first_name, record.last_name, record.gender,
-                record.nationality, record.date_of_birth, record.email, record.phone_no, record.linkedin, record.skype,
+                record.nationality, record.date_of_birth, record.email.toLowerCase(), record.phone_no, record.linkedin, record.skype,
                 record.twitter, record.expertise, record.category, record.source_references, record.edu_organization,
                 record.field_of_speciality, record.education, record.employment, record.membership_of_professional_bodies,
                 record.scientific_contribution_and_research_leadership, record.awarded_grants_and_funded_activities,
@@ -214,7 +214,7 @@ function addExpert(req, res) {
                         } else {
                             const sql = `SELECT expert_id FROM expert_info 
                                         WHERE first_name=? AND last_name=? AND email=?`
-                            res.app.get('connection').query(sql, [record.first_name, record.last_name, record.email], function (err, rows) {
+                            res.app.get('connection').query(sql, [record.first_name, record.last_name, record.email.toLowerCase()], function (err, rows) {
                                 if (err) {
                                     res.status(400).json({
                                         success: false,
@@ -224,7 +224,7 @@ function addExpert(req, res) {
                                     const expertid = rows[0].expert_id;
                                     const sql = `INSERT INTO user_credential (foreign_user_id, account_name, account_password, permission_role) 
                                                     VALUES (?, ?, ?, ?)`;
-                                    res.app.get('connection').query(sql, [expertid, `expert_${expertid}`, record.password, 'expert'], function (err, rows) {
+                                    res.app.get('connection').query(sql, [expertid, record.email.toLowerCase(), record.password, 'expert'], function (err, rows) {
                                         if (err) {
                                             res.status(400).json({
                                                 success: false,
@@ -291,7 +291,7 @@ function editExpert(req, res) {
                             WHERE expert_id=?`;
 
                 res.app.get('connection').query(sql, [record.title, record.first_name, record.last_name, record.gender,
-                record.nationality, record.date_of_birth, record.email, record.phone_no, record.linkedin, record.skype,
+                record.nationality, record.date_of_birth, record.email.toLowerCase(), record.phone_no, record.linkedin, record.skype,
                 record.twitter, record.expertise, record.category, record.source_references, record.edu_organization,
                 record.field_of_speciality, record.education, record.employment, record.membership_of_professional_bodies,
                 record.scientific_contribution_and_research_leadership, record.awarded_grants_and_funded_activities,
@@ -513,7 +513,8 @@ function fetchExpertProject(req, res) {
                 const sql = `SELECT *  FROM project_matching 
                             JOIN project_info
                             ON project_info.project_id = project_matching.project_id
-                            WHERE project_matching.expert_id=?`;
+                            WHERE project_matching.expert_id=?
+                            ORDER BY project_matching.matching_id desc`;
 
                 res.app.get('connection').query(sql, [expertId], function (err, rows) {
                     if (err) {
@@ -612,14 +613,14 @@ function addProject(req, res) {
         .then((role) => {
             if (role === 'admin') {
                 const sql = `INSERT INTO project_info 
-                            (start_date, close_date, job_title, organization_info, responsibility,
+                            (start_date, close_date, job_title, job_type, organization_info, responsibility,
                             essential_skills, professional_field, job_description,
-                            required_expertise, employer, show_employer_name, area, salary, currency)
-                            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+                            required_expertise, employer, show_employer_name, location, salary, currency)
+                            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
 
-                res.app.get('connection').query(sql, [record.start_date, record.close_date, record.job_title, record.organization_info, record.responsibility,
-                record.essential_skills, record.professional_field, record.job_description, record.required_expertise, record.employer, record.show_employer_name,
-                record.area, record.salary, record.currency],
+                res.app.get('connection').query(sql, [record.start_date, record.close_date, record.job_title, record.job_type, record.organization_info, 
+                record.responsibility, record.essential_skills, record.professional_field, record.job_description, record.required_expertise, record.employer, 
+                record.show_employer_name, record.location, record.salary, record.currency],
                     function (err, rows) {
                         if (err) {
                             res.status(400).json({
@@ -658,6 +659,7 @@ function editProject(req, res) {
                             SET start_date=?,
                             close_date=?,
                             job_title=?,
+                            job_type=?,
                             organization_info=?,
                             responsibility=?,
                             essential_skills=?,
@@ -666,14 +668,14 @@ function editProject(req, res) {
                             required_expertise=?,
                             employer=?,
                             show_employer_name=?,
-                            area=?,
+                            location=?,
                             salary=?,
                             currency=?
                             WHERE project_id=?`;
 
-                res.app.get('connection').query(sql, [record.start_date, record.close_date, record.job_title, record.organization_info, record.responsibility,
-                record.essential_skills, record.professional_field, record.job_description, record.required_expertise, record.employer, record.show_employer_name,
-                record.area, record.salary, record.currency, record.project_id],
+                res.app.get('connection').query(sql, [record.start_date, record.close_date, record.job_title, record.job_type, record.organization_info, 
+                record.responsibility, record.essential_skills, record.professional_field, record.job_description, record.required_expertise, record.employer, 
+                record.show_employer_name, record.location, record.salary, record.currency, record.project_id],
                     function (err, feedback) {
                         if (err) {
                             res.status(400).json({

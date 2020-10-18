@@ -93,10 +93,10 @@ export default class ProjectManagement extends Component {
             const { data, filterData } = this.state;
 
             _.remove(data, (item, index) => {
-                return item[this.dataIdentifier] == id;
+                return item[this.dataIdentifier] === id;
             });
             _.remove(filterData, (item, index) => {
-                return item[this.dataIdentifier] == id;
+                return item[this.dataIdentifier] === id;
             });
 
             this.setState({
@@ -203,7 +203,7 @@ export default class ProjectManagement extends Component {
                 <div className="search">
                     <Search
                         fullData={data}
-                        dataFilterableField={this.lessField}
+                        dataFilterableField={this.lessField.concat(this.moreField)}
                         filterDataHandler={this.filterDataHandler}
                     />
                     {role === '__admin__' ? <button className="search-btn" onClick={this.handleToggleAdd}>Add</button> : null}
