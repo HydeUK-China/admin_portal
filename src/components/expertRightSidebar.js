@@ -71,20 +71,25 @@ export default class ExpertRightSidebar extends Component {
                             <span>
                                 <h4>Hello,</h4>
                             </span>
-                            <h1><b>{first_name}</b></h1>
-                            <i>Nationality: </i>
-                            {showInput ?  <select name="nationality" className="form-control_profileEdit" required
-                                    onChange={(e) => handleInputChange(e, 'nationality')}>
-                                <option value=''>Please Select</option>
-                                {_.map(countryList, (item, index) => {
-                                    return <option key={`country-${index}`} value={item}>{item}</option>
-                                })}
-                            </select>: <p><i>{nationality}</i></p>}
-                            
+                            <h6><b>{first_name}</b></h6>
+
+
                             <i>Bio: </i>
                             <p><i>{expertise}</i></p>
                         </div>
                     </div>
+
+                    <div className="mt-3">
+                        <i>Nationality: </i>
+                        {showInput ? <select name="nationality" className="form-control_profileEdit" required
+                            onChange={(e) => handleInputChange(e, 'nationality')}>
+                            <option value=''>Please Select</option>
+                            {_.map(countryList, (item, index) => {
+                                return <option key={`country-${index}`} value={item}>{item}</option>
+                            })}
+                        </select> : <p><i>{nationality}</i></p>}
+                    </div>
+                    
                     <div className="contact-details">
                         <ul className="contact-details-list">
                             <li className="contact-details-head">

@@ -32,14 +32,9 @@
     margin: 0;
   }
   .about-title_shape {
-    /* position: absolute;
-    right: 10%;
-    top: 60%;
-    transform: translateY(50%); */
     height: 200px;
     width: 500px;
     background: #00216d;
-    /* margin: 0; */
     z-index: -1;
     display: flex;
     justify-content: center;

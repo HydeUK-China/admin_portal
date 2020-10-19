@@ -108,7 +108,7 @@
    ----------------------------- */
   
   #services {
-    padding: 40px 0px;
+    padding: 50px 0px;
     display: grid;
     grid-template-columns: 100%;
     grid-template-rows: auto;
@@ -176,6 +176,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
   }
   
   #featured .header-featured h1 {
@@ -184,18 +185,19 @@
     margin-bottom: 3rem;
   }
   
-  #featured .header-featured .explore-link {
-    margin-left: auto;
+  #featured .explore-link {
+    
     text-decoration: none;
     font-size: 1.1rem;
     font-style: normal;
-    color: #222222;
+    color: #222222 !important;
     font-weight: 400;
     letter-spacing: 0.4px;
     display: flex;
-    justify-content: center;
     align-items: center;
     transition: all .3s ease-in;
+    justify-content: center;
+
   }
   
   .explore-link a:hover {
@@ -258,55 +260,57 @@
   ----------------------------- */
   
   #home-about {
+    margin-top: 50px;
     display: grid;
     grid-template-columns: 50% 50%;
     grid-template-rows: auto;
-    
-    padding: 40px 0px;
-  }
-  
-  .about-image {
-    background-image: url("../img/group-of-people-in-a-meeting.jpg");
+    background: url("../img/about-bg.jpg") center top no-repeat fixed;
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: bottom;
     display: flex;
     justify-content: center;
     align-items: center;
+    
+  }
+  #home-about::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 9;
   }
   
-  .about-header {
-    font-size: 6rem;
-    font-weight: 700;
-    color: #1e58ff;
+  #home-about .about-sec {
+    position: relative;
+    z-index: 10;
   }
+
   
   .info {
-    background: #444444;
-    display: block;
+    background: rgba(255, 255, 255, 0.90);
+     display: block;
     padding: 50px;
   }
   
   .title_info {
     font-size: 3rem;
     font-weight: 700;
-    color: #ffffff;
     text-align: center;
     letter-spacing: 0.4px;
   }
   
   .para_info {
     text-align: justify;
-    color: white;
-    font-size: 1.2rem;
+    font-size: 1.8rem;
     font-weight: 400;
     line-height: 1.4;
   }
   
   .para {
-    font-size: 1.2rem;
+    font-size: 1.8rem;
     font-weight: 400;
-    color: #ffffff;
     line-height: 1.4;
   }
   

@@ -47,13 +47,13 @@ export default class Home extends Component {
         }).catch(err => alert(err));
     }
 
-    getProjectList(){
+    getProjectList() {
         const { projectData } = this.state;
 
         return _.map(projectData, (value, index) => {
             return <JobTitleCard key={`jobtitlecard-${index}`}
-                        data={value} 
-                        link={`/applyjob/${value.project_id}`}/>
+                data={value}
+                link={`/applyjob/${value.project_id}`} />
         })
     }
 
@@ -66,7 +66,7 @@ export default class Home extends Component {
                     <header id="header">
                         <div className="brand-container">
                             <Link className=" nav-brand brand" to="/home">
-                            HI Talents       
+                                HI Talents
                             </Link>
                         </div>
 
@@ -76,23 +76,23 @@ export default class Home extends Component {
                             <NavLink className="nav-item" to="/aboutus">About</NavLink>
                             <NavLink className="nav-item" to="/contactus">Contact</NavLink>
                             <div className="sign-in">
-                            {role === '__admin__' ?
-                                <NavLink className="nav-item user" to="/mgt/admin_dashboard">
-                                    <div className="fa fa-user-o"></div>
-                                </NavLink>
-                                : 
-                                (role === 'expert' ? 
-                                    <NavLink className="nav-item user" to="/mgt/expert_profile">
+                                {role === '__admin__' ?
+                                    <NavLink className="nav-item user" to="/mgt/admin_dashboard">
                                         <div className="fa fa-user-o"></div>
                                     </NavLink>
-                                    : <NavLink className="nav-item user" to="/login">
-                                        <div className="fa fa-user-o"></div>
-                                      </NavLink>)
-                            }                          
+                                    :
+                                    (role === 'expert' ?
+                                        <NavLink className="nav-item user" to="/mgt/expert_profile">
+                                            <div className="fa fa-user-o"></div>
+                                        </NavLink>
+                                        : <NavLink className="nav-item user" to="/login">
+                                            <div className="fa fa-user-o"></div>
+                                        </NavLink>)
+                                }
                             </div>
                         </nav>
-        
-                     </header>
+
+                    </header>
 
 
                     <div className="hero-content">
@@ -109,8 +109,8 @@ export default class Home extends Component {
                         </div>
                     </div>
                 </section>
- 
-                <section id="services">
+
+                {/*  <section id="services">
                      <div className="container">
                          <div className="allInfo-services">
                             <h1 className="header-services">  Our Services </h1>
@@ -177,39 +177,110 @@ export default class Home extends Component {
                             </div>
                         </div>
                     </div>
-                </section>
- 
-                <section id="featured">
-                    <div className="container">
-                        <div className="header-featured">
-                            <h1>featured jobs</h1>
-                            <span className="explore-square"></span>
-                            <Link className="explore-link" to="/jobs">Explore more<i className="fa fa-arrow-right"></i></Link>
+                </section> */}
+
+                <section id="services">
+                    <div className="container-fluid text-center justify-content-center align-content-center mx-auto">
+                        <h1 className="header-services">  OUR SERVICES </h1>
+                        <div className="row ">
+                            <div className="col-sm-4 ">
+                                <div className="card pt-2">
+                                    <img class="card-img-top" src={searchImg} width="100%" height="60px" />
+                                    <h3>
+                                        <hr />
+                                            Unique Training and
+                                            Consulting Possibilities
+                                </h3>
+                                </div>
+                            </div>
+                            <div className="col-sm-4">
+                                <div className="card pt-2">
+                                    <img src={opportunityImg} width="100%" height="60px" />
+                                    <h3>
+                                        <hr />
+                                        Flexible Job
+                                        Opportunities
+                                        in Technology
+                            </h3>
+                                </div>
+                            </div>
+                            <div className="col-sm-4">
+                                <div className="card pt-2">
+                                    <img src={workshopImg} width="100%" height="60px" />
+                                    <h3>
+                                        <hr />
+                                        Unique Training and
+                                        Consulting Possibilities
+                            </h3>
+                                </div>
+
+                            </div>
+
                         </div>
+                        <div className="row mt-3 ">
+                            <div className="col-sm-2"></div>
+                            <div className="col-sm-4" data-aos="fade-up" data-aos-delay="200">
+                                <div className="card pt-2" >
+                                    <img src={solutionImg} width="100%" height="60px" />
+                                    <h3>
+                                        <hr />
+                                        Bespoke Incubator
+                                        Schemes
+                                        for Potential Ideas
+                                    </h3>
+                                </div>
+                            </div>
+                            <div className="col-sm-4 " data-aos="fade-up" data-aos-delay="200">
+                                <div className="card pt-2">
+                                    <img src={teamImg} width="100%" height="60px" />
+                                    <h3>
+                                        <hr />
+                                        Exclusive Networking
+                                        with
+                                        Knowledgeable Professionals
+                            </h3>
+                                </div>
+                            </div>
+                            <div className="col-sm-2"></div>
+                        </div>
+                    </div>
+                </section>
+
+
+                <section id="featured">
+                    <div className="container-fluid ">
+                        <div className="header-featured">
+                            <h1 className="text-center">featured jobs</h1>
+                        </div>
+                    
 
                         <article className="featured-jobs_grid">
                             {this.getProjectList()}
                         </article>
+                        <div className="mt-3">
+                        <span className="explore-square"></span>
+                            <Link className="explore-link" to="/jobs"> VIEW MORE <i className="fa fa-arrow-right"></i></Link>
+                        </div>
                     </div>
                 </section>
-  
-  
 
-                <section id="home-about">
+
+
+               {/*  <section id="home-about">
                     <div className="about-image">
-                    
+
                     </div>
                     <div className="info">
                         <div className="title_info">
-                            <center>Why Us</center>
+                            <center>WHY US</center>
                         </div>
-                        <br/>
+                        <br />
                         <p className="para_info">
                             Hyde International Talent (HIT) Network provides an interactive and innovative platform for global talented
                             individuals and organisations in scientific and technological fields to exchange knowledge, incubate their
                             research ideas and source collaborative opportunities. </p>
                         <p className="para">What you can expect：</p>
-    
+
                         <p className="para">
                             <i>● Access to a wide range of technology-focused jobs.</i>
                         </p>
@@ -225,69 +296,102 @@ export default class Home extends Component {
                         </p>
                         <p className="para">
                             <i>● Participate in world-leading scientific projects. </i>
-                        </p>          
+                        </p>
+                    </div>
+                </section> */}
+
+                <section id="home-about">
+                <div className="Container about-sec">
+                    <div className="info">
+                        <div className="title_info">
+                            <center>WHY US</center>
+                        </div>
+                        <br />
+                        <p className="para_info">
+                            Hyde International Talent (HIT) Network provides an interactive and innovative platform for global talented
+                            individuals and organisations in scientific and technological fields to exchange knowledge, incubate their
+                            research ideas and source collaborative opportunities. </p>
+                        <p className="para">What you can expect：</p>
+
+                        <p className="para">
+                            <i>● Access to a wide range of technology-focused jobs.</i>
+                        </p>
+                        <p className="para">
+                            <i>● Connect directly to providers of global research funding. </i>
+                        </p>
+                        <p className="para">
+                            <i>● Join and interact in our high-tech community with thousands of talented individuals worldwide. </i>
+                        </p>
+                        <p className="para">
+                            <i>● Share your ideas and expertise through international training and consulting opportunities for industry
+                            leaders.</i>
+                        </p>
+                        <p className="para">
+                            <i>● Participate in world-leading scientific projects. </i>
+                        </p>
+                    </div>
                     </div>
                 </section>
-                 <section id ="industry">
-                <div className="container">
-                    <div className="industry-header">
-                        <h1>Main Industry</h1>
-                    </div>
+                <section id="industry">
+                    <div className="container">
+                        <div className="industry-header text-center">
+                            <h1>Main Industry</h1>
+                        </div>
 
-                    <article className="industry-grid">
-                        <div className="industry-container">
-                            <div className="industry-background"><img src={urbanPlanningImg} width="100%" height="120px"/></div>
-                            <label className="industry-label">Urban Planning</label>
-                        </div>
-                        <div className="industry-container">
-                            <div className="industry-background"><img src={medicalScienceImg} width="100%" height="120px"/></div>
-                            <label className="industry-label">Medical Science</label>
-                        </div>
-                        <div className="industry-container">
-                            <div className="industry-background"><img src={envinromentalSienceImg} width="100%" height="120px"/></div>
-                            <label className="industry-label">Environmental Science</label>
-                        </div>
-                        <div className="industry-container">
-                            <div className="industry-background"><img src={materialScienceImg} width="100%" height="120px"/></div>
-                            <label className="industry-label">Materials Science</label>
-                        </div>
-                        <div className="industry-container">
-                            <div className="industry-background"><img src={renewableEnergyImg} width="100%" height="120px"/></div>
-                            <label className="industry-label">Renewable Energy</label>
-                        </div>
-                        <div className="industry-container">
-                            <div className="industry-background"><img src={marineEngineerImg} width="100%" height="120px"/></div>
-                            <label className="industry-label">Marine Engineering</label>
-                        </div>
-                        <div className="industry-container">
-                            <div className="industry-background"><img src={chemistryImg} width="100%" height="120px"/></div>
-                            <label className="industry-label">Chemistry</label>
-                        </div>
-                        <div className="industry-container">
-                            <div className="industry-background"><img src={engineeringManufacturingImg} width="100%" height="120px"/>
+                        <article className="industry-grid">
+                            <div className="card">
+                                <div className="industry-background"><img src={urbanPlanningImg} width="100%" height="120px" /></div>
+                                <label className="industry-label">Urban Planning</label>
                             </div>
-                            <label className="industry-label">Engineering & Manufacturing</label>
-                        </div>
-                        <div className="industry-container">
-                            <div className="industry-background"><img src={informationTechnologyImg} width="100%" height="120px"/></div>
-                            <label className="industry-label">Information Technology</label>
-                        </div>
-                        <div className="industry-container">
-                            <div className="industry-background"><img src={dataScienceImg} width="100%" height="120px"/></div>
-                            <label className="industry-label">Data Science & Social Data Science</label>
-                        </div>
-                        <div className="industry-container">
-                            <div className="industry-background"><img src={businessManagementImg} width="100%" height="120px"/></div>
-                            <label className="industry-label">Business & Management</label>
-                        </div>
-                        <div className="industry-container">
-                            <div className="industry-background"><img src={aiImg} width="100%" height="120px"/></div>
-                            <label className="industry-label">AI & Robotics</label>
-                        </div>
-                    </article>
-                </div>
-            </section>
-                <Footer/>
+                            <div className="card">
+                                <div className="industry-background"><img src={medicalScienceImg} width="100%" height="120px" /></div>
+                                <label className="industry-label">Medical Science</label>
+                            </div>
+                            <div className="card">
+                                <div className="industry-background"><img src={envinromentalSienceImg} width="100%" height="120px" /></div>
+                                <label className="industry-label">Environmental Science</label>
+                            </div>
+                            <div className="card">
+                                <div className="industry-background"><img src={materialScienceImg} width="100%" height="120px" /></div>
+                                <label className="industry-label">Materials Science</label>
+                            </div>
+                            <div className="card">
+                                <div className="industry-background"><img src={renewableEnergyImg} width="100%" height="120px" /></div>
+                                <label className="industry-label">Renewable Energy</label>
+                            </div>
+                            <div className="card">
+                                <div className="industry-background"><img src={marineEngineerImg} width="100%" height="120px" /></div>
+                                <label className="industry-label">Marine Engineering</label>
+                            </div>
+                            <div className="card">
+                                <div className="industry-background"><img src={chemistryImg} width="100%" height="120px" /></div>
+                                <label className="industry-label">Chemistry</label>
+                            </div>
+                            <div className="card">
+                                <div className="industry-background"><img src={engineeringManufacturingImg} width="100%" height="120px" />
+                                </div>
+                                <label className="industry-label">Engineering & Manufacturing</label>
+                            </div>
+                            <div className="card">
+                                <div className="industry-background"><img src={informationTechnologyImg} width="100%" height="120px" /></div>
+                                <label className="industry-label">Information Technology</label>
+                            </div>
+                            <div className="card">
+                                <div className="industry-background"><img src={dataScienceImg} width="100%" height="120px" /></div>
+                                <label className="industry-label">Data Science & Social Data Science</label>
+                            </div>
+                            <div className="card">
+                                <div className="industry-background"><img src={businessManagementImg} width="100%" height="120px" /></div>
+                                <label className="industry-label">Business & Management</label>
+                            </div>
+                            <div className="card">
+                                <div className="industry-background"><img src={aiImg} width="100%" height="120px" /></div>
+                                <label className="industry-label">AI & Robotics</label>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+                <Footer />
             </div>
         )
     }

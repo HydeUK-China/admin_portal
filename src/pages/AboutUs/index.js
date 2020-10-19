@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { getRole } from '../../utils/utils';
 import Footer from '../../components/Footer';
-
 import '../../styles/aboutus.css';
 
 export default class AboutUs extends Component {
@@ -58,9 +57,8 @@ export default class AboutUs extends Component {
                           <div className="col-sm-12 col-md-6">
                           </div>
                           <div className="col-sm-12 col-md-6 main-container">
-                            <span className="about-title_shape">
-                            </span>
-                            <div className="about-information">
+                      
+                            <div className="about-information about-title_shape">
                               <h2>Hyde International Talents</h2>
                             </div>
                           </div>
