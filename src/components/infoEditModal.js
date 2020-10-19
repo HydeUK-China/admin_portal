@@ -79,6 +79,7 @@ export default class InfoEditModal extends Component {
     }
 
     generatePDF = () => {
+<<<<<<< HEAD
         const { fileds } = this.props;
         const { data } = this.state;
 
@@ -89,10 +90,45 @@ export default class InfoEditModal extends Component {
         _.forEach(fileds, (key) => {
             contents.push(fieldTitle[key] + ': ' + data[key] || '')
         })
+=======
 
-        pdf.text(contents, 40, 40)
-        const fileName = data[fileds[2]] + data[fileds[3]] + '.pdf'
-        pdf.save(fileName)
+        var sourcePDF = "../src/template.pdf";
+
+        // const { fileds } = this.props;
+        // const { data }  = this.state;
+>>>>>>> 2ea4a46... Email service completed
+
+        // const contents = [];
+        // const labals = [];
+        // const modContents = [];
+        // // const pdf = new jsPDF('p', 'pt','letter');
+        // const pdf = new jsPDF('../src/template.pdf')
+        // const fieldTitle = this.fieldTitle;
+
+        // const content = pdf.output();
+        // console.log(content)
+        
+        // _.forEach(fileds, (key) => {
+        //     contents.push(data[key]);
+        //     labals.push(fieldTitle[key]);    
+        //     // modContents.push('<b>' + fieldTitle[key] + '</b>' + '<p>' + data[key] + '</p>');  
+        //     modContents.push(fieldTitle[key] + ": " + data[key] + '\n')
+        // })
+        // console.log(modContents)
+        // pdf.addFont('ArialMS', 'Arial', 'normal');
+        // pdf.setFont('Arial'); 
+        // pdf.setFontSize(12);
+        // pdf.text(25, 25, labals);
+        // pdf.setFontSize(20);
+        // pdf.text(20, 35, modContents);
+        // const fileName = data[fileds[2]] + ' ' + data[fileds[3]] + '.pdf'
+        // pdf.autoPrint();
+        // var oHiddFrame = document.createElement("iframe");
+        // oHiddFrame.style.position = "fixed";
+        // oHiddFrame.style.visibility = "hidden";
+        // oHiddFrame.src = pdf.output('bloburl');
+        // document.body.appendChild(oHiddFrame);
+        // pdf.save(fileName)
     }
 
     render() {
