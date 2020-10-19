@@ -48,7 +48,6 @@ function forgotPassword(req, res) {
                                         msg: `unable to send recovery email due to error: ${err.code}`
                                     });
                                 } else {
-                                    console.log('here is the res: ', response);
                                     res.status(200).json({
                                         success: true,
                                         data: 'recovery email sent'
