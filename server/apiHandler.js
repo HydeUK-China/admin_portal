@@ -2,7 +2,12 @@ const express = require('express');
 const router = express.Router();
 const dbOps = require('./dbOps');
 const s3Ops = require('./s3Ops');
+<<<<<<< HEAD
 const pswOps = require('./pswOps');
+=======
+const mail = require('./mailer');
+
+>>>>>>> 2ea4a46... Email service completed
 
 router.get('/api/get', (req, res) => {
     const name = req.query.name;
@@ -39,11 +44,17 @@ router.post('/api/fetchProjectExpert/:projectid', dbOps.fetchProjectExpert);
 router.post('/api/fetchExpertProject/:expertid', dbOps.fetchExpertProject);
 router.post('/api/fetchProjectMatching', dbOps.fetchProjectMatching);
 
+<<<<<<< HEAD
 router.post('/api/file/upload', s3Ops.uploadFile);
 router.get('/api/file/:filename', s3Ops.downloadFile);
 
 router.post('/api/forgotPassword', pswOps.forgotPassword);
 router.post('/api/resetPassword/:token', pswOps.resetPassword);
 router.post('/api/updatePassword', pswOps.updatePassword);
+=======
+router.post('/api/file/upload', s3Ops.uploadFile)
+router.get('/api/file/:filename', s3Ops.downloadFile)
+router.post('/api/mailer', mail.mailSend);
+>>>>>>> 2ea4a46... Email service completed
 
 module.exports = router;
