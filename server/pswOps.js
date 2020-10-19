@@ -1,5 +1,8 @@
 const crypto = require('crypto');
-// const nodemailer = require('nodemailer');
+const nodemailer = require('nodemailer');
+const { createTransportConfig, testConfig } = require('./mailerConfig');
+
+const transporter = nodemailer.createTransport(testConfig);
 
 function forgotPassword(req, res) {
     const email = req.body.email.toLowerCase();
@@ -28,31 +31,31 @@ function forgotPassword(req, res) {
                                 msg: err.sqlMessage
                             });
                         } else {
-                            // const mailOptions = {
-                            //     from: '',
-                            //     to: `${email}`,
-                            //     subject: 'Link To Reset Password',
-                            //     text:
-                            //         'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n'
-                            //         + 'Please click on the following link, or paste this into your browser to complete the process within one hour of receiving it:\n\n'
-                            //         + `http://localhost:5001/reset/${token}\n\n`
-                            //         + 'If you did not request this, please ignore this email and your password will remain unchanged.\n',
-                            // };
-                            // const transporter = nodemailer.createTransport();
-                            // transporter.sendMail(mailOptions, (err, response) => {
-                            //     if (err) {
-                            //         res.status(400).json({
-                            //             success: false,
-                            //             msg: err
-                            //         });
-                            //     } else {
-                            //         console.log('here is the res: ', response);
-                            //         res.status(200).json({
-                            //             success: true,
-                            //             data: 'recovery email sent'
-                            //         });
-                            //     }
-                            // });
+                            const mailOptions = {
+                                from: '',
+                                to: `${email}`,
+                                subject: 'Link To Reset Password',
+                                text:
+                                    'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n'
+                                    + 'Please click on the following link, or paste this into your browser to complete the process within one hour of receiving it:\n\n'
+                                    + `http://localhost:5001/reset/${token}\n\n`
+                                    + 'If you did not request this, please ignore this email and your password will remain unchanged.\n',
+                            };
+                            
+                            transporter.sendMail(mailOptions, (err, response) => {
+                                if (err) {
+                                    res.status(400).json({
+                                        success: false,
+                                        msg: err
+                                    });
+                                } else {
+                                    console.log('here is the res: ', response);
+                                    res.status(200).json({
+                                        success: true,
+                                        data: 'recovery email sent'
+                                    });
+                                }
+                            });
                         }
                     });
                 } else {

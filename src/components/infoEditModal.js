@@ -79,7 +79,6 @@ export default class InfoEditModal extends Component {
     }
 
     generatePDF = () => {
-<<<<<<< HEAD
         const { fileds } = this.props;
         const { data } = this.state;
 
@@ -90,13 +89,11 @@ export default class InfoEditModal extends Component {
         _.forEach(fileds, (key) => {
             contents.push(fieldTitle[key] + ': ' + data[key] || '')
         })
-=======
 
         var sourcePDF = "../src/template.pdf";
 
         // const { fileds } = this.props;
         // const { data }  = this.state;
->>>>>>> 2ea4a46... Email service completed
 
         // const contents = [];
         // const labals = [];
