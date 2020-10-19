@@ -185,7 +185,7 @@ export default class Home extends Component {
                         <div className="row ">
                             <div className="col-sm-4 ">
                                 <div className="card pt-2">
-                                    <img class="card-img-top" src={searchImg} width="100%" height="60px" />
+                                    <img className="card-img-top" src={searchImg} width="100%" height="60px" />
                                     <h3>
                                         <hr />
                                             Unique Training and

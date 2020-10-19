@@ -42,6 +42,7 @@ class Login extends Component {
                 loginCallback={this.loginCallback}
                 confirmButtonText="Log in"
               />
+              
             </div>
             <div className="col-md-6 bg-col">
               <div className="login-bg_image">

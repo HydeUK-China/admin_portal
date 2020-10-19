@@ -37,8 +37,8 @@ export default class Footer extends Component {
                             </div>
                         </div>
 
-                        <div class="container">
-                            <div class=" text-center">
+                        <div className="container">
+                            <div className=" text-center">
                                 &copy; Copyright <strong>HYDE INTERNATIONAL TALENTS (UK)</strong>. All Rights Reserved
                             </div>
                         </div>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { fetchReq } from '../utils/utils';
-
+import { Link } from 'react-router-dom';
 import '../styles/login.css';
 
 export default class LoginForm extends Component {
@@ -48,6 +48,9 @@ export default class LoginForm extends Component {
                 <div className="form-group">
                     <label>Password</label>
                     <input type="password" className="form-control" ref={this.password} placeholder="*******" />
+                </div>
+                <div>
+                    <Link to ="/forgot-password">Forgot Password ?</Link>
                 </div>
                 <div style={{maxWidth: 'inherit'}} className="apply-btn create_btn" onClick={this.handleLogin}> {confirmButtonText} </div>
             </form>
