@@ -272,7 +272,7 @@
     align-items: center;
     
   }
-  #home-about::before {
+  /* #home-about::before {
     content: '';
     position: absolute;
     left: 0;
@@ -280,7 +280,7 @@
     top: 0;
     bottom: 0;
     z-index: 9;
-  }
+  } */
   
   #home-about .about-sec {
     position: relative;

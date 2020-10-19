@@ -19,7 +19,8 @@ import './styles/index.css';
 import Privacy from './pages/Privacy';
 import Cookies from './pages/Cookies';
 import TermsOfService from './pages/TermsOfService';
-import ForgotPas from './pages/ForgotPas';
+import ForgotPassword from './pages/ForgotPassword';
+import ResetPassword from './pages/ResetPassword';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -59,7 +60,10 @@ ReactDOM.render(
           <TermsOfService />
         </Route>
         <Route exact path="/forgot-password">
-          <ForgotPas/>
+          <ForgotPassword/>
+        </Route>
+        <Route exact path="/resetpassword/:token">
+          <ResetPassword/>
         </Route>
         {/* fallback route */}
         <Route path="/">

@@ -1,11 +1,11 @@
 const crypto = require('crypto');
 const nodemailer = require('nodemailer');
-const { createTransportConfig, testConfig } = require('./mailerConfig');
+const { createTransportConfig } = require('./mailerConfig');
 
-const transporter = nodemailer.createTransport(testConfig);
+const transporter = nodemailer.createTransport(createTransportConfig);
 
 function forgotPassword(req, res) {
-    const email = req.body.email.toLowerCase();
+    const email = req.body.email.trim().toLowerCase();
 
     if (email) {
         const sql = `SELECT id FROM user_credential 
@@ -32,21 +32,20 @@ function forgotPassword(req, res) {
                             });
                         } else {
                             const mailOptions = {
-                                from: '',
+                                from: 'contact@hyde-china.com',
                                 to: `${email}`,
                                 subject: 'Link To Reset Password',
-                                text:
-                                    'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n'
-                                    + 'Please click on the following link, or paste this into your browser to complete the process within one hour of receiving it:\n\n'
-                                    + `http://localhost:5001/reset/${token}\n\n`
-                                    + 'If you did not request this, please ignore this email and your password will remain unchanged.\n',
+                                html: 'You are receiving this email because you (or someone else) have requested to reset the password for your account. <br/>'
+                                    + 'Please click on the following link to complete the process : <br/>'
+                                    + `${res.app.get('url')}/resetpassword/${token} <br/>`
+                                    + 'If you did not request this, please ignore this email and your password will remain unchanged.<br/>',
                             };
                             
                             transporter.sendMail(mailOptions, (err, response) => {
                                 if (err) {
                                     res.status(400).json({
                                         success: false,
-                                        msg: err
+                                        msg: `unable to send recovery email due to error: ${err.code}`
                                     });
                                 } else {
                                     console.log('here is the res: ', response);
@@ -112,7 +111,7 @@ function resetPassword(req, res) {
 }
 
 function updatePassword(req, res) {
-    const email = req.body.email.toLowerCase();
+    const email = req.body.email.trim().toLowerCase();
     const password = req.body.password;
 
     if (email && password) {
@@ -156,7 +155,7 @@ function updatePassword(req, res) {
     } else {
         res.status(400).json({
             success: false,
-            msg: 'email and password should not be empty'
+            msg: 'email or password should not be empty'
         });
     }
 }

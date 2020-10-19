@@ -7,15 +7,12 @@ const createTransportConfig = {
     }
 }
 
-const testConfig = {
-    service: 'gmail',
-    auth: {
-        user: '',
-        pass: '',
-    }
+const mailingUrl = {
+    prod: 'demo.aws.ec2',
+    dev: 'http://localhost:5000'
 }
 
 module.exports = {
     createTransportConfig,
-    testConfig
+    mailingUrl
 }

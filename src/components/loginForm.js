@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { fetchReq } from '../utils/utils';
 import { Link } from 'react-router-dom';
+
 import '../styles/login.css';
 
 export default class LoginForm extends Component {

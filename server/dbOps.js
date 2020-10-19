@@ -136,7 +136,7 @@ function signup(req, res) {
                                             to: `${email}`,
                                             subject: 'Welcome to HI TALENTS!',
                                             html: 'Thank you for registrating with us. <br/>'
-                                                + `You are now free to explore our website at ${'http://localhost:5000'}! <br/>`
+                                                + `You are now free to explore our website at ${res.app.get('url')}! <br/>`
                                         }
                                         transporter.sendMail(mailOptions, (err, response) => { });
 

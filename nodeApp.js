@@ -12,6 +12,7 @@ const async = require('async');
 
 const apiHandler = require('./server/apiHandler');
 const dbConfig = require('./server/dbConfig');
+const mailerConfig = require('./server/mailerConfig');
 
 const port = process.env.PORT || 5001;
 const __env__ = process.env.NODE_ENV;
@@ -70,8 +71,10 @@ function init() {
 
 // init();
 
-app.set('connection', mysql.createConnection(dbConfig.rdsClient[__env__]))
+app.set('connection', mysql.createConnection(dbConfig.rdsClient[__env__]));
 const client = app.get('connection');
+
+app.set('url', mailerConfig.mailingUrl[__env__]);
 
 async.series([
   function connect(callback) {
