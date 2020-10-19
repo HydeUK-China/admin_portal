@@ -1,3 +1,5 @@
+const nodemailer = require('nodemailer');
+const { createTransportConfig } = require('./mailerConfig');
 const fakeData = require('./fakeData');
 const jwtUtil = require('./jwtUtil');
 
@@ -6,8 +8,10 @@ const projectData = fakeData.projectData;
 const employerData = fakeData.employerData;
 const projectMatchingData = fakeData.projectMatchingData
 
+const transporter = nodemailer.createTransport(createTransportConfig);
+
 function login(req, res) {
-    const email = req.body.email.toLowerCase();
+    const email = req.body.email.trim().toLowerCase();
     const password = req.body.password;
 
     if (email && password) {
@@ -74,55 +78,85 @@ function logout(req, res) {
 function signup(req, res) {
     const firstname = req.body.firstname;
     const lastname = req.body.lastname;
-    const email = req.body.email.toLowerCase();
+    const email = req.body.email.trim().toLowerCase();
     const password = req.body.password;
     const phone = req.body.phone;
     const role = req.body.role;
 
-    const sql = `INSERT INTO expert_info (first_name, last_name, email, phone_no) 
-                VALUES (?, ?, ?, ?)`;
+    const sql = `SELECT *
+                FROM user_credential 
+                WHERE account_name=?`;
 
-    res.app.get('connection').query(sql, [firstname, lastname, email, phone], function (err, rows) {
+    res.app.get('connection').query(sql, [email], function (err, rows) {
         if (err) {
             res.status(400).json({
                 success: false,
-                msg: 'failed inserting into expert_info'
+                msg: 'failed selecting from user_credential'
             });
         } else {
-            const sql = `SELECT expert_id FROM expert_info 
+            if (rows.length > 0) {
+                res.status(400).json({
+                    success: false,
+                    msg: 'sorry, this email already exists'
+                });
+            } else {
+                const sql = `INSERT INTO expert_info (first_name, last_name, email, phone_no) 
+                VALUES (?, ?, ?, ?)`;
+
+                res.app.get('connection').query(sql, [firstname, lastname, email, phone], function (err, rows) {
+                    if (err) {
+                        res.status(400).json({
+                            success: false,
+                            msg: 'failed inserting into expert_info'
+                        });
+                    } else {
+                        const sql = `SELECT expert_id FROM expert_info 
                         WHERE first_name=? AND last_name=? AND email=? AND phone_no=?`
-            res.app.get('connection').query(sql, [firstname, lastname, email, phone], function (err, rows) {
-                if (err) {
-                    res.status(400).json({
-                        success: false,
-                        msg: 'failed getting user_id'
-                    });
-                } else {
-                    const expertid = rows[0].expert_id;
-                    const sql = `INSERT INTO user_credential (foreign_user_id, account_name, account_password, permission_role) 
+                        res.app.get('connection').query(sql, [firstname, lastname, email, phone], function (err, rows) {
+                            if (err) {
+                                res.status(400).json({
+                                    success: false,
+                                    msg: 'failed getting user_id'
+                                });
+                            } else {
+                                const expertid = rows[0].expert_id;
+                                const sql = `INSERT INTO user_credential (foreign_user_id, account_name, account_password, permission_role) 
                                     VALUES (?, ?, ?, ?)`;
-                    res.app.get('connection').query(sql, [expertid, email, password, role], function (err, rows) {
-                        if (err) {
-                            res.status(400).json({
-                                success: false,
-                                msg: 'failed inserting into user_credential'
-                            });
-                        } else {
-                            req.session.token = jwtUtil.generateTokenByRole(role);
-                            res.status(200).json({
-                                success: true,
-                                data: {
-                                    role: role,
-                                    user_id: expertid,
-                                    msg: 'Successfully registered.'
-                                }
-                            });
-                        }
-                    });
-                }
-            });
+                                res.app.get('connection').query(sql, [expertid, email, password, role], function (err, rows) {
+                                    if (err) {
+                                        res.status(400).json({
+                                            success: false,
+                                            msg: 'failed inserting into user_credential'
+                                        });
+                                    } else {
+                                        req.session.token = jwtUtil.generateTokenByRole(role);
+
+                                        const mailOptions = {
+                                            from: 'contact@hyde-china.com',
+                                            to: `${email}`,
+                                            subject: 'Welcome to HI TALENTS!',
+                                            html: 'Thank you for registrating with us. <br/>'
+                                                + `You are now free to explore our website at ${'http://localhost:5000'}! <br/>`
+                                        }
+                                        transporter.sendMail(mailOptions, (err, response) => { });
+
+                                        res.status(200).json({
+                                            success: true,
+                                            data: {
+                                                role: role,
+                                                user_id: expertid,
+                                                msg: 'Successfully registered.'
+                                            }
+                                        });
+                                    }
+                                });
+                            }
+                        });
+                    }
+                });
+            }
         }
-    });
+    })
 }
 
 function expertDashboard(req, res) {
@@ -200,7 +234,7 @@ function addExpert(req, res) {
                             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
 
                 res.app.get('connection').query(sql, [record.title, record.first_name, record.last_name, record.gender,
-                record.nationality, record.date_of_birth, record.email.toLowerCase(), record.phone_no, record.linkedin, record.skype,
+                record.nationality, record.date_of_birth, record.email.trim().toLowerCase(), record.phone_no, record.linkedin, record.skype,
                 record.twitter, record.expertise, record.category, record.source_references, record.edu_organization,
                 record.field_of_speciality, record.education, record.employment, record.membership_of_professional_bodies,
                 record.scientific_contribution_and_research_leadership, record.awarded_grants_and_funded_activities,
@@ -214,7 +248,7 @@ function addExpert(req, res) {
                         } else {
                             const sql = `SELECT expert_id FROM expert_info 
                                         WHERE first_name=? AND last_name=? AND email=?`
-                            res.app.get('connection').query(sql, [record.first_name, record.last_name, record.email.toLowerCase()], function (err, rows) {
+                            res.app.get('connection').query(sql, [record.first_name, record.last_name, record.email.trim().toLowerCase()], function (err, rows) {
                                 if (err) {
                                     res.status(400).json({
                                         success: false,
@@ -224,7 +258,7 @@ function addExpert(req, res) {
                                     const expertid = rows[0].expert_id;
                                     const sql = `INSERT INTO user_credential (foreign_user_id, account_name, account_password, permission_role) 
                                                     VALUES (?, ?, ?, ?)`;
-                                    res.app.get('connection').query(sql, [expertid, record.email.toLowerCase(), record.password, 'expert'], function (err, rows) {
+                                    res.app.get('connection').query(sql, [expertid, record.email.trim().toLowerCase(), record.password, 'expert'], function (err, rows) {
                                         if (err) {
                                             res.status(400).json({
                                                 success: false,
@@ -291,7 +325,7 @@ function editExpert(req, res) {
                             WHERE expert_id=?`;
 
                 res.app.get('connection').query(sql, [record.title, record.first_name, record.last_name, record.gender,
-                record.nationality, record.date_of_birth, record.email.toLowerCase(), record.phone_no, record.linkedin, record.skype,
+                record.nationality, record.date_of_birth, record.email.trim().toLowerCase(), record.phone_no, record.linkedin, record.skype,
                 record.twitter, record.expertise, record.category, record.source_references, record.edu_organization,
                 record.field_of_speciality, record.education, record.employment, record.membership_of_professional_bodies,
                 record.scientific_contribution_and_research_leadership, record.awarded_grants_and_funded_activities,
@@ -618,8 +652,8 @@ function addProject(req, res) {
                             required_expertise, employer, show_employer_name, location, salary, currency)
                             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
 
-                res.app.get('connection').query(sql, [record.start_date, record.close_date, record.job_title, record.job_type, record.organization_info, 
-                record.responsibility, record.essential_skills, record.professional_field, record.job_description, record.required_expertise, record.employer, 
+                res.app.get('connection').query(sql, [record.start_date, record.close_date, record.job_title, record.job_type, record.organization_info,
+                record.responsibility, record.essential_skills, record.professional_field, record.job_description, record.required_expertise, record.employer,
                 record.show_employer_name, record.location, record.salary, record.currency],
                     function (err, rows) {
                         if (err) {
@@ -673,8 +707,8 @@ function editProject(req, res) {
                             currency=?
                             WHERE project_id=?`;
 
-                res.app.get('connection').query(sql, [record.start_date, record.close_date, record.job_title, record.job_type, record.organization_info, 
-                record.responsibility, record.essential_skills, record.professional_field, record.job_description, record.required_expertise, record.employer, 
+                res.app.get('connection').query(sql, [record.start_date, record.close_date, record.job_title, record.job_type, record.organization_info,
+                record.responsibility, record.essential_skills, record.professional_field, record.job_description, record.required_expertise, record.employer,
                 record.show_employer_name, record.location, record.salary, record.currency, record.project_id],
                     function (err, feedback) {
                         if (err) {

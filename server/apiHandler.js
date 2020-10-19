@@ -3,7 +3,7 @@ const router = express.Router();
 const dbOps = require('./dbOps');
 const s3Ops = require('./s3Ops');
 const pswOps = require('./pswOps');
-const mail = require('./mailer');
+const mailerOps = require('./mailerOps');
 
 
 router.get('/api/get', (req, res) => {
@@ -48,6 +48,6 @@ router.post('/api/forgotPassword', pswOps.forgotPassword);
 router.post('/api/resetPassword/:token', pswOps.resetPassword);
 router.post('/api/updatePassword', pswOps.updatePassword);
 
-router.post('/api/mailer', mail.mailSend);
+router.post('/api/mailer', mailerOps.mailSend);
 
 module.exports = router;

@@ -18,13 +18,12 @@ SELECT * FROM project_matching;
 
 
 
-UPDATE expert_info  SET education='' WHERE expert_id=170;
+UPDATE expert_info  SET education='' WHERE expert_id=173;
 
 
 -- 12, 17, 10, 11, 26, 16, 56, 23, 14, 15, 116, 114
 SELECT * FROM expert_info;
 SELECT * FROM expert_info WHERE expert_id IN (20);
-DELETE FROM expert_info WHERE expert_id=170;
 
 
 
@@ -39,10 +38,10 @@ INSERT INTO project_matching (project_id, expert_id) VALUES ('100', '200' );
 
 UPDATE project_info SET start_date='2020-07-13' WHERE project_id=40;
 
-DELETE FROM project_matching WHERE matching_id IN (76, 78, 79);
-
-UPDATE project_matching SET application_complete='N'  WHERE matching_id IN (80);
+UPDATE project_matching SET application_complete='N'  WHERE matching_id IN (82);
 
 UPDATE user_credential SET account_password='123456' WHERE id=30;
 
-UPDATE user_credential  SET reset_password_token='dummytoken' WHERE id=27;
+DELETE FROM user_credential  WHERE id IN (37);
+DELETE FROM expert_info  WHERE expert_id IN (182);
+DELETE FROM project_matching WHERE matching_id IN (83);
