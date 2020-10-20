@@ -1,48 +1,80 @@
+/* General */
+.header{
+  padding-bottom: 10px;
+}
+  .section-header h1 {
+    font-size: 32px;
+    color: #111;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 700;
+    position: relative;
+    padding-bottom: 15px;
+  }
+  
+  .section-header h1::before {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 120px;
+    height: 1px;
+    background: #ddd;
+    bottom: 1px;
+    left: calc(50% - 60px);
+  }
+  
+  .section-header h1::after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 40px;
+    height: 3px;
+    background: rgb(0, 33, 109);
+    bottom: 0;
+    left: calc(50% - 20px);
+  }
+
+
+
+
 /* -----------------------------
  Hero section
  ----------------------------- */
 
- .home-hero {
-    position: relative;
+
+  .jumbotron {
     background-image: url('../img/blurred.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center;
+    background-position: right;
     width: 100%;
-    height: 80vh;
+    height: 70vh;
     overflow: hidden;
+    padding: 3rem 0px;
+    border-radius: 0px;
   }
   
-  .hero-content_title {
-    position: absolute;
-    top: 25%;
-    left: 20%;
-    width: 100%;
-    /* padding-left: 6rem; */
-  }
-  
-  .hero-content_title h2 {
+  .jumbotron h1 {
     font-size: 5rem;
     font-weight: 900;
     color: white;
     text-transform: uppercase;
   }
-  
-  .hero-content_title h5 {
+  .jumbotron h5 {
     font-size: 2rem;
+    font-weight: 900;
     color: white;
-    /*  padding-left: 45rem;*/
     text-transform: uppercase;
   }
   
-  .hero-content .callToAction {
-    width: 100%;
+  .jumbotron .container {
+    max-width: 55rem;
+  }
+  .callToAction{
+    padding: 20px;
   }
   
-  .hero-content .callToAction a.service {
-    position: absolute;
-    top: 65%;
-    left: 21%;
+  .hero-content .callToAction a {
     text-decoration: none;
     font-size: 1.4rem;
     font-weight: 500;
@@ -51,24 +83,12 @@
     letter-spacing: 0.4px;
     overflow: hidden;
     transition: all .3s ease-in;
-  }
+    padding: 10px;
 
-  .hero-content .callToAction a.job {
-    position: absolute;
-    top: 65%;
-    left: 41%;
-    text-decoration: none;
-    font-size: 1.4rem;
-    font-weight: 500;
-    color: white;
-    text-align: left;
-    letter-spacing: 0.4px;
-    overflow: hidden;
-    transition: all .3s ease-in;
   }
   
   .hero-content .callToAction a:hover {
-    color: #1e3255;
+    color:rgb(0, 33, 109);
   }
   
   .hero-content .callToAction .ti-arrow-right {
@@ -78,88 +98,28 @@
   }
   
   .hero-content .callToAction .ti-arrow-right:hover {
-    color: #1e3255;
+    color: rgb(0, 33, 109);
   }
   
-  .hero-content .callToAction .square1 {
-    position: absolute;
-    top: 65.7%;
-    left: 20.6%;
-    border-radius: 0;
-    height: 25px;
-    width: 25px;
-    background: #eee;
-    opacity: 0.5;
-  }
-
-  .hero-content .callToAction .square2 {
-    position: absolute;
-    top: 65.7%;
-    left: 40.6%;
-    border-radius: 0;
-    height: 25px;
-    width: 25px;
-    background: #eee;
-    opacity: 0.5;
-  }
   
   /* -----------------------------
    Services section
    ----------------------------- */
   
   #services {
-    padding: 50px 0px;
+    padding: 40px 0px;
     display: grid;
     grid-template-columns: 100%;
     grid-template-rows: auto;
   }
   
-  #services .allInfo-services {
-    margin-left: auto;
-    margin-right: auto;
-    display: center;
-    justify-content: flex-start;
-    align-items: flex-start;
-    flex-direction: column;
-  }
-  
-  #services .allInfo-services .header-services {
-    margin-bottom: 3rem;
-    text-transform: uppercase;
-  }
-  
-  #services .types-services {
-    display: grid;
-    grid-template-columns: 18% 18% 18% 18% 18%;
-    grid-gap: 1.2rem;
-  }
   
   #services .types-services .fa {
     margin-bottom: 2rem;
     display: flex;
     flex-direction: column-reverse;
   }
-  
-  #services .types-services .type-service_header {
-    text-transform: capitalize;
-    margin-bottom: 2.5rem;
-    background-color: #fafafa;
-    box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.5);
-    padding: 10px;
-    height: 260px;
-    font-size: 1.2rem;
-    font-weight: bold;
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: left;
-    text-decoration: none;
-  }
-  
-  .icon {
-    border-radius: 5px;
-    height: 90px;
-  }
-  
+
   /* -----------------------------
    Featured jobs section
   ----------------------------- */
@@ -358,4 +318,12 @@
     padding-bottom: 12px;
     text-decoration: none;
     text-align: center;
+  } 
+
+  @media (min-width: 768px) {
+    .jumbotron {
+      padding-top: 6rem;
+      padding-bottom: 6rem;
+    }
+
   }

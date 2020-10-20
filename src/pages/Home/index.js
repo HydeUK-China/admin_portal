@@ -21,8 +21,8 @@ import informationTechnologyImg from '../../img/information technology.svg';
 import dataScienceImg from '../../img/data science.svg';
 import businessManagementImg from '../../img/business management.svg';
 import aiImg from '../../img/ai.svg';
-
 import '../../styles/home.css';
+import TopNav from '../../components/TopNav';
 
 export default class Home extends Component {
     constructor(props) {
@@ -62,126 +62,38 @@ export default class Home extends Component {
 
         return (
             <div>
-                <section id="top" className="home-hero">
-                    <header id="header">
-                        <div className="brand-container">
-                            <Link className=" nav-brand brand" to="/home">
-                                HI Talents
-                            </Link>
-                        </div>
-
-                        <nav className="main-nav">
-                            <NavLink className="nav-item" to="/home">Home</NavLink>
-                            <NavLink className="nav-item" to="/jobs">Jobs</NavLink>
-                            <NavLink className="nav-item" to="/aboutus">About</NavLink>
-                            <NavLink className="nav-item" to="/contactus">Contact</NavLink>
-                            <div className="sign-in">
-                                {role === '__admin__' ?
-                                    <NavLink className="nav-item user" to="/mgt/admin_dashboard">
-                                        <div className="fa fa-user-o"></div>
-                                    </NavLink>
-                                    :
-                                    (role === 'expert' ?
-                                        <NavLink className="nav-item user" to="/mgt/expert_profile">
-                                            <div className="fa fa-user-o"></div>
-                                        </NavLink>
-                                        : <NavLink className="nav-item user" to="/login">
-                                            <div className="fa fa-user-o"></div>
-                                        </NavLink>)
-                                }
-                            </div>
-                        </nav>
-
-                    </header>
-
-
+                <TopNav></TopNav>
+                <section id="top">
                     <div className="hero-content">
-                        <div className="hero-content_title">
-                            <h2>Unlock Potential </h2>
+                    <div className=" jumbotron">
+                        <div className="container">
+                            <h1>Unlock Potential </h1>
                             <h5>with the Free Flow of Knowledge Sharing</h5>
-                        </div>
-                        <div className="callToAction">
-                            <span className="square1"></span>
-                            <Link to="/aboutus" className="service">Our Services <i className="fa fa-arrow-right"></i></Link>
+        
+                        <div className="row callToAction">
+                            <div className="col-md-3">
+                                <Link to="/aboutus">Our Services <i className="fa fa-arrow-right"></i></Link>
+                            </div>
 
-                            <span className="square2"></span>
-                            <Link to="/jobs" className="job">Featured jobs <i className="fa fa-arrow-right"></i></Link>
+                            <div className="col-md-4">
+                            <Link to="/jobs">Featured jobs <i className="fa fa-arrow-right"></i></Link>
+                            </div>
+
+                                
+                            
                         </div>
+                        </div>
+                    </div>
                     </div>
                 </section>
 
-                {/*  <section id="services">
-                     <div className="container">
-                         <div className="allInfo-services">
-                            <h1 className="header-services">  Our Services </h1>
-                            <div className="types-services">
-                                <div className="service">
-                                    <h3 className="type-service_header">
-
-                                        <div className="icon">
-                                            <img src={searchImg} width="100%" height="90px" />
-                                        </div>
-                                        <hr/>
-                                        Global Research and
-                                        Development
-                                        Collaboration
-                                    </h3>
-                                </div>
-                            
-                                <div className="service">
-                                    <h3 className="type-service_header">
-                                        <div className="icon">
-                                            <img src={opportunityImg} width="100%" height="90px"/>
-                                        </div>
-                                        <hr/>
-                                        Flexible Job
-                                        Opportunities
-                                        in Technology
-                                    </h3>
-                                </div>
-          
-                                <div className="service">
-                                    <h3 className="type-service_header">
-                                        <div className="icon">
-                                            <img src={workshopImg} width="100%" height="90px"/>
-                                        </div>
-                                        <hr/>
-                                        Unique Training and
-                                        Consulting Possibilities
-                                    </h3>
-                                </div>
-
-                                <div className="service">
-                                    <h3 className="type-service_header">
-                                    <div className="icon">
-                                        <img src={solutionImg} width="100%" height="90px" />
-                                    </div>
-                                    <hr/>
-                                    Bespoke Incubator
-                                    Schemes
-                                    for Potential Ideas
-                                    </h3>
-                                </div>
-
-                                <div className="service">
-                                    <h3 className="type-service_header">
-                                        <div className="icon">
-                                            <img src={teamImg} width="100%" height="90px" />
-                                        </div>
-                                        <hr/>
-                                        Exclusive Networking
-                                        with
-                                        Knowledgeable Professionals
-                                    </h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section> */}
+            {/* Our Services */}
 
                 <section id="services">
                     <div className="container-fluid text-center justify-content-center align-content-center mx-auto">
-                        <h1 className="header-services">  OUR SERVICES </h1>
+                        <header className="section-header">
+                        <h1>  OUR SERVICES </h1>
+                        </header> 
                         <div className="row ">
                             <div className="col-sm-4 ">
                                 <div className="card pt-2">
@@ -219,7 +131,7 @@ export default class Home extends Component {
                         </div>
                         <div className="row mt-3 ">
                             <div className="col-sm-2"></div>
-                            <div className="col-sm-4" data-aos="fade-up" data-aos-delay="200">
+                            <div className="col-sm-4" >
                                 <div className="card pt-2" >
                                     <img src={solutionImg} width="100%" height="60px" />
                                     <h3>
@@ -230,7 +142,7 @@ export default class Home extends Component {
                                     </h3>
                                 </div>
                             </div>
-                            <div className="col-sm-4 " data-aos="fade-up" data-aos-delay="200">
+                            <div className="col-sm-4 ">
                                 <div className="card pt-2">
                                     <img src={teamImg} width="100%" height="60px" />
                                     <h3>
@@ -246,17 +158,18 @@ export default class Home extends Component {
                     </div>
                 </section>
 
+                {/*Featured Jobs  */}
 
                 <section id="featured">
                     <div className="container-fluid ">
-                        <div className="header-featured">
-                            <h1 className="text-center">featured jobs</h1>
-                        </div>
+                    <header className="section-header">
+                        <h1>  Featured jobs </h1>
+                        </header> 
                     
 
-                        <article className="featured-jobs_grid">
+                        <div className="featured-jobs_grid">
                             {this.getProjectList()}
-                        </article>
+                        </div>
                         <div className="mt-3">
                         <span className="explore-square"></span>
                             <Link className="explore-link" to="/jobs"> VIEW MORE <i className="fa fa-arrow-right"></i></Link>
@@ -266,47 +179,15 @@ export default class Home extends Component {
 
 
 
-               {/*  <section id="home-about">
-                    <div className="about-image">
-
-                    </div>
-                    <div className="info">
-                        <div className="title_info">
-                            <center>WHY US</center>
-                        </div>
-                        <br />
-                        <p className="para_info">
-                            Hyde International Talent (HIT) Network provides an interactive and innovative platform for global talented
-                            individuals and organisations in scientific and technological fields to exchange knowledge, incubate their
-                            research ideas and source collaborative opportunities. </p>
-                        <p className="para">What you can expect：</p>
-
-                        <p className="para">
-                            <i>● Access to a wide range of technology-focused jobs.</i>
-                        </p>
-                        <p className="para">
-                            <i>● Connect directly to providers of global research funding. </i>
-                        </p>
-                        <p className="para">
-                            <i>● Join and interact in our high-tech community with thousands of talented individuals worldwide. </i>
-                        </p>
-                        <p className="para">
-                            <i>● Share your ideas and expertise through international training and consulting opportunities for industry
-                            leaders.</i>
-                        </p>
-                        <p className="para">
-                            <i>● Participate in world-leading scientific projects. </i>
-                        </p>
-                    </div>
-                </section> */}
+              {/* About Us */}
 
                 <section id="home-about">
                 <div className="Container about-sec">
                     <div className="info">
-                        <div className="title_info">
-                            <center>WHY US</center>
-                        </div>
-                        <br />
+                    <header className="section-header">
+                        <h1>  why us </h1>
+                        </header> 
+                    
                         <p className="para_info">
                             Hyde International Talent (HIT) Network provides an interactive and innovative platform for global talented
                             individuals and organisations in scientific and technological fields to exchange knowledge, incubate their
@@ -314,31 +195,31 @@ export default class Home extends Component {
                         <p className="para">What you can expect：</p>
 
                         <p className="para">
-                            <i>● Access to a wide range of technology-focused jobs.</i>
+                            ● Access to a wide range of technology-focused jobs.
                         </p>
                         <p className="para">
-                            <i>● Connect directly to providers of global research funding. </i>
+                            ● Connect directly to providers of global research funding. 
                         </p>
                         <p className="para">
-                            <i>● Join and interact in our high-tech community with thousands of talented individuals worldwide. </i>
+                            ● Join and interact in our high-tech community with thousands of talented individuals worldwide. 
                         </p>
                         <p className="para">
-                            <i>● Share your ideas and expertise through international training and consulting opportunities for industry
-                            leaders.</i>
+                            ● Share your ideas and expertise through international training and consulting opportunities for industry
+                            leaders.
                         </p>
                         <p className="para">
-                            <i>● Participate in world-leading scientific projects. </i>
+                            ● Participate in world-leading scientific projects. 
                         </p>
                     </div>
                     </div>
                 </section>
                 <section id="industry">
                     <div className="container">
-                        <div className="industry-header text-center">
-                            <h1>Main Industry</h1>
-                        </div>
+                    <header className="section-header">
+                        <h1> Main Industry </h1>
+                        </header> 
 
-                        <article className="industry-grid">
+                        {/* <article className="industry-grid">
                             <div className="card">
                                 <div className="industry-background"><img src={urbanPlanningImg} width="100%" height="120px" /></div>
                                 <label className="industry-label">Urban Planning</label>
@@ -388,7 +269,8 @@ export default class Home extends Component {
                                 <div className="industry-background"><img src={aiImg} width="100%" height="120px" /></div>
                                 <label className="industry-label">AI & Robotics</label>
                             </div>
-                        </article>
+                        </article> */}
+                        
                     </div>
                 </section>
                 <Footer />

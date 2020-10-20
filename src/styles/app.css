@@ -4,9 +4,9 @@
   box-sizing: border-box;
 }
 body {
-  font-family: "Lato", sans-serif;
-  min-height: 100vh;
-  background-color: #f4f7fd;
+  background: #fff;
+  color: #666666;
+  font-family: "Open Sans", sans-serif;
 }
 
 .center{

@@ -3,6 +3,7 @@ import { NavLink, Link } from 'react-router-dom';
 import { getRole } from '../../utils/utils';
 import Footer from '../../components/Footer';
 import '../../styles/aboutus.css';
+import TopNav from '../../components/TopNav'
 
 export default class AboutUs extends Component {
     constructor(props) {
@@ -18,6 +19,7 @@ export default class AboutUs extends Component {
       const { role } = this.state;  
         return (
                   <div>
+                    <TopNav></TopNav>
                     <section id="top" className="about-header ">
                       <div className="side-image ">
                       </div>
