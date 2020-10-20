@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
 import { Button, Modal } from 'react-bootstrap';
-import jsPDF from 'jspdf';
+// import jsPDF from 'jspdf';
 
 export default class TableModal extends Component {
     constructor(props) {
@@ -36,17 +36,17 @@ export default class TableModal extends Component {
         const { tableData } = this.state;
         const { downloadField, downloadHeader } = this.props;
 
-        const contents = [];
-        const pdf = new jsPDF('p', 'pt');
-        const downloadFieldTitle = _.zipObject(downloadField, downloadHeader);
+        // const contents = [];
+        // const pdf = new jsPDF('p', 'pt');
+        // const downloadFieldTitle = _.zipObject(downloadField, downloadHeader);
 
-        _.forEach(downloadField, (key) => {
-            contents.push(downloadFieldTitle[key] + ': ' + tableData[index][key] || '')
-        })
+        // _.forEach(downloadField, (key) => {
+        //     contents.push(downloadFieldTitle[key] + ': ' + tableData[index][key] || '')
+        // })
 
-        pdf.text(contents, 40, 40)
-        const fileName = tableData[index][downloadField[2]] + tableData[index][downloadField[3]] + '.pdf'
-        pdf.save(fileName)
+        // pdf.text(contents, 40, 40)
+        // const fileName = tableData[index][downloadField[2]] + tableData[index][downloadField[3]] + '.pdf'
+        // pdf.save(fileName)
     }
 
     render() {

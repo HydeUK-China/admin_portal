@@ -4,6 +4,7 @@
   "private": true,
   "main": "nodeApp.js",
   "dependencies": {
+    "@pdftron/web-to-pdf": "^0.7.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
@@ -13,8 +14,9 @@
     "aws-sdk": "^2.749.0",
     "axios": "^0.20.0",
     "bootstrap": "^4.5.2",
+    "canvg": "^3.0.7",
+    "fdf": "^1.0.0",
     "jsonwebtoken": "^8.5.1",
-    "jspdf": "^2.1.1",
     "lodash": "^4.17.20",
     "multer-s3": "^2.9.0",
     "mysql": "^2.18.1",

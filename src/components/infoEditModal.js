@@ -7,7 +7,7 @@ import { countryList } from '../asset/countryList';
 import { jobTypeList } from '../asset/jobTypeList';
 import { distanceList } from '../asset/distanceList';
 import { placeholder } from '../asset/placeholder';
-import jsPDF from 'jspdf';
+
 
 export default class InfoEditModal extends Component {
     constructor(props) {
@@ -80,18 +80,17 @@ export default class InfoEditModal extends Component {
     }
 
     generatePDF = () => {
-        const { fileds } = this.props;
-        const { data } = this.state;
 
-        const contents = [];
-        const pdf = new jsPDF('p', 'pt');
-        const fieldTitle = this.fieldTitle;
+        // const { fileds } = this.props;
+        // const { data } = this.state;
 
-        _.forEach(fileds, (key) => {
-            contents.push(fieldTitle[key] + ': ' + data[key] || '')
-        })
+        // const contents = [];
+        // const pdf = new jsPDF('p', 'pt');
+        // const fieldTitle = this.fieldTitle;
 
-        var sourcePDF = "../src/template.pdf";
+        // _.forEach(fileds, (key) => {
+        //     contents.push(fieldTitle[key] + ': ' + data[key] || '')
+        // })
 
         // const { fileds } = this.props;
         // const { data }  = this.state;
@@ -312,7 +311,7 @@ export default class InfoEditModal extends Component {
                                     : <Button onClick={this.clickEdit}> Edit </Button>)
                                 : null
                         }
-                        <Button onClick={this.generatePDF}>Download</Button>
+                        <Button onClick={window.print}>Download</Button>
                     </form>
                 </Modal.Body>
             </Modal>
