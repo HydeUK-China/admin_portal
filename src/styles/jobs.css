@@ -32,12 +32,6 @@
     align-items: center;
     margin-top: 5rem;
   }
-  .filters {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* padding: 10px 15px; */
-  }
   .dropdown {
     display: inline-block;
     position: relative;
@@ -119,12 +113,26 @@
     grid-gap: 2rem;
     margin: 3rem 7rem;
   }
-
-  .filters input{
-    max-width: 539px;
+  .filters {
+    /* display: flex; */
+    /* justify-content: center;
+    align-items: center; */
+    /* padding: 10px 15px; */
+  }
+  .filter-input{
+    /* flex-basis: 100%; */
+    max-width: 70%;
     width: 100%;
     padding: 10px;
     border: 2px solid #1b2b9c;
+  }
+
+ .filter-form{
+    max-width: 70%;
+  }
+
+.filter-form label{
+    margin-bottom: 1.5rem;;
   }
 
   .job-card {

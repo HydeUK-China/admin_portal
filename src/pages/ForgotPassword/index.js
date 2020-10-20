@@ -1,46 +1,42 @@
 import React, { Component } from 'react';
-import { fetchReq } from '../../utils/utils';
+import { Link } from 'react-router-dom';
+import ForgotPasswordForm from '../../components/forgotPasswordForm';
+import Footer from '../../components/Footer';
 
 export default class ForgotPassword extends Component {
     constructor(props) {
         super(props);
-    
+
         this.state = {
-         
+
         }
-        this.email = React.createRef();
 
-        this.forgotPassword = this.forgotPassword.bind(this);
-    }
-
-    forgotPassword(e){
-        e.preventDefault();
-
-        const email = this.email;
-
-        fetchReq('/api/forgotPassword', {
-            body: JSON.stringify({
-                email: email.current.value
-            })
-        }).then(data => {
-            alert(data);
-        }).catch(msg => {
-            alert(msg);
-        });
     }
 
     render() {
         return (
-            <div className="container w-40 text-center">
-                <form onSubmit={this.forgotPassword}>
-                    <h2 className="text-center">Forgot Password</h2>
-                    <div className="form-group">
-                        <input type="email" className="form-control" placeholder="Email Address" ref={this.email} required />
+            <div className="registerLogin-page">
+                <div className="content-box container">
+                    <div className="row">
+                        <div className="col-md-6 form-col">
+                            <div className="logo-container">
+                                <Link className="logo" to="/home" style={{ 'color': 'black' }}>
+                                    HI TALENTS PORTAL
+                                </Link>
+                            </div>
+                            <div className="registerLogin-title_content">
+                                <h2>Forgot Password</h2>
+                                <h4><Link to="/signup">Sign up</Link> / <Link to="/login">Login</Link> </h4>
+                            </div>
+                            <ForgotPasswordForm />
+                        </div>
+                        <div className="col-md-6 bg-col">
+                            <div className="login-bg_image">
+                            </div>
+                        </div>
                     </div>
-                    <div className="form-group">
-                        <button type="submit" className="btn" style={{ backgroundColor: '#00216 !important' }}>Submit</button>
-                    </div>
-                </form>
+                </div>
+                <Footer />
             </div>
         )
     }

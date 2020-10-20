@@ -3,10 +3,13 @@ import { NavLink } from 'react-router-dom';
 import _ from 'lodash';
 import { fetchReq, getRole } from '../../utils/utils';
 import Search from '../../components/search';
+import FilterGroup from '../../components/filterGroup';
 import Footer from '../../components/Footer';
 import JobTitleCard from '../../components/jobTitleCard';
 import Pagination from '../../components/pagination';
 import { sliceData } from '../../asset/paginationConfig';
+import { jobTypeList } from '../../asset/jobTypeList';
+import { distanceList } from '../../asset/distanceList';
 
 import '../../styles/jobs.css';
 
@@ -142,42 +145,19 @@ export default class Jobs extends Component {
 
                 <section id="filter-part">
                     <div className="container">
-                        <div className="filters">
-                            {/* <div className="dropdown">
-                                <button className="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">All
-                                    <span className="caret"></span></button>
-                                <ul className="dropdown-menu">
-                                    <li><a href="#">category</a></li>
-                                    <li><a href="#">category</a></li>
-                                    <li><a href="#">category</a></li>
-                                </ul>
-                            </div>
-                            <div className="dropdown">
-                                <button className="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Industry
-                                    <span className="caret"></span></button>
-                                <ul className="dropdown-menu">
-                                    <li><a href="#">category</a></li>
-                                    <li><a href="#">category</a></li>
-                                    <li><a href="#">category</a></li>
-                                </ul>
-                            </div>
-                            <div className="dropdown">
-                                <button className="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Advanced
-                                    <span className="caret"></span></button>
-                                <ul className="dropdown-menu">
-                                    <li><a href="#">category</a></li>
-                                    <li><a href="#">category</a></li>
-                                    <li><a href="#">category</a></li>
-                                </ul>
-                            </div> */}
-                            {/* <input className="form-control" id="myInput" type="text" placeholder="Search.."/> */}
+                        <div >                       
                             <Search
                                 fullData={projectData}
                                 dataFilterableField={this.lessField}
                                 filterDataHandler={this.filterDataHandler}
                                 placeholder={"search job title, job types, industry, salary"}
+                                showGroupFilter={true}
+                                groupFilterField={[{'type': 'number', 'field': 'salary', 'header': 'Salary'}, 
+                                                {'type': 'enumerate', 'field': 'job_type', 'header': 'Job Type', 'options': jobTypeList}, 
+                                                {'type': 'enumerate', 'field': 'distance', 'header': 'Location', 'options': distanceList}]}
+                                intersectionByKey={"project_id"}
                             />
-                        </div>
+                        </div> 
                     </div>
                 </section>
 

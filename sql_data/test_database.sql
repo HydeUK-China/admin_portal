@@ -35,6 +35,7 @@ CREATE TABLE project_info (
     required_expertise varchar(3000),
     employer varchar(300),
     location varchar(300),
+    distance varchar(30),
     salary varchar(3000),
     currency varchar(10),
     primary key (project_id)
