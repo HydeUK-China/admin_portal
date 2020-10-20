@@ -107,12 +107,6 @@ export default class FilterGroup extends Component {
                                 }
                             })
                         }
-
-                        {/* <div className="col-md-2 col-sm-12">
-                            <div className="form-group">
-                                <button type="submit" className="apply-btn create_btn"> Search </button>
-                            </div>
-                        </div> */}
                     </div>
 
                 </div>

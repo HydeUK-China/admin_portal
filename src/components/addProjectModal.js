@@ -3,6 +3,7 @@ import { Button, Modal } from 'react-bootstrap';
 import _ from 'lodash';
 import { currencyList } from '../asset/currencyList';
 import { jobTypeList } from '../asset/jobTypeList';
+import { distanceList } from '../asset/distanceList';
 import { placeholder } from '../asset/placeholder';
 import { projectDataLessField, projectDataMoreField } from '../asset/dataFieldHeader';
 
@@ -117,6 +118,13 @@ export default class AddExpertModal extends Component {
                             <label>Location</label>
                             <input type="text" className="form-control" placeholder={placeholder.location} required
                                 ref={this.location} />
+                            <label>Distance</label>
+                            <select className="form-control" defaultValue='remote' required
+                                ref={this.distance}>
+                                {_.map(distanceList, (item, index) => {
+                                    return <option key={`distance-${index}`} value={item}>{item}</option>
+                                })}
+                            </select>
                         </div>
 
                         <div className='columns-add'>

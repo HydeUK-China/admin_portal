@@ -5,6 +5,7 @@ import { isValidDate } from '../utils/utils';
 import { currencyList } from '../asset/currencyList';
 import { countryList } from '../asset/countryList';
 import { jobTypeList } from '../asset/jobTypeList';
+import { distanceList } from '../asset/distanceList';
 import { placeholder } from '../asset/placeholder';
 import jsPDF from 'jspdf';
 
@@ -216,6 +217,24 @@ export default class InfoEditModal extends Component {
                                                 </select>
                                             </div>
                                         )
+                                    } else if (key === 'distance') {
+                                        // required select
+                                        return (
+                                            <div key={`modal-${key}`} className='columns-merge'>
+                                                <h2>{this.fieldTitle[key]}</h2>
+                                                <select className="form-control" required
+                                                    defaultValue={value}
+                                                    onChange={(e) => this.handleTextChange(e, key)}>
+                                                    {_.map(distanceList, (_item, _index) => {
+                                                        if (_item === "") {
+                                                            return <option key={`nationality-${_index}`} value={_item}>Please select</option>
+                                                        } else {
+                                                            return <option key={`nationality-${_index}`} value={_item}>{_item}</option>
+                                                        }
+                                                    })}
+                                                </select>
+                                            </div>
+                                        )
                                     } else if (key === 'start_date' || key === 'close_date') {
                                         // required date
                                         return (
@@ -226,7 +245,7 @@ export default class InfoEditModal extends Component {
                                                     onChange={(e) => this.handleTextChange(e, key)} />
                                             </div>
                                         )
-                                    } else if (key === 'job_title' || key === 'employer' || key === 'area' || key === 'salary' || key === 'title' ||
+                                    } else if (key === 'job_title' || key === 'location' || key === 'employer' || key === 'area' || key === 'salary' || key === 'title' ||
                                         key === 'first_name' || key === 'last_name' || key === 'category' || key === 'email' || key === 'expertise') {
                                         // required input
                                         return (

@@ -3,7 +3,6 @@ import { NavLink } from 'react-router-dom';
 import _ from 'lodash';
 import { fetchReq, getRole } from '../../utils/utils';
 import Search from '../../components/search';
-import FilterGroup from '../../components/filterGroup';
 import Footer from '../../components/Footer';
 import JobTitleCard from '../../components/jobTitleCard';
 import Pagination from '../../components/pagination';
