@@ -1,3 +1,35 @@
+
+.section-header h1 {
+  font-size: 32px;
+  color: #111;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: 700;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+.section-header h1::before {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 120px;
+  height: 1px;
+  background: #ddd;
+  bottom: 1px;
+  left: calc(50% - 60px);
+}
+
+.section-header h1::after {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 40px;
+  height: 3px;
+  background: rgb(0, 33, 109);
+  bottom: 0;
+  left: calc(50% - 20px);
+}
 .loader-pos{
   position: relative;
   left: 45%;
@@ -7,7 +39,7 @@
 .loader {
   border: 10px solid #f3f3f3;
   border-radius: 50%;
-  border-top: 10px solid #3498db;
+  border-top: 10px solid #000;
   width: 100px;
   height: 100px;
   -webkit-animation: spin 0.7s linear infinite; /* Safari */
@@ -30,22 +62,6 @@
     overflow: hidden;
     margin-bottom: 20px;
   }
-  
-  .side-image {
-    background-image: url("../img/photography-of-woman.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    opacity: 0.5;
-    background-position: top;
-    width: auto;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    height: 100%;
-    overflow: hidden;
-    z-index: -1;
-  }
   .page-title_content {
     position: absolute;
     top: 35%;
@@ -53,6 +69,9 @@
     width: 20%;
     min-width: 440px;
     /* padding-left: 9%; */
+  }
+  .bg-theme{
+    background-color: #00216d;
   }
   .page-title_content h1 {
     font-size: 6rem;
@@ -66,9 +85,7 @@
     line-height: 1.4;
     color: #000;
   }
-  .margin-top {
-    margin-top: 2rem;
-  }
+  
   .contactAbout-shape {
     position: absolute;
     right: 0;
@@ -92,6 +109,7 @@
     background: rgb(0,33,109);
     color: #fff;
   }
+  
   .contact-info {
     position: relative;
     height: auto;
@@ -126,8 +144,6 @@
     }
   }
   @media only screen and (max-width: 600px) {
-  .side-image {
-    background-image:none ;
-  }
+  
 }
   

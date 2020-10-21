@@ -10,6 +10,7 @@ import { sliceData } from '../../asset/paginationConfig';
 import { jobTypeList } from '../../asset/jobTypeList';
 import { distanceList } from '../../asset/distanceList';
 
+import TopNav from '../../components/TopNav'
 import '../../styles/jobs.css';
 
 export default class Jobs extends Component {
@@ -106,38 +107,10 @@ export default class Jobs extends Component {
 
         return (
             <div>
-                <section id="top" className="category-hero">
-                    <header id="header">
-                        <div className="brand-container">
-                            <a className="brand" href="/">
-                            HI Talents
-                        
-                            </a>
-                        </div>
-                        <nav className="main-nav">
-                            <NavLink className="nav-item" to="/home" style={{color: 'white'}}>Home</NavLink>
-                            <NavLink className="nav-item" to="/jobs" style={{color: 'white'}}>Jobs</NavLink>
-                            <NavLink className="nav-item" to="/aboutus" style={{color: 'white'}}>About</NavLink>
-                            <NavLink className="nav-item" to="/contactus" style={{color: 'white'}}>Contact</NavLink>
-                            <div className="sign-in">
-                            {role === '__admin__' ?
-                                <NavLink className="nav-item user" to="/mgt/admin_dashboard">
-                                    <div className="fa fa-user-o"></div>
-                                </NavLink>
-                                : 
-                                (role === 'expert' ? 
-                                    <NavLink className="nav-item user" to="/mgt/expert_profile">
-                                        <div className="fa fa-user-o"></div>
-                                    </NavLink>
-                                    : <NavLink className="nav-item user" to="/login">
-                                        <div className="fa fa-user-o"></div>
-                                      </NavLink>)
-                            }                          
-                            </div>
-                        </nav>       
-                    </header>
-            
-                    <div className="hero-category_title">
+                <TopNav></TopNav>
+                <section id="top" className="hero-category">
+
+                    <div className=" Container hero-category_title">
                         <h1>Opportunity Land <span style={{display: 'block', color: 'white'}}>Welcome</span></h1>
                     </div>
                 </section>

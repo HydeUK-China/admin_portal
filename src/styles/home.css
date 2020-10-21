@@ -111,6 +111,7 @@
     display: grid;
     grid-template-columns: 100%;
     grid-template-rows: auto;
+    background-color: rgba(255, 255, 255, 0.90);
   }
   
   
@@ -130,6 +131,7 @@
     align-items: center;
     position: relative;
     padding: 0px 0px 0px 40px;
+    background-color: #ffffffeb;
   }
   
   #featured .header-featured {
@@ -174,6 +176,7 @@
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     grid-column-gap: 0rem;
     grid-row-gap: 2rem;
+    margin-top: 20px;
   }
   
   .job-card {
@@ -232,15 +235,7 @@
     align-items: center;
     
   }
-  /* #home-about::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    z-index: 9;
-  } */
+
   
   #home-about .about-sec {
     position: relative;
@@ -263,13 +258,13 @@
   
   .para_info {
     text-align: justify;
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     font-weight: 400;
     line-height: 1.4;
   }
   
   .para {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     font-weight: 400;
     line-height: 1.4;
   }
@@ -279,6 +274,7 @@
   ----------------------------- */
   #industry{
     padding:40px 0px ;
+    background-color: #ffffffeb;
   }
   .industry-grid {
     display: grid;
@@ -308,16 +304,18 @@
   }
   
   .industry-background {
-    height: 130px;
+    height: 120px;
+    padding: 5px 0px;
     margin-bottom: 5px;
   }
   
   .industry-label {
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: bold;
     padding-bottom: 12px;
     text-decoration: none;
     text-align: center;
+    text-transform: uppercase;
   } 
 
   @media (min-width: 768px) {

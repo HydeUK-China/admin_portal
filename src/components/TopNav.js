@@ -22,20 +22,20 @@ export default class topNav extends Component {
     console.log("current role "+ role)
     return (
       <div>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light sticky-top navbar-transperent">
-        <NavLink className="navbar-brand" to="/home">HI Talents</NavLink>
+      <nav className="navbar  navbar-expand-lg navbar-light bg-light sticky-top navbar-transperant px-3">
+        <NavLink className="navbar-brand" to="/home"><h2>HI Talents</h2></NavLink>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarToggler">
           <ul className="navbar-nav ml-auto mt-2 mt-lg-0">
-            <li className="nav-item active">
-              <NavLink className="nav-link" to="/home">Home <span className="sr-only">(current)</span></NavLink>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/home">Home {/* <span className="sr-only">(current)</span> */}</NavLink>
             </li>
             <li className="nav-item">
               <NavLink className="nav-link" to="/aboutus">About Us</NavLink>
             </li>
-            <li className="nav-item">
+            <li className="nav-item"> 
               <NavLink className="nav-link" to="/jobs">Jobs</NavLink>
             </li>
             <li className="nav-item">
@@ -57,6 +57,7 @@ export default class topNav extends Component {
                                 }
                             </li>
           </ul>
+          
         </div>
       </nav>
     </div>

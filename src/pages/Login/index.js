@@ -35,7 +35,7 @@ class Login extends Component {
                 </Link>
               </div>
               <div className="registerLogin-title_content">
-                <h2>Log in</h2>
+                <h2 className="section-header">Log in</h2>
                 <h4>Don't have an account?<Link to="/signup">Sign up</Link></h4>
               </div>
               <LoginForm
