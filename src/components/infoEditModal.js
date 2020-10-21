@@ -80,52 +80,51 @@ export default class InfoEditModal extends Component {
     }
 
     generatePDF = () => {
+        const { fileds } = this.props;
+        const { data } = this.state;
 
-        // const { fileds } = this.props;
-        // const { data } = this.state;
+        const pdf = new jsPDF('p', 'in', 'letter');
+        const pageHeight = pdf.internal.pageSize.height;
+        const margin = 0.5;
+        const size = 12;
+        let curLines = [];
+        let lastLine = pdf.splitTextToSize('', 7.5);
+        let longStr = ''
+        let verticalOffset = margin;
 
-        // const contents = [];
-        // const pdf = new jsPDF('p', 'pt');
-        // const fieldTitle = this.fieldTitle;
+        let contents = [];
+        const fieldTitle = this.fieldTitle;
 
-        // _.forEach(fileds, (key) => {
-        //     contents.push(fieldTitle[key] + ': ' + data[key] || '')
-        // })
+        _.forEach(fileds, (key, index) => {
+            contents.push(fieldTitle[key] + ': \n' + data[key] || '')
 
-        // const { fileds } = this.props;
-        // const { data }  = this.state;
+            longStr = contents.join('\n\n')
 
-        // const contents = [];
-        // const labals = [];
-        // const modContents = [];
-        // // const pdf = new jsPDF('p', 'pt','letter');
-        // const pdf = new jsPDF('../src/template.pdf')
-        // const fieldTitle = this.fieldTitle;
+            curLines = pdf.splitTextToSize(longStr, 7.5)
+            verticalOffset = verticalOffset + (curLines.length + 0.5) * size / 72
 
-        // const content = pdf.output();
-        // console.log(content)
+
+            if (verticalOffset > pageHeight) {          
+                if (index === fileds.length - 1) {
+                    pdf.text(0.5, margin + size / 72, curLines)
+                } else {
+                    pdf.text(0.5, margin + size / 72, lastLine)
+
+                    pdf.addPage();
+                    verticalOffset = margin // Restart height position
+                    contents = [fieldTitle[key] + ': \n' + data[key] || '']
+                }
+            } else {          
+                if (index === fileds.length - 1) {
+                    pdf.text(0.5, margin + size / 72, curLines)
+                } else {
+                    lastLine = curLines
+                }
+            }
+        })
         
-        // _.forEach(fileds, (key) => {
-        //     contents.push(data[key]);
-        //     labals.push(fieldTitle[key]);    
-        //     // modContents.push('<b>' + fieldTitle[key] + '</b>' + '<p>' + data[key] + '</p>');  
-        //     modContents.push(fieldTitle[key] + ": " + data[key] + '\n')
-        // })
-        // console.log(modContents)
-        // pdf.addFont('ArialMS', 'Arial', 'normal');
-        // pdf.setFont('Arial'); 
-        // pdf.setFontSize(12);
-        // pdf.text(25, 25, labals);
-        // pdf.setFontSize(20);
-        // pdf.text(20, 35, modContents);
-        // const fileName = data[fileds[2]] + ' ' + data[fileds[3]] + '.pdf'
-        // pdf.autoPrint();
-        // var oHiddFrame = document.createElement("iframe");
-        // oHiddFrame.style.position = "fixed";
-        // oHiddFrame.style.visibility = "hidden";
-        // oHiddFrame.src = pdf.output('bloburl');
-        // document.body.appendChild(oHiddFrame);
-        // pdf.save(fileName)
+        const fileName = data[fileds[2]] + ' ' + data[fileds[3]] + '.pdf'
+        pdf.save(fileName)
     }
 
     render() {
@@ -283,9 +282,10 @@ export default class InfoEditModal extends Component {
                                 })
                                 :
                                 _.map(_.pick(data, fileds), (value, key) => {
-                                    if (key === 'employer' && data.show_employer_name === 'N') {
-                                        return null;
-                                    } else if (key === 'show_employer_name' || key === 'application_complete' || key === 'featured') {
+                                    // if (key === 'employer' && data.show_employer_name === 'N') {
+                                    //     return null;
+                                    // } else 
+                                    if (key === 'show_employer_name' || key === 'application_complete' || key === 'featured') {
                                         return (
                                             <div key={`modal-${key}`} className='columns-merge'>
                                                 <h2>{this.fieldTitle[key]}</h2>

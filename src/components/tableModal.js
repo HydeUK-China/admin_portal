@@ -36,17 +36,48 @@ export default class TableModal extends Component {
         const { tableData } = this.state;
         const { downloadField, downloadHeader } = this.props;
 
-        // const contents = [];
-        // const pdf = new jsPDF('p', 'pt');
-        // const downloadFieldTitle = _.zipObject(downloadField, downloadHeader);
+        const pdf = new jsPDF('p', 'in', 'letter');
+        const pageHeight = pdf.internal.pageSize.height;
+        const margin = 0.5;
+        const size = 12;
+        let curLines = [];
+        let lastLine = pdf.splitTextToSize('', 7.5);
+        let longStr = ''
+        let verticalOffset = margin;
 
-        // _.forEach(downloadField, (key) => {
-        //     contents.push(downloadFieldTitle[key] + ': ' + tableData[index][key] || '')
-        // })
+        let contents = [];
+        const downloadFieldTitle = _.zipObject(downloadField, downloadHeader);
+        
+        _.forEach(downloadField, (key, i) => {
+            contents.push(downloadFieldTitle[key] + ': \n' + tableData[index][key] || '')
 
-        // pdf.text(contents, 40, 40)
-        // const fileName = tableData[index][downloadField[2]] + tableData[index][downloadField[3]] + '.pdf'
-        // pdf.save(fileName)
+            longStr = contents.join('\n\n')
+
+            curLines = pdf.splitTextToSize(longStr, 7.5)
+            verticalOffset = verticalOffset + (curLines.length + 0.5) * size / 72
+
+
+            if (verticalOffset > pageHeight) {
+                if (i === downloadField.length - 1) {
+                    pdf.text(0.5, margin + size / 72, curLines)
+                } else {
+                    pdf.text(0.5, margin + size / 72, lastLine)
+
+                    pdf.addPage();
+                    verticalOffset = margin // Restart height position
+                    contents = [downloadFieldTitle[key] + ': \n' + tableData[index][key] || '']
+                }
+            } else {
+                if (i === downloadField.length - 1) {
+                    pdf.text(0.5, margin + size / 72, curLines)
+                } else {
+                    lastLine = curLines
+                }
+            }
+        })
+
+        const fileName = tableData[index][downloadField[2]] + tableData[index][downloadField[3]] + '.pdf'
+        pdf.save(fileName)
     }
 
     render() {
