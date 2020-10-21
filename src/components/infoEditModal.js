@@ -7,7 +7,7 @@ import { countryList } from '../asset/countryList';
 import { jobTypeList } from '../asset/jobTypeList';
 import { distanceList } from '../asset/distanceList';
 import { placeholder } from '../asset/placeholder';
-
+import jsPDF from 'jspdf';
 
 export default class InfoEditModal extends Component {
     constructor(props) {
@@ -311,7 +311,8 @@ export default class InfoEditModal extends Component {
                                     : <Button onClick={this.clickEdit}> Edit </Button>)
                                 : null
                         }
-                        <Button onClick={window.print}>Download</Button>
+                        <Button onClick={this.generatePDF}>Download</Button> 
+                        {/* window.print */}
                     </form>
                 </Modal.Body>
             </Modal>

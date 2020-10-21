@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
 import { Button, Modal } from 'react-bootstrap';
-// import jsPDF from 'jspdf';
+import jsPDF from 'jspdf';
 
 export default class TableModal extends Component {
     constructor(props) {
