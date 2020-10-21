@@ -51,7 +51,8 @@ export default class ExpertRightSidebar extends Component {
                 <div className="right-sidebar-wrapper">
                     <div className='upper_profile'>
                         <div className="upper_profile_left">
-                            {
+                            <div className="avatar"> <i className="fa fa-user-circle"></i></div>
+                            {/* {
                                 showInput ?
                                     <input type='file' className='center' />
                                     // <div className='center'>
@@ -59,7 +60,7 @@ export default class ExpertRightSidebar extends Component {
                                     // </div>
                                     : <div className='center'> </div>
                             }
-                            {showInput ? <label className='red'>* Notice: Images size no more than 2MB</label> : null}
+                            {showInput ? <label className='red'>* Notice: Images size no more than 2MB</label> : null} */}
 
                             {showInput ?
                                 <button className='btn' onClick={this.clickConfirm}>Save</button>
@@ -82,6 +83,7 @@ export default class ExpertRightSidebar extends Component {
                     <div className="mt-3">
                         <i>Nationality: </i>
                         {showInput ? <select name="nationality" className="form-control_profileEdit" required
+                            defaultValue={nationality}
                             onChange={(e) => handleInputChange(e, 'nationality')}>
                             <option value=''>Please Select</option>
                             {_.map(countryList, (item, index) => {

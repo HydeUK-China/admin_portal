@@ -133,8 +133,8 @@ export default class AddExpertModal extends Component {
                             <label>Phone number</label>
                             <input type="tel" className="form-control" placeholder={placeholder.phone_no} 
                                     ref={this.phone_no}/>
-                            <label>Upload CV</label>
-                            <UploadFile />
+                            {/* <label>Upload CV</label>
+                            <UploadFile /> */}
 
                         </div>
 

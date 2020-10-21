@@ -71,7 +71,6 @@ export default class FilterGroup extends Component {
             <form className="filter-form">
                 <div className="controls">
                     <div className="row">
-
                         {
                             _.map(groupFilterField, (item, index) => {
                                 if (item.type === 'number') {
