@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 import InputRange from 'react-input-range';
 
-import 'react-input-range/lib/css/index.css'
+import 'react-input-range/lib/css/index.css';
+import '../styles/inputrange.css';
 
 export default class FilterGroup extends Component {
     constructor(props) {
@@ -21,7 +22,7 @@ export default class FilterGroup extends Component {
         const enumObj = _.filter(groupFilterField, (o) => { return o.type === 'enumerate'});
 
         _.forEach(numObj, (o) => {
-            obj[o.field] = {min: 0, max: 100000}
+            obj[o.field] = {min: 0, max: 500000}
         });
 
         _.forEach(enumObj, (o) => {
@@ -80,9 +81,9 @@ export default class FilterGroup extends Component {
                                                 <label>{item.header}</label>
                                                 <InputRange
                                                     draggableTrack
-                                                    maxValue={100000}
+                                                    maxValue={500000}
                                                     minValue={0}
-                                                    step={100}
+                                                    step={500}
                                                     onChange={(value) => this.setState({ [item.field]: value })}
                                                     onChangeComplete={value => this.handleFilterChange(value, item.field)}
                                                     value={this.state[item.field]} />

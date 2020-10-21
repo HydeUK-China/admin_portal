@@ -1,4 +1,4 @@
 export const distanceList = [
-    'remote', 
-    'not remote'
+    'remote available', 
+    'remote unavailable'
 ]

@@ -1,0 +1,9 @@
+.input-range__slider{
+    height: 0.5rem;
+    width: 0.5rem;
+    margin-top: -0.35rem;
+    margin-left: -0.4rem;
+}
+.input-range__track{
+    height: 0.2rem;
+}
