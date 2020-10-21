@@ -32,11 +32,11 @@ export default class topNav extends Component {
             <li className="nav-item">
               <NavLink className="nav-link" to="/home">Home {/* <span className="sr-only">(current)</span> */}</NavLink>
             </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/aboutus">About Us</NavLink>
-            </li>
             <li className="nav-item"> 
               <NavLink className="nav-link" to="/jobs">Jobs</NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/aboutus">About Us</NavLink>
             </li>
             <li className="nav-item">
               <NavLink className="nav-link" to="/contactus">Contact Us</NavLink>

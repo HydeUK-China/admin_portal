@@ -27,7 +27,7 @@ export default class Jobs extends Component {
         }
 
         this.lessField = ['project_id', 'job_title', 'job_type', 'job_description', 'professional_field', 'organization_info', 'essential_skills',
-                         'start_date', 'employer', 'location', 'salary', 'currency', 'close_date', 'required_expertise', 'responsibility'];
+            'start_date', 'employer', 'location', 'salary', 'currency', 'close_date', 'required_expertise', 'responsibility'];
         this.itemsCountPerPage = 20;
 
         this.filterDataHandler = this.filterDataHandler.bind(this);
@@ -81,21 +81,21 @@ export default class Jobs extends Component {
         });
     };
 
-    getProjectList(){
+    getProjectList() {
         const { displayData } = this.state;
         let rows = []
         let jobcards = []
 
-        _.forEach(displayData, (item, index) => {    
+        _.forEach(displayData, (item, index) => {
             jobcards.push(<JobTitleCard key={`jobtitlecard-${index}`}
-                                        data={item} 
-                                        link={`/applyjob/${item.project_id}`}/>);
+                data={item}
+                link={`/applyjob/${item.project_id}`} />);
 
-            if ((index % 5 === 4) || (displayData.length === index + 1)){
-                rows.push(<div key={`jobtitlecardrows-${index}`} className="category-jobs_grid" style={{marginBottom: 30}}>
-                        {[...jobcards]}
-                    </div>)
-                jobcards = []          
+            if ((index % 5 === 4) || (displayData.length === index + 1)) {
+                rows.push(<div key={`jobtitlecardrows-${index}`} className="category-jobs_grid" style={{ marginBottom: 30 }}>
+                    {[...jobcards]}
+                </div>)
+                jobcards = []
             }
         });
 
@@ -107,41 +107,87 @@ export default class Jobs extends Component {
 
         return (
             <div>
-                <TopNav></TopNav>
-                <section id="top" className="hero-category">
-
-                    <div className=" Container hero-category_title">
-                        <h1>Opportunity Land <span style={{display: 'block', color: 'white'}}>Welcome</span></h1>
+                {/* <section id="top" className="hero-category">
+                    <div className="hero-category">
+                        <div className=" Container text-left px-5 mx-0 hero-category_title">
+                            <h1>Opportunity Land <br/>Welcome</h1>
+                        </div>
                     </div>
-                </section>
+                </section> */}
+                <section className="hero-category">
+                <header>
+          <nav className="navbar navbar-expand-lg navbar-dark bg-transperent sticky-top px-3 text-dark">
+        <NavLink className="navbar-brand text-dark" to="/home"><h2>HI Talents</h2></NavLink>
+        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse" id="navbarToggler">
+          <ul className="navbar-nav ml-auto mt-2 mt-lg-0 ">
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/home">Home {/* <span className="sr-only">(current)</span> */}</NavLink>
+            </li>
+            <li className="nav-item"> 
+              <NavLink className="nav-link" to="/jobs">Jobs</NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/aboutus">About Us</NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/contactus">Contact Us</NavLink>
+            </li>
+            <li className="sign-in">
+                                {role === '__admin__' ?
+                                    <NavLink className="nav-item user" to="/mgt/admin_dashboard">
+                                        <div className="text-light fa fa-user-o"></div>
+                                    </NavLink>
+                                    :
+                                    (role === 'expert' ?
+                                        <NavLink className="nav-item user" to="/mgt/expert_profile">
+                                            <div className="text-light fa fa-user-o"></div>
+                                        </NavLink>
+                                        : <NavLink className="nav-item user" to="/login">
+                                            <div className="text-light fa fa-user-o"></div>
+                                        </NavLink>)
+                                }
+                            </li>
+          </ul>
+          
+        </div>
+      </nav>
+          </header>
+                <div className="p-2 hero-category_title rounded">
+                    
+                    <div className="row">
 
+                        <div className="col-md-6 px-0">
+                            <h1 className="display-4">Browse jobs by location and category</h1>
+                            {/* <p >Job Alerts service allows you to stay up-to-date with the latest jobs matching your criteria. </p> */}
+                            <p>Start Applying to land your dearm job.</p>
+                        </div>
+                        <div className="col-md-4"></div>
+                    </div>
+                </div>
+                </section>
                 <section id="filter-part">
-                    <div className="container">
-                        <div >                       
+                    <div className="container  px-3 py-5">
+                        <div >
                             <Search
                                 fullData={projectData}
                                 dataFilterableField={this.lessField}
                                 filterDataHandler={this.filterDataHandler}
                                 placeholder={"search job title, job types, industry, salary"}
                                 showGroupFilter={true}
-                                groupFilterField={[{'type': 'number', 'field': 'salary', 'header': 'Salary'}, 
-                                                {'type': 'enumerate', 'field': 'job_type', 'header': 'Job Type', 'options': jobTypeList}, 
-                                                {'type': 'enumerate', 'field': 'distance', 'header': 'Location', 'options': distanceList}]}
+                                groupFilterField={[{ 'type': 'number', 'field': 'salary', 'header': 'Salary' },
+                                { 'type': 'enumerate', 'field': 'job_type', 'header': 'Job Type', 'options': jobTypeList },
+                                { 'type': 'enumerate', 'field': 'distance', 'header': 'Location', 'options': distanceList }]}
                                 intersectionByKey={"project_id"}
                             />
-                        </div> 
+                        </div>
                     </div>
                 </section>
 
-                <section className="all-jobs">
-                    <span className="category-shape"></span>
-                    <div className="header-grid">
-                        <h1>
-                            <span style={{color: 'white'}}>Jo</span>bs <span style={{display: 'block'}}>
-                            <span style={{color: 'white'}}>Op</span>portunities</span>
-                        </h1>
-                    </div>
-                    <div className="container-fluid"> 
+                <section className=" all-jobs container-fluid">
+                    <div className="grid-container">
                         {this.getProjectList()}
 
                         <Pagination
@@ -153,7 +199,7 @@ export default class Jobs extends Component {
                     </div>
                 </section>
 
-                <Footer/>
+                <Footer />
             </div>
         )
     }

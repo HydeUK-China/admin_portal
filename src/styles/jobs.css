@@ -3,32 +3,38 @@
  ----------------------------- */
  .hero-category {
     position: relative;
-    background-image: url('../img/banner.jpg');
+    background-image: url('../img/jobs.jpg');
     background-repeat: no-repeat;
-    background-size: cover;
-    opacity: 1.5;
-    background-position: bottom;
+    background-size: auto;
     width: 100%;
-    height: 40vh;
+    height: auto;
     overflow: hidden;
+    background-position: bottom;
+    
     
   }
   .hero-category_title {
     display: flex;
-    justify-content: center;
+    justify-content: right;
     align-items: center;
+  }
+  .hero-category_title p {
+    font-size: 2rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: white;
   }
   .hero-category_title h1 {
     font-size: 4rem;
-    font-weight: 700;
+    font-weight: 500;
     text-transform: uppercase;
-    color: black;
+    color: white;
   }
   #filter-part {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin-top: 5rem;
+    margin-top: 1rem;
   }
   .dropdown {
     display: inline-block;
@@ -72,7 +78,6 @@
    ----------------------------- */
   .all-jobs {
     display: grid;
-    /* margin: 5rem 0; */
     position: relative;
   }
   .all-jobs a {
@@ -111,12 +116,12 @@
     grid-gap: 2rem;
     margin: 3rem 7rem;
   }
-  .filters {
+  /* .filters {
     /* display: flex; */
     /* justify-content: center;
     align-items: center; */
-    /* padding: 10px 15px; */
-  }
+    /* padding: 10px 15px;} */
+  
   .filter-input{
     /* flex-basis: 100%; */
     max-width: 70%;
@@ -134,8 +139,7 @@
   }
 
   .job-card {
-    max-height: 500px;
+    
     overflow: hidden;
-    margin-right: 20px;
   }
   

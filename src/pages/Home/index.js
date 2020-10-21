@@ -62,10 +62,49 @@ export default class Home extends Component {
 
         return (
             <div>
-                <TopNav></TopNav>
-                <section id="top">
-                    <div className="hero-content">
-                    <div className=" jumbotron">
+                <section id="top" className="hero-content">
+                <header>
+          <nav className="navbar navbar-expand-lg navbar-dark bg-transperent sticky-top px-3 text-dark">
+        <NavLink className="navbar-brand text-light" to="/home"><h2>HI Talents</h2></NavLink>
+        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse" id="navbarToggler">
+          <ul className="navbar-nav ml-auto mt-2 mt-lg-0 ">
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/home">Home {/* <span className="sr-only">(current)</span> */}</NavLink>
+            </li>
+            <li className="nav-item"> 
+              <NavLink className="nav-link" to="/jobs">Jobs</NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/aboutus">About Us</NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/contactus">Contact Us</NavLink>
+            </li>
+            <li className="sign-in">
+                                {role === '__admin__' ?
+                                    <NavLink className="nav-item user" to="/mgt/admin_dashboard">
+                                        <div className="text-light fa fa-user-o"></div>
+                                    </NavLink>
+                                    :
+                                    (role === 'expert' ?
+                                        <NavLink className="nav-item user" to="/mgt/expert_profile">
+                                            <div className="text-light fa fa-user-o"></div>
+                                        </NavLink>
+                                        : <NavLink className="nav-item user" to="/login">
+                                            <div className="text-light fa fa-user-o"></div>
+                                        </NavLink>)
+                                }
+                            </li>
+          </ul>
+          
+        </div>
+      </nav>
+          </header>
+                    <div >
+                    <div className="mb-0">
                         <div className="container">
                             <h1>Unlock Potential </h1>
                             <h5>with the Free Flow of Knowledge Sharing</h5>

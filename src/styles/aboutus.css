@@ -1,3 +1,40 @@
+.side-image {
+  background-image: url("../img/photography-of-woman.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 1.8;
+  background-position: top;
+  width: 30%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  height: 80vh;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.story-about-us {
+  position: relative;
+  bottom: 37%;
+  left: 49%;
+}
+.our-story-title {
+  font-size: 3rem;
+  font-weight: 500;
+  color: black;
+}
+.our-story-para {
+  font-size: 1.5rem;
+  font-weight: normal;
+  color: black;
+  width: 40%;
+  text-align: justify;
+}
+
+
+
+
 .section-header h1 {
   font-size: 32px;
   color: #111;
@@ -7,9 +44,7 @@
   position: relative;
   padding-bottom: 15px;
 }
-.bg-theme{
-  background-color: #00216d;
-}
+
 
 .shadow-sm{
   box-shadow: 0 0.125rem 0.25rem #000 !important;
@@ -143,4 +178,9 @@
     color: #000;
   }
 
+ /*  @media (min-width: 768px){
+    .side-image{
+      width: 100%;
+    }
+  } */
 

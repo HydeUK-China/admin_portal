@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import ForgotPasswordForm from '../../components/forgotPasswordForm';
 import Footer from '../../components/Footer';
+import '../../styles/login.css'
 
 export default class ForgotPassword extends Component {
     constructor(props) {
@@ -24,8 +25,8 @@ export default class ForgotPassword extends Component {
                                     HI TALENTS PORTAL
                                 </Link>
                             </div>
-                            <div className="registerLogin-title_content">
-                                <h2>Forgot Password</h2>
+                            <div className="registerLogin-title_content ">
+                            <h2 className="section-header">Forgot Password</h2>
                                 <h4><Link to="/signup">Sign up</Link> / <Link to="/login">Login</Link> </h4>
                             </div>
                             <ForgotPasswordForm />

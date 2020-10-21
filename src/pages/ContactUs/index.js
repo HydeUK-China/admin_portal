@@ -5,7 +5,7 @@ import Footer from '../../components/Footer';
 import '../../styles/contactus.css';
 import _ from 'lodash';
 import TopNav from '../../components/TopNav';
-import womenimg from '../../img/photography-of-woman.jpg'
+import womenimg from '../../img/photography-of-woman-cropped.jpg'
 
 export default class ContactUs extends Component {
   constructor(props) {
@@ -77,8 +77,47 @@ export default class ContactUs extends Component {
     const { fname, lname, email, subject, message, sentMessage } = this.state;
     return (
       <div>
-        <TopNav></TopNav>
-                    <div className="container mb-0">
+         <header>
+          <nav className="navbar navbar-expand-lg navbar-light bg-transperent sticky-top px-3 text-dark">
+        <NavLink className="navbar-brand text-dark" to="/home"><h2>HI Talents</h2></NavLink>
+        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse" id="navbarToggler">
+          <ul className="navbar-nav ml-auto mt-2 mt-lg-0 ">
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/home">Home {/* <span className="sr-only">(current)</span> */}</NavLink>
+            </li>
+            <li className="nav-item"> 
+              <NavLink className="nav-link" to="/jobs">Jobs</NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/aboutus">About Us</NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/contactus">Contact Us</NavLink>
+            </li>
+            <li className="sign-in">
+                                {role === '__admin__' ?
+                                    <NavLink className="nav-item user" to="/mgt/admin_dashboard">
+                                        <div className="fa fa-user-o"></div>
+                                    </NavLink>
+                                    :
+                                    (role === 'expert' ?
+                                        <NavLink className="nav-item user" to="/mgt/expert_profile">
+                                            <div className="fa fa-user-o"></div>
+                                        </NavLink>
+                                        : <NavLink className="nav-item user" to="/login">
+                                            <div className="fa fa-user-o"></div>
+                                        </NavLink>)
+                                }
+                            </li>
+          </ul>
+          
+        </div>
+      </nav>
+          </header>
+                    <div className="container mb-2">
                       <div className="row no-gutters">
                         
                         <div className="col-md-6 mt-2 pb-0 align-items-center">
@@ -115,7 +154,7 @@ export default class ContactUs extends Component {
 
                         <div className="col-md-6 pb-0">
                           
-                          <img src={womenimg} width="100%" height="auto" ></img>
+                          <img src={womenimg} width="100%" height="500px" ></img>
                             
                         
                         </div>
