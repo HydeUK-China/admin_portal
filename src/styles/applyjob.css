@@ -116,7 +116,7 @@
  ----------------------------- */
 #applyTo-job {
   position: relative;
-  margin: 7rem 0;
+  /* margin: 7rem 0; */
 }
 .joinUs-shape {
   position: absolute;

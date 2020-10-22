@@ -45,3 +45,8 @@ UPDATE user_credential SET account_password='123456' WHERE id=30;
 DELETE FROM user_credential  WHERE id IN (37);
 DELETE FROM expert_info  WHERE expert_id IN (182);
 DELETE FROM project_matching WHERE matching_id IN (83);
+
+SELECT expert_info.first_name, user_credential.id FROM user_credential
+JOIN  expert_info
+ON user_credential.foreign_user_id = expert_info.expert_id
+WHERE user_credential.account_name='expert_20@gmail.com';

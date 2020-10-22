@@ -1,6 +1,7 @@
 const crypto = require('crypto');
 const nodemailer = require('nodemailer');
 const { createTransportConfig } = require('./mailerConfig');
+const { forgotPasswordHTML } = require('./asset/emailTemplate');
 
 const transporter = nodemailer.createTransport(createTransportConfig);
 
@@ -8,8 +9,11 @@ function forgotPassword(req, res) {
     const email = req.body.email.trim().toLowerCase();
 
     if (email) {
-        const sql = `SELECT id FROM user_credential 
-                    WHERE account_name=?`;
+        const sql = `SELECT expert_info.first_name, user_credential.id 
+                    FROM user_credential
+                    JOIN expert_info
+                    ON user_credential.foreign_user_id = expert_info.expert_id
+                    WHERE user_credential.account_name=?`;
 
         res.app.get('connection').query(sql, [email], function (err, rows) {
             if (err) {
@@ -35,10 +39,7 @@ function forgotPassword(req, res) {
                                 from: 'contact@hyde-china.com',
                                 to: `${email}`,
                                 subject: 'Link To Reset Password',
-                                html: 'You are receiving this email because you (or someone else) have requested to reset the password for your account. <br/>'
-                                    + 'Please click on the following link to complete the process : <br/>'
-                                    + `${res.app.get('url')}/resetpassword/${token} <br/>`
-                                    + 'If you did not request this, please ignore this email and your password will remain unchanged.<br/>',
+                                html: forgotPasswordHTML(rows[0].first_name, `${res.app.get('url')}/resetpassword/${token}`)
                             };
                             
                             transporter.sendMail(mailOptions, (err, response) => {

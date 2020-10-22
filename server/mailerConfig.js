@@ -8,7 +8,7 @@ const createTransportConfig = {
 }
 
 const mailingUrl = {
-    prod: 'demo.aws.ec2',
+    prod: 'http://www.hydeinternational.co.uk',
     dev: 'http://localhost:5000'
 }
 

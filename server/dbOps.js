@@ -2,6 +2,7 @@ const nodemailer = require('nodemailer');
 const { createTransportConfig } = require('./mailerConfig');
 const fakeData = require('./fakeData');
 const jwtUtil = require('./jwtUtil');
+const { welcomeSignupHTML } = require('./asset/emailTemplate');
 
 const expertData = fakeData.expertData;
 const projectData = fakeData.projectData;
@@ -135,8 +136,7 @@ function signup(req, res) {
                                             from: 'contact@hyde-china.com',
                                             to: `${email}`,
                                             subject: 'Welcome to HI TALENTS!',
-                                            html: 'Thank you for registrating with us. <br/>'
-                                                + `You are now free to explore our website at ${res.app.get('url')}! <br/>`
+                                            html: welcomeSignupHTML(firstname)
                                         }
                                         transporter.sendMail(mailOptions, (err, response) => { });
 
@@ -364,30 +364,42 @@ function deleteExpert(req, res) {
     jwtUtil.verifyRoleFromToken(token)
         .then((role) => {
             if (role === 'admin') {
-                const sql = `DELETE FROM expert_info WHERE expert_id=?`;
+                const sql = `DELETE FROM user_credential WHERE foreign_user_id=? AND permission_role='expert'`;
 
                 res.app.get('connection').query(sql, [expertId], function (err, feedback) {
                     if (err) {
                         res.status(400).json({
                             success: false,
-                            msg: 'failed deleting from expert_info'
+                            msg: 'failed deleting from user_credential'
                         });
                     } else {
-                        const sql = `DELETE FROM project_matching WHERE expert_id=?`;
+                        const sql = `DELETE FROM expert_info WHERE expert_id=?`;
 
                         res.app.get('connection').query(sql, [expertId], function (err, feedback) {
                             if (err) {
                                 res.status(400).json({
                                     success: false,
-                                    msg: 'failed deleting from project_matching'
+                                    msg: 'failed deleting from expert_info'
                                 });
                             } else {
-                                res.status(200).json({
-                                    success: true,
-                                    data: feedback
-                                })
+                                const sql = `DELETE FROM project_matching WHERE expert_id=?`;
+
+                                res.app.get('connection').query(sql, [expertId], function (err, feedback) {
+                                    if (err) {
+                                        res.status(400).json({
+                                            success: false,
+                                            msg: 'failed deleting from project_matching'
+                                        });
+                                    } else {
+                                        res.status(200).json({
+                                            success: true,
+                                            data: feedback
+                                        })
+                                    }
+                                });
                             }
                         });
+
                     }
                 });
             } else {
