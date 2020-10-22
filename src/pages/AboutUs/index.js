@@ -4,7 +4,7 @@ import { getRole } from '../../utils/utils';
 import Footer from '../../components/Footer';
 import '../../styles/aboutus.css';
 import TopNav from '../../components/TopNav'
-import womenimg from "../../img/photography-of-woman.jpg"
+import womenimg from "../../img/photography-of-woman-cropped.jpg"
 
 export default class AboutUs extends Component {
   constructor(props) {
@@ -24,9 +24,7 @@ export default class AboutUs extends Component {
 
         
         <div className="container-fluid px-0">
-        <section id="about"> 
-        <div className="side-image ">
-                      </div>
+        <section id="about">          
           <header>
           <nav className="navbar navbar-expand-lg navbar-light bg-transperent sticky-top px-3 text-dark">
         <NavLink className="navbar-brand text-dark" to="/home"><h2>HI Talents</h2></NavLink>
@@ -62,14 +60,14 @@ export default class AboutUs extends Component {
                                         </NavLink>)
                                 }
                             </li>
-          </ul>
-          
+          </ul> 
         </div>
       </nav>
           </header>
-          <div className="row mx-0 mb-2">
+          
+          <div className="row mx-0 mb-2 flex-column-reverse flex-lg-row">
             <div className="col-md-4 px-0 pt-0  text-center overflow-hidden">
-              
+            <img src={womenimg} width="100%" height="100%" ></img>
             </div>
             <div className="col-md-8 px-0 pt-0 text-left text-dark overflow-hidden">
 
@@ -90,7 +88,8 @@ export default class AboutUs extends Component {
                         industry-leading organisations and research partners all around the world . HIT believes in the power of
                         connections and is dedicated to expanding and maintaining its network of members through providing them with
                         customised solutions. HIT strives to help facilitate its members’ goals and aspirations.
-                                  </h5>
+                        </h5>
+
                     </div>
 
                   </div>
@@ -146,7 +145,7 @@ export default class AboutUs extends Component {
                         The candidate will be able to directly participate in the entire negotiation process with the potential
                         partners/investors and decide which offer(s) to accept. The candidate will have the full power in
                         determining which of his/her project/idea will be cooperated with his/her future partners/investor and
-                        how。
+                        how.
                                 </p>
                     </div>
                   </div>

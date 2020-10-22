@@ -1,4 +1,6 @@
-
+.contact{
+  min-height: 100vh;
+}
 .section-header h1 {
   font-size: 32px;
   color: #111;
@@ -57,7 +59,7 @@
   100% { transform: rotate(360deg); }
 }
 .contact-header {
-    position: relative;
+    position: absolute;
     height: 100vh;
     overflow: hidden;
     margin-bottom: 20px;
@@ -68,7 +70,6 @@
     transform: translateY(90%);
     width: 20%;
     min-width: 440px;
-    /* padding-left: 9%; */
   }
   .bg-theme{
     background-color: #00216d;
@@ -139,9 +140,7 @@
   }
   
   @media only screen and (min-width: 2100px) {
-    .contact-header .container .page-title_content {
-      padding-left: 220px;
-    }
+  
   }
   @media only screen and (max-width: 600px) {
   

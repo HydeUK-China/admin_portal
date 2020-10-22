@@ -13,7 +13,7 @@ export default class Footer extends Component {
                         <div className="row">
                             <div className="col-sm-4">
                                 <h4>Contact Us</h4>
-                                <h6>HI Talents (UK)</h6>
+                                <h6>HYDE INTERNATIONAL TALENTS (UK)</h6>
                                 <p>
                                     37th Floor, One Canada Square,
                                     Canary Wharf, London,

@@ -3,13 +3,13 @@
  ----------------------------- */
  .hero-category {
     position: relative;
-    background-image: url('../img/jobs.jpg');
+    /* background-image: url('../img/jobs.jpeg'); */
     background-repeat: no-repeat;
-    background-size: auto;
+    background-size: cover;
     width: 100%;
     height: auto;
     overflow: hidden;
-    background-position: bottom;
+    background-position: top;
     
     
   }
