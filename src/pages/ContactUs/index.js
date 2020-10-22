@@ -5,7 +5,7 @@ import Footer from '../../components/Footer';
 import '../../styles/contactus.css';
 import _ from 'lodash';
 import TopNav from '../../components/TopNav';
-import womenimg from '../../img/photography-of-woman-cropped.jpg'
+import womenimg from '../../img/contact_2.png'
 
 export default class ContactUs extends Component {
   constructor(props) {
