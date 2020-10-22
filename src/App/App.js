@@ -105,6 +105,10 @@ class App extends Component {
               <li className="nav-item">
                 <div className="nav-link Signout bg warning">
                   <i className="fas fa-sign-out-alt" onClick={this.handleLogout}></i>
+                </div></li>
+              <li className="nav-item">
+                <div className="nav-link Signout bg warning">
+                  <i className="fas fa-sign-out-alt" onClick={this.handleLogout}></i>
                 </div>
               </li>
             </ul>

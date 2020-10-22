@@ -77,6 +77,7 @@ export default class ContactUs extends Component {
     const { fname, lname, email, subject, message, sentMessage } = this.state;
     return (
       <div>
+        <section className="contact">
          <header>
           <nav className="navbar navbar-expand-lg navbar-light bg-transperent sticky-top px-3 text-dark">
         <NavLink className="navbar-brand text-dark" to="/home"><h2>HI Talents</h2></NavLink>
@@ -117,10 +118,12 @@ export default class ContactUs extends Component {
         </div>
       </nav>
           </header>
-                    <div className="container mb-2">
-                      <div className="row no-gutters">
+          <section className="vh-100 align-middle">
+                    <div className="container-fluid px-5 contact-header mx-2 mb-2 ">
+                      <div className="d-flex align-items-center">
+                      <div className="row">
                         
-                        <div className="col-md-6 mt-2 pb-0 align-items-center">
+                        <div className="col-md-6 col-lg-8 mt-2 align-center">
                         <header className="section-header">
                         <h1 className="mb-2">Contact us</h1>
 
@@ -152,7 +155,7 @@ export default class ContactUs extends Component {
                           </form>
                         </div>
 
-                        <div className="col-md-6 pb-0">
+                        <div className="col-md-6 col-lg-4">
                           
                           <img src={womenimg} width="100%" height="500px" ></img>
                             
@@ -160,14 +163,17 @@ export default class ContactUs extends Component {
                         </div>
                       </div>
                     </div>
-                    <div className="loader-pos" style={{display: 'none'}}>
-                      <div className="loader"/>
                     </div>
+                    </section>
+                    {/* <div className="loader-pos" style={{display: 'none'}}>
+                      <div className="loader"/>
+                    </div> */}
 
         
-
+</section>
 
           <Footer />
+         
         </div>
         
         )
