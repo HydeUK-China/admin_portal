@@ -153,7 +153,7 @@ export default class ContactUs extends Component {
                         </div>
 
                         <div className="col-md-6 pb-0">
-                          <img className="img-fluid" src={womenimg} style={{width:'100%;',height:'auto;'}} ></img>
+                          <img className="img-fluid" src={womenimg} style={{width:'100%',height:'auto'}} ></img>
                         </div>
                       </div>
                     </div>

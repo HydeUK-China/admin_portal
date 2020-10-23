@@ -132,6 +132,7 @@
 
  .filter-form{
     max-width: 70%;
+    margin: 0 auto;
   }
 
 .filter-form label{
