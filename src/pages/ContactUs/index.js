@@ -119,7 +119,7 @@ export default class ContactUs extends Component {
             </nav>
           </header>
           <section>
-            <div className="container px-5 mb-2 mt-5">
+            <div className="container px-5 mt-5">
               
                 <div className="row">
 
@@ -168,7 +168,7 @@ export default class ContactUs extends Component {
 
 
         </section>
-        <div className="mb-5"></div>
+        
         <Footer />
 
       </div>
