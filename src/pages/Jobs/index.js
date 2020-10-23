@@ -169,19 +169,19 @@ export default class Jobs extends Component {
                     </div>
                 </section>
                 <section id="filter-part">
-                    <div className="container  px-3 py-5">
-                        <div >
-                            <Search
-                                fullData={projectData}
-                                dataFilterableField={this.lessField}
-                                filterDataHandler={this.filterDataHandler}
-                                placeholder={"search job title, job types, industry, salary"}
-                                showGroupFilter={true}
-                                groupFilterField={[{ 'type': 'number', 'field': 'salary', 'header': 'Salary' },
-                                { 'type': 'enumerate', 'field': 'job_type', 'header': 'Job Type', 'options': jobTypeList },
-                                { 'type': 'enumerate', 'field': 'distance', 'header': 'Location', 'options': distanceList }]}
-                                intersectionByKey={"project_id"}
-                            />
+                    <div className="col-md-12 d-flex justify-content-center text-center">
+                        <div className="container">
+                        <Search
+                                    fullData={projectData}
+                                    dataFilterableField={this.lessField}
+                                    filterDataHandler={this.filterDataHandler}
+                                    placeholder={"search job title, job types, industry, salary"}
+                                    showGroupFilter={true}
+                                    groupFilterField={[{ 'type': 'number', 'field': 'salary', 'header': 'Salary' },
+                                    { 'type': 'enumerate', 'field': 'job_type', 'header': 'Job Type', 'options': jobTypeList },
+                                    { 'type': 'enumerate', 'field': 'distance', 'header': 'Location', 'options': distanceList }]}
+                                    intersectionByKey={"project_id"}
+                                />
                         </div>
                     </div>
                 </section>

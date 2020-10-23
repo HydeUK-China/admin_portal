@@ -102,31 +102,42 @@ class ApplyJob extends Component {
         return (
             <div>
                 <section id="top" className="single-job-hero">
-                    <header id="header">
-                        <div className="brand-container">
-                            <Link className="brand" to="/home">
-                                HI Talents
-                            </Link>
-                        </div>
-                        <nav className="main-nav">
-                            <NavLink className="nav-item" to="/home" style={{ color: 'white' }}>Home</NavLink>
-                            <NavLink className="nav-item" to="/jobs" style={{ color: 'white' }}>Jobs</NavLink>
-                            <NavLink className="nav-item" to="/aboutus" style={{ color: 'white' }}>About</NavLink>
-                            <NavLink className="nav-item" to="/contactus" style={{ color: 'white' }}>Contact</NavLink>
-                            <div className="sign-in">
-                                {role === '__admin__' ?
-                                    <NavLink className="nav-item user" to="/mgt/admin_dashboard">
-                                        <div className="fa fa-user-o"></div>
-                                    </NavLink>
-                                    :
-                                    (role === 'expert' ?
-                                        <NavLink className="nav-item user" to="/mgt/expert_profile">
-                                            <div className="fa fa-user-o"></div>
-                                        </NavLink>
-                                        : <NavLink className="nav-item user" to="/login">
-                                            <div className="fa fa-user-o"></div>
-                                        </NavLink>)
-                                }
+                    <header>
+                        <nav className="navbar navbar-expand-lg navbar-light bg-transperent sticky-top px-3 text-dark">
+                            <NavLink className="navbar-brand text-dark" to="/home"><h2>HI Talents</h2></NavLink>
+                            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+                                <span className="navbar-toggler-icon"></span>
+                            </button>
+                            <div className="collapse navbar-collapse" id="navbarToggler">
+                                <ul className="navbar-nav ml-auto mt-2 mt-lg-0 ">
+                                    <li className="nav-item">
+                                        <NavLink className="nav-link" to="/home">Home {/* <span className="sr-only">(current)</span> */}</NavLink>
+                                    </li>
+                                    <li className="nav-item">
+                                        <NavLink className="nav-link" to="/jobs">Jobs</NavLink>
+                                    </li>
+                                    <li className="nav-item">
+                                        <NavLink className="nav-link" to="/aboutus">About Us</NavLink>
+                                    </li>
+                                    <li className="nav-item">
+                                        <NavLink className="nav-link" to="/contactus">Contact Us</NavLink>
+                                    </li>
+                                    <li className="sign-in">
+                                        {role === '__admin__' ?
+                                            <NavLink className="nav-item user" to="/mgt/admin_dashboard">
+                                                <div className="fa fa-user-o"></div>
+                                            </NavLink>
+                                            :
+                                            (role === 'expert' ?
+                                                <NavLink className="nav-item user" to="/mgt/expert_profile">
+                                                    <div className="fa fa-user-o"></div>
+                                                </NavLink>
+                                                : <NavLink className="nav-item user" to="/login">
+                                                    <div className="fa fa-user-o"></div>
+                                                </NavLink>)
+                                        }
+                                    </li>
+                                </ul>
                             </div>
                         </nav>
                     </header>

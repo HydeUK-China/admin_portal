@@ -77,22 +77,21 @@ export default class Search extends Component {
         const { placeholder, showGroupFilter, groupFilterField, fullData } = this.props;
 
         return (
-            <div className="filters">
-                <input className="filter-input"
-                    value={filterInput}
-                    onChange={this.handleGlobalFilterChange}
-                    placeholder={placeholder || "Global search"}
-                />
-                {
-                    showGroupFilter ?
-                        <FilterGroup
-                            fullData={fullData}
-                            groupFilterField={groupFilterField}
-                            filterDataHandler={this.groupSearch}
-                        /> : null
-                }
-
-            </div>
+        <div className="filters disp-c">
+            <input className="filter-input"
+                value={filterInput}
+                onChange={this.handleGlobalFilterChange}
+                placeholder={placeholder || "Global search"}
+            />
+            {
+                showGroupFilter ?
+                    <FilterGroup
+                        fullData={fullData}
+                        groupFilterField={groupFilterField}
+                        filterDataHandler={this.groupSearch}
+                    /> : null
+            }
+         </div>
         )
     }
 }

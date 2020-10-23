@@ -11,12 +11,7 @@ export default class Footer extends Component {
                 <footer>
                     <div className="container">
                         <div className="row">
-
-                            <div className=" col-sm-3 ">
-                                <h4>Follow Us</h4>
-                                <a href="https://www.linkedin.com/company/hyde-international-uk/?originalSubdomain=uk" className="social"><i className="fa fa-linkedin"></i></a>
-                            </div>
-                            <div className=" col-sm-6">
+                            <div className="col-sm-4">
                                 <h4>Contact Us</h4>
                                 <h6>HYDE INTERNATIONAL TALENTS (UK)</h6>
                                 <p>
@@ -27,13 +22,17 @@ export default class Footer extends Component {
                                     <strong><i className="fa fa-envelope"></i></strong> &nbsp;contact@hyde-china.com<br />
                                 </p>
                             </div>
-                            <div className="col-sm-3">
+                            <div className="col-sm-4">
                                 <h4>Help</h4>
                                 <ul>
                                     <li><i className="fa fa-angle-right"></i> <Link to="/cookies-policy">Cookies policy</Link></li>
                                     <li><i className="fa fa-angle-right"></i> <Link to="/terms-of-service">Terms of service</Link></li>
                                     <li><i className="fa fa-angle-right"></i> <Link to="/privacy-policy">Privacy policy</Link></li>
                                 </ul>
+                            </div>
+                            <div className="col-sm-4">
+                                <h4>Follow Us</h4>
+                                <a href="https://www.linkedin.com/company/hyde-international-uk/?originalSubdomain=uk" className="social"><i className="fa fa-linkedin"></i></a>
                             </div>
                         </div>
 

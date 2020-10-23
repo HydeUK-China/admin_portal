@@ -12,10 +12,8 @@
     "aos": "^2.3.4",
     "async": "^3.2.0",
     "aws-sdk": "^2.749.0",
-    "axios": "^0.20.0",
     "bootstrap": "^4.5.2",
     "canvg": "^3.0.7",
-    "fdf": "^1.0.0",
     "jsonwebtoken": "^8.5.1",
     "jspdf": "^2.1.1",
     "lodash": "^4.17.20",
@@ -34,6 +32,7 @@
     "react-scripts": "3.4.3",
     "react-select": "^3.1.0",
     "react-table": "6.10.0",
+    "reactrangeslider": "^3.0.6",
     "select": "^1.1.2"
   },
   "scripts": {
