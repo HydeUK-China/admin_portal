@@ -49,39 +49,26 @@ export default class ExpertRightSidebar extends Component {
         return (
             <div className="right-sidebar">
                 <div className="right-sidebar-wrapper">
-                    <div className='upper_profile'>
-                        <div className="upper_profile_left">
+                    
+                        <div className="d-flex-column text-center">
                             <div className="avatar"> <i className="fa fa-user-circle"></i></div>
-                            {/* {
-                                showInput ?
-                                    <input type='file' className='center' />
-                                    // <div className='center'>
-                                    //     <UploadFile showDownload={false}/>
-                                    // </div>
-                                    : <div className='center'> </div>
-                            }
-                            {showInput ? <label className='red'>* Notice: Images size no more than 2MB</label> : null} */}
-
                             {showInput ?
                                 <button className='btn' onClick={this.clickConfirm}>Save</button>
                                 : <button className="btn" onClick={this.clickEdit}>Edit</button>
-                            }</div>
-
-
-                        <div className="bio">
-                            <span>
-                                <h4>Hello,</h4>
-                            </span>
-                            <h6><b>{first_name}</b></h6>
-
-
-                            <i>Bio: </i>
-                            <p><i>{expertise}</i></p>
+                            }
                         </div>
-                    </div>
 
-                    <div className="mt-3">
-                        <i>Nationality: </i>
+
+                        <div className="d-flex-column">
+                        
+                                <h4>Hello,</h4>
+                            
+                            <h5 className="text-primary"><b>{first_name}</b></h5>
+                        </div>
+                    
+
+                    <div className="d-flex mt-3">
+                        <h5 className="pr-2">Nationality: </h5>
                         {showInput ? <select name="nationality" className="form-control_profileEdit" required
                             defaultValue={nationality}
                             onChange={(e) => handleInputChange(e, 'nationality')}>
@@ -89,12 +76,12 @@ export default class ExpertRightSidebar extends Component {
                             {_.map(countryList, (item, index) => {
                                 return <option key={`country-${index}`} value={item}>{item}</option>
                             })}
-                        </select> : <p><i>{nationality}</i></p>}
+                        </select> : <h5>{nationality}</h5>}
                     </div>
                     
-                    <div className="contact-details">
+                    <div className="contact-details mt-2">
                         <ul className="contact-details-list">
-                            <li className="contact-details-head">
+                            <li className="text-primary ">
                                 <h4>Contact Details </h4>
                             </li>
                             {
@@ -103,7 +90,7 @@ export default class ExpertRightSidebar extends Component {
                                         return (
                                             <li key={`expertinfo-${key}`} className="contact-details-link">
                                                 {key === 'phone_no' ? <i className="fas fa-phone"></i> : <i className="fas fa-envelope"></i>}
-                                                <input defaultValue={value}
+                                                <input className="ml-2 mb-2 form-control_profileEdit" defaultValue={value}
                                                     onChange={(e) => handleInputChange(e, key)} />
                                             </li>
                                         )
@@ -120,7 +107,7 @@ export default class ExpertRightSidebar extends Component {
                         </ul>
                     </div>
 
-                    <div className="follow-me">
+                    <div className="follow-me mt-2">
                         <ul className="follow-me-list">
                             {
                                 Object.keys(_.pick(data, editSocialMediaField)).length !== 0 ?
@@ -137,7 +124,7 @@ export default class ExpertRightSidebar extends Component {
                                                 {key === 'linkedin' ? <i className="fa fa-linkedin"></i> :
                                                     (key === 'skype' ? <i className="fab fa-skype"></i> :
                                                         <i className="fab fa-twitter"></i>)}
-                                                <input defaultValue={value}
+                                                <input className="ml-2 mb-2 form-control_profileEdit" defaultValue={value}
                                                     onChange={(e) => handleInputChange(e, key)} />
                                             </li>
                                         )
