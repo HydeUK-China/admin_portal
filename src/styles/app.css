@@ -28,12 +28,11 @@ body {
 .profile{
   padding-left: 1rem;
   padding-right: 1rem;
-  width: 70%;
+  width: calc(100% - 300px);
   position: relative;
 }
-
+ 
 .profile-content{
-  width: 100%;
   box-shadow: rgba(0,0,0,0.12) 0px 1px 4px 1px;
   min-height: 15vh;
   border-radius: 5px;
@@ -51,25 +50,6 @@ body {
   font-size: 0.8rem;
   font-weight: 500;
   color: red;
-}
-
-.upper_profile{
-  display: grid;
-  grid-template-columns: 60% 40%;
-  width: 100%;
-  position: relative;
-  padding-top: 1rem;
-  padding-left: 1rem;
-}
-
-.upper_profile_left{
-  position: relative;
-  width: 60%;
-}
-
-.bio{
-  position: relative;
-  width: 40%;
 }
 
 .label-tag{
@@ -224,24 +204,21 @@ body {
   float: left;
 }
 
-.bio h1 {
-  color: #00216d;
+.text-primary{
+  color: #00216d !important;
 }
 
-.bio span{
-  margin: 10px 0;
-  
-}
-.bio p {
-  color: var(--second-color);
-}
 .contact-details ul li{
   list-style: none;
   text-decoration: none;
+  font-size:20px ;
+  
 }
+
 .follow-me ul li{
   list-style: none;
   text-decoration: none;
+  font-size: 20px;
 }
 
 .btn{
@@ -261,7 +238,7 @@ body {
   font-style: bold;
   color: #00216d;
 }
-.contact-details h4:after,
+/* .contact-details h4:after,
 .follow-me h4:after {
   background-color:var(--primary-color);
   content: "";
@@ -269,23 +246,19 @@ body {
   height: 1px;
   vertical-align: middle;
   width: 55%;
-}
-.follow-me h4:after {
+} */
+/* .follow-me h4:after {
   background-color:var(--primary-color);
   content: "";
   display: inline-block;
   height: 1.5px;
   vertical-align: middle;
   width: 70%;
-}
-.contact-details-list,.follow-me-list{
-padding: 2%;
-
-}
+} */
 .follow-me> .follow-me-list span,
 .contact-details> .contact-details-list span{
-  padding-left: 5px;
-  font-size: 16px;
+  padding-left: 10px;
+  font-size: 18px;
 }
 
 
@@ -748,13 +721,13 @@ body::-webkit-scrollbar-thumb {
 }
 
 .form-control_profileEdit {
-  padding: 10px !important;
+ /*  padding: 5px !important; */
   border: 2px solid #1b2b9c;
   font-size: 1rem;
   box-sizing: border-box;
   height: auto;
   border-radius: .25rem;
-  width: 100px;
+  width: 130px;
 }
 
 
@@ -896,4 +869,24 @@ body::-webkit-scrollbar-thumb {
   and (orientation: landscape) 
   and (-webkit-min-device-pixel-ratio: 2) {
 
+}
+
+@media only screen and (max-width: 1000px){
+  .right-sidebar{
+    display: none;
+  }
+  
+    .right-sidebar-expand .wrapper {
+      margin-right: 0px;
+    }
+
+    .profile{
+      width: 100%;
+    }
+
+  
+}
+
+@media only screen and (min-width: 600px) {
+  
 }

@@ -102,10 +102,10 @@ class App extends Component {
               <li className="nav-item">
                 <NavLink className="nav-link" to="/contactus">Contact</NavLink>
               </li>
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <div className="nav-link Signout bg warning">
                   <i className="fas fa-sign-out-alt" onClick={this.handleLogout}></i>
-                </div></li>
+                </div></li> */}
               <li className="nav-item">
                 <div className="nav-link Signout bg warning">
                   <i className="fas fa-sign-out-alt" onClick={this.handleLogout}></i>

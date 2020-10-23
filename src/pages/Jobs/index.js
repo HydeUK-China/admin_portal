@@ -115,58 +115,58 @@ export default class Jobs extends Component {
                     </div>
                 </section> */}
                 <section className="hero-category">
-                <header>
-          <nav className="navbar navbar-expand-lg navbar-dark bg-transperent sticky-top px-3 text-dark">
-        <NavLink className="navbar-brand text-dark" to="/home"><h2>HI Talents</h2></NavLink>
-        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarToggler">
-          <ul className="navbar-nav ml-auto mt-2 mt-lg-0 ">
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/home">Home {/* <span className="sr-only">(current)</span> */}</NavLink>
-            </li>
-            <li className="nav-item"> 
-              <NavLink className="nav-link" to="/jobs">Jobs</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/aboutus">About Us</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/contactus">Contact Us</NavLink>
-            </li>
-            <li className="sign-in">
-                                {role === '__admin__' ?
-                                    <NavLink className="nav-item user" to="/mgt/admin_dashboard">
-                                        <div className="text-light fa fa-user-o"></div>
-                                    </NavLink>
-                                    :
-                                    (role === 'expert' ?
-                                        <NavLink className="nav-item user" to="/mgt/expert_profile">
-                                            <div className="text-light fa fa-user-o"></div>
-                                        </NavLink>
-                                        : <NavLink className="nav-item user" to="/login">
-                                            <div className="text-light fa fa-user-o"></div>
-                                        </NavLink>)
-                                }
-                            </li>
-          </ul>
-          
-        </div>
-      </nav>
-          </header>
-                <div className="p-2 hero-category_title rounded">
-                    
-                    <div className="row">
+                    <header>
+                        <nav className="navbar navbar-expand-lg navbar-light bg-transperent px-3 text-dark ">
+                            <NavLink className="navbar-brand text-dark" to="/home"><h2>HI Talents</h2></NavLink>
+                            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+                                <span className="navbar-toggler-icon"></span>
+                            </button>
+                            <div className="collapse navbar-collapse" id="navbarToggler">
+                                <ul className="navbar-nav ml-auto mt-2 mt-lg-0 ">
+                                    <li className="nav-item">
+                                        <NavLink className="nav-link" to="/home">Home {/* <span className="sr-only">(current)</span> */}</NavLink>
+                                    </li>
+                                    <li className="nav-item">
+                                        <NavLink className="nav-link" to="/jobs">Jobs</NavLink>
+                                    </li>
+                                    <li className="nav-item">
+                                        <NavLink className="nav-link" to="/aboutus">About Us</NavLink>
+                                    </li>
+                                    <li className="nav-item">
+                                        <NavLink className="nav-link" to="/contactus">Contact Us</NavLink>
+                                    </li>
+                                    <li className="sign-in">
+                                        {role === '__admin__' ?
+                                            <NavLink className="nav-item user" to="/mgt/admin_dashboard">
+                                                <div className=" fa fa-user-o"></div>
+                                            </NavLink>
+                                            :
+                                            (role === 'expert' ?
+                                                <NavLink className="nav-item user" to="/mgt/expert_profile">
+                                                    <div className=" fa fa-user-o"></div>
+                                                </NavLink>
+                                                : <NavLink className="nav-item user" to="/login">
+                                                    <div className="fa fa-user-o"></div>
+                                                </NavLink>)
+                                        }
+                                    </li>
+                                </ul>
 
-                        <div className="col-md-6 px-0">
-                            <h1 className="display-4">Browse jobs by location and category</h1>
-                            {/* <p >Job Alerts service allows you to stay up-to-date with the latest jobs matching your criteria. </p> */}
-                            <p>Start Applying to land your dearm job.</p>
+                            </div>
+                        </nav>
+                    </header>
+                    <div className="p-2 hero-category_title rounded">
+
+                        <div className="row">
+                            <div className="col-md-6"></div>
+                            <div className="col-md-6 px-3 text-primary text-right">
+                                <h1 className="display-4">Browse jobs by location and category</h1>
+                                {/* <p >Job Alerts service allows you to stay up-to-date with the latest jobs matching your criteria. </p> */}
+                                <p>Start Applying to land your dearm job.</p>
+                            </div>
+
                         </div>
-                        <div className="col-md-4"></div>
                     </div>
-                </div>
                 </section>
                 <section id="filter-part">
                     <div className="container  px-3 py-5">
