@@ -77,7 +77,7 @@ export default class ContactUs extends Component {
     const { fname, lname, email, subject, message, sentMessage } = this.state;
     return (
       <div>
-        <section className="contact">
+        <section className="">
           <header>
             <nav className="navbar navbar-expand-lg navbar-light bg-transperent sticky-top px-3 text-dark">
               <NavLink className="navbar-brand text-dark" to="/home"><h2>HI Talents</h2></NavLink>
@@ -118,12 +118,12 @@ export default class ContactUs extends Component {
               </div>
             </nav>
           </header>
-          <section className="vh-100 align-middle">
-            <div className="container-fluid px-5 contact-header mx-2 mb-2 ">
-              <div className="d-flex align-items-center">
+          <section>
+            <div className="container px-5 mb-2 mt-5">
+              
                 <div className="row">
 
-                  <div className="col-md-6 col-lg-8 mt-2 align-center">
+                  <div className="col-md-6 mt-2 align-center">
                     <header className="section-header">
                       <h1 className="mb-2">Contact us</h1>
 
@@ -156,10 +156,10 @@ export default class ContactUs extends Component {
                   </div>
 
                   <div className="col-md-6 pb-0">
-                    <img className="img-fluid" src={womenimg} style={{ width: '100%', height: 'auto' }} ></img>
+                    <img src={womenimg} style={{ width: '400px', height: '600px' }} ></img>
                   </div>
                 </div>
-              </div>
+             
             </div>
           </section>
           {/* <div className="loader-pos" style={{display: 'none'}}>
@@ -168,7 +168,7 @@ export default class ContactUs extends Component {
 
 
         </section>
-
+        <div className="mb-5"></div>
         <Footer />
 
       </div>
