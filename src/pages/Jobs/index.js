@@ -169,7 +169,7 @@ export default class Jobs extends Component {
                     </div>
                 </section>
                 <section id="filter-part">
-                    <div className="col-md-12 d-flex justify-content-center text-center">
+                    <div className="col-md-12 d-flex justify-content-center">
                         <div className="container">
                         <Search
                                     fullData={projectData}

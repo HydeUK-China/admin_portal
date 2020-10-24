@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
-import InputRange from 'react-input-range';
+import InputRange from '../components/inputRange';
 
-import 'react-input-range/lib/css/index.css';
-import '../styles/inputrange.css';
 
 export default class FilterGroup extends Component {
     constructor(props) {
@@ -80,13 +78,11 @@ export default class FilterGroup extends Component {
                                             <div className="form-group">
                                                 <label>{item.header}</label>
                                                 <InputRange
-                                                    draggableTrack
                                                     maxValue={500000}
                                                     minValue={0}
                                                     step={500}
-                                                    onChange={(value) => this.setState({ [item.field]: value })}
                                                     onChangeComplete={value => this.handleFilterChange(value, item.field)}
-                                                    value={this.state[item.field]} />
+                                                    />
                                             </div>
                                         </div>)
                                 } else if (item.type === 'enumerate') {
