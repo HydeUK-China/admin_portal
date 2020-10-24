@@ -115,12 +115,11 @@
   }
   
   .category-jobs_grid {
-    min-height: 30vh;
     display: grid;
-    /* grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); */
-    grid-template-columns: 20% 20% 20% 20% 20%;
-    grid-gap: 2rem;
-    margin: 3rem 7rem;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-column-gap: 0rem;
+    grid-row-gap: 2rem;
+    margin-top: 20px;
   }
   /* .filters {
     /* display: flex; */
