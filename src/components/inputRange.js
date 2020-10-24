@@ -31,8 +31,17 @@ export default class InputRange extends Component {
 
     }
 
+    componentWillReceiveProps(nextProps){
+        if(this.props !== nextProps){
+            this.setState({
+                value: nextProps.value
+            })
+        }
+    }
+
     handleLowerBoundRangeChange(e) {
         let { range, thumb, sign, value } = this.state;
+        const { onChange } = this.props;
 
         const min = Math.min(e.target.value, value.max-1)
         Object.assign(value, {
@@ -52,12 +61,15 @@ export default class InputRange extends Component {
 
         this.setState({
             range, thumb, sign, value
+        }, () => {
+            onChange(value)
         })
 
     }
 
     handlelUpperBoundRangeChange(e) {
         let { range, thumb, sign, value } = this.state;
+        const { onChange } = this.props;
 
         const max = Math.max(e.target.value, value.min+1)
         Object.assign(value, {
@@ -78,6 +90,8 @@ export default class InputRange extends Component {
 
         this.setState({
             range, thumb, sign, value
+        }, () => {
+            onChange(value)
         })
     }
 
@@ -115,10 +129,12 @@ export default class InputRange extends Component {
                 </div>
                 <input type="range" value={value.min} max={this.max} min={this.min} step={step || 1} 
                         onChange={this.handleLowerBoundRangeChange} 
+                        onTouchEnd={this.handleChangeComplete}
                         onMouseUp={this.handleChangeComplete}/>
 
                 <input type="range" value={value.max} max={this.max} min={this.min} step={step || 1} 
                         onChange={this.handlelUpperBoundRangeChange} 
+                        onTouchEnd={this.handleChangeComplete}
                         onMouseUp={this.handleChangeComplete}/>
             </div>
         )

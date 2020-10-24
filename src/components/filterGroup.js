@@ -81,7 +81,9 @@ export default class FilterGroup extends Component {
                                                     maxValue={500000}
                                                     minValue={0}
                                                     step={500}
+                                                    onChange={(value) => this.setState({[item.field]: value})}
                                                     onChangeComplete={value => this.handleFilterChange(value, item.field)}
+                                                    value={this.state[item.field]}
                                                     />
                                             </div>
                                         </div>)
