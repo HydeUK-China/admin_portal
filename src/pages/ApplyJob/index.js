@@ -101,7 +101,7 @@ class ApplyJob extends Component {
 
         return (
             <div>
-                <section id="top" className="single-job-hero">
+                <section id="top" className="single-job-hero h-40">
                     <header>
                         <nav className="navbar navbar-expand-lg navbar-light bg-transperent sticky-top px-3 text-dark">
                             <NavLink className="navbar-brand text-dark" to="/home"><h2>HI Talents</h2></NavLink>
@@ -123,27 +123,27 @@ class ApplyJob extends Component {
                                         <NavLink className="nav-link" to="/contactus">Contact Us</NavLink>
                                     </li>
                                     <li className="sign-in">
-                                        {role === '__admin__' ?
-                                            <NavLink className="nav-item user" to="/mgt/admin_dashboard">
-                                                <div className="fa fa-user-o"></div>
-                                            </NavLink>
-                                            :
-                                            (role === 'expert' ?
-                                                <NavLink className="nav-item user" to="/mgt/expert_profile">
-                                                    <div className="fa fa-user-o"></div>
-                                                </NavLink>
-                                                : <NavLink className="nav-item user" to="/login">
-                                                    <div className="fa fa-user-o"></div>
-                                                </NavLink>)
-                                        }
-                                    </li>
+                                {role === '__admin__' ?
+                                    <NavLink className="nav-item user" to="/mgt/admin_dashboard">
+                                        <div className="text-light fa fa-user-o"></div>
+                                    </NavLink>
+                                    :
+                                    (role === 'expert' ?
+                                        <NavLink className="nav-item user" to="/mgt/expert_profile">
+                                            <div className="text-light fa fa-user-o"></div>
+                                        </NavLink>
+                                        : <NavLink className="nav-item user" to="/login">
+                                            <div className="text-light fa fa-user-o"></div>
+                                        </NavLink>)
+                                }
+                            </li>
                                 </ul>
                             </div>
                         </nav>
                     </header>
                 </section>
 
-                <section className="job-section">
+                <section >
                     <div className="container">
                         <div className="row">
                             <div className="col-md-8 jobs-info">

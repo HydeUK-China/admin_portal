@@ -161,7 +161,6 @@ export default class Jobs extends Component {
                             <div className="col-md-6"></div>
                             <div className="col-md-6 px-3 text-primary text-right">
                                 <h1 className="display-4">Browse jobs by location and category</h1>
-                                {/* <p >Job Alerts service allows you to stay up-to-date with the latest jobs matching your criteria. </p> */}
                                 <p>Start Applying to land your dearm job.</p>
                             </div>
 

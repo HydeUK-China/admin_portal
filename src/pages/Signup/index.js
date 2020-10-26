@@ -4,7 +4,7 @@ import { setUserInfo } from '../../utils/utils';
 import { Link } from 'react-router-dom';
 import RegisterForm from '../../components/RegisterForm';
 import Footer from '../../components/Footer';
-
+import registerbg from '../../img/registerbg.jpg';
 class Signup extends Component {
     constructor(props) {
         super(props)
@@ -26,7 +26,7 @@ class Signup extends Component {
             <div className="registerLogin-page">
                 <div className="content-box container">
                     <div className="row">
-                        <div className="col-md-6 form-col">
+                        <div className="col-md-8 col-lg-6">
                             <div className="logo-container">
                                 <Link className="logo" to="/home" style={{ 'color': 'black' }}>
                                     HI TALENTS PORTAL
@@ -41,9 +41,8 @@ class Signup extends Component {
                                 confirmButtonText="Create Account"
                             />
                         </div>
-                        <div className="col-md-6 bg-col">
-                            <div className="register-bg_image">
-                            </div>
+                        <div className="col-md-4 col-lg-6">
+                        <img className="register-bg_image" src={registerbg}></img>
                         </div>
                     </div>
                 </div>

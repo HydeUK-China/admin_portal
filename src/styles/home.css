@@ -70,9 +70,9 @@
   .hero-content .container {
     max-width: 55rem;
   }
-  .callToAction{
+  /* .callToAction{
     padding: 20px;
-  }
+  } */
   
   .hero-content .callToAction a {
     text-decoration: none;
@@ -129,7 +129,6 @@
     justify-content: space-around;
     align-items: center;
     position: relative;
-    padding: 0px 0px 0px 40px;
   }
   
   #featured .header-featured {
@@ -172,7 +171,7 @@
   #featured .featured-jobs_grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    grid-column-gap: 0rem;
+    grid-column-gap: 1rem;
     grid-row-gap: 2rem;
     margin-top: 20px;
   }
@@ -183,7 +182,7 @@
     background: #fafafa;
     padding: 30px 20px;
     box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.5);
-    width: 90%;
+    width: 100%;
     cursor: pointer;
     z-index: 9;
     color: black;
@@ -312,10 +311,18 @@
     text-transform: uppercase;
   } 
 
-  @media (min-width: 768px) {
-    .jumbotron {
-      padding-top: 6rem;
-      padding-bottom: 6rem;
+  @media (max-width: 768px) {
+    .hero-content h1 {
+      font-size: 3rem;
+      font-weight: 900;
+      color: white;
+      text-transform: uppercase;
+    }
+    .hero-content h5 {
+      font-size: 1rem;
+      font-weight: 900;
+      color: white;
+      text-transform: uppercase;
     }
 
   }

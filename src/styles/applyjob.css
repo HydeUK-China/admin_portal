@@ -2,22 +2,19 @@
  Hero section
  ----------------------------- */
  .single-job-hero {
-  position: relative;
   background-image: url('../img/banner.jpg');
+  position: relative;
   background-repeat: no-repeat;
   background-size: cover;
-  opacity: 1.5;
-  background-position: center left;
   width: 100%;
-  height: 50vh;
+  height: 100%;
   overflow: hidden;
+  background-position: center;
+  min-height: 40vh;
 }
 /* -----------------------------
  Job info section
  ----------------------------- */
-.job-section {
-  margin: 6rem;
-}
 
 .job-title h1 {
   font-size: 32px;
@@ -53,6 +50,7 @@
   font-size: 1.15rem;
   font-weight: 700;
   padding: 10px 0;
+  color: black;
 }
 .job-description p {
   font-size: 1rem;
@@ -60,11 +58,13 @@
 }
 .para-width {
   max-width: 650px;
+ 
 }
 .job-responsibilities {
   font-size: 1.15rem;
   font-weight: 700;
   padding: 0;
+  color: black;
 }
 .job-responsibilities ul {
   padding-top: 10px;
@@ -72,6 +72,7 @@
 .job-skills {
   font-size: 1.15rem;
   font-weight: 700;
+  color: black;
 }
 .info-item {
   font-size: 1rem;

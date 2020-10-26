@@ -4,7 +4,7 @@ import { withRouter } from 'react-router';
 import { setUserInfo } from '../../utils/utils';
 import LoginForm from '../../components/loginForm';
 import Footer from '../../components/Footer';
-
+import loginbg from '../../img/loginbg.jpg'
 import '../../styles/login.css';
 
 class Login extends Component {
@@ -28,7 +28,7 @@ class Login extends Component {
       <div className="registerLogin-page">
         <div className="content-box container">
           <div className="row">
-            <div className="col-md-6 form-col">
+            <div className="col-md-8 col-lg-6">
               <div className="logo-container">
                 <Link className="logo" to="/home" style={{ 'color': 'black' }}>
                   HI TALENTS PORTAL
@@ -44,9 +44,8 @@ class Login extends Component {
               />
               
             </div>
-            <div className="col-md-6 bg-col">
-              <div className="login-bg_image">
-              </div>
+            <div className="col-md-4 col-lg-6">
+              <img className="login-bg_image" src={loginbg}></img>
             </div>
           </div>
         </div>

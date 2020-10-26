@@ -106,10 +106,9 @@ export default class Home extends Component {
                     <div >
                     <div className="mb-0">
                         <div className="container">
-                            <h1>Unlock Potential </h1>
-                            <h5>with the Free Flow of Knowledge Sharing</h5>
-        
                         <div className="row callToAction">
+                        <h1>Unlock Potential </h1>
+                            <h5>with the Free Flow of Knowledge Sharing</h5>
                             <div className="col-md-4 col-lg-3">
                                 <Link to="/aboutus">Our Services <i className="fa fa-arrow-right"></i></Link>
                             </div>

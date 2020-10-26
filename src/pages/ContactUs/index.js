@@ -5,7 +5,7 @@ import Footer from '../../components/Footer';
 import '../../styles/contactus.css';
 import _ from 'lodash';
 import TopNav from '../../components/TopNav';
-import womenimg from '../../img/contact_2.png'
+import womenimg from '../../img/contact_2_cropped.png'
 
 export default class ContactUs extends Component {
   constructor(props) {
@@ -123,7 +123,7 @@ export default class ContactUs extends Component {
               
                 <div className="row">
 
-                  <div className="col-md-6 mt-2 align-center">
+                  <div className="col-md-8 col-lg-6 mt-2 align-center">
                     <header className="section-header">
                       <h1 className="mb-2">Contact us</h1>
 
@@ -156,7 +156,7 @@ export default class ContactUs extends Component {
                   </div>
 
                   <div className="col-md-6 pb-0">
-                    <img src={womenimg} style={{ width: '400px', height: '600px' }} ></img>
+                    <img className = "contact-image" src={womenimg} ></img>
                   </div>
                 </div>
              
