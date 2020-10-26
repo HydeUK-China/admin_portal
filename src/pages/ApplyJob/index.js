@@ -148,7 +148,7 @@ class ApplyJob extends Component {
                         <div className="row">
                             <div className="col-md-8 jobs-info">
                                 <div className="job-title">
-                                    <h1>{job_title ? job_title : 'Ungiven Job Title'}</h1>
+                                    <h1>{job_title}</h1>
                                 </div>
 
                                 <div className="job-details">

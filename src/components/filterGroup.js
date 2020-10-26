@@ -74,7 +74,7 @@ export default class FilterGroup extends Component {
                             _.map(groupFilterField, (item, index) => {
                                 if (item.type === 'number') {
                                     return (
-                                        <div key={`filter-group-${index}`} className="col-md-6 col-sm-12" style={{ paddingRight: 35, paddingLeft: 0 }}>
+                                        <div key={`filter-group-${index}`} className="col-md-6 col-sm-12" style={{ paddingRight: 0, paddingLeft: 0 }}>
                                             <div className="form-group">
                                                 <label>{item.header}</label>
                                                 <InputRange
