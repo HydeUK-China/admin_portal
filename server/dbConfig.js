@@ -4,6 +4,10 @@ const rdsClient = {
         // user: 'hydeuk',
         // password: 'Shree123456',
         // port: '3306'
+        host: 'localhost',
+        user: 'root',
+        password: '1234567890',
+        port: '3306'
     },
     dev: {
         host: 'localhost',
@@ -14,7 +18,7 @@ const rdsClient = {
 }
 
 const database = {
-    prod: 'ExpertDatabase',
+    prod: 'portal_system',
     dev: 'portal_system'
 }
 

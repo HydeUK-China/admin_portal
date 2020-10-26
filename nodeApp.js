@@ -16,6 +16,7 @@ const mailerConfig = require('./server/mailerConfig');
 
 const port = process.env.PORT || 5001;
 const __env__ = process.env.NODE_ENV;
+console.log("__env__ ", __env__)
 
 // enable bodyParser to parse content type of application/json,
 // otherwise req.body is {}
