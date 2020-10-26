@@ -329,9 +329,9 @@ body::-webkit-scrollbar-thumb {
   -o-transition: all 0.5s ease;
   transition: all 0.5s ease;
 }
-/* #sidebar-wrapper:hover {
+#sidebar-wrapper:hover {
   width: 200px;
-} */
+}
 
 #wrapper.toggled #sidebar-wrapper {
   width: 0;
@@ -513,7 +513,9 @@ body::-webkit-scrollbar-thumb {
     #sidebar-wrapper:hover .link-text {
     display: none;
   }
- 
+  #sidebar-wrapper:hover {
+    width: 100% !important;
+  }
   
   
 }
