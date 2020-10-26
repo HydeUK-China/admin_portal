@@ -1,51 +1,42 @@
-.footer {
+
+footer{
     width: 100%;
     position: relative;
-    background-color: #00216d;
-    display: grid;
-    grid-template-columns: 33% 34% 33%;
+    background-color: rgb(0, 33, 109);
+    color: #fff;
+    padding: 20px 0px;
 }
-
-.title {
-    color: white;
-    margin-top: 1rem;
-    text-align: center;
-    font-family: sans-serif;
-    font-weight: 600;
-    letter-spacing: 2px;
-    text-transform: capitalize;
-    font-size: 1rem;
+.social{
+ font-size: 18px;
+  display: inline-block;
+  background: #333;
+  color: #eee;
+  line-height: 1;
+  padding: 8px 0;
+  margin-right: 4px;
+  border-radius: 50%;
+  text-align: center;
+  width: 36px;
+  height: 36px;
+  transition: 0.3s;
 }
-
-.links, .address {
-    font-family: sans-serif;
-    font-size: 0.8rem;
-    text-align: center;
-    color: white;
+footer ul{
+list-style: none;
+padding: 0;
+  margin: 0;
 }
-
-.address ul li {
-    list-style: none;
+footer ul li{
+    color: #fff;
+    padding-right: 8px;
 }
-
-.links a {
-    font-family: sans-serif;
-    font-weight: 600;
-    font-size: 1rem;
-    text-align: center;
+footer ul li a{
+    color: #fff;
+    text-decoration: none;
+    padding: 2px;
 }
+footer ul li a:hover{
+    color: #fff;
+    text-decoration: none;
+    font-size: 15px;
 
-.help {
-    font-family: sans-serif;
-    text-align: center;
-    text-transform: capitalize;
-}
-
-.copyright p {
-    color: white;
-    font-family: sans-serif;
-    font-weight: 700;
-    font-size: 0.8rem;
-    background-color: #00216d;
-    text-align: center;
 }

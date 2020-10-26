@@ -1,17 +1,24 @@
-const config = {
+const rdsClient = {
     prod: {
-        host: 'expertdb.cwhivqtuvfvm.eu-west-2.rds.amazonaws.com',
-        user: 'hydeuk',
-        password: 'Shree123456',
-        port: '3306'
+        // host: 'expertdb.cwhivqtuvfvm.eu-west-2.rds.amazonaws.com',
+        // user: 'hydeuk',
+        // password: 'Shree123456',
+        // port: '3306'
     },
     dev: {
-        host: 'expertdb.cwhivqtuvfvm.eu-west-2.rds.amazonaws.com',
-        user: 'hydeuk',
-        password: 'Shree123456',
+        host: 'localhost',
+        user: 'root',
+        password: '1234567890',
         port: '3306'
-    },
-    db: 'ExpertDatabase'
+    }
 }
 
-module.exports = config
+const database = {
+    prod: 'ExpertDatabase',
+    dev: 'portal_system'
+}
+
+module.exports = {
+    rdsClient,
+    database
+}

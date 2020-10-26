@@ -2,175 +2,151 @@ import React, { Component } from 'react';
 import {
   Switch,
   Route,
-  Link, Redirect
+  Link, Redirect, NavLink
 } from 'react-router-dom';
-import {withRouter} from 'react-router';
+import { withRouter } from 'react-router';
 import _ from 'lodash';
 import Tab from '../components/tab';
-import Footer from './Footer';
-import Dashboard from '../pages/Dashboard';
-import ExpertDatabase from '../pages/ExpertDatabase';
-import ProjectPorposal from '../pages/ProjectPorposal';
-import ExpertAssessment from '../pages/ExpertAssessment';
-import {logout} from '../utils/utils';
-
+import { Navbar } from 'react-bootstrap';
+import { removeUserInfo, getRole, getUid, fetchReq } from '../utils/utils';
+import { path_name, renderRoute } from './tabRouteConfig';
+import 'bootstrap/dist/css/bootstrap.css';
 import '../styles/app.css';
+import '../styles/database.css';
 
 class App extends Component {
   constructor(props) {
     super(props);
 
-    this.tabs = [
-      { path: 'admin_dashboard', name: 'Dashboard' },
-      { path: 'admin_expert_database', name: 'Expert Database' },
-      { path: 'project_proposal_collaboration', name: 'Project Porposal' },
-      { path: 'expert_assessment', name: 'Expert Assessment' }
-    ]
+    this.state = {
+      role: getRole(),
+      uid: getUid(),
+      navbarToggler: false,
+      showWarning: false
+    }
 
+    this.toggleNavbar = this.toggleNavbar.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
+    this.completeAppMsger = this.completeAppMsger.bind(this);
   }
 
-  getTabs(tabs) {
-    return _.map(tabs, (item, index) => {
-      return (
-        <div key={`tabs-${index}`}>
-          <Tab path={item.path} name={item.name} />
-        </div>
-      )
+  toggleNavbar() {
+    this.setState({
+      navbarToggler: !this.state.navbarToggler
     })
   }
 
-  handleLogout(e){
+  completeAppMsger(applicationComplete) {
+    this.setState({
+      showWarning: applicationComplete === 'Y' ? false : true
+    })
+  }
+
+  getTabs() {
+    const { role, uid, showWarning } = this.state;
+    const pick_tabs = path_name(role, uid, this.completeAppMsger);
+
+    const links = _.map(pick_tabs, (value, key) => {
+      return (<Tab key={`tabs-${key}`}
+        path={value.path}
+        name={value.name}
+        icon={value.icon}
+        showWarning={key === 'expert_application' && showWarning} />)
+    });
+
+    return (
+      <div id="wrapper">
+        <div id="sidebar-wrapper">
+          <ul className="sidebar-nav">
+            {links}
+          </ul>
+        </div>
+      </div>
+    )
+  }
+
+  handleLogout(e) {
     e.preventDefault();
 
-    logout();
-    const props = this.props;
-    props.history.push('/admin/login')
+    fetchReq('/api/logout')
+      .then(data => {
+        removeUserInfo();
+        this.props.history.push('/login')
+      }).catch(msg =>
+        alert(msg)
+      )
   }
 
-
   render() {
+    const { role, uid, navbarToggler } = this.state;
+
     return (
       <div>
-        <div id="top" className="category-hero">
-          <div className="header">
-            <div className="brand-container">
-              <Link className="brand" to="/admin/admin_dashboard">
-                Hyde International Talents
-                  </Link>
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+          <Link className="navbar-brand" to='/mgt'>HI TALENTS</Link>
+          <button className="navbar-toggler" onClick={this.toggleNavbar}
+            type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className={navbarToggler ? "collapse navbar-collapse show" : "collapse navbar-collapse"}>
+            <ul className="nav navbar-nav ml-auto">
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/home">Home</NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/jobs">Jobs</NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/aboutus">About</NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/contactus">Contact</NavLink>
+              </li>
+              {/* <li className="nav-item">
+                <div className="nav-link Signout bg warning">
+                  <i className="fas fa-sign-out-alt" onClick={this.handleLogout}></i>
+                </div></li> */}
+              <li className="nav-item">
+                <div className="nav-link Signout bg warning">
+                  <i className="fas fa-sign-out-alt" onClick={this.handleLogout}></i>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </nav>
+        {/* <Navbar className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top" expand="lg">
+          <Navbar.Brand>
+            <Link className="navbar-brand" to='/mgt'>HYDE INTERNATIONAL</Link>
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <ul className="nav navbar-nav ml-auto">
+              <li className="nav-item">
+                <div className="nav-link" onClick={this.handleLogout}>Sign Out</div>
+              </li>
+            </ul>
+          </Navbar.Collapse>
+        </Navbar> */}
+
+        <main>
+          <div className="container-fluid">
+            <div className="row">
+              {this.getTabs()}
             </div>
 
-            <nav className="main-nav">
-              <div className="sign-in">
-                <div className="nav-item user" onClick={this.handleLogout}>
-                  Logout
-                </div>
-              </div>
-            </nav>
-          </div>
-        </div>
-
-        <div className="main-box">
-          <div className="admin-platform">
-            Hyde International Talents (HIT) Admin Portal
-              <hr></hr>
-            {this.getTabs(this.tabs)}
+            <Switch>
+              {renderRoute(role, uid, this.completeAppMsger)}
+              <Route path="/mgt">
+                {role === '__admin__' ?
+                  <Redirect to='/mgt/admin_dashboard' />
+                  : <Redirect to='/mgt/expert_profile' />
+                }
+              </Route>
+            </Switch>
           </div>
 
-          <div className="container">
-            <div className="welcome-admin">Welcome to Hyde International Talents (HIT) Admin Portal</div>
-            
-            <Route path="/admin/admin_dashboard">
-              <Dashboard />
-            </Route>
-            <Route path="/admin/admin_expert_database">
-              <ExpertDatabase />
-            </Route>
-            <Route path="/admin/project_proposal_collaboration">
-              <ProjectPorposal />
-            </Route>
-            <Route path="/admin/expert_assessment">
-              <ExpertAssessment />
-            </Route>
-            {/* fallback route */}
-            <Route path="/admin">
-              <Redirect to="/admin/admin_dashboard" />
-            </Route>
-          
-          </div>
-        </div>
-        <Footer />
-      </div>
-    );
-  }
-}
 
-
-class About extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      post: '',
-      get: '',
-      name: '',
-      param: ''
-    };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleGetSubmit = this.handleGetSubmit.bind(this);
-    this.handlePostSubmit = this.handlePostSubmit.bind(this);
-  }
-
-  handleChange(event) {
-    this.setState({ name: event.target.value });
-  }
-
-  handleGetSubmit(event) {
-    event.preventDefault();
-    fetch(`/api/get?name=${encodeURIComponent(this.state.name)}`)
-      .then(response => response.json())
-      .then(state => this.setState(state));
-  }
-
-  handlePostSubmit = (event) => {
-    event.preventDefault();
-
-    fetch('/api/post', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ post: this.state.param })
-    })
-      .then(response => response.text())
-      .then(body => this.setState({ post: body }));
-  }
-
-  render() {
-    return (
-      <div>
-        <form onSubmit={this.handleGetSubmit}>
-          <label htmlFor="name">Test GET Request: </label>
-          <input
-            id="name"
-            type="text"
-            value={this.state.name}
-            onChange={this.handleChange}
-          />
-          <button type="submit">Submit</button>
-        </form>
-        <p>{this.state.get}</p>
-
-
-        <form onSubmit={this.handlePostSubmit}>
-          <label htmlFor="name">Test POST Request: </label>
-          <input
-            type="text"
-            value={this.state.param}
-            onChange={e => this.setState({ param: e.target.value })}
-          />
-          <button type="submit">Submit</button>
-        </form>
-        <p>{this.state.post}</p>
+        </main>
       </div>
     );
   }

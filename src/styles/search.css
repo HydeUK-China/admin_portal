@@ -21,3 +21,9 @@
     padding: 2rem 0rem;
     width: 100%;
 }
+
+.disp-c{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
