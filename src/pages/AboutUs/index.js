@@ -99,9 +99,9 @@ export default class AboutUs extends Component {
           </div>
           </section>
 
-          <section id="faq" className="faq-section">
-            <div className="container-fluid-faq-content-box">
-              <div className="row mx-5">
+          <section >
+            <div className="container-fluid">
+              <div className="row">
                 <div className="col-8">
                   
                   <header className="section-header">
@@ -188,6 +188,9 @@ export default class AboutUs extends Component {
               </div>
             </div>
           </section>
+
+
+
 
           <Footer />
         </div>
