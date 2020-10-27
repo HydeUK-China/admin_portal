@@ -36,10 +36,12 @@ class Signup extends Component {
                                 <h2>Sign up</h2>
                                 <h4>Register now and get access to amazing opportunities</h4>
                             </div>
+                            
                             <RegisterForm
                                 registerCallback={this.registerCallback}
                                 confirmButtonText="Create Account"
                             />
+
                         </div>
                         <div className="col-md-4 col-lg-6">
                         <img className="register-bg_image" src={registerbg}></img>
