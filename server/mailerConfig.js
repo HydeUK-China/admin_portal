@@ -8,7 +8,7 @@ const createTransportConfig = {
 }
 
 const mailingUrl = {
-    prod: 'http://www.hydeinternational.co.uk',
+    prod: 'http://www.hitalents.co.uk',
     dev: 'http://localhost:5000'
 }
 
