@@ -18,6 +18,8 @@ export default class ExpertApplication extends Component {
         this.moreField = [ 'currency', 'organization_info', 'professional_field', 'job_description', 'required_expertise', 'responsibility', 'essential_skills']
 
         this.expertId = props.uid;
+
+        this.cancalApplicationHandler = this.cancalApplicationHandler.bind(this);
     }
 
     componentDidMount() {
@@ -40,6 +42,7 @@ export default class ExpertApplication extends Component {
             
                 jobcards.push(<JobCard key={`jobcards-${index}`}
                                         role={role}
+                                        cancalApplicationHandler={this.cancalApplicationHandler}
                                         moreField={this.lessField.concat(this.moreField)}
                                         moreHeader={this.lessHeader.concat(this.moreHeader)}
                                         data={item}/>)
@@ -56,6 +59,33 @@ export default class ExpertApplication extends Component {
             return <div style={{color: 'darkgrey', fontSize: '1rem'}}>You haven't applied to any jobs yet.</div>
         }
         
+    }
+
+    cancalApplicationHandler(expert_id, project_id) {
+        const { role } = this.props;
+        
+        if(role === 'expert'){   
+            fetchReq('/api/deleteProjectMatching', {
+                body: JSON.stringify({
+                    expertid: expert_id,
+                    projectid: project_id
+                })
+            })
+            .then(feedback => {
+                const { data } = this.state;
+
+                _.remove(data, (item, index) => {
+                    return item.expert_id === expert_id && item.project_id === project_id;
+                });
+
+                this.setState({
+                    data
+                })
+
+            }).catch(err => alert(err));
+        } else {
+            alert('You should be the expert to cancel your application')
+        }   
     }
 
     render() {
