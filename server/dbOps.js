@@ -926,7 +926,7 @@ function deleteProjectMatching(req, res) {
 
     jwtUtil.verifyRoleFromToken(token)
         .then((role) => {
-            if (role == 'expert') {
+            if (role) {
                 const sql = `DELETE FROM project_matching 
                             WHERE expert_id=? AND project_id=?`;
 
