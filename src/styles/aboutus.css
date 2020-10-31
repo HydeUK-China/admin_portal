@@ -108,7 +108,7 @@
     box-shadow: .5rem 2px .5rem rgba(0,0,0,.1);
   }
   
-  .active,.accordion:hover {
+  .accordion:hover {
     background-color: white;
     border: none !important ;
   }
@@ -125,15 +125,7 @@
   .panel p{
     padding: 10px 0px;
   }
-  .box{
-    position: absolute;
-    height: 90%;
-    background-color: #00216d;
-    top: 50%;
-    left: 0;
-    transform: translateY(-50%);
-    width: 1rem;
-  }
+
 
 
 
