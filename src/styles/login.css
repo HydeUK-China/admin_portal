@@ -77,20 +77,12 @@
       height: calc(100vh - 260px);
     }
   
-  }
+  }  
+ /*  @media only screen and (min-width: 1500px) {
+    .content-box{
+      display: flex;
+      justify-content: center;
+      height: calc(100vh - 260px);
+    }
   
-  @media only screen and (min-width: 2100px) {
-    .content-box{
-      display: flex;
-      justify-content: center;
-      height: calc(100vh - 259px);
-    }
-  }
-
-  @media only screen and (min-width: 1400px) {
-    .content-box{
-      display: flex;
-      justify-content: center;
-      height: calc(100vh - 259px);
-    }
-  }
+  } */
