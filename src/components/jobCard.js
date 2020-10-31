@@ -39,7 +39,7 @@ export default class JobCard extends Component {
         return Math.ceil(timeinmilisec / (1000 * 60 * 60 * 24))
     }
 
-    cancalApplication(){
+    cancalApplication() {
         const { data } = this.state;
         const { cancalApplicationHandler } = this.props;
         cancalApplicationHandler(data.expert_id, data.project_id);
@@ -92,13 +92,15 @@ export default class JobCard extends Component {
                         </div>
                         <hr />
                         <div className="job-card-sec-1">
-                            <div className="row">
-                                <div className="col-6">
+                            <div className=".col-6 col-m-12 .col-sm-12">
+                                <ul>
                                     <button className="see-more" onClick={this.showMore}>See More</button>
-                                </div>
-                                <div className="col-6">
+                                </ul>
+                            </div>
+                            <div className=".col-6 col-m-12 .col-sm-12">
+                                <ul>
                                     <button className="see-more" onClick={this.cancalApplication}>Cancel Application</button>
-                                </div>
+                                </ul>
                             </div>
                         </div>
                     </div>
