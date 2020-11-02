@@ -27,7 +27,7 @@ class Login extends Component {
     return (
       <div className="registerLogin-page">
         <div className="content-box container">
-          <div className="row" style={{minHeight: '80vh'}}>
+          <div className="row">
             <div className="col-md-8 col-lg-6">
               <div className="logo-container">
                 <Link className="logo" to="/home" style={{ 'color': 'black' }}>
@@ -56,3 +56,5 @@ class Login extends Component {
 }
 
 export default withRouter(Login)
+
+
