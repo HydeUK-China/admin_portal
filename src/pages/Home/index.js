@@ -62,7 +62,7 @@ export default class Home extends Component {
 
         return (
             <div>
-                <section id="top" className="hero-content">
+                <section id="top" className="hero-content pb-lg-5 pb-sm-5 pb-md-5">
                 <header>
           <nav className="navbar navbar-expand-lg navbar-dark bg-transperent sticky-top px-3 text-dark">
         <NavLink className="navbar-brand text-light" to="/home"><h2>HI Talents</h2></NavLink>
@@ -72,7 +72,7 @@ export default class Home extends Component {
         <div className="collapse navbar-collapse" id="navbarToggler">
           <ul className="navbar-nav ml-auto mt-2 mt-lg-0 ">
             <li className="nav-item">
-              <NavLink className="nav-link" to="/home">Home {/* <span className="sr-only">(current)</span> */}</NavLink>
+              <NavLink className="nav-link" to="/home">Home </NavLink>
             </li>
             <li className="nav-item"> 
               <NavLink className="nav-link" to="/jobs">Jobs</NavLink>
@@ -104,11 +104,11 @@ export default class Home extends Component {
       </nav>
           </header>
                     <div >
-                    <div className="mb-0">
+                    <div className="mb-lg-5 mb-sm-3">
                         <div className="container">
-                        <div className="row callToAction">
                         <h1>Unlock Potential </h1>
-                            <h5>with the Free Flow of Knowledge Sharing</h5>
+                        <h5>with the Free Flow of Knowledge Sharing</h5>
+                        <div className="row callToAction">
                             <div className="col-md-4 col-lg-3">
                                 <Link to="/aboutus">Our Services <i className="fa fa-arrow-right"></i></Link>
                             </div>
