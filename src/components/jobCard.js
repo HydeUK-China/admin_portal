@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import InfoEditModal from '../components/infoEditModal';
+import { fetchReq } from '../utils/utils';
 
 export default class JobCard extends Component {
     constructor(props) {
@@ -9,6 +10,8 @@ export default class JobCard extends Component {
             data: props.data,
             showInfo: false
         }
+
+        this.cancalApplication = this.cancalApplication.bind(this);
     }
 
     showMore = () => {
@@ -36,8 +39,14 @@ export default class JobCard extends Component {
         return Math.ceil(timeinmilisec / (1000 * 60 * 60 * 24))
     }
 
+    cancalApplication() {
+        const { data } = this.state;
+        const { cancalApplicationHandler } = this.props;
+        cancalApplicationHandler(data.expert_id, data.project_id);
+    }
+
     render() {
-        const { moreField, moreHeader, role } = this.props;
+        const { moreField, moreHeader, role, cancalApplication } = this.props;
         const { data, showInfo } = this.state;
         const { job_title, employer, start_date, close_date, application_complete, currency, salary, job_type, show_employer_name } = data;
 
@@ -85,7 +94,12 @@ export default class JobCard extends Component {
                         <div className="job-card-sec-1">
                             <div className=".col-6 col-m-12 .col-sm-12">
                                 <ul>
-                                    <li> <button className="see-more" onClick={this.showMore}>See More</button></li>
+                                    <button className="see-more" onClick={this.showMore}>See More</button>
+                                </ul>
+                            </div>
+                            <div className=".col-6 col-m-12 .col-sm-12">
+                                <ul>
+                                    <button className="see-more" onClick={this.cancalApplication}>Cancel Application</button>
                                 </ul>
                             </div>
                         </div>

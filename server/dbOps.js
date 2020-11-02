@@ -919,6 +919,44 @@ function fetchProjectMatching(req, res) {
         });
 }
 
+function deleteProjectMatching(req, res) {
+    const token = req.session.token;
+    const expertid = req.body.expertid;
+    const projectid = req.body.projectid;
+
+    jwtUtil.verifyRoleFromToken(token)
+        .then((role) => {
+            if (role) {
+                const sql = `DELETE FROM project_matching 
+                            WHERE expert_id=? AND project_id=?`;
+
+                res.app.get('connection').query(sql, [expertid, projectid], function (err, rows) {
+                    if (err) {
+                        res.status(400).json({
+                            success: false,
+                            msg: err.sqlMessage
+                        });
+                    } else {
+                        res.status(200).json({
+                            success: true,
+                            data: 'successfully deleted application'
+                        })
+                    }
+                });
+            } else {
+                res.status(400).json({
+                    success: false,
+                    msg: 'role permission denied'
+                })
+            }
+        }).catch(err => {
+            res.status(400).json({
+                success: false,
+                msg: err
+            })
+        });
+}
+
 module.exports = {
     expertDashboard,
     login,
@@ -939,5 +977,6 @@ module.exports = {
     fetchProjectExpert,
     fetchExpertProject,
     fetchEmployer,
-    fetchProjectMatching
+    fetchProjectMatching,
+    deleteProjectMatching
 }
