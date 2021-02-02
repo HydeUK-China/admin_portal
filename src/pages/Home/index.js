@@ -64,8 +64,8 @@ export default class Home extends Component {
         return (
             <div>
                 <Helmet>
-                    <title>Hi Talents Home Page</title>
-                    <meta name="description" content="Welcome to Hi Talents Management Consultinng Platform" />
+                    <title>HYDE INTERNATIONAL UK</title>
+                    <meta name="keywords" content="hitalent" />
                 </Helmet>
                 <section id="top" className="hero-content pb-lg-5 pb-sm-5 pb-md-5">
                     <header>
