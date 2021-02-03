@@ -63,12 +63,6 @@ export default class Home extends Component {
 
         return (
             <div>
-                <Helmet>
-                    <title>HYDE INTERNATIONAL UK</title>
-                    <meta name="keywords" content="hitalent" />
-                    <meta name='google-site-verification' content='google836652d71fbb8e02.html' />
-                    <meta name="google-site-verification" content="8IEFQDnjWx50bR-Y39R_kuIriAgT6qNjwssEehLhmY4" />
-                </Helmet>
                 <section id="top" className="hero-content pb-lg-5 pb-sm-5 pb-md-5">
                     <header>
                         <nav className="navbar navbar-expand-lg navbar-dark bg-transperent sticky-top px-3 text-dark">
