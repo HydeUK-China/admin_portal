@@ -66,6 +66,7 @@ export default class Home extends Component {
                 <Helmet>
                     <title>HYDE INTERNATIONAL UK</title>
                     <meta name="keywords" content="hitalent" />
+                    <meta name='google-site-verification' content='google836652d71fbb8e02.html' />
                 </Helmet>
                 <section id="top" className="hero-content pb-lg-5 pb-sm-5 pb-md-5">
                     <header>
