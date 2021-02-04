@@ -31,7 +31,7 @@ export default class AboutUs extends Component {
           <meta name="keywords" content="source funding" />
           <meta name="keywords" content="protect intellectual property" />
           <meta name="keywords" content="research grants" />
-
+          <title>HYDE INTERNATIONAL UK | ABOUT US</title>
         </Helmet>
 
 

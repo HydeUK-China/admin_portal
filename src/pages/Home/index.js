@@ -72,7 +72,7 @@ export default class Home extends Component {
                     <meta name="keywords" content="research and developement grant" />
                     <meta name="keywords" content="tech funding" />
                     <meta name="keywords" content="tech incubator" />
-
+                    <title>HYDE INTERNATIONAL UK</title>
                 </Helmet>
                 <section id="top" className="hero-content pb-lg-5 pb-sm-5 pb-md-5">
                     <header>

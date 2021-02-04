@@ -117,6 +117,7 @@ export default class Jobs extends Component {
                     <meta name="keywords" content="find research jobs" />
                     <meta name="keywords" content="data science career" />
                     <meta name="keywords" content="engineer salary" />
+                    <title>HYDE INTERNATIONAL UK | JOBS</title>
 
                 </Helmet>
                 {/* <section id="top" className="hero-category">
