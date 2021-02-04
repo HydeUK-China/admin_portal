@@ -69,9 +69,7 @@ export default class Home extends Component {
                     <meta name="theme-color" content="#000000" />
                     <meta name="title" content="HYDE INTERNATIONAL UK" />
                     <meta name="description" content="Leading global academic and research network and project incubator to help scientists find R&D grants, fund projects and access training opportunities" />
-                    <meta name="keywords" content="research and developement grant" />
-                    <meta name="keywords" content="tech funding" />
-                    <meta name="keywords" content="tech incubator" />
+                    <meta name="keywords" content="research and developement grant, tech funding, tech incubator,hitalent uk" />
                     <title>HYDE INTERNATIONAL UK</title>
                 </Helmet>
                 <section id="top" className="hero-content pb-lg-5 pb-sm-5 pb-md-5">
