@@ -22,7 +22,7 @@ import dataScienceImg from '../../img/data science.svg';
 import businessManagementImg from '../../img/business management.svg';
 import aiImg from '../../img/ai.svg';
 import '../../styles/home.css';
-import TopNav from '../../components/TopNav';
+// import TopNav from '../../components/TopNav';
 import { Helmet } from 'react-helmet'
 
 export default class Home extends Component {
@@ -63,6 +63,17 @@ export default class Home extends Component {
 
         return (
             <div>
+                <Helmet>
+                    <meta charset="utf-8" />
+                    <meta name="viewport" content="width=device-width, initial-scale=1" />
+                    <meta name="theme-color" content="#000000" />
+                    <meta name="title" content="HYDE INTERNATIONAL UK" />
+                    <meta name="description" content="Leading global academic and research network and project incubator to help scientists find R&D grants, fund projects and access training opportunities" />
+                    <meta name="keywords" content="research and developement grant" />
+                    <meta name="keywords" content="tech funding" />
+                    <meta name="keywords" content="tech incubator" />
+
+                </Helmet>
                 <section id="top" className="hero-content pb-lg-5 pb-sm-5 pb-md-5">
                     <header>
                         <nav className="navbar navbar-expand-lg navbar-dark bg-transperent sticky-top px-3 text-dark">

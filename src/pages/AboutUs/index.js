@@ -5,6 +5,7 @@ import Footer from '../../components/Footer';
 import '../../styles/aboutus.css';
 import TopNav from '../../components/TopNav'
 import womenimg from "../../img/photography-of-woman-cropped.jpg"
+import { Fragment } from 'react';
 
 export default class AboutUs extends Component {
   constructor(props) {
@@ -19,7 +20,18 @@ export default class AboutUs extends Component {
   render() {
     const { role } = this.state;
     return (
+      <Fragment>
+        <Helmet>
+          <meta charset="utf-8" />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <meta name="theme-color" content="#000000" />
+          <meta name="title" content="HYDE INTERNATIONAL UK ABOUT US" />
+          <meta name="description" content="Leading global academic and research network to help scientists find R&D grants, source funding and protecting their intellectual properties" />
+          <meta name="keywords" content="source funding" />
+          <meta name="keywords" content="protect intellectual property" />
+          <meta name="keywords" content="research grants" />
 
+        </Helmet>
 
 
         <div className="container-fluid px-0">
@@ -100,56 +112,57 @@ export default class AboutUs extends Component {
 
 
           <section className="py-3 my-3">
-          <div className="container-fluid">
+            <div className="container-fluid">
               <div className="row">
                 <div className="col-8">
-                  
+
                   <header className="section-header">
-                  <Link to="/contactus"><h5 className="faq-sub-title">Still have questions?</h5></Link>
+                    <Link to="/contactus"><h5 className="faq-sub-title">Still have questions?</h5></Link>
                     <h1 className="text-left">FREQUENTLY ASKED QUESTIONS.</h1>
                   </header>
                 </div>
               </div>
-              </div>
-              <div className="container">
+            </div>
+            <div className="container">
 
-          <button class="accordion mt-2"><h5>Do I need to be concerned with my Intellectual property
+              <button class="accordion mt-2"><h5>Do I need to be concerned with my Intellectual property
                     right and the confidentiality of the information regarding my research project?</h5></button>
-          <div class="panel">
-            <p>The candidate will have the autonomy to determine how much information about his/her project/idea s/he
-                        is willing to share in the whole process. Hyde will not ask for any sensitive information. More
-                        importantly, both Hyde and the candidate's future partner/investor will guarantee the intellectual
+              <div class="panel">
+                <p>The candidate will have the autonomy to determine how much information about his/her project/idea s/he
+                is willing to share in the whole process. Hyde will not ask for any sensitive information. More
+                importantly, both Hyde and the candidate's future partner/investor will guarantee the intellectual
                         property (IP) of the candidate through further legal documents.</p>
-          </div>
+              </div>
 
-          <button class="accordion my-2"><h5>How much do I get to say in the selection of collaboration
+              <button class="accordion my-2"><h5>How much do I get to say in the selection of collaboration
                     opportunities?</h5></button>
-          <div class="panel">
-            <p>The candidate will be able to directly participate in the entire negotiation process with the potential
-                        partners/investors and decide which offer(s) to accept. The candidate will have the full power in
-                        determining which of his/her project/idea will be cooperated with his/her future partners/investor and
+              <div class="panel">
+                <p>The candidate will be able to directly participate in the entire negotiation process with the potential
+                partners/investors and decide which offer(s) to accept. The candidate will have the full power in
+                determining which of his/her project/idea will be cooperated with his/her future partners/investor and
                         how.</p>
-          </div>
+              </div>
 
-          <button class="accordion my-2"><h5>Would get any help with the work visa application?</h5></button>
-          <div class="panel">
-            <p>Visa sponsorship is guaranteed. Additionally, Hyde will offer relevant information and advice regarding
+              <button class="accordion my-2"><h5>Would get any help with the work visa application?</h5></button>
+              <div class="panel">
+                <p>Visa sponsorship is guaranteed. Additionally, Hyde will offer relevant information and advice regarding
                         the visa application and will provide a certain level of support to the candidates.</p>
-          </div>
+              </div>
 
-          <button class="accordion my-2"><h5>Do I have to be physically working abroad?</h5></button>
-          <div class="panel">
-            <p> The work location can be negotiated with future investors or partners. Not all of the research projects
-                        and work opportunities require the researchers to physically be in China. Therefore, candidates have the
+              <button class="accordion my-2"><h5>Do I have to be physically working abroad?</h5></button>
+              <div class="panel">
+                <p> The work location can be negotiated with future investors or partners. Not all of the research projects
+                and work opportunities require the researchers to physically be in China. Therefore, candidates have the
                         option to remain in their current positions and work remotely on a project/part-time basis.</p>
-          </div>
+              </div>
 
-          </div>
+            </div>
 
           </section>
-          
+
           <Footer />
         </div>
+      </Fragment>
     );
   }
 }

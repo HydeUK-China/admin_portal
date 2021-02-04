@@ -10,8 +10,9 @@ import { sliceData } from '../../asset/paginationConfig';
 import { jobTypeList } from '../../asset/jobTypeList';
 import { distanceList } from '../../asset/distanceList';
 
-import TopNav from '../../components/TopNav'
+// import TopNav from '../../components/TopNav'
 import '../../styles/jobs.css';
+import { Helmet } from 'react-helmet'
 
 export default class Jobs extends Component {
     constructor(props) {
@@ -107,6 +108,17 @@ export default class Jobs extends Component {
 
         return (
             <div>
+                <Helmet>
+                    <meta charset="utf-8" />
+                    <meta name="viewport" content="width=device-width, initial-scale=1" />
+                    <meta name="theme-color" content="#000000" />
+                    <meta name="title" content="HYDE INTERNATIONAL UK JOBS" />
+                    <meta name="description" content="High salary research and data science jobs and career opportunities around the world (data scientist, research director, and product manager, and more…)" />
+                    <meta name="keywords" content="find research jobs" />
+                    <meta name="keywords" content="data science career" />
+                    <meta name="keywords" content="engineer salary" />
+
+                </Helmet>
                 {/* <section id="top" className="hero-category">
                     <div className="hero-category">
                         <div className=" Container text-left px-5 mx-0 hero-category_title">
@@ -170,17 +182,17 @@ export default class Jobs extends Component {
                 <section id="filter-part">
                     <div className="col-md-12 d-flex justify-content-center">
                         <div className="container">
-                        <Search
-                                    fullData={projectData}
-                                    dataFilterableField={this.lessField}
-                                    filterDataHandler={this.filterDataHandler}
-                                    placeholder={"search job title, job types, industry, salary"}
-                                    showGroupFilter={true}
-                                    groupFilterField={[{ 'type': 'number', 'field': 'salary', 'header': 'Salary' },
-                                    { 'type': 'enumerate', 'field': 'job_type', 'header': 'Job Type', 'options': jobTypeList },
-                                    { 'type': 'enumerate', 'field': 'distance', 'header': 'Location', 'options': distanceList }]}
-                                    intersectionByKey={"project_id"}
-                                />
+                            <Search
+                                fullData={projectData}
+                                dataFilterableField={this.lessField}
+                                filterDataHandler={this.filterDataHandler}
+                                placeholder={"search job title, job types, industry, salary"}
+                                showGroupFilter={true}
+                                groupFilterField={[{ 'type': 'number', 'field': 'salary', 'header': 'Salary' },
+                                { 'type': 'enumerate', 'field': 'job_type', 'header': 'Job Type', 'options': jobTypeList },
+                                { 'type': 'enumerate', 'field': 'distance', 'header': 'Location', 'options': distanceList }]}
+                                intersectionByKey={"project_id"}
+                            />
                         </div>
                     </div>
                 </section>
