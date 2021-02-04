@@ -6,6 +6,7 @@ import '../../styles/aboutus.css';
 import TopNav from '../../components/TopNav'
 import womenimg from "../../img/photography-of-woman-cropped.jpg"
 import { Fragment } from 'react';
+import { Helmet } from 'react-helmet'
 
 export default class AboutUs extends Component {
   constructor(props) {
