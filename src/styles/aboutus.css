@@ -32,9 +32,6 @@
   text-align: justify;
 }
 
-
-
-
 .section-header h1 {
   font-size: 32px;
   color: #111;
@@ -45,13 +42,11 @@
   padding-bottom: 15px;
 }
 
-
-.shadow-sm{
+.shadow-sm {
   box-shadow: 0 0.125rem 0.25rem #000 !important;
-
 }
 .section-header h1::before {
-  content: '';
+  content: "";
   position: absolute;
   display: block;
   width: 120px;
@@ -62,7 +57,7 @@
 }
 
 .section-header h1::after {
-  content: '';
+  content: "";
   position: absolute;
   display: block;
   width: 40px;
@@ -71,64 +66,57 @@
   bottom: 0;
   left: calc(50% - 20px);
 }
-.para{
+.para {
   font-size: 1.4rem;
-    line-height: 1.4;
+  line-height: 1.4;
+  text-align: justify;
 }
-  
-  .faq-content-box {
-    background: #fafafa;
-    padding: 30px;
-  }
-  .faq-sub-title {
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #00216d;
-  }
-  
-  *,
-  *::before
-  *::after{
-      margin: 0;
-      padding: 0;
-      box-sizing: inherit;
-  }
-  .accordion {
-    background-color: white;
-    color: #000;
-    cursor: none;
-    padding: 18px;
-    width: 100%;
-    border-radius: 10px;
-    text-align: left;
-    outline: none;
-    border: none;
-    font-size: 15px;
-    transition: 0.4s;
-    box-shadow: .5rem 2px .5rem rgba(0,0,0,.1);
-  }
-  
-  .active,.accordion:hover {
-    border: none !important ;
-  }
 
-  .panel {
-    padding: 0 18px;
-    background-color: white;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.2s ease-out;
-    box-shadow: .5rem 2px .5rem rgba(0,0,0,.1);
-    border-radius: 10px;
-  }
-  .panel p{
-    padding: 10px 0px;
-  }
+.faq-content-box {
+  background: #fafafa;
+  padding: 30px;
+}
+.faq-sub-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #00216d;
+}
 
+*,
+*::before *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+.accordion {
+  background-color: white;
+  color: #000;
+  cursor: none;
+  padding: 18px;
+  width: 100%;
+  border-radius: 10px;
+  text-align: left;
+  outline: none;
+  border: none;
+  font-size: 15px;
+  transition: 0.4s;
+  box-shadow: 0.5rem 2px 0.5rem rgba(0, 0, 0, 0.1);
+}
 
+.active,
+.accordion:hover {
+  border: none !important ;
+}
 
-
-
-
-
-
+.panel {
+  padding: 0 18px;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  box-shadow: 0.5rem 2px 0.5rem rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+.panel p {
+  padding: 10px 0px;
+}
