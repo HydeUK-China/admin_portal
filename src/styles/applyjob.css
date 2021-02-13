@@ -1,8 +1,8 @@
 /* -----------------------------
  Hero section
  ----------------------------- */
- .single-job-hero {
-  background-image: url('../img/banner.jpg');
+.single-job-hero {
+  background-image: url("../img/banner.jpg");
   position: relative;
   background-repeat: no-repeat;
   background-size: cover;
@@ -23,10 +23,10 @@
   padding: 0;
   color: black;
 }
-.job-summary{
+.job-summary {
   font-size: 1rem;
-  line-height: 1.5;
-  margin-top: .6rem;
+  font-weight: 400;
+  margin-top: 0.6rem;
 }
 .job-details {
   display: flex;
@@ -47,8 +47,8 @@
   font-weight: bold;
 }
 .job-description {
-  font-size: 1.15rem;
-  font-weight: 700;
+  font-size: 1rem;
+  font-weight: 400;
   padding: 10px 0;
   color: black;
 }
@@ -58,11 +58,12 @@
 }
 .para-width {
   max-width: 650px;
- 
+  white-space: pre-wrap;
+  text-align: justify;
 }
 .job-responsibilities {
-  font-size: 1.15rem;
-  font-weight: 700;
+  font-size: 1rem;
+  font-weight: 400;
   padding: 0;
   color: black;
 }
@@ -70,8 +71,8 @@
   padding-top: 10px;
 }
 .job-skills {
-  font-size: 1.15rem;
-  font-weight: 700;
+  font-size: 1rem;
+  font-weight: 400;
   color: black;
 }
 .info-item {
@@ -80,14 +81,14 @@
 }
 .apply-btn {
   display: inline-block;
-  background: rgb(0,33,109);
+  background: rgb(0, 33, 109);
   /* width: 100%; */
   color: white;
   padding: 8px 12px;
   cursor: pointer;
   font-weight: 600;
   font-size: 1rem;
-  box-shadow: 0 0 0.4rem rgba(0,0,0,0.5);
+  box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.5);
   text-align: center;
   vertical-align: middle;
   width: 100%;
@@ -97,7 +98,7 @@
   transition: background 0.1s ease 0s, color;
 }
 .apply-btn:hover {
-  background: rgb(0,17,96);
+  background: rgb(0, 17, 96);
 }
 .similar-jobs_header {
   margin: 30px 0;
@@ -168,7 +169,7 @@
   margin-bottom: 1.5rem;
 }
 
-.switch-form{
+.switch-form {
   color: blue !important;
   text-decoration-line: underline !important;
   cursor: pointer;

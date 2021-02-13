@@ -123,20 +123,20 @@ class ApplyJob extends Component {
                                         <NavLink className="nav-link" to="/contactus">Contact Us</NavLink>
                                     </li>
                                     <li className="sign-in">
-                                {role === '__admin__' ?
-                                    <NavLink className="nav-item user" to="/mgt/admin_dashboard">
-                                        <div className="text-light fa fa-user-o"></div>
-                                    </NavLink>
-                                    :
-                                    (role === 'expert' ?
-                                        <NavLink className="nav-item user" to="/mgt/expert_profile">
-                                            <div className="text-light fa fa-user-o"></div>
-                                        </NavLink>
-                                        : <NavLink className="nav-item user" to="/login">
-                                            <div className="text-light fa fa-user-o"></div>
-                                        </NavLink>)
-                                }
-                            </li>
+                                        {role === '__admin__' ?
+                                            <NavLink className="nav-item user" to="/mgt/admin_dashboard">
+                                                <div className="text-light fa fa-user-o"></div>
+                                            </NavLink>
+                                            :
+                                            (role === 'expert' ?
+                                                <NavLink className="nav-item user" to="/mgt/expert_profile">
+                                                    <div className="text-light fa fa-user-o"></div>
+                                                </NavLink>
+                                                : <NavLink className="nav-item user" to="/login">
+                                                    <div className="text-light fa fa-user-o"></div>
+                                                </NavLink>)
+                                        }
+                                    </li>
                                 </ul>
                             </div>
                         </nav>
@@ -163,18 +163,23 @@ class ApplyJob extends Component {
                                     </p>
                                 </div>
 
-                                <div className="job-description">Job Description
+                                <div className="job-description">
+                                    <h5>Job Description</h5>
                                     <p className="para-width">
                                         {job_description}
                                     </p>
                                 </div>
 
-                                <div className="job-responsibilities">Responsibilities
-                                    <ul>
+                                <div className="job-responsibilities">
+                                    <h5>Responsibilities</h5>
+                                    <p className="para-width">
+                                        {responsibility}
+                                    </p>
+                                    {/* <ul>
                                         <li className="info-item">
                                             {responsibility}
-                                        </li>
-                                        {/* <li className="info-item">
+                                        </li> */}
+                                    {/* <li className="info-item">
                                             Identify risks to minimise attrition.
                                         </li>
                                         <li className="info-item">
@@ -186,22 +191,25 @@ class ApplyJob extends Component {
                                         <li className="info-item">
                                             Establish and maintain relationship with key client stakeholders.
                                         </li> */}
-                                    </ul>
+                                    {/* </ul> */}
                                 </div>
 
                                 <div className="job-skills">
-                                    Essential Skills
-                                    <ul>
+                                    <h5>Essential Skills</h5>
+                                    <p className="para-width">
+                                        {job_description}
+                                    </p>
+                                    {/* <ul>
                                         <li className="info-item">
                                             {essential_skills}
-                                        </li>
-                                        {/* <li className="info-item">
+                                        </li> */}
+                                    {/* <li className="info-item">
                                             Sales and relationship management experience
                                         </li>
                                         <li className="info-item">
                                             Experience working to commercial KPI’s
                                         </li> */}
-                                    </ul>
+                                    {/* </ul> */}
                                 </div>
 
                                 <div className="apply-btn" onClick={this.applyNow}>Apply now</div>
