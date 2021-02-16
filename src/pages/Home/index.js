@@ -270,87 +270,87 @@ export default class Home extends Component {
                         </header>
 
 
-                        <div className="row">
+                        <div className="industry_services">
 
-                            <div className="col-md-3">
-                                <div className="card mb-4">
+                            <div className="industry_ServiceCard">
+                                <div className="card">
                                     <img className="industry-background" src={urbanPlanningImg} width="100%" height="120px" />
                                     <label className="industry-label">Urban Planning</label>
                                 </div>
                             </div>
 
-                            <div className="col-md-3">
-                                <div className="card mb-4">
+                            <div className="industry_ServiceCard">
+                                <div className="card">
                                     <img className="industry-background" src={medicalScienceImg} width="100%" height="120px" />
                                     <label className="industry-label">Medical Science</label>
                                 </div>
                             </div>
 
-                            <div className="col-md-3">
-                                <div className="card mb-4">
+                            <div className="industry_ServiceCard">
+                                <div className="card">
                                     <img className="industry-background" src={envinromentalSienceImg} width="100%" height="120px" />
                                     <label className="industry-label">Environmental Science</label>
                                 </div>
                             </div>
 
-                            <div className="col-md-3">
-                                <div className="card mb-4">
+                            <div className="industry_ServiceCard">
+                                <div className="card">
                                     <img className="industry-background" src={materialScienceImg} width="100%" height="120px" />
                                     <label className="industry-label">Materials Science</label>
                                 </div>
                             </div>
 
-                            <div className="col-md-3">
-                                <div className="card mb-3">
+                            <div className="industry_ServiceCard">
+                                <div className="card">
                                     <img className="industry-background" src={renewableEnergyImg} width="100%" height="120px" />
                                     <label className="industry-label">Renewable Energy</label>
                                 </div>
                             </div>
 
-                            <div className="col-md-3">
-                                <div className="card mb-4">
+                            <div className="industry_ServiceCard">
+                                <div className="card">
                                     <img className="industry-background" src={marineEngineerImg} width="100%" height="120px" />
                                     <label className="industry-label">Marine Engineering</label>
                                 </div>
                             </div>
 
-                            <div className="col-md-3">
-                                <div className="card mb-4">
+                            <div className="industry_ServiceCard">
+                                <div className="card">
                                     <img className="industry-background" src={chemistryImg} width="100%" height="120px" />
                                     <label className="industry-label">Chemistry</label>
                                 </div>
                             </div>
 
-                            <div className="col-md-3">
-                                <div className="card mb-4">
+                            <div className="industry_ServiceCard">
+                                <div className="card">
                                     <img className="industry-background" src={engineeringManufacturingImg} width="100%" height="120px" />
 
                                     <label className="industry-label">Engineering & Manufacturing</label>
                                 </div>
                             </div>
 
-                            <div className="col-md-3">
-                                <div className="card mb-4">
+                            <div className="industry_ServiceCard">
+                                <div className="card">
                                     <img className="industry-background" src={informationTechnologyImg} width="100%" height="120px" />
                                     <label className="industry-label">Information Technology</label>
                                 </div>
                             </div>
 
-                            <div className="col-md-3">
-                                <div className="card mb-4">
+                            <div className="industry_ServiceCard">
+                                <div className="card">
                                     <img className="industry-background" src={dataScienceImg} width="100%" height="120px" />
                                     <label className="industry-label">Data Science & Social Data Science</label>
                                 </div>
                             </div>
 
-                            <div className="col-md-3">
-                                <div className="card mb-4">
+                            <div className="industry_ServiceCard">
+                                <div className="card">
                                     <img className="industry-background" src={businessManagementImg} width="100%" height="120px" />                               <label className="industry-label">Business & Management</label>
                                 </div>
                             </div>
 
-                            <div className="col-md-3">
-                                <div className="card mb-4">
+                            <div className="industry_ServiceCard">
+                                <div className="card">
                                     <img className="industry-background" src={aiImg} width="100%" height="120px" />
                                     <label className="industry-label">AI & Robotics</label>
                                 </div>

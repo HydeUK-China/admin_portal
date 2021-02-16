@@ -8,6 +8,8 @@ import womenimg from "../../img/photography-of-woman-cropped.jpg"
 import { Fragment } from 'react';
 import { Helmet } from 'react-helmet'
 
+
+
 export default class AboutUs extends Component {
   constructor(props) {
     super(props);
@@ -125,7 +127,6 @@ export default class AboutUs extends Component {
               </div>
             </div>
             <div className="container">
-
               <button class="accordion mt-2"><h5>Do I need to be concerned with my Intellectual property
                     right and the confidentiality of the information regarding my research project?</h5></button>
               <div class="panel">
