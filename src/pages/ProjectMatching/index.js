@@ -6,6 +6,7 @@ import ModalOpsTables from '../../components/modalOpsTables';
 import Pagination from '../../components/pagination';
 import { itemsCountPerPage, sliceData } from '../../asset/paginationConfig';
 import { projectMatchingDataLessField, projectMatchingDataLessHeader, expertDataLessField, expertDataLessHeader, expertDataMoreField, expertDataMoreHeader } from '../../asset/dataFieldHeader';
+import ReactGA from 'react-ga'
 
 export default class ProjectMatching extends Component {
     constructor(props) {
@@ -77,7 +78,7 @@ export default class ProjectMatching extends Component {
     handlePageClick = (pageNumber) => {
         const pageIndex = pageNumber - 1;
         const offset = pageIndex * itemsCountPerPage;
-       
+
         this.setState({
             activePage: pageNumber,
             offset
@@ -97,7 +98,7 @@ export default class ProjectMatching extends Component {
 
         const order = key === sortKey ? _.filter(['desc', 'asc'], o => o !== sortOrder)[0] : 'desc';
         const temp_data = _.orderBy(filterData, key, order);
-        
+
         this.setState({
             filterData: temp_data,
             sortKey: key,
@@ -115,7 +116,7 @@ export default class ProjectMatching extends Component {
 
     render() {
         const { data, displayData, innerData, activePage, totalItemsCount, sortKey, sortOrder } = this.state;
-
+        ReactGA.pageview(window.location.pathname + window.location.search);
         return (
             <div className="database">
                 <div className="search">

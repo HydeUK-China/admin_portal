@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
 import {
   Switch,
   Route,
@@ -13,8 +13,10 @@ import { path_name, renderRoute } from './tabRouteConfig';
 import 'bootstrap/dist/css/bootstrap.css';
 import '../styles/app.css';
 import '../styles/database.css';
+import ReactGA from 'react-ga';
 
 class App extends Component {
+
   constructor(props) {
     super(props);
 
@@ -77,8 +79,11 @@ class App extends Component {
       )
   }
 
+  
+
   render() {
     const { role, uid, navbarToggler } = this.state;
+    ReactGA.initialize('G-JK3NHS5DHQ')
 
     return (
       <div>

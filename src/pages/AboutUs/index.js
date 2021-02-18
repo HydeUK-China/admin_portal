@@ -7,7 +7,7 @@ import TopNav from '../../components/TopNav'
 import womenimg from "../../img/photography-of-woman-cropped.jpg"
 import { Fragment } from 'react';
 import { Helmet } from 'react-helmet'
-
+import ReactGA from 'react-ga'
 
 
 export default class AboutUs extends Component {
@@ -22,6 +22,7 @@ export default class AboutUs extends Component {
 
   render() {
     const { role } = this.state;
+    ReactGA.pageview(window.location.pathname + window.location.search);
     return (
       <Fragment>
         <Helmet>

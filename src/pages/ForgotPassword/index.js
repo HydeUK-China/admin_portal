@@ -4,6 +4,7 @@ import ForgotPasswordForm from '../../components/forgotPasswordForm';
 import Footer from '../../components/Footer';
 import '../../styles/login.css'
 import loginbg from '../../img/loginbg.jpg';
+import ReactGA from 'react-ga'
 
 export default class ForgotPassword extends Component {
     constructor(props) {
@@ -16,6 +17,7 @@ export default class ForgotPassword extends Component {
     }
 
     render() {
+        ReactGA.pageview(window.location.pathname + window.location.search);
         return (
             <div className="registerLogin-page">
                 <div className="content-box container">

@@ -5,8 +5,8 @@ import { fetchReq, getRole, getUid, setUserInfo } from '../../utils/utils';
 import RegisterForm from '../../components/RegisterForm';
 import LoginForm from '../../components/loginForm';
 import Footer from '../../components/Footer';
-
 import '../../styles/applyjob.css';
+import ReactGA from 'react-ga'
 
 class ApplyJob extends Component {
     constructor(props) {
@@ -99,6 +99,7 @@ class ApplyJob extends Component {
         const { job_title, employer, show_employer_name, start_date, close_date, currency, salary, job_description,
             required_expertise, professional_field, organization_info, responsibility, essential_skills } = project;
 
+        ReactGA.pageview(window.location.pathname + window.location.search);
         return (
             <div>
                 <section id="top" className="single-job-hero h-40">

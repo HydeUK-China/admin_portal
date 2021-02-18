@@ -7,6 +7,7 @@ import AddProjectModal from '../../components/addProjectModal';
 import Pagination from '../../components/pagination';
 import { itemsCountPerPage, sliceData } from '../../asset/paginationConfig';
 import { projectDataLessField, projectDataLessHeader, projectDataMoreField, projectDataMoreHeader } from '../../asset/dataFieldHeader';
+import ReactGA from 'react-ga'
 
 export default class ProjectManagement extends Component {
     constructor(props) {
@@ -196,6 +197,7 @@ export default class ProjectManagement extends Component {
     render() {
         const { data, displayData, activePage, totalItemsCount, showAdd, sortKey, sortOrder } = this.state;
         const { role } = this.props;
+        ReactGA.pageview(window.location.pathname + window.location.search);
 
         return (
             <div className="database">

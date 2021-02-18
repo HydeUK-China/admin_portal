@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import Footer from '../../components/Footer';
 import { getRole } from '../../utils/utils';
+import ReactGA from 'react-ga'
 
 
 export default class Cookies extends Component {
@@ -16,6 +17,7 @@ export default class Cookies extends Component {
    
     render() {
         const { role } = this.state;
+        ReactGA.pageview(window.location.pathname + window.location.search);
 
         return (
             <div>

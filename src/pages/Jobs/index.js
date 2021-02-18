@@ -9,6 +9,7 @@ import Pagination from '../../components/pagination';
 import { sliceData } from '../../asset/paginationConfig';
 import { jobTypeList } from '../../asset/jobTypeList';
 import { distanceList } from '../../asset/distanceList';
+import ReactGA from 'react-ga'
 
 // import TopNav from '../../components/TopNav'
 import '../../styles/jobs.css';
@@ -105,6 +106,7 @@ export default class Jobs extends Component {
 
     render() {
         const { projectData, activePage, totalItemsCount, role } = this.state;
+        ReactGA.pageview(window.location.pathname + window.location.search);
 
         return (
             <div>

@@ -165,10 +165,21 @@ function expertDashboard(req, res) {
     jwtUtil.verifyRoleFromToken(token)
         .then((role) => {
             if (role === 'admin') {
-                res.status(200).json({
-                    success: true,
-                    data: []
-                })
+                const sql = `SELECT *,  count(edu_organization) as value, from expert_info group by edu_organization;`;
+
+                res.app.get('connection').query(sql, function (err, rows) {
+                    if (err) {
+                        res.status(400).json({
+                            success: false,
+                            msg: err.sqlMessage
+                        });
+                    } else {
+                        res.status(200).json({
+                            success: true,
+                            data: rows
+                        })
+                    }
+                });
             } else {
                 res.status(400).json({
                     success: false,

@@ -7,6 +7,7 @@ import AddExpertModal from '../../components/addExpertModal';
 import Pagination from '../../components/pagination';
 import { itemsCountPerPage, sliceData } from '../../asset/paginationConfig';
 import { expertDataLessField, expertDataLessHeader, expertDataMoreField, expertDataMoreHeader } from '../../asset/dataFieldHeader';
+import ReactGA from 'react-ga'
 
 export default class ExpertManagement extends Component {
     constructor(props) {
@@ -48,7 +49,7 @@ export default class ExpertManagement extends Component {
         fetchReq('/api/fetchExpert/all').then(data => {
             const { offset } = this.state;
             const [totalItemsCount, slice] = sliceData(data, offset);
-
+           
             this.setState({
                 data,
                 filterData: data,
@@ -153,7 +154,7 @@ export default class ExpertManagement extends Component {
 
         const order = key === sortKey ? _.filter(['desc', 'asc'], o => o !== sortOrder)[0] : 'desc';
         const temp_data = _.orderBy(filterData, key, order);
-        
+
         this.setState({
             filterData: temp_data,
             sortKey: key,
@@ -172,6 +173,7 @@ export default class ExpertManagement extends Component {
     render() {
         const { data, displayData, activePage, totalItemsCount, showAdd, sortKey, sortOrder } = this.state;
         const { role } = this.props;
+        ReactGA.pageview(window.location.pathname + window.location.search);
 
         return (
             <div className="database">

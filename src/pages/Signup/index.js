@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import RegisterForm from '../../components/RegisterForm';
 import Footer from '../../components/Footer';
 import registerbg from '../../img/registerbg.jpg';
+import ReactGA from 'react-ga'
 class Signup extends Component {
     constructor(props) {
         super(props)
@@ -22,6 +23,7 @@ class Signup extends Component {
     }
 
     render() {
+        ReactGA.pageview(window.location.pathname + window.location.search);
         return (
             <div className="registerLogin-page">
                 <div className="content-box container">
@@ -36,7 +38,7 @@ class Signup extends Component {
                                 <h2>Sign up</h2>
                                 <h4>Register now and get access to amazing opportunities</h4>
                             </div>
-                            
+
                             <RegisterForm
                                 registerCallback={this.registerCallback}
                                 confirmButtonText="Create Account"
@@ -44,7 +46,7 @@ class Signup extends Component {
 
                         </div>
                         <div className="col-md-4 col-lg-6">
-                        <img className="register-bg_image" src={registerbg}></img>
+                            <img className="register-bg_image" src={registerbg}></img>
                         </div>
                     </div>
                 </div>

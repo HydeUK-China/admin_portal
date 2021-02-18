@@ -6,6 +6,7 @@ import '../../styles/contactus.css';
 import _ from 'lodash';
 import TopNav from '../../components/TopNav';
 import womenimg from '../../img/contact_2_cropped.png'
+import ReactGA from 'react-ga'
 
 export default class ContactUs extends Component {
   constructor(props) {
@@ -75,6 +76,7 @@ export default class ContactUs extends Component {
   render() {
     const { role } = this.state;
     const { fname, lname, email, subject, message, sentMessage } = this.state;
+    ReactGA.pageview(window.location.pathname + window.location.search);
     return (
       <div>
         <section className="">

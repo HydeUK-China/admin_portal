@@ -5,7 +5,10 @@
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
-    <meta name="google-site-verification" content="8IEFQDnjWx50bR-Y39R_kuIriAgT6qNjwssEehLhmY4" />
+    <meta
+      name="google-site-verification"
+      content="8IEFQDnjWx50bR-Y39R_kuIriAgT6qNjwssEehLhmY4"
+    />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
 
     <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
@@ -29,6 +32,21 @@
       crossorigin="anonymous"
     ></script>
     <!-- <title>Hyde International UK</title> -->
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-JK3NHS5DHQ"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-JK3NHS5DHQ");
+    </script>
   </head>
   <body>
     <div id="root"></div>

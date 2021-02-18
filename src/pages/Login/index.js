@@ -6,6 +6,7 @@ import LoginForm from '../../components/loginForm';
 import Footer from '../../components/Footer';
 import loginbg from '../../img/loginbg.jpg'
 import '../../styles/login.css';
+import ReactGA from 'react-ga'
 
 class Login extends Component {
   constructor(props) {
@@ -24,6 +25,7 @@ class Login extends Component {
   }
 
   render() {
+    ReactGA.pageview(window.location.pathname + window.location.search);
     return (
       <div className="registerLogin-page">
         <div className="content-box container">

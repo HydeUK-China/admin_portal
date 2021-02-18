@@ -3,6 +3,7 @@ import _ from 'lodash';
 import JobCard from '../../components/jobCard';
 import { fetchReq } from '../../utils/utils';
 import { projectDataLessField, projectDataLessHeader } from '../../asset/dataFieldHeader';
+import ReactGA from 'react-ga'
 
 export default class ExpertApplication extends Component {
     constructor(props) {
@@ -89,6 +90,7 @@ export default class ExpertApplication extends Component {
     }
 
     render() {
+        ReactGA.pageview(window.location.pathname + window.location.search);
         return (
             <div className="expert-application-container">
                 { this.renderJobcards() }

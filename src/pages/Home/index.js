@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import _ from 'lodash';
 import { fetchReq, getRole } from '../../utils/utils';
@@ -24,6 +24,7 @@ import aiImg from '../../img/ai.svg';
 import '../../styles/home.css';
 // import TopNav from '../../components/TopNav';
 import { Helmet } from 'react-helmet'
+import ReactGA from 'react-ga'
 
 export default class Home extends Component {
     constructor(props) {
@@ -58,8 +59,14 @@ export default class Home extends Component {
         })
     }
 
+
+
+
+
     render() {
         const { role } = this.state;
+        ReactGA.pageview(window.location.pathname + window.location.search);
+
 
         return (
             <div>
@@ -73,6 +80,8 @@ export default class Home extends Component {
                     <meta property="og:title" content="HYDE INTERNATIONAL UK" />
                     <meta property="og:description" content="Leading global academic and research network and project incubator to help scientists find R&D grants, fund projects and access training opportunities" />
                     <title>HYDE INTERNATIONAL UK</title>
+
+
                 </Helmet>
                 <section id="top" className="hero-content pb-lg-5 pb-sm-5 pb-md-5">
                     <header>
