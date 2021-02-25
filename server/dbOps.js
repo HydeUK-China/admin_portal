@@ -159,13 +159,190 @@ function signup(req, res) {
     })
 }
 
-function expertDashboard(req, res) {
+function expertDashboard_TotalApplicant(req, res) {
     const token = req.session.token;
 
     jwtUtil.verifyRoleFromToken(token)
         .then((role) => {
             if (role === 'admin') {
-                const sql = `SELECT *,  count(edu_organization) as value, from expert_info group by edu_organization;`;
+                const sql = `select count(expert_id) as total_applicant from expert_info; `;
+
+
+
+                res.app.get('connection').query(sql, function (err, rows) {
+                    if (err) {
+                        res.status(400).json({
+                            success: false,
+                            msg: err.sqlMessage
+                        });
+                    } else {
+                        res.status(200).json({
+                            success: true,
+                            data: rows
+                        })
+                    }
+                });
+            } else {
+                res.status(400).json({
+                    success: false,
+                    msg: 'role permission denied'
+                })
+            }
+        }).catch(err => {
+            res.status(400).json({
+                success: false,
+                msg: err
+            })
+        });
+}
+
+function expertDashboard_Gender(req, res) {
+    const token = req.session.token;
+
+    jwtUtil.verifyRoleFromToken(token)
+        .then((role) => {
+            if (role === 'admin') {
+                const sql = `select gender, count(gender) as number_applicant from expert_info group by gender;`;
+
+                res.app.get('connection').query(sql, function (err, rows) {
+                    if (err) {
+                        res.status(400).json({
+                            success: false,
+                            msg: err.sqlMessage
+                        });
+                    } else {
+                        res.status(200).json({
+                            success: true,
+                            data: rows
+                        })
+                    }
+                });
+            } else {
+                res.status(400).json({
+                    success: false,
+                    msg: 'role permission denied'
+                })
+            }
+        }).catch(err => {
+            res.status(400).json({
+                success: false,
+                msg: err
+            })
+        });
+}
+
+function expertDashboard_Category(req, res) {
+    const token = req.session.token;
+
+    jwtUtil.verifyRoleFromToken(token)
+        .then((role) => {
+            if (role === 'admin') {
+                const sql = `select category,count(category) as number_applicant from portal_system.expert_info group by category;`;
+
+                res.app.get('connection').query(sql, function (err, rows) {
+                    if (err) {
+                        res.status(400).json({
+                            success: false,
+                            msg: err.sqlMessage
+                        });
+                    } else {
+                        res.status(200).json({
+                            success: true,
+                            data: rows
+                        })
+                    }
+                });
+            } else {
+                res.status(400).json({
+                    success: false,
+                    msg: 'role permission denied'
+                })
+            }
+        }).catch(err => {
+            res.status(400).json({
+                success: false,
+                msg: err
+            })
+        });
+}
+
+function expertDashboard_Expertise(req, res) {
+    const token = req.session.token;
+
+    jwtUtil.verifyRoleFromToken(token)
+        .then((role) => {
+            if (role === 'admin') {
+                const sql = `SELECT expertise, count(expertise) AS number_applicant FROM expert_info GROUP BY expertise ;`;
+
+                res.app.get('connection').query(sql, function (err, rows) {
+                    if (err) {
+                        res.status(400).json({
+                            success: false,
+                            msg: err.sqlMessage
+                        });
+                    } else {
+                        res.status(200).json({
+                            success: true,
+                            data: rows
+                        })
+                    }
+                });
+            } else {
+                res.status(400).json({
+                    success: false,
+                    msg: 'role permission denied'
+                })
+            }
+        }).catch(err => {
+            res.status(400).json({
+                success: false,
+                msg: err
+            })
+        });
+}
+
+function expertDashboard_Nationality(req, res) {
+    const token = req.session.token;
+
+    jwtUtil.verifyRoleFromToken(token)
+        .then((role) => {
+            if (role === 'admin') {
+                const sql = `select nationality, count(nationality) as number_applicant from portal_system.expert_info group by nationality;`;
+
+                res.app.get('connection').query(sql, function (err, rows) {
+                    if (err) {
+                        res.status(400).json({
+                            success: false,
+                            msg: err.sqlMessage
+                        });
+                    } else {
+                        res.status(200).json({
+                            success: true,
+                            data: rows
+                        })
+                    }
+                });
+            } else {
+                res.status(400).json({
+                    success: false,
+                    msg: 'role permission denied'
+                })
+            }
+        }).catch(err => {
+            res.status(400).json({
+                success: false,
+                msg: err
+            })
+        });
+}
+
+function expertDashboard_SourceRef(req, res) {
+    const token = req.session.token;
+
+    jwtUtil.verifyRoleFromToken(token)
+        .then((role) => {
+            if (role === 'admin') {
+                const sql = `select source_references, count(source_references) as number_references from portal_system.expert_info group by source_references;`;
 
                 res.app.get('connection').query(sql, function (err, rows) {
                     if (err) {
@@ -969,7 +1146,12 @@ function deleteProjectMatching(req, res) {
 }
 
 module.exports = {
-    expertDashboard,
+    expertDashboard_TotalApplicant,
+    expertDashboard_Gender,
+    expertDashboard_Category,
+    expertDashboard_Expertise,
+    expertDashboard_Nationality,
+    expertDashboard_SourceRef,
     login,
     logout,
     signup,

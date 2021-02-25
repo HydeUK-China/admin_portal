@@ -50,3 +50,11 @@ SELECT expert_info.first_name, user_credential.id FROM user_credential
 JOIN  expert_info
 ON user_credential.foreign_user_id = expert_info.expert_id
 WHERE user_credential.account_name='expert_20@gmail.com';
+
+-- dashboard query 
+select count(expert_id) as total_applicant from portal_system.expert_info; 
+SELECT expertise, count(expertise) AS number_applicant FROM expert_info GROUP BY expertise ;
+select gender, count(gender) as number_applicant from expert_info group by gender;
+select category,count(category) as number_applicant from portal_system.expert_info group by category;
+select nationality, count(nationality) as number_applicant from portal_system.expert_info group by nationality;
+select source_references, count(source_references) as number_references from portal_system.expert_info group by source_references;

@@ -26,6 +26,7 @@ export default class AboutUs extends Component {
     return (
       <Fragment>
         <Helmet>
+          <title>HYDE INTERNATIONAL UK | ABOUT US</title>
           <meta charset="utf-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <meta name="theme-color" content="#000000" />
@@ -34,7 +35,7 @@ export default class AboutUs extends Component {
           <meta name="keywords" content="source funding" />
           <meta name="keywords" content="protect intellectual property" />
           <meta name="keywords" content="research grants" />
-          <title>HYDE INTERNATIONAL UK | ABOUT US</title>
+          
         </Helmet>
 
 
@@ -42,33 +43,33 @@ export default class AboutUs extends Component {
           <section id="about">
             <header>
               <nav className="navbar navbar-expand-lg navbar-light bg-transperent sticky-top px-3 text-dark">
-                <NavLink className="navbar-brand text-dark" to="/home"><h2>HI Talents</h2></NavLink>
+                <NavLink className="navbar-brand text-dark" to="/home" title='Hi Talents'><h2>HI Talents</h2></NavLink>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
                   <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarToggler">
                   <ul className="navbar-nav ml-auto mt-2 mt-lg-0 ">
                     <li className="nav-item">
-                      <NavLink className="nav-link" to="/home">Home {/* <span className="sr-only">(current)</span> */}</NavLink>
+                      <NavLink className="nav-link" to="/home" title='Home'>Home {/* <span className="sr-only">(current)</span> */}</NavLink>
                     </li>
                     <li className="nav-item">
-                      <NavLink className="nav-link" to="/jobs">Jobs</NavLink>
+                      <NavLink className="nav-link" to="/jobs" title='Jobs'>Jobs</NavLink>
                     </li>
                     <li className="nav-item">
-                      <NavLink className="nav-link" to="/aboutus">About Us</NavLink>
+                      <NavLink className="nav-link" to="/aboutus" title='About Us'>About Us</NavLink>
                     </li>
                     <li className="nav-item">
-                      <NavLink className="nav-link" to="/contactus">Contact Us</NavLink>
+                      <NavLink className="nav-link" to="/contactus" title='Contact Us'>Contact Us</NavLink>
                     </li>
                     <li className="sign-in">
                       {role === '__admin__' ?
                         <NavLink className="nav-item user" to="/mgt/admin_dashboard">
-                          <div className="fa fa-user-o"></div>
+                          <div className="fa fa-user-o" title='Profile'></div>
                         </NavLink>
                         :
                         (role === 'expert' ?
                           <NavLink className="nav-item user" to="/mgt/expert_profile">
-                            <div className="fa fa-user-o"></div>
+                            <div className="fa fa-user-o" title='Profile'></div>
                           </NavLink>
                           : <NavLink className="nav-item user" to="/login">
                             <div className="fa fa-user-o"></div>
@@ -82,7 +83,7 @@ export default class AboutUs extends Component {
 
             <div className="row mx-0 mb-2 flex-column-reverse flex-lg-row">
               <div className="col-md-4 px-0 pt-0  text-center overflow-hidden">
-                <img src={womenimg} width="100%" height="100%" ></img>
+                <img src={womenimg} width="100%" height="100%" alt='Hi Talents About Us' ></img>
               </div>
               <div className="col-md-8 px-0 pt-0 text-left text-dark overflow-hidden">
 

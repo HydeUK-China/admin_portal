@@ -22,8 +22,12 @@ router.post('/api/post', (req, res) => {
 router.post('/api/login', dbOps.login);
 router.post('/api/logout', dbOps.logout);
 router.post('/api/signup', dbOps.signup);
-
-router.post('/api/expertDashboard', dbOps.expertDashboard);
+router.post('/api/expertDashboard/totalapplicant', dbOps.expertDashboard_TotalApplicant);
+router.post('/api/expertDashboard/gender', dbOps.expertDashboard_Gender);
+router.post('/api/expertDashboard/expertise', dbOps.expertDashboard_Expertise);
+router.post('/api/expertDashboard/category', dbOps.expertDashboard_Category);
+router.post('/api/expertDashboard/nationality', dbOps.expertDashboard_Nationality);
+router.post('/api/expertDashboard/sourceref', dbOps.expertDashboard_SourceRef);
 router.post('/api/fetchExpert/all', dbOps.fetchExpertAll);
 router.post('/api/addExpert', dbOps.addExpert);
 router.post('/api/editExpert', dbOps.editExpert);

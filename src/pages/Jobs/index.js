@@ -111,6 +111,7 @@ export default class Jobs extends Component {
         return (
             <div>
                 <Helmet>
+                    <title>HYDE INTERNATIONAL UK | JOBS</title>
                     <meta charset="utf-8" />
                     <meta name="viewport" content="width=device-width, initial-scale=1" />
                     <meta name="theme-color" content="#000000" />
@@ -119,7 +120,7 @@ export default class Jobs extends Component {
                     <meta name="keywords" content="find research jobs" />
                     <meta name="keywords" content="data science career" />
                     <meta name="keywords" content="engineer salary" />
-                    <title>HYDE INTERNATIONAL UK | JOBS</title>
+                    
 
                 </Helmet>
                 {/* <section id="top" className="hero-category">
@@ -132,33 +133,33 @@ export default class Jobs extends Component {
                 <section className="hero-category">
                     <header>
                         <nav className="navbar navbar-expand-lg navbar-light bg-transperent px-3 text-dark ">
-                            <NavLink className="navbar-brand text-dark" to="/home"><h2>HI Talents</h2></NavLink>
+                            <NavLink className="navbar-brand text-dark" to="/home" title='Hi Talents'><h2>HI Talents</h2></NavLink>
                             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
                                 <span className="navbar-toggler-icon"></span>
                             </button>
                             <div className="collapse navbar-collapse" id="navbarToggler">
                                 <ul className="navbar-nav ml-auto mt-2 mt-lg-0 ">
                                     <li className="nav-item">
-                                        <NavLink className="nav-link" to="/home">Home {/* <span className="sr-only">(current)</span> */}</NavLink>
+                                        <NavLink className="nav-link" to="/home" title='Home'>Home {/* <span className="sr-only">(current)</span> */}</NavLink>
                                     </li>
                                     <li className="nav-item">
-                                        <NavLink className="nav-link" to="/jobs">Jobs</NavLink>
+                                        <NavLink className="nav-link" to="/jobs" title='Jobs'>Jobs</NavLink>
                                     </li>
                                     <li className="nav-item">
-                                        <NavLink className="nav-link" to="/aboutus">About Us</NavLink>
+                                        <NavLink className="nav-link" to="/aboutus" title='About Us'>About Us</NavLink>
                                     </li>
                                     <li className="nav-item">
-                                        <NavLink className="nav-link" to="/contactus">Contact Us</NavLink>
+                                        <NavLink className="nav-link" to="/contactus" title='Contact Us'>Contact Us</NavLink>
                                     </li>
                                     <li className="sign-in">
                                         {role === '__admin__' ?
                                             <NavLink className="nav-item user" to="/mgt/admin_dashboard">
-                                                <div className=" fa fa-user-o"></div>
+                                                <div className=" fa fa-user-o" title='Profile'></div>
                                             </NavLink>
                                             :
                                             (role === 'expert' ?
                                                 <NavLink className="nav-item user" to="/mgt/expert_profile">
-                                                    <div className=" fa fa-user-o"></div>
+                                                    <div className=" fa fa-user-o" title='Profile'></div>
                                                 </NavLink>
                                                 : <NavLink className="nav-item user" to="/login">
                                                     <div className="fa fa-user-o"></div>

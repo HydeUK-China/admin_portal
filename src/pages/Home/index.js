@@ -71,6 +71,7 @@ export default class Home extends Component {
         return (
             <div>
                 <Helmet>
+                    <title>HYDE INTERNATIONAL UK</title>
                     <meta charset="utf-8" />
                     <meta name="viewport" content="width=device-width, initial-scale=1" />
                     <meta name="theme-color" content="#000000" />
@@ -79,35 +80,35 @@ export default class Home extends Component {
                     <meta name="keywords" content="research and developement grant, tech funding, tech incubator,hitalent uk" />
                     <meta property="og:title" content="HYDE INTERNATIONAL UK" />
                     <meta property="og:description" content="Leading global academic and research network and project incubator to help scientists find R&D grants, fund projects and access training opportunities" />
-                    <title>HYDE INTERNATIONAL UK</title>
+
 
 
                 </Helmet>
                 <section id="top" className="hero-content pb-lg-5 pb-sm-5 pb-md-5">
                     <header>
                         <nav className="navbar navbar-expand-lg navbar-dark bg-transperent sticky-top px-3 text-dark">
-                            <NavLink className="navbar-brand text-light" to="/home"><h2>HI Talents</h2></NavLink>
+                            <NavLink className="navbar-brand text-light" to="/home" title='Hi Talents'><h2>HI Talents</h2></NavLink>
                             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
                                 <span className="navbar-toggler-icon"></span>
                             </button>
                             <div className="collapse navbar-collapse" id="navbarToggler">
                                 <ul className="navbar-nav ml-auto mt-2 mt-lg-0 ">
                                     <li className="nav-item">
-                                        <NavLink className="nav-link" to="/home">Home </NavLink>
+                                        <NavLink className="nav-link" to="/home" title='Home'>Home </NavLink>
                                     </li>
                                     <li className="nav-item">
-                                        <NavLink className="nav-link" to="/jobs">Jobs</NavLink>
+                                        <NavLink className="nav-link" to="/jobs" title='Jobs' >Jobs</NavLink>
                                     </li>
                                     <li className="nav-item">
-                                        <NavLink className="nav-link" to="/aboutus">About Us</NavLink>
+                                        <NavLink className="nav-link" to="/aboutus" title='About Us'>About Us</NavLink>
                                     </li>
                                     <li className="nav-item">
-                                        <NavLink className="nav-link" to="/contactus">Contact Us</NavLink>
+                                        <NavLink className="nav-link" to="/contactus" title='Contact Us'>Contact Us</NavLink>
                                     </li>
                                     <li className="sign-in">
                                         {role === '__admin__' ?
                                             <NavLink className="nav-item user" to="/mgt/admin_dashboard">
-                                                <div className="text-light fa fa-user-o"></div>
+                                                <div className="text-light fa fa-user-o" title='Profile'></div>
                                             </NavLink>
                                             :
                                             (role === 'expert' ?
@@ -115,7 +116,7 @@ export default class Home extends Component {
                                                     <div className="text-light fa fa-user-o"></div>
                                                 </NavLink>
                                                 : <NavLink className="nav-item user" to="/login">
-                                                    <div className="text-light fa fa-user-o"></div>
+                                                    <div className="text-light fa fa-user-o" title='Profile'></div>
                                                 </NavLink>)
                                         }
                                     </li>
@@ -131,11 +132,11 @@ export default class Home extends Component {
                                 <h5>with the Free Flow of Knowledge Sharing</h5>
                                 <div className="row callToAction">
                                     <div className="col-md-4 col-lg-3">
-                                        <Link to="/aboutus">Our Services <i className="fa fa-arrow-right"></i></Link>
+                                        <Link to="/aboutus" title='Our Services'>Our Services <i className="fa fa-arrow-right" title='More Info'></i></Link>
                                     </div>
 
                                     <div className="col-md-4 col-lg-4">
-                                        <Link to="/jobs">Featured jobs <i className="fa fa-arrow-right"></i></Link>
+                                        <Link to="/jobs" title='Featured Jobs'>Featured jobs <i className="fa fa-arrow-right" title='More Info'></i></Link>
                                     </div>
 
 
@@ -155,8 +156,9 @@ export default class Home extends Component {
                         </header>
                         <div className="row ">
                             <div className="col-sm-4 ">
-                                <div className="card pt-2">
-                                    <img className="card-img-top" src={searchImg} width="100%" height="60px" />
+                                <div className="services_card">
+                                    <img className="card-img-top" src={searchImg} width="100%" height="60px" alt=' Unique Training and
+                                            Consulting Possibilities'/>
                                     <h3>
                                         <hr />
                                             Unique Training and
@@ -165,8 +167,8 @@ export default class Home extends Component {
                                 </div>
                             </div>
                             <div className="col-sm-4">
-                                <div className="card pt-2">
-                                    <img src={opportunityImg} width="100%" height="60px" />
+                                <div className="services_card">
+                                    <img src={opportunityImg} width="100%" height="60px" alt='Flexible Job Opportunities in Technology' />
                                     <h3>
                                         <hr />
                                         Flexible Job
@@ -176,8 +178,8 @@ export default class Home extends Component {
                                 </div>
                             </div>
                             <div className="col-sm-4">
-                                <div className="card pt-2">
-                                    <img src={workshopImg} width="100%" height="60px" />
+                                <div className="services_card">
+                                    <img src={workshopImg} width="100%" height="60px" alt='Unique Training and Consulting Possibilities' />
                                     <h3>
                                         <hr />
                                         Unique Training and
@@ -191,8 +193,8 @@ export default class Home extends Component {
                         <div className="row mt-3 ">
                             <div className="col-sm-2"></div>
                             <div className="col-sm-4" >
-                                <div className="card pt-2" >
-                                    <img src={solutionImg} width="100%" height="60px" />
+                                <div className="services_card" >
+                                    <img src={solutionImg} width="100%" height="60px" alt='Bespoke Incubator Schemes for Potential Ideas' />
                                     <h3>
                                         <hr />
                                         Bespoke Incubator
@@ -202,8 +204,8 @@ export default class Home extends Component {
                                 </div>
                             </div>
                             <div className="col-sm-4 ">
-                                <div className="card pt-2">
-                                    <img src={teamImg} width="100%" height="60px" />
+                                <div className="services_card">
+                                    <img src={teamImg} width="100%" height="60px" alt='Exclusive Networking with Knowledgeale Professionals' />
                                     <h3>
                                         <hr />
                                         Exclusive Networking
@@ -229,9 +231,9 @@ export default class Home extends Component {
                         <div className="featured-jobs_grid">
                             {this.getProjectList()}
                         </div>
-                        <div className="mt-3">
+                        <div className="mt-3" >
                             <span className="explore-square"></span>
-                            <Link className="explore-link" to="/jobs"> VIEW MORE <i className="fa fa-arrow-right"></i></Link>
+                            <Link className="explore-link" to="/jobs" title='View more'> VIEW MORE <i className="fa fa-arrow-right"></i></Link>
                         </div>
                     </div>
                 </section>
@@ -283,56 +285,57 @@ export default class Home extends Component {
 
                             <div className="industry_ServiceCard">
                                 <div className="card">
-                                    <img className="industry-background" src={urbanPlanningImg} width="100%" height="120px" />
+                                    <img className="industry-background" src={urbanPlanningImg} width="100%" height="120px" alt='Urban Planning' />
                                     <label className="industry-label">Urban Planning</label>
                                 </div>
                             </div>
 
                             <div className="industry_ServiceCard">
                                 <div className="card">
-                                    <img className="industry-background" src={medicalScienceImg} width="100%" height="120px" />
+                                    <img className="industry-background" src={medicalScienceImg} width="100%" height="120px" alt='Medical Science' />
                                     <label className="industry-label">Medical Science</label>
                                 </div>
                             </div>
 
                             <div className="industry_ServiceCard">
                                 <div className="card">
-                                    <img className="industry-background" src={envinromentalSienceImg} width="100%" height="120px" />
+                                    <img className="industry-background" src={envinromentalSienceImg} width="100%" height="120px" alt='Envinronmental Science' />
                                     <label className="industry-label">Environmental Science</label>
                                 </div>
                             </div>
 
                             <div className="industry_ServiceCard">
                                 <div className="card">
-                                    <img className="industry-background" src={materialScienceImg} width="100%" height="120px" />
+                                    <img className="industry-background" src={materialScienceImg} width="100%" height="120px" alt='Materials Science' />
                                     <label className="industry-label">Materials Science</label>
                                 </div>
                             </div>
 
                             <div className="industry_ServiceCard">
                                 <div className="card">
-                                    <img className="industry-background" src={renewableEnergyImg} width="100%" height="120px" />
+                                    <img className="industry-background" src={renewableEnergyImg} width="100%" height="120px" alt='Renewable Energy' />
                                     <label className="industry-label">Renewable Energy</label>
                                 </div>
                             </div>
 
                             <div className="industry_ServiceCard">
                                 <div className="card">
-                                    <img className="industry-background" src={marineEngineerImg} width="100%" height="120px" />
+                                    <img className="industry-background" src={marineEngineerImg} width="100%" height="120px" alt='Marine Engineering' />
                                     <label className="industry-label">Marine Engineering</label>
                                 </div>
                             </div>
 
                             <div className="industry_ServiceCard">
                                 <div className="card">
-                                    <img className="industry-background" src={chemistryImg} width="100%" height="120px" />
+                                    <img className="industry-background" src={chemistryImg} width="100%" height="120px" alt='Chemistry' />
                                     <label className="industry-label">Chemistry</label>
                                 </div>
                             </div>
 
                             <div className="industry_ServiceCard">
                                 <div className="card">
-                                    <img className="industry-background" src={engineeringManufacturingImg} width="100%" height="120px" />
+                                    <img className="industry-background" src={engineeringManufacturingImg} width="100%" height="120px"
+                                        alt='Engineering and Manufacturing' />
 
                                     <label className="industry-label">Engineering & Manufacturing</label>
                                 </div>
@@ -340,27 +343,27 @@ export default class Home extends Component {
 
                             <div className="industry_ServiceCard">
                                 <div className="card">
-                                    <img className="industry-background" src={informationTechnologyImg} width="100%" height="120px" />
+                                    <img className="industry-background" src={informationTechnologyImg} width="100%" height="120px" alt='Information Technology' />
                                     <label className="industry-label">Information Technology</label>
                                 </div>
                             </div>
 
                             <div className="industry_ServiceCard">
                                 <div className="card">
-                                    <img className="industry-background" src={dataScienceImg} width="100%" height="120px" />
+                                    <img className="industry-background" src={dataScienceImg} width="100%" height="120px" alt='Data Science and Social Data Science' />
                                     <label className="industry-label">Data Science & Social Data Science</label>
                                 </div>
                             </div>
 
                             <div className="industry_ServiceCard">
                                 <div className="card">
-                                    <img className="industry-background" src={businessManagementImg} width="100%" height="120px" />                               <label className="industry-label">Business & Management</label>
+                                    <img className="industry-background" src={businessManagementImg} width="100%" height="120px" alt='Business and Management' /><label className="industry-label">Business & Management</label>
                                 </div>
                             </div>
 
                             <div className="industry_ServiceCard">
                                 <div className="card">
-                                    <img className="industry-background" src={aiImg} width="100%" height="120px" />
+                                    <img className="industry-background" src={aiImg} width="100%" height="120px" alt='AI and Robotics' />
                                     <label className="industry-label">AI & Robotics</label>
                                 </div>
                             </div>

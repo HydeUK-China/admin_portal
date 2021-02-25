@@ -32,7 +32,7 @@ export default class Footer extends Component {
                             </div>
                             <div className="col-sm-4">
                                 <h4>Follow Us</h4>
-                                <a href="https://www.linkedin.com/company/hyde-international-uk/?originalSubdomain=uk" className="social"><i className="fa fa-linkedin"></i></a>
+                                <a href="https://www.linkedin.com/company/hyde-international-uk/?originalSubdomain=uk" className="social"><i className="fa fa-linkedin" title='LinkedIn'></i></a>
                             </div>
                         </div>
 

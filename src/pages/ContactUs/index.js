@@ -4,9 +4,10 @@ import { getRole, fetchReq } from '../../utils/utils';
 import Footer from '../../components/Footer';
 import '../../styles/contactus.css';
 import _ from 'lodash';
-import TopNav from '../../components/TopNav';
+// import TopNav from '../../components/TopNav';
 import womenimg from '../../img/contact_2_cropped.png'
 import ReactGA from 'react-ga'
+import Helmet from 'react-helmet'
 
 export default class ContactUs extends Component {
   constructor(props) {
@@ -79,36 +80,48 @@ export default class ContactUs extends Component {
     ReactGA.pageview(window.location.pathname + window.location.search);
     return (
       <div>
-        <section className="">
+         <Helmet>
+          <title>HYDE INTERNATIONAL UK | CONTACT US</title>
+          <meta charset="utf-8" />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <meta name="theme-color" content="#000000" />
+          <meta name="title" content="HYDE INTERNATIONAL UK CONTACT US" />
+          <meta name="description" content="HYDE INTERNATIONAL SERVICES" />
+          <meta name="keywords" content="talents" />
+          <meta name="keywords" content="china and uk talents contact us" />
+          <meta name="keywords" content="research grants contact us" />
+          
+        </Helmet>
+        <section>
           <header>
             <nav className="navbar navbar-expand-lg navbar-light bg-transperent sticky-top px-3 text-dark">
-              <NavLink className="navbar-brand text-dark" to="/home"><h2>HI Talents</h2></NavLink>
+              <NavLink className="navbar-brand text-dark" to="/home" title='Hi Talents'><h2>HI Talents</h2></NavLink>
               <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
               </button>
               <div className="collapse navbar-collapse" id="navbarToggler">
                 <ul className="navbar-nav ml-auto mt-2 mt-lg-0 ">
                   <li className="nav-item">
-                    <NavLink className="nav-link" to="/home">Home {/* <span className="sr-only">(current)</span> */}</NavLink>
+                    <NavLink className="nav-link" to="/home" title='Home'>Home {/* <span className="sr-only">(current)</span> */}</NavLink>
                   </li>
                   <li className="nav-item">
-                    <NavLink className="nav-link" to="/jobs">Jobs</NavLink>
+                    <NavLink className="nav-link" to="/jobs" title='Jobs'>Jobs</NavLink>
                   </li>
                   <li className="nav-item">
-                    <NavLink className="nav-link" to="/aboutus">About Us</NavLink>
+                    <NavLink className="nav-link" to="/aboutus" title='About Us'>About Us</NavLink>
                   </li>
                   <li className="nav-item">
-                    <NavLink className="nav-link" to="/contactus">Contact Us</NavLink>
+                    <NavLink className="nav-link" to="/contactus" title='Contact Us'>Contact Us</NavLink>
                   </li>
                   <li className="sign-in">
                     {role === '__admin__' ?
                       <NavLink className="nav-item user" to="/mgt/admin_dashboard">
-                        <div className="fa fa-user-o"></div>
+                        <div className="fa fa-user-o" title='Profile'></div>
                       </NavLink>
                       :
                       (role === 'expert' ?
                         <NavLink className="nav-item user" to="/mgt/expert_profile">
-                          <div className="fa fa-user-o"></div>
+                          <div className="fa fa-user-o" title='Profile'></div>
                         </NavLink>
                         : <NavLink className="nav-item user" to="/login">
                           <div className="fa fa-user-o"></div>
@@ -158,7 +171,7 @@ export default class ContactUs extends Component {
                   </div>
 
                   <div className="col-md-6 pb-0">
-                    <img className = "contact-image" src={womenimg} ></img>
+                    <img className = "contact-image" src={womenimg} alt='Hi Talents Contact Us'></img>
                   </div>
                 </div>
              
