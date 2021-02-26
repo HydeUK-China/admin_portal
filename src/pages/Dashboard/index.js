@@ -177,7 +177,7 @@ export default class Dashboard extends Component {
           <div className="category_chart">
             <h3>Category</h3>
             <hr />
-            <Bar data={{
+            <Pie data={{
               labels: category,
               datasets: [{
                 data: category_val,
@@ -191,13 +191,13 @@ export default class Dashboard extends Component {
             }}
               options={
                 {
-                  scales: {
-                    yAxes: [{
-                      ticks: {
-                        min: 0
-                      }
-                    }]
-                  },
+                  // scales: {
+                  //   yAxes: [{
+                  //     ticks: {
+                  //       beginAtZero: true
+                  //     }
+                  //   }]
+                  // },
                   responsive: false,
                   // title: {
                   //   display: true,
@@ -234,7 +234,7 @@ export default class Dashboard extends Component {
                   scales: {
                     yAxes: [{
                       ticks: {
-                        min: 0
+                        beginAtZero: true
                       }
                     }]
                   },
@@ -276,7 +276,7 @@ export default class Dashboard extends Component {
                   scales: {
                     yAxes: [{
                       ticks: {
-                        min: 0
+                        beginAtZero: true
                       }
                     }]
                   },
