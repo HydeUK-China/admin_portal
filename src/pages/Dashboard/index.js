@@ -1,7 +1,7 @@
 import React, { Component, useState } from 'react';
 import { fetchReq } from '../../utils/utils';
 import '../../styles/dashboard.css';
-import { Bar, Pie } from 'react-chartjs-2'
+import { Bar, Doughnut, Pie } from 'react-chartjs-2'
 import ReactGA from 'react-ga'
 
 
@@ -120,9 +120,11 @@ export default class Dashboard extends Component {
                 },
                 legend: {
                   display: false,
-                }
+                },
+                maintainAspectRatio:false
               }}
-              
+              height={300}
+              width={300}
             />
           </div>
 
@@ -159,9 +161,12 @@ export default class Dashboard extends Component {
                   legend: {
                     display: false,
 
-                  }
+                  },
+                  maintainAspectRatio:false
                 }
               }
+              height={400}
+              width={600}
             />
           </div>
 
@@ -170,7 +175,8 @@ export default class Dashboard extends Component {
 
 
         <section className="chart-two">
-          <div className="category_chart">
+          <div className="category_chart" >
+            
             <Pie data={{
               labels: category,
               datasets: [{
@@ -192,7 +198,6 @@ export default class Dashboard extends Component {
                   //     }
                   //   }]
                   // },
-                  responsive: false,
                   title: {
                     display: true,
                     text: 'Category',
@@ -201,15 +206,20 @@ export default class Dashboard extends Component {
                   legend: {
                     display: false,
 
-                  }
+                  },
+                  responsive: false,
+                  maintainAspectRatio:false
+
                 }
               }
+              height={400}
+              width={450}
             />
           </div>
 
 
           <div className="expertise_chart">
-            <Pie data={{
+            <Doughnut data={{
               labels: expertise,
               datasets: [{
                 data: expertise_val,
@@ -223,13 +233,13 @@ export default class Dashboard extends Component {
             }}
               options={
                 {
-                  scales: {
-                    yAxes: [{
-                      ticks: {
-                        beginAtZero: true
-                      }
-                    }]
-                  },
+                  // scales: {
+                  //   yAxes: [{
+                  //     ticks: {
+                  //       beginAtZero: true
+                  //     }
+                  //   }]
+                  // },
                   responsive: false,
                   title: {
                     display: true,
@@ -239,9 +249,12 @@ export default class Dashboard extends Component {
                   legend: {
                     display: false,
 
-                  }
+                  },
+                  maintainAspectRatio:false
                 }
               }
+              height={400}
+              width={450}
             />
 
           </div>
@@ -249,7 +262,7 @@ export default class Dashboard extends Component {
 
         <section className="chart-two">
           <div className="source_chart">
-            <Pie data={{
+            <Bar data={{
               labels: sourceref,
               datasets: [{
                 data: sourceref_val,
@@ -279,9 +292,12 @@ export default class Dashboard extends Component {
                   legend: {
                     display: false,
 
-                  }
+                  },
+                  maintainAspectRatio:false
                 }
               }
+              height={480}
+              width={600}
             />
           </div>
         </section>
