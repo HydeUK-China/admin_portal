@@ -1,4 +1,5 @@
-import React, { Component, useEffect } from 'react';
+import React, { Component, Suspense, Fragment } from 'react';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { NavLink, Link } from 'react-router-dom';
 import _ from 'lodash';
 import { fetchReq, getRole } from '../../utils/utils';
@@ -25,6 +26,7 @@ import '../../styles/home.css';
 // import TopNav from '../../components/TopNav';
 import { Helmet } from 'react-helmet'
 import ReactGA from 'react-ga'
+
 
 export default class Home extends Component {
     constructor(props) {
@@ -69,7 +71,7 @@ export default class Home extends Component {
 
 
         return (
-            <div>
+            <Fragment>
                 <Helmet>
                     <title>HYDE INTERNATIONAL UK</title>
                     <meta charset="utf-8" />
@@ -84,8 +86,8 @@ export default class Home extends Component {
 
 
                 </Helmet>
-                <section id="top" className="hero-content pb-lg-5 pb-sm-5 pb-md-5">
-                    <header>
+                <Suspense fallback={<div>Laoding ... </div>}>
+                    <section id="top" className="hero-content pb-lg-5 pb-sm-5 pb-md-5">
                         <nav className="navbar navbar-expand-lg navbar-dark bg-transperent sticky-top px-3 text-dark">
                             <NavLink className="navbar-brand text-light" to="/home" title='Hi Talents'><h2>HI Talents</h2></NavLink>
                             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
@@ -124,8 +126,6 @@ export default class Home extends Component {
 
                             </div>
                         </nav>
-                    </header>
-                    <div >
                         <div className="mb-lg-5 mb-sm-3">
                             <div className="container">
                                 <h1>Unlock Potential </h1>
@@ -138,15 +138,11 @@ export default class Home extends Component {
                                     <div className="col-md-4 col-lg-4">
                                         <Link to="/jobs" title='Featured Jobs'>Featured jobs <i className="fa fa-arrow-right" title='More Info'></i></Link>
                                     </div>
-
-
-
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </section>
-
+                    </section>
+                </Suspense>
                 {/* Our Services */}
 
                 <section id="services">
@@ -157,8 +153,9 @@ export default class Home extends Component {
                         <div className="row ">
                             <div className="col-sm-4 ">
                                 <div className="services_card">
-                                    <img className="card-img-top" src={searchImg} width="100%" height="60px" alt=' Unique Training and
+                                    <LazyLoadImage className="card-img-top" src={searchImg} width="100%" height="60px" alt=' Unique Training and
                                             Consulting Possibilities'/>
+
                                     <h3>
                                         <hr />
                                             Unique Training and
@@ -168,7 +165,7 @@ export default class Home extends Component {
                             </div>
                             <div className="col-sm-4">
                                 <div className="services_card">
-                                    <img src={opportunityImg} width="100%" height="60px" alt='Flexible Job Opportunities in Technology' />
+                                    <LazyLoadImage src={opportunityImg} width="100%" height="60px" alt='Flexible Job Opportunities in Technology' />
                                     <h3>
                                         <hr />
                                         Flexible Job
@@ -179,7 +176,7 @@ export default class Home extends Component {
                             </div>
                             <div className="col-sm-4">
                                 <div className="services_card">
-                                    <img src={workshopImg} width="100%" height="60px" alt='Unique Training and Consulting Possibilities' />
+                                    <LazyLoadImage src={workshopImg} width="100%" height="60px" alt='Unique Training and Consulting Possibilities' />
                                     <h3>
                                         <hr />
                                         Unique Training and
@@ -194,7 +191,7 @@ export default class Home extends Component {
                             <div className="col-sm-2"></div>
                             <div className="col-sm-4" >
                                 <div className="services_card" >
-                                    <img src={solutionImg} width="100%" height="60px" alt='Bespoke Incubator Schemes for Potential Ideas' />
+                                    <LazyLoadImage src={solutionImg} width="100%" height="60px" alt='Bespoke Incubator Schemes for Potential Ideas' />
                                     <h3>
                                         <hr />
                                         Bespoke Incubator
@@ -205,7 +202,7 @@ export default class Home extends Component {
                             </div>
                             <div className="col-sm-4 ">
                                 <div className="services_card">
-                                    <img src={teamImg} width="100%" height="60px" alt='Exclusive Networking with Knowledgeale Professionals' />
+                                    <LazyLoadImage src={teamImg} width="100%" height="60px" alt='Exclusive Networking with Knowledgeale Professionals' />
                                     <h3>
                                         <hr />
                                         Exclusive Networking
@@ -285,56 +282,56 @@ export default class Home extends Component {
 
                             <div className="industry_ServiceCard">
                                 <div className="card">
-                                    <img className="industry-background" src={urbanPlanningImg} width="100%" height="120px" alt='Urban Planning' />
+                                    <LazyLoadImage className="industry-background" src={urbanPlanningImg} width="100%" height="120px" alt='Urban Planning' />
                                     <label className="industry-label">Urban Planning</label>
                                 </div>
                             </div>
 
                             <div className="industry_ServiceCard">
                                 <div className="card">
-                                    <img className="industry-background" src={medicalScienceImg} width="100%" height="120px" alt='Medical Science' />
+                                    <LazyLoadImage className="industry-background" src={medicalScienceImg} width="100%" height="120px" alt='Medical Science' />
                                     <label className="industry-label">Medical Science</label>
                                 </div>
                             </div>
 
                             <div className="industry_ServiceCard">
                                 <div className="card">
-                                    <img className="industry-background" src={envinromentalSienceImg} width="100%" height="120px" alt='Envinronmental Science' />
+                                    <LazyLoadImage className="industry-background" src={envinromentalSienceImg} width="100%" height="120px" alt='Envinronmental Science' />
                                     <label className="industry-label">Environmental Science</label>
                                 </div>
                             </div>
 
                             <div className="industry_ServiceCard">
                                 <div className="card">
-                                    <img className="industry-background" src={materialScienceImg} width="100%" height="120px" alt='Materials Science' />
+                                    <LazyLoadImage className="industry-background" src={materialScienceImg} width="100%" height="120px" alt='Materials Science' />
                                     <label className="industry-label">Materials Science</label>
                                 </div>
                             </div>
 
                             <div className="industry_ServiceCard">
                                 <div className="card">
-                                    <img className="industry-background" src={renewableEnergyImg} width="100%" height="120px" alt='Renewable Energy' />
+                                    <LazyLoadImage className="industry-background" src={renewableEnergyImg} width="100%" height="120px" alt='Renewable Energy' />
                                     <label className="industry-label">Renewable Energy</label>
                                 </div>
                             </div>
 
                             <div className="industry_ServiceCard">
                                 <div className="card">
-                                    <img className="industry-background" src={marineEngineerImg} width="100%" height="120px" alt='Marine Engineering' />
+                                    <LazyLoadImage className="industry-background" src={marineEngineerImg} width="100%" height="120px" alt='Marine Engineering' />
                                     <label className="industry-label">Marine Engineering</label>
                                 </div>
                             </div>
 
                             <div className="industry_ServiceCard">
                                 <div className="card">
-                                    <img className="industry-background" src={chemistryImg} width="100%" height="120px" alt='Chemistry' />
+                                    <LazyLoadImage className="industry-background" src={chemistryImg} width="100%" height="120px" alt='Chemistry' />
                                     <label className="industry-label">Chemistry</label>
                                 </div>
                             </div>
 
                             <div className="industry_ServiceCard">
                                 <div className="card">
-                                    <img className="industry-background" src={engineeringManufacturingImg} width="100%" height="120px"
+                                    <LazyLoadImage className="industry-background" src={engineeringManufacturingImg} width="100%" height="120px"
                                         alt='Engineering and Manufacturing' />
 
                                     <label className="industry-label">Engineering & Manufacturing</label>
@@ -343,27 +340,27 @@ export default class Home extends Component {
 
                             <div className="industry_ServiceCard">
                                 <div className="card">
-                                    <img className="industry-background" src={informationTechnologyImg} width="100%" height="120px" alt='Information Technology' />
+                                    <LazyLoadImage className="industry-background" src={informationTechnologyImg} width="100%" height="120px" alt='Information Technology' />
                                     <label className="industry-label">Information Technology</label>
                                 </div>
                             </div>
 
                             <div className="industry_ServiceCard">
                                 <div className="card">
-                                    <img className="industry-background" src={dataScienceImg} width="100%" height="120px" alt='Data Science and Social Data Science' />
+                                    <LazyLoadImage className="industry-background" src={dataScienceImg} width="100%" height="120px" alt='Data Science and Social Data Science' />
                                     <label className="industry-label">Data Science & Social Data Science</label>
                                 </div>
                             </div>
 
                             <div className="industry_ServiceCard">
                                 <div className="card">
-                                    <img className="industry-background" src={businessManagementImg} width="100%" height="120px" alt='Business and Management' /><label className="industry-label">Business & Management</label>
+                                    <LazyLoadImage className="industry-background" src={businessManagementImg} width="100%" height="120px" alt='Business and Management' /><label className="industry-label">Business & Management</label>
                                 </div>
                             </div>
 
                             <div className="industry_ServiceCard">
                                 <div className="card">
-                                    <img className="industry-background" src={aiImg} width="100%" height="120px" alt='AI and Robotics' />
+                                    <LazyLoadImage className="industry-background" src={aiImg} width="100%" height="120px" alt='AI and Robotics' />
                                     <label className="industry-label">AI & Robotics</label>
                                 </div>
                             </div>
@@ -374,7 +371,7 @@ export default class Home extends Component {
                     </div>
                 </section>
                 <Footer />
-            </div>
+            </Fragment>
         )
     }
 }

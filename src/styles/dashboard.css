@@ -5,10 +5,12 @@
 }
 
 .chart-one {
+  position: relative;
+  left: 10%;
   display: flex;
   flex-direction: row;
   margin-bottom: 1.5rem;
-  width: 100%;
+  width: 80%;
   height: 30vh;
   box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.5);
 }
@@ -27,6 +29,9 @@
 }
 
 .gender_chart {
+  display: flex;
+  justify-content: center;
+  border-right: 1px solid black;
   width: fit-content;
   flex: 0.4;
   text-align: center;
@@ -34,22 +39,18 @@
 }
 
 .nationality_chart {
+  display: flex;
+  justify-content: center;
   flex: 0.4;
   height: 30vh;
   text-align: center;
   padding: 1rem;
 }
 
-.chart-two {
-  display: flex;
-  flex-direction: row;
-  margin-bottom: 1.5rem;
-  width: 100%;
-  height: 30vh;
-  box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.5);
-}
-
 .category_chart {
+  display: flex;
+  justify-content: center;
+  border-right: 1px solid black;
   flex: 0.5;
   height: 30vh;
   text-align: center;
@@ -57,13 +58,31 @@
 }
 
 .expertise_chart {
+  display: flex;
+  justify-content: center;
   flex: 0.5;
   height: 30vh;
   text-align: center;
   padding: 1rem;
 }
 
-.info-two-chart {
-  width: 100%;
-  border-right: 1px solid black;
+.chart-two {
+  position: relative;
+  left: 10%;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 1.5rem;
+  width: 80%;
+  height: 30vh;
+  box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+
+.source_chart {
+  display: flex;
+  justify-content: center;
+  flex: 1;
+  height: 30vh;
+  text-align: center;
+  padding: 1rem;
 }

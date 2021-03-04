@@ -34,14 +34,16 @@
     "react-ga": "^3.3.0",
     "react-helmet": "^6.1.0",
     "react-js-pagination": "^3.0.3",
+    "react-lazy-load-image-component": "^1.5.1",
     "react-pagination": "^1.0.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
     "react-select": "^3.1.0",
     "react-snap": "^1.23.0",
     "react-table": "6.10.0",
+    "recharts": "^2.0.8",
     "select": "^1.1.2",
-    "victory": "^35.4.9"
+    "victory": "^35.4.10"
   },
   "scripts": {
     "start": "pm2 start ecosystem.config.js --env production",

@@ -90,20 +90,19 @@ export default class Dashboard extends Component {
           </div>
 
           <div className='gender_chart'>
-            <h3>Gender</h3>
-            <hr />
-            <Pie data={{
-              labels: gender,
-              datasets: [{
-                data: gender_val,
-                label: 'Gender',
-                backgroundColor: ['blue', 'red'],
-                borderWidth: 4,
-                borderColor: '#777',
-                hoverBorderWidth: 3,
-                hoverBorderColor: '#000'
-              }]
-            }}
+            <Pie
+              data={{
+                labels: gender,
+                datasets: [{
+                  data: gender_val,
+                  label: 'Gender',
+                  backgroundColor: ['blue', 'red'],
+                  borderWidth: 4,
+                  borderColor: '#777',
+                  hoverBorderWidth: 3,
+                  hoverBorderColor: '#000'
+                }]
+              }}
               options={{
                 // {
                 //   scales: {
@@ -114,24 +113,21 @@ export default class Dashboard extends Component {
                 //     }]
                 //   },
                 responsive: false,
-                // title:{
-                //   display:true,
-                //   text: 'Gender',
-                //   fontSize: 25
-                // },
+                title: {
+                  display: true,
+                  text: 'Gender',
+                  fontSize: 25
+                },
                 legend: {
                   display: false,
-
                 }
-              }
-              }
+              }}
+              
             />
           </div>
 
 
           <div className='nationality_chart'>
-            <h3>Nationality</h3>
-            <hr />
 
             <Bar data={{
               labels: nationality,
@@ -155,11 +151,11 @@ export default class Dashboard extends Component {
                     }]
                   },
                   responsive: false,
-                  // title: {
-                  //   display: true,
-                  //   text: 'Gender',
-                  //   fontSize: 25
-                  // },
+                  title: {
+                    display: true,
+                    text: 'Nationality',
+                    fontSize: 25
+                  },
                   legend: {
                     display: false,
 
@@ -175,8 +171,6 @@ export default class Dashboard extends Component {
 
         <section className="chart-two">
           <div className="category_chart">
-            <h3>Category</h3>
-            <hr />
             <Pie data={{
               labels: category,
               datasets: [{
@@ -199,11 +193,11 @@ export default class Dashboard extends Component {
                   //   }]
                   // },
                   responsive: false,
-                  // title: {
-                  //   display: true,
-                  //   text: 'Gender',
-                  //   fontSize: 25
-                  // },
+                  title: {
+                    display: true,
+                    text: 'Category',
+                    fontSize: 25
+                  },
                   legend: {
                     display: false,
 
@@ -215,8 +209,6 @@ export default class Dashboard extends Component {
 
 
           <div className="expertise_chart">
-            <h3>Expertise</h3>
-            <hr />
             <Bar data={{
               labels: expertise,
               datasets: [{
@@ -239,11 +231,11 @@ export default class Dashboard extends Component {
                     }]
                   },
                   responsive: false,
-                  // title: {
-                  //   display: true,
-                  //   text: 'Gender',
-                  //   fontSize: 25
-                  // },
+                  title: {
+                    display: true,
+                    text: 'Expertise',
+                    fontSize: 25
+                  },
                   legend: {
                     display: false,
 
@@ -255,11 +247,9 @@ export default class Dashboard extends Component {
           </div>
         </section>
 
-        <section className="chart-three">
-         <div className="source_chart">
-           <h3>Source References</h3>
-           <hr/>
-           <Bar data={{
+        <section className="chart-two">
+          <div className="source_chart">
+            <Bar data={{
               labels: sourceref,
               datasets: [{
                 data: sourceref_val,
@@ -281,11 +271,11 @@ export default class Dashboard extends Component {
                     }]
                   },
                   responsive: false,
-                  // title: {
-                  //   display: true,
-                  //   text: 'Gender',
-                  //   fontSize: 25
-                  // },
+                  title: {
+                    display: true,
+                    text: 'Source Referrences',
+                    fontSize: 25
+                  },
                   legend: {
                     display: false,
 
@@ -293,7 +283,7 @@ export default class Dashboard extends Component {
                 }
               }
             />
-         </div>
+          </div>
         </section>
 
 

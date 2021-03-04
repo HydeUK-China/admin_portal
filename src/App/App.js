@@ -1,4 +1,4 @@
-import React, { Component, useEffect } from 'react';
+import React, { Component } from 'react';
 import {
   Switch,
   Route,
@@ -7,13 +7,14 @@ import {
 import { withRouter } from 'react-router';
 import _ from 'lodash';
 import Tab from '../components/tab';
-import { Navbar } from 'react-bootstrap';
+// import { Navbar } from 'react-bootstrap';
 import { removeUserInfo, getRole, getUid, fetchReq } from '../utils/utils';
 import { path_name, renderRoute } from './tabRouteConfig';
-import 'bootstrap/dist/css/bootstrap.css';
+// import 'bootstrap/dist/css/bootstrap.css';
 import '../styles/app.css';
 import '../styles/database.css';
 import ReactGA from 'react-ga';
+import { Fragment } from 'react';
 
 class App extends Component {
 
@@ -79,14 +80,14 @@ class App extends Component {
       )
   }
 
-  
+
 
   render() {
     const { role, uid, navbarToggler } = this.state;
     ReactGA.initialize('G-JK3NHS5DHQ')
 
     return (
-      <div>
+      <Fragment>
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
           <Link className="navbar-brand" to='/mgt'>HI TALENTS</Link>
           <button className="navbar-toggler" onClick={this.toggleNavbar}
@@ -133,7 +134,7 @@ class App extends Component {
           </Navbar.Collapse>
         </Navbar> */}
 
-        <main>
+        
           <div className="container-fluid">
             <div className="row">
               {this.getTabs()}
@@ -151,8 +152,8 @@ class App extends Component {
           </div>
 
 
-        </main>
-      </div>
+        
+      </Fragment>
     );
   }
 }
