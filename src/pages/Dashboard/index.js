@@ -209,7 +209,7 @@ export default class Dashboard extends Component {
 
 
           <div className="expertise_chart">
-            <Bar data={{
+            <Pie data={{
               labels: expertise,
               datasets: [{
                 data: expertise_val,
@@ -249,7 +249,7 @@ export default class Dashboard extends Component {
 
         <section className="chart-two">
           <div className="source_chart">
-            <Bar data={{
+            <Pie data={{
               labels: sourceref,
               datasets: [{
                 data: sourceref_val,
