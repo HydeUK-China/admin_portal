@@ -7,6 +7,8 @@ import LoginForm from '../../components/loginForm';
 import Footer from '../../components/Footer';
 import '../../styles/applyjob.css';
 import ReactGA from 'react-ga'
+import { Helmet } from 'react-helmet';
+import { Fragment } from 'react';
 
 class ApplyJob extends Component {
     constructor(props) {
@@ -101,47 +103,63 @@ class ApplyJob extends Component {
 
         ReactGA.pageview(window.location.pathname + window.location.search);
         return (
-            <div>
+            <Fragment>
+
+                <Helmet>
+                    <title>HYDE INTERNATIONAL UK | Apply Jobs</title>
+                    <meta charset="utf-8" />
+                    <meta name="viewport" content="width=device-width, initial-scale=1" />
+                    <meta name="theme-color" content="#000000" />
+                    <meta name="title" content="HYDE INTERNATIONAL | Apply Jobs" />
+                    <meta name="description" content="Hiring: High salary Director of Research Institute to facilitate technology innovation business and strategic planning of technology transfer" />
+                    <meta name="description" content="Hiring: High salary, big data and product manager position for PhD gradates at large
+                    public company in China" />
+                    <meta name="description" content="High paying principal scientist position for international PhD
+                    candidate to lead R&D in the new energy industry" />
+                    <meta name="keywords" content="Technical strategic planning,Director of Research,R&D and lab management,Product manager cover letter,data management projects,blockchain research opportunities uk,best job in research,working remotely as an engineer,New energy industry job opportunity" />
+
+
+                </Helmet>
                 <section id="top" className="single-job-hero h-40">
-                    <header>
-                        <nav className="navbar navbar-expand-lg navbar-light bg-transperent sticky-top px-3 text-dark">
-                            <NavLink className="navbar-brand text-dark" to="/home"><h2>HI Talents</h2></NavLink>
-                            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
-                                <span className="navbar-toggler-icon"></span>
-                            </button>
-                            <div className="collapse navbar-collapse" id="navbarToggler">
-                                <ul className="navbar-nav ml-auto mt-2 mt-lg-0 ">
-                                    <li className="nav-item">
-                                        <NavLink className="nav-link" to="/home">Home {/* <span className="sr-only">(current)</span> */}</NavLink>
-                                    </li>
-                                    <li className="nav-item">
-                                        <NavLink className="nav-link" to="/jobs">Jobs</NavLink>
-                                    </li>
-                                    <li className="nav-item">
-                                        <NavLink className="nav-link" to="/aboutus">About Us</NavLink>
-                                    </li>
-                                    <li className="nav-item">
-                                        <NavLink className="nav-link" to="/contactus">Contact Us</NavLink>
-                                    </li>
-                                    <li className="sign-in">
-                                        {role === '__admin__' ?
-                                            <NavLink className="nav-item user" to="/mgt/admin_dashboard">
+
+                    <nav className="navbar navbar-expand-lg navbar-light bg-transperent sticky-top px-3 text-dark">
+                        <NavLink className="navbar-brand text-dark" to="/home"><h2>HI Talents</h2></NavLink>
+                        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+                            <span className="navbar-toggler-icon"></span>
+                        </button>
+                        <div className="collapse navbar-collapse" id="navbarToggler">
+                            <ul className="navbar-nav ml-auto mt-2 mt-lg-0 ">
+                                <li className="nav-item">
+                                    <NavLink className="nav-link" to="/home">Home {/* <span className="sr-only">(current)</span> */}</NavLink>
+                                </li>
+                                <li className="nav-item">
+                                    <NavLink className="nav-link" to="/jobs">Jobs</NavLink>
+                                </li>
+                                <li className="nav-item">
+                                    <NavLink className="nav-link" to="/aboutus">About Us</NavLink>
+                                </li>
+                                <li className="nav-item">
+                                    <NavLink className="nav-link" to="/contactus">Contact Us</NavLink>
+                                </li>
+                                <li className="sign-in">
+                                    {role === '__admin__' ?
+                                        <NavLink className="nav-item user" to="/mgt/admin_dashboard">
+                                            <div className="text-light fa fa-user-o"></div>
+                                        </NavLink>
+                                        :
+                                        (role === 'expert' ?
+                                            <NavLink className="nav-item user" to="/mgt/expert_profile">
                                                 <div className="text-light fa fa-user-o"></div>
                                             </NavLink>
-                                            :
-                                            (role === 'expert' ?
-                                                <NavLink className="nav-item user" to="/mgt/expert_profile">
-                                                    <div className="text-light fa fa-user-o"></div>
-                                                </NavLink>
-                                                : <NavLink className="nav-item user" to="/login">
-                                                    <div className="text-light fa fa-user-o"></div>
-                                                </NavLink>)
-                                        }
-                                    </li>
-                                </ul>
-                            </div>
-                        </nav>
-                    </header>
+                                            : <NavLink className="nav-item user" to="/login">
+                                                <div className="text-light fa fa-user-o"></div>
+                                            </NavLink>)
+                                    }
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+
                 </section>
 
                 <section >
@@ -263,7 +281,7 @@ class ApplyJob extends Component {
                 }
 
                 <Footer />
-            </div>
+            </Fragment>
         )
     }
 }

@@ -117,10 +117,8 @@ export default class Jobs extends Component {
                     <meta name="theme-color" content="#000000" />
                     <meta name="title" content="HYDE INTERNATIONAL UK JOBS" />
                     <meta name="description" content="High salary research and data science jobs and career opportunities around the world (data scientist, research director, and product manager, and more…)" />
-                    <meta name="keywords" content="find research jobs" />
-                    <meta name="keywords" content="data science career" />
-                    <meta name="keywords" content="engineer salary" />
-                    
+                    <meta name="keywords" content="find research jobs,data science career,engineer salary,earospace work opportunity,best labs to work at " />
+
 
                 </Helmet>
                 {/* <section id="top" className="hero-category">

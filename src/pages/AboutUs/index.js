@@ -32,9 +32,8 @@ export default class AboutUs extends Component {
           <meta name="theme-color" content="#000000" />
           <meta name="title" content="HYDE INTERNATIONAL UK ABOUT US" />
           <meta name="description" content="Leading global academic and research network to help scientists find R&D grants, source funding and protecting their intellectual properties" />
-          <meta name="keywords" content="source funding" />
-          <meta name="keywords" content="protect intellectual property" />
-          <meta name="keywords" content="research grants" />
+          <meta name="keywords" content="protect intellectual property,Hyde International UK,researcher visa uk" />
+
           
         </Helmet>
 
