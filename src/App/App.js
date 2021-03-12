@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component,Fragment } from 'react';
 import {
   Switch,
   Route,
@@ -7,14 +7,12 @@ import {
 import { withRouter } from 'react-router';
 import _ from 'lodash';
 import Tab from '../components/tab';
-// import { Navbar } from 'react-bootstrap';
 import { removeUserInfo, getRole, getUid, fetchReq } from '../utils/utils';
 import { path_name, renderRoute } from './tabRouteConfig';
-// import 'bootstrap/dist/css/bootstrap.css';
 import '../styles/app.css';
 import '../styles/database.css';
 import ReactGA from 'react-ga';
-import { Fragment } from 'react';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 class App extends Component {
 
@@ -88,71 +86,58 @@ class App extends Component {
 
     return (
       <Fragment>
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-          <Link className="navbar-brand" to='/mgt'>HI TALENTS</Link>
-          <button className="navbar-toggler" onClick={this.toggleNavbar}
-            type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className={navbarToggler ? "collapse navbar-collapse show" : "collapse navbar-collapse"}>
-            <ul className="nav navbar-nav ml-auto">
-              <li className="nav-item">
-                <NavLink className="nav-link" to="/home">Home</NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink className="nav-link" to="/jobs">Jobs</NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink className="nav-link" to="/aboutus">About Us</NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink className="nav-link" to="/contactus">Contact Us</NavLink>
-              </li>
-              {/* <li className="nav-item">
-                <div className="nav-link Signout bg warning">
-                  <i className="fas fa-sign-out-alt" onClick={this.handleLogout}></i>
-                </div></li> */}
-              <li className="nav-item">
-                <div className="nav-link Signout bg warning">
-                  <i className="fas fa-sign-out-alt" onClick={this.handleLogout}></i>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </nav>
-        {/* <Navbar className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top" expand="lg">
-          <Navbar.Brand>
-            <Link className="navbar-brand" to='/mgt'>HYDE INTERNATIONAL</Link>
-          </Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <ul className="nav navbar-nav ml-auto">
-              <li className="nav-item">
-                <div className="nav-link" onClick={this.handleLogout}>Sign Out</div>
-              </li>
-            </ul>
-          </Navbar.Collapse>
-        </Navbar> */}
 
-        
-          <div className="container-fluid">
-            <div className="row">
-              {this.getTabs()}
+        {/* Nav Bar */}
+        <div className='navDashboard'>
+          <nav className="navbar navbar-expand-lg navbar-light bg-transperent sticky-top px-3 text-dark">
+            <NavLink className="navbar-brand " to="/home" title='Hi Talents'><h2>HI Talents</h2></NavLink>
+            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+              <span className="navbar-toggler-icon"></span>
+            </button>
+
+            <div className="collapse navbar-collapse" id="navbarToggler">
+              <ul className="navbar-nav ml-auto mt-2 mt-lg-0 ">
+                <li className="nav-item">
+                  <NavLink className="nav-link" to="/home" title='Home'>Home</NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink className="nav-link" to="/jobs" title='Jobs'>Jobs</NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink className="nav-link" to="/aboutus" title='About Us'>About Us</NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink className="nav-link" to="/contactus" title='Contact Us'>Contact Us</NavLink>
+                </li>
+                <li className="nav-item">
+                  <div className="nav-link Signout bg warning">
+                    <ExitToAppIcon onClick={this.handleLogout} />
+                  </div>
+                </li>
+              </ul>
+
             </div>
+          </nav>
+        </div>
 
-            <Switch>
-              {renderRoute(role, uid, this.completeAppMsger)}
-              <Route path="/mgt">
-                {role === '__admin__' ?
-                  <Redirect to='/mgt/admin_dashboard' />
-                  : <Redirect to='/mgt/expert_profile' />
-                }
-              </Route>
-            </Switch>
+        <div className="container-fluid">
+          <div className="row">
+            {this.getTabs()}
           </div>
 
+          <Switch>
+            {renderRoute(role, uid, this.completeAppMsger)}
+            <Route path="/mgt">
+              {role === '__admin__' ?
+                <Redirect to='/mgt/admin_dashboard' />
+                : <Redirect to='/mgt/expert_profile' />
+              }
+            </Route>
+          </Switch>
+        </div>
 
-        
+
+
       </Fragment>
     );
   }

@@ -66,18 +66,6 @@ export default class Dashboard extends Component {
     const sourceref = this.state.sourceref.map(s => s.source_references)
     const sourceref_val = this.state.sourceref.map(sv => sv.number_references)
 
-    // console.log(totalApplicant)
-    // console.log(gender)
-    // console.log(gender_val)
-    // console.log(category)
-    // console.log(category_val)
-    // console.log(expertise)
-    // console.log(expertise_val)
-    // console.log(nationality)
-    // console.log(nationality_val)
-    // console.log(sourceref)
-    // console.log(sourceref_val)
-
     ReactGA.pageview(window.location.pathname + window.location.search);
 
     return (
@@ -152,7 +140,7 @@ export default class Dashboard extends Component {
                       }
                     }]
                   },
-                  responsive: false,
+                  responsive: true,
                   title: {
                     display: true,
                     text: 'Nationality',
@@ -166,7 +154,7 @@ export default class Dashboard extends Component {
                 }
               }
               height={400}
-              width={600}
+              width={500}
             />
           </div>
 

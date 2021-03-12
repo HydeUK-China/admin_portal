@@ -1,7 +1,14 @@
 /* General */
+body {
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow-y: scroll;
+}
+
 .header {
   padding-bottom: 10px;
 }
+
 .section-header h1 {
   font-size: 32px;
   color: #111;
@@ -33,6 +40,7 @@
   bottom: 0;
   left: calc(50% - 20px);
 }
+
 
 /* -----------------------------
  Hero section
@@ -98,27 +106,28 @@
    Services section
    ----------------------------- */
 
-#services {
-  padding: 40px 0px;
-  display: grid;
-  grid-template-columns: 100%;
-  grid-template-rows: auto;
+.services_Container {
+  height: fit-content;
+  width: 100%;
+  padding: 10px 20px;
+  text-align: center;
+  margin-bottom: 1rem;
 }
 
-#services .types-services .fa {
-  margin-bottom: 2rem;
-  display: flex;
-  flex-direction: column-reverse;
-}
-
-.services_card {
-  object-fit: contain;
-  width: repeat(auto-fill, minmax(300px, 1fr));
-  align-items: center;
-  padding: 30px 20px;
+.servicesCard {
+  width: 100%;
   box-shadow: 0 0 0.4rem rgb(0 0 0 / 50%);
   background-color: #fafafa;
   border-radius: 10px;
+  padding: 20px 20px;
+  height: 230px;
+  object-fit: contain;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.MuiPaper-elevation1 {
+  box-shadow: 0 0 0.4rem rgb(0 0 0 / 50%) !important;
 }
 
 /* -----------------------------
@@ -218,120 +227,56 @@
    About us section
   ----------------------------- */
 
-#home-about {
-  margin-top: 50px;
-  display: grid;
-  grid-template-columns: 50% 50%;
-  grid-template-rows: auto;
-  background-repeat: no-repeat;
-  background-size: cover;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-#home-about .about-sec {
-  position: relative;
-  z-index: 10;
-}
-
-.info {
-  display: block;
-  padding: 50px;
-}
-
-.title_info {
-  font-size: 3rem;
-  font-weight: 700;
+.whyUs_Container {
+  height: fit-content;
+  width: 100%;
+  padding: 10px 20px;
   text-align: center;
-  letter-spacing: 0.4px;
+  margin-bottom: 1rem;
+  color: black !important;
 }
 
-.para_info {
-  text-align: justify;
+article {
   font-size: 1.6rem;
   font-weight: 400;
   line-height: 1.4;
+  margin-bottom: 1rem;
+  text-align: justify !important;
 }
 
-.para {
-  font-size: 1.6rem;
+p {
+  font-size: 1.2rem;
   font-weight: 400;
   line-height: 1.4;
+  margin-bottom: 1rem;
+  text-align: justify !important;
 }
 
 /* -----------------------------
   industry section
   ----------------------------- */
-#industry {
-  padding: 40px 0px;
+.industry_Container {
+  height: fit-content;
+  width: 100%;
+  padding: 10px 20px;
+  text-align: center;
+  margin-bottom: 1rem;
 }
 
-.industry_services {
-  position: relative;
+.industryCard {
   width: 100%;
-  display: grid;
-  grid-template-columns: repeat(auto-fill,minmax(300px,1fr));
-  grid-gap: 1rem;
-  justify-content: center;
-  align-items: center;
-}
-
-.industry_ServiceCard {
-  width: 100%;
-  align-items: center;
-  padding: 30px 20px;
   box-shadow: 0 0 0.4rem rgb(0 0 0 / 50%);
   background-color: #fafafa;
   border-radius: 10px;
-}
-
-.card{
-  border: none;
-  background: #fafafa;
-  margin: auto;
-}
-
-.industry-grid {
-  display: grid;
-  grid-template-columns: 20% 20% 20% 20%;
-  grid-gap: 1rem;
-  margin-right: auto;
-  margin-left: auto;
-}
-
-.industry-header {
-  margin-bottom: 4px;
-}
-
-.industry-header h1 {
+  padding: 20px 20px;
+  height: 200px;
+  object-fit: contain;
   text-transform: uppercase;
-  margin-top: 0;
-  margin-bottom: 3rem;
-}
-
-.industry-container {
-  display: flex;
-  flex-flow: column;
-  height: 250px;
-  box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.5);
-  padding: 30px 20px;
-}
-
-.industry-background {
-  height: 120px;
-  padding: 5px 0px;
-  margin-bottom: 5px;
-}
-
-.industry-label {
-  font-size: 1rem;
-  font-weight: bold;
-  padding-bottom: 12px;
-  text-decoration: none;
+  font-weight: 500;
   text-align: center;
-  text-transform: uppercase;
 }
+
+/* Responsive design */
 
 @media (max-width: 768px) {
   .hero-content h1 {

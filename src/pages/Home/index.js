@@ -1,6 +1,7 @@
 import React, { Component, Suspense, Fragment } from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { NavLink, Link } from 'react-router-dom';
+import { Grid, Paper } from '@material-ui/core';
 import _ from 'lodash';
 import { fetchReq, getRole } from '../../utils/utils';
 import Footer from '../../components/Footer';
@@ -23,9 +24,9 @@ import dataScienceImg from '../../img/data science.svg';
 import businessManagementImg from '../../img/business management.svg';
 import aiImg from '../../img/ai.svg';
 import '../../styles/home.css';
-// import TopNav from '../../components/TopNav';
 import { Helmet } from 'react-helmet'
 import ReactGA from 'react-ga'
+import PersonIcon from '@material-ui/icons/Person';
 
 
 export default class Home extends Component {
@@ -86,20 +87,22 @@ export default class Home extends Component {
 
 
                 </Helmet>
-                <Suspense fallback={<div>Laoding ... </div>}>
-                    <section id="top" className="hero-content pb-lg-5 pb-sm-5 pb-md-5">
-                        <nav className="navbar navbar-expand-lg navbar-dark bg-transperent sticky-top px-3 text-dark">
-                            <NavLink className="navbar-brand text-light" to="/home" title='Hi Talents'><h2>HI Talents</h2></NavLink>
+                <section id="top" className="hero-content pb-lg-5 pb-sm-5 pb-md-5">
+                    {/* Nav Bar */}
+                    <div>
+                        <nav className="navbar navbar-expand-lg navbar-light bg-transperent sticky-top px-3 text-dark">
+                            <NavLink className="navbar-brand text-dark" to="/home" title='Hi Talents'><h2>HI Talents</h2></NavLink>
                             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
                                 <span className="navbar-toggler-icon"></span>
                             </button>
+
                             <div className="collapse navbar-collapse" id="navbarToggler">
                                 <ul className="navbar-nav ml-auto mt-2 mt-lg-0 ">
                                     <li className="nav-item">
-                                        <NavLink className="nav-link" to="/home" title='Home'>Home </NavLink>
+                                        <NavLink className="nav-link" to="/home" title='Home'>Home</NavLink>
                                     </li>
                                     <li className="nav-item">
-                                        <NavLink className="nav-link" to="/jobs" title='Jobs' >Jobs</NavLink>
+                                        <NavLink className="nav-link" to="/jobs" title='Jobs'>Jobs</NavLink>
                                     </li>
                                     <li className="nav-item">
                                         <NavLink className="nav-link" to="/aboutus" title='About Us'>About Us</NavLink>
@@ -110,15 +113,15 @@ export default class Home extends Component {
                                     <li className="sign-in">
                                         {role === '__admin__' ?
                                             <NavLink className="nav-item user" to="/mgt/admin_dashboard">
-                                                <div className="text-light fa fa-user-o" title='Profile'></div>
+                                                <PersonIcon />
                                             </NavLink>
                                             :
                                             (role === 'expert' ?
                                                 <NavLink className="nav-item user" to="/mgt/expert_profile">
-                                                    <div className="text-light fa fa-user-o"></div>
+                                                    <PersonIcon />
                                                 </NavLink>
                                                 : <NavLink className="nav-item user" to="/login">
-                                                    <div className="text-light fa fa-user-o" title='Profile'></div>
+                                                    <span className='nav-link'>Login</span>
                                                 </NavLink>)
                                         }
                                     </li>
@@ -126,95 +129,60 @@ export default class Home extends Component {
 
                             </div>
                         </nav>
-                        <div className="mb-lg-5 mb-sm-3">
-                            <div className="container">
-                                <h1>Unlock Potential </h1>
-                                <h5>with the Free Flow of Knowledge Sharing</h5>
-                                <div className="row callToAction">
-                                    <div className="col-md-4 col-lg-3">
-                                        <Link to="/aboutus" title='Our Services'>Our Services <i className="fa fa-arrow-right" title='More Info'></i></Link>
-                                    </div>
+                    </div>
 
-                                    <div className="col-md-4 col-lg-4">
-                                        <Link to="/jobs" title='Featured Jobs'>Featured jobs <i className="fa fa-arrow-right" title='More Info'></i></Link>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                </Suspense>
-                {/* Our Services */}
-
-                <section id="services">
-                    <div className="container-fluid text-center justify-content-center align-content-center mx-auto">
-                        <header className="section-header">
-                            <h1>  OUR SERVICES </h1>
-                        </header>
-                        <div className="row ">
-                            <div className="col-sm-4 ">
-                                <div className="services_card">
-                                    <LazyLoadImage className="card-img-top" src={searchImg} width="100%" height="60px" alt=' Unique Training and
-                                            Consulting Possibilities'/>
-
-                                    <h3>
-                                        <hr />
-                                            Unique Training and
-                                            Consulting Possibilities
-                                </h3>
-                                </div>
-                            </div>
-                            <div className="col-sm-4">
-                                <div className="services_card">
-                                    <LazyLoadImage src={opportunityImg} width="100%" height="60px" alt='Flexible Job Opportunities in Technology' />
-                                    <h3>
-                                        <hr />
-                                        Flexible Job
-                                        Opportunities
-                                        in Technology
-                            </h3>
-                                </div>
-                            </div>
-                            <div className="col-sm-4">
-                                <div className="services_card">
-                                    <LazyLoadImage src={workshopImg} width="100%" height="60px" alt='Unique Training and Consulting Possibilities' />
-                                    <h3>
-                                        <hr />
-                                        Unique Training and
-                                        Consulting Possibilities
-                            </h3>
+                    {/* Our services */}
+                    <div className="mb-lg-5 mb-sm-3">
+                        <div className="container">
+                            <h1>Unlock Potential </h1>
+                            <h5>with the Free Flow of Knowledge Sharing</h5>
+                            <div className="row callToAction">
+                                <div className="col-md-4 col-lg-3">
+                                    <Link to="/aboutus" title='Our Services'>Our Services <i className="fa fa-arrow-right" title='More Info'></i></Link>
                                 </div>
 
-                            </div>
-
-                        </div>
-                        <div className="row mt-3 ">
-                            <div className="col-sm-2"></div>
-                            <div className="col-sm-4" >
-                                <div className="services_card" >
-                                    <LazyLoadImage src={solutionImg} width="100%" height="60px" alt='Bespoke Incubator Schemes for Potential Ideas' />
-                                    <h3>
-                                        <hr />
-                                        Bespoke Incubator
-                                        Schemes
-                                        for Potential Ideas
-                                    </h3>
+                                <div className="col-md-4 col-lg-4">
+                                    <Link to="/jobs" title='Featured Jobs'>Featured jobs <i className="fa fa-arrow-right" title='More Info'></i></Link>
                                 </div>
                             </div>
-                            <div className="col-sm-4 ">
-                                <div className="services_card">
-                                    <LazyLoadImage src={teamImg} width="100%" height="60px" alt='Exclusive Networking with Knowledgeale Professionals' />
-                                    <h3>
-                                        <hr />
-                                        Exclusive Networking
-                                        with
-                                        Knowledgeable Professionals
-                            </h3>
-                                </div>
-                            </div>
-                            <div className="col-sm-2"></div>
                         </div>
                     </div>
                 </section>
+
+                {/* Our Services  */}
+                <div className='services_Container'>
+                    <h1>Our Services</h1>
+                    <Grid container spacing={3} alignItems='center' justify='center'
+                        style={{ width: '100%', margin: '0px' }} >
+                        <Grid item xs={12} sm={6} md={4} lg={2}  >
+                            <Paper className='servicesCard'>
+                                <LazyLoadImage src={searchImg} width='100%' height='60px' />
+                                <hr />
+                                Unique Training
+                            </Paper>
+                        </Grid>
+                        <Grid item xs={12} sm={6} md={4} lg={2}>
+                            <Paper className='servicesCard'> <LazyLoadImage src={opportunityImg} width='100%' height='60px' />
+                                <hr /> Flexible Job Opportunity</Paper>
+                        </Grid>
+                        <Grid item xs={12} sm={6} md={4} lg={2}>
+                            <Paper className='servicesCard'>
+                                <LazyLoadImage src={workshopImg} width='100%' height='60px' />
+                                <hr /> Consulting Possibilties</Paper>
+                        </Grid>
+                        <Grid item xs={12} sm={6} md={4} lg={2}>
+                            <Paper className='servicesCard'>
+                                <LazyLoadImage src={solutionImg} width='100%' height='60px' />
+                                <hr />
+                                Bespoke Incubator Schemes for Potential Ideas</Paper>
+                        </Grid>
+                        <Grid item xs={12} sm={6} md={4} lg={2}>
+                            <Paper className='servicesCard'>
+                                <LazyLoadImage src={teamImg} width='100%' height='60px' />
+                                <hr /> Exclusive Networking with Knowledgeable Professionals</Paper>
+                        </Grid>
+                    </Grid>
+                </div>
 
                 {/*Featured Jobs  */}
 
@@ -239,137 +207,113 @@ export default class Home extends Component {
 
                 {/* About Us */}
 
-                <section id="home-about">
-                    <div className="Container about-sec">
-                        <div className="info">
-                            <header className="section-header">
-                                <h1>  why us </h1>
-                            </header>
+                {/* why us */}
+                <div className='whyUs_Container'>
+                    <h1>Why us</h1>
+                    <article>Hyde International Talent (HIT) Network provides an interactive and innovative platform for global talented individuals and organisations in scientific and technological fields to exchange knowledge, incubate their research ideas and source collaborative opportunities.</article>
+                    <p>What you can expect：</p>
+                    <p>● Join and interact in our high-tech community with thousands of talented individuals worldwide.</p>
+                    <p>● Share your ideas and expertise through international training and consulting opportunities for industry leaders.</p>
+                    <p>● Access to a wide range of technology-focused jobs.</p>
+                    <p>● Connect directly to providers of global research funding.</p>
+                    <p>● Participate in world-leading scientific projects.</p>
+                </div>
 
-                            <p className="para_info">
-                                Hyde International Talent (HIT) Network provides an interactive and innovative platform for global talented
-                                individuals and organisations in scientific and technological fields to exchange knowledge, incubate their
-                            research ideas and source collaborative opportunities. </p>
-                            <p className="para">What you can expect：</p>
-
-                            <p className="para">
-                                ● Access to a wide range of technology-focused jobs.
-                        </p>
-                            <p className="para">
-                                ● Connect directly to providers of global research funding.
-                        </p>
-                            <p className="para">
-                                ● Join and interact in our high-tech community with thousands of talented individuals worldwide.
-                        </p>
-                            <p className="para">
-                                ● Share your ideas and expertise through international training and consulting opportunities for industry
-                                leaders.
-                        </p>
-                            <p className="para">
-                                ● Participate in world-leading scientific projects.
-                        </p>
-                        </div>
+                {/* industry */}
+                <Suspense fallback={<div>Loading ...</div>} >
+                    <div className="industry_Container">
+                        <h1>Main industry</h1>
+                        <Grid container spacing={3} alignItems='center' justify='center'
+                            style={{ width: '100%', margin: '0px' }} >
+                            <Grid item xs={12} sm={6} md={4} lg={4}  >
+                                <Paper className='industryCard'>
+                                    <LazyLoadImage src={urbanPlanningImg} width='100%' height='100px' />
+                                    <hr />
+                                Urban Planning
+                            </Paper>
+                            </Grid>
+                            <Grid item xs={12} sm={6} md={4} lg={4}  >
+                                <Paper className='industryCard'>
+                                    <LazyLoadImage src={medicalScienceImg} width='100%' height='100px' />
+                                    <hr />
+                                Medical Science
+                            </Paper>
+                            </Grid>
+                            <Grid item xs={12} sm={6} md={4} lg={4}  >
+                                <Paper className='industryCard'>
+                                    <LazyLoadImage src={envinromentalSienceImg} width='100%' height='100px' />
+                                    <hr />
+                                Envinronmental Science
+                            </Paper>
+                            </Grid>
+                            <Grid item xs={12} sm={6} md={4} lg={4}  >
+                                <Paper className='industryCard'>
+                                    <LazyLoadImage src={materialScienceImg} width='100%' height='100px' />
+                                    <hr />
+                               Material Science
+                            </Paper>
+                            </Grid>
+                            <Grid item xs={12} sm={6} md={4} lg={4}  >
+                                <Paper className='industryCard'>
+                                    <LazyLoadImage src={renewableEnergyImg} width='100%' height='100px' />
+                                    <hr />
+                                Renewable Energy
+                            </Paper>
+                            </Grid>
+                            <Grid item xs={12} sm={6} md={4} lg={4}  >
+                                <Paper className='industryCard'>
+                                    <LazyLoadImage src={marineEngineerImg} width='100%' height='100px' />
+                                    <hr />
+                                Marine Engineering
+                            </Paper>
+                            </Grid>
+                            <Grid item xs={12} sm={6} md={4} lg={4}  >
+                                <Paper className='industryCard'>
+                                    <LazyLoadImage src={chemistryImg} width='100%' height='100px' />
+                                    <hr />
+                                Chemistry
+                            </Paper>
+                            </Grid>
+                            <Grid item xs={12} sm={6} md={4} lg={4}  >
+                                <Paper className='industryCard'>
+                                    <LazyLoadImage src={engineeringManufacturingImg} width='100%' height='100px' />
+                                    <hr />
+                                Engineering & Manufacturing
+                            </Paper>
+                            </Grid>
+                            <Grid item xs={12} sm={6} md={4} lg={4}  >
+                                <Paper className='industryCard'>
+                                    <LazyLoadImage src={informationTechnologyImg} width='100%' height='100px' />
+                                    <hr />
+                                Information Technology
+                            </Paper>
+                            </Grid>
+                            <Grid item xs={12} sm={6} md={4} lg={4}  >
+                                <Paper className='industryCard'>
+                                    <LazyLoadImage src={dataScienceImg} width='100%' height='100px' />
+                                    <hr />
+                                Data Science
+                            </Paper>
+                            </Grid>
+                            <Grid item xs={12} sm={6} md={4} lg={4}  >
+                                <Paper className='industryCard'>
+                                    <LazyLoadImage src={businessManagementImg} width='100%' height='100px' />
+                                    <hr />
+                                Business & Management
+                            </Paper>
+                            </Grid>
+                            <Grid item xs={12} sm={6} md={4} lg={4}  >
+                                <Paper className='industryCard'>
+                                    <LazyLoadImage src={aiImg} width='100%' height='100px' />
+                                    <hr />
+                                Artificial & Robotics
+                            </Paper>
+                            </Grid>
+                        </Grid>
                     </div>
-                </section>
-                <section id="industry">
-                    <div className="container-fluid">
-                        <header className="section-header">
-                            <h1> Main Industry </h1>
-                        </header>
+                </Suspense>
 
-
-                        <div className="industry_services">
-
-                            <div className="industry_ServiceCard">
-                                <div className="card">
-                                    <LazyLoadImage className="industry-background" src={urbanPlanningImg} width="100%" height="120px" alt='Urban Planning' />
-                                    <label className="industry-label">Urban Planning</label>
-                                </div>
-                            </div>
-
-                            <div className="industry_ServiceCard">
-                                <div className="card">
-                                    <LazyLoadImage className="industry-background" src={medicalScienceImg} width="100%" height="120px" alt='Medical Science' />
-                                    <label className="industry-label">Medical Science</label>
-                                </div>
-                            </div>
-
-                            <div className="industry_ServiceCard">
-                                <div className="card">
-                                    <LazyLoadImage className="industry-background" src={envinromentalSienceImg} width="100%" height="120px" alt='Envinronmental Science' />
-                                    <label className="industry-label">Environmental Science</label>
-                                </div>
-                            </div>
-
-                            <div className="industry_ServiceCard">
-                                <div className="card">
-                                    <LazyLoadImage className="industry-background" src={materialScienceImg} width="100%" height="120px" alt='Materials Science' />
-                                    <label className="industry-label">Materials Science</label>
-                                </div>
-                            </div>
-
-                            <div className="industry_ServiceCard">
-                                <div className="card">
-                                    <LazyLoadImage className="industry-background" src={renewableEnergyImg} width="100%" height="120px" alt='Renewable Energy' />
-                                    <label className="industry-label">Renewable Energy</label>
-                                </div>
-                            </div>
-
-                            <div className="industry_ServiceCard">
-                                <div className="card">
-                                    <LazyLoadImage className="industry-background" src={marineEngineerImg} width="100%" height="120px" alt='Marine Engineering' />
-                                    <label className="industry-label">Marine Engineering</label>
-                                </div>
-                            </div>
-
-                            <div className="industry_ServiceCard">
-                                <div className="card">
-                                    <LazyLoadImage className="industry-background" src={chemistryImg} width="100%" height="120px" alt='Chemistry' />
-                                    <label className="industry-label">Chemistry</label>
-                                </div>
-                            </div>
-
-                            <div className="industry_ServiceCard">
-                                <div className="card">
-                                    <LazyLoadImage className="industry-background" src={engineeringManufacturingImg} width="100%" height="120px"
-                                        alt='Engineering and Manufacturing' />
-
-                                    <label className="industry-label">Engineering & Manufacturing</label>
-                                </div>
-                            </div>
-
-                            <div className="industry_ServiceCard">
-                                <div className="card">
-                                    <LazyLoadImage className="industry-background" src={informationTechnologyImg} width="100%" height="120px" alt='Information Technology' />
-                                    <label className="industry-label">Information Technology</label>
-                                </div>
-                            </div>
-
-                            <div className="industry_ServiceCard">
-                                <div className="card">
-                                    <LazyLoadImage className="industry-background" src={dataScienceImg} width="100%" height="120px" alt='Data Science and Social Data Science' />
-                                    <label className="industry-label">Data Science & Social Data Science</label>
-                                </div>
-                            </div>
-
-                            <div className="industry_ServiceCard">
-                                <div className="card">
-                                    <LazyLoadImage className="industry-background" src={businessManagementImg} width="100%" height="120px" alt='Business and Management' /><label className="industry-label">Business & Management</label>
-                                </div>
-                            </div>
-
-                            <div className="industry_ServiceCard">
-                                <div className="card">
-                                    <LazyLoadImage className="industry-background" src={aiImg} width="100%" height="120px" alt='AI and Robotics' />
-                                    <label className="industry-label">AI & Robotics</label>
-                                </div>
-                            </div>
-
-                        </div>
-
-
-                    </div>
-                </section>
+                {/* Footer */}
                 <Footer />
             </Fragment>
         )

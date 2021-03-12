@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
 import { fetchReq, getRole, getUid, setUserInfo } from '../../utils/utils';
@@ -8,7 +8,7 @@ import Footer from '../../components/Footer';
 import '../../styles/applyjob.css';
 import ReactGA from 'react-ga'
 import { Helmet } from 'react-helmet';
-import { Fragment } from 'react';
+import PersonIcon from '@material-ui/icons/Person';
 
 class ApplyJob extends Component {
     constructor(props) {
@@ -120,46 +120,49 @@ class ApplyJob extends Component {
 
 
                 </Helmet>
-                <section id="top" className="single-job-hero h-40">
 
+
+                <section id="top" className="single-job-hero h-40">
+                    {/* Nav Bar */}
                     <nav className="navbar navbar-expand-lg navbar-light bg-transperent sticky-top px-3 text-dark">
-                        <NavLink className="navbar-brand text-dark" to="/home"><h2>HI Talents</h2></NavLink>
+                        <NavLink className="navbar-brand text-dark" to="/home" title='Hi Talents'><h2>HI Talents</h2></NavLink>
                         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
                             <span className="navbar-toggler-icon"></span>
                         </button>
+
                         <div className="collapse navbar-collapse" id="navbarToggler">
                             <ul className="navbar-nav ml-auto mt-2 mt-lg-0 ">
                                 <li className="nav-item">
-                                    <NavLink className="nav-link" to="/home">Home {/* <span className="sr-only">(current)</span> */}</NavLink>
+                                    <NavLink className="nav-link" to="/home" title='Home'>Home</NavLink>
                                 </li>
                                 <li className="nav-item">
-                                    <NavLink className="nav-link" to="/jobs">Jobs</NavLink>
+                                    <NavLink className="nav-link" to="/jobs" title='Jobs'>Jobs</NavLink>
                                 </li>
                                 <li className="nav-item">
-                                    <NavLink className="nav-link" to="/aboutus">About Us</NavLink>
+                                    <NavLink className="nav-link" to="/aboutus" title='About Us'>About Us</NavLink>
                                 </li>
                                 <li className="nav-item">
-                                    <NavLink className="nav-link" to="/contactus">Contact Us</NavLink>
+                                    <NavLink className="nav-link" to="/contactus" title='Contact Us'>Contact Us</NavLink>
                                 </li>
                                 <li className="sign-in">
                                     {role === '__admin__' ?
                                         <NavLink className="nav-item user" to="/mgt/admin_dashboard">
-                                            <div className="text-light fa fa-user-o"></div>
+                                            <PersonIcon />
                                         </NavLink>
                                         :
                                         (role === 'expert' ?
                                             <NavLink className="nav-item user" to="/mgt/expert_profile">
-                                                <div className="text-light fa fa-user-o"></div>
+                                                <PersonIcon />
                                             </NavLink>
                                             : <NavLink className="nav-item user" to="/login">
-                                                <div className="text-light fa fa-user-o"></div>
+                                                <span className='nav-link'>Login</span>
                                             </NavLink>)
                                     }
                                 </li>
                             </ul>
+
                         </div>
                     </nav>
-
                 </section>
 
                 <section >

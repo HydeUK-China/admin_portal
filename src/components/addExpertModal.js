@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Button, Modal } from 'react-bootstrap';
-import UploadFile from './uploadFile';
 import _ from 'lodash';
 import { countryList } from '../asset/countryList';
 import { placeholder } from '../asset/placeholder';
 import { expertDataLessField, expertDataMoreField } from '../asset/dataFieldHeader';
+import '../styles/signup.css'
 
 export default class AddExpertModal extends Component {
     constructor(props) {

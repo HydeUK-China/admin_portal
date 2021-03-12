@@ -8,6 +8,7 @@ import { jobTypeList } from '../asset/jobTypeList';
 import { distanceList } from '../asset/distanceList';
 import { placeholder } from '../asset/placeholder';
 import jsPDF from 'jspdf';
+import '../styles/signup.css'
 
 export default class InfoEditModal extends Component {
     constructor(props) {
@@ -104,7 +105,7 @@ export default class InfoEditModal extends Component {
             verticalOffset = verticalOffset + (curLines.length + 0.5) * size / 72
 
 
-            if (verticalOffset > pageHeight) {          
+            if (verticalOffset > pageHeight) {
                 if (index === fileds.length - 1) {
                     pdf.text(0.5, margin + size / 72, curLines)
                 } else {
@@ -114,7 +115,7 @@ export default class InfoEditModal extends Component {
                     verticalOffset = margin // Restart height position
                     contents = [fieldTitle[key] + ': \n' + data[key] || '']
                 }
-            } else {          
+            } else {
                 if (index === fileds.length - 1) {
                     pdf.text(0.5, margin + size / 72, curLines)
                 } else {
@@ -122,7 +123,7 @@ export default class InfoEditModal extends Component {
                 }
             }
         })
-        
+
         const fileName = data[fileds[2]] + ' ' + data[fileds[3]] + '.pdf'
         pdf.save(fileName)
     }
@@ -144,11 +145,13 @@ export default class InfoEditModal extends Component {
                                     if (key === 'id' || key === 'expert_id' || key === 'project_id' || key === 'matching_id') {
                                         // readonly input
                                         return (
+
                                             <div key={`modal-${key}`} className='columns-merge'>
                                                 <h2>{this.fieldTitle[key]}</h2>
                                                 <input className="form-control" readOnly
                                                     defaultValue={value} />
                                             </div>
+
                                         )
                                     } else if (key === 'show_employer_name') {
                                         // required select
@@ -311,7 +314,7 @@ export default class InfoEditModal extends Component {
                                     : <Button onClick={this.clickEdit}> Edit </Button>)
                                 : null
                         }
-                        <Button onClick={this.generatePDF}>Download</Button> 
+                        <Button onClick={this.generatePDF}>Download</Button>
                         {/* window.print */}
                     </form>
                 </Modal.Body>

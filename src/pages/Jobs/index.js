@@ -10,6 +10,7 @@ import { sliceData } from '../../asset/paginationConfig';
 import { jobTypeList } from '../../asset/jobTypeList';
 import { distanceList } from '../../asset/distanceList';
 import ReactGA from 'react-ga'
+import PersonIcon from '@material-ui/icons/Person';
 
 // import TopNav from '../../components/TopNav'
 import '../../styles/jobs.css';
@@ -121,24 +122,20 @@ export default class Jobs extends Component {
 
 
                 </Helmet>
-                {/* <section id="top" className="hero-category">
-                    <div className="hero-category">
-                        <div className=" Container text-left px-5 mx-0 hero-category_title">
-                            <h1>Opportunity Land <br/>Welcome</h1>
-                        </div>
-                    </div>
-                </section> */}
+
                 <section className="hero-category">
-                    <header>
-                        <nav className="navbar navbar-expand-lg navbar-light bg-transperent px-3 text-dark ">
+                    {/* Nav Bar */}
+                    <div>
+                        <nav className="navbar navbar-expand-lg navbar-light bg-transperent sticky-top px-3 text-dark">
                             <NavLink className="navbar-brand text-dark" to="/home" title='Hi Talents'><h2>HI Talents</h2></NavLink>
                             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
                                 <span className="navbar-toggler-icon"></span>
                             </button>
+
                             <div className="collapse navbar-collapse" id="navbarToggler">
                                 <ul className="navbar-nav ml-auto mt-2 mt-lg-0 ">
                                     <li className="nav-item">
-                                        <NavLink className="nav-link" to="/home" title='Home'>Home {/* <span className="sr-only">(current)</span> */}</NavLink>
+                                        <NavLink className="nav-link" to="/home" title='Home'>Home</NavLink>
                                     </li>
                                     <li className="nav-item">
                                         <NavLink className="nav-link" to="/jobs" title='Jobs'>Jobs</NavLink>
@@ -152,15 +149,15 @@ export default class Jobs extends Component {
                                     <li className="sign-in">
                                         {role === '__admin__' ?
                                             <NavLink className="nav-item user" to="/mgt/admin_dashboard">
-                                                <div className=" fa fa-user-o" title='Profile'></div>
+                                                <PersonIcon />
                                             </NavLink>
                                             :
                                             (role === 'expert' ?
                                                 <NavLink className="nav-item user" to="/mgt/expert_profile">
-                                                    <div className=" fa fa-user-o" title='Profile'></div>
+                                                    <PersonIcon />
                                                 </NavLink>
                                                 : <NavLink className="nav-item user" to="/login">
-                                                    <div className="fa fa-user-o"></div>
+                                                    <span className='nav-link'>Login</span>
                                                 </NavLink>)
                                         }
                                     </li>
@@ -168,7 +165,9 @@ export default class Jobs extends Component {
 
                             </div>
                         </nav>
-                    </header>
+                    </div>
+
+                    {/* jobs */}
                     <div className="p-2 hero-category_title rounded">
 
                         <div className="row">
