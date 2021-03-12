@@ -120,7 +120,7 @@ class App extends Component {
           </nav>
         </div>
 
-        <div className="container-fluid">
+        <div className="containerBox">
           <div className="row">
             {this.getTabs()}
           </div>
