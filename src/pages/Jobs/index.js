@@ -90,11 +90,12 @@ export default class Jobs extends Component {
         let jobcards = []
 
         _.forEach(displayData, (item, index) => {
+            console.log('index', index);
             jobcards.push(<JobTitleCard key={`jobtitlecard-${index}`}
                 data={item}
                 link={`/applyjob/${item.project_id}`} />);
 
-            if ((index % 5 === 4) || (displayData.length === index + 1)) {
+            if ((index % 4 === 3) || (displayData.length === index + 1)) {
                 rows.push(<div key={`jobtitlecardrows-${index}`} className="category-jobs_grid" style={{ marginBottom: 30 }}>
                     {[...jobcards]}
                 </div>)

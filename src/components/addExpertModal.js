@@ -4,7 +4,9 @@ import _ from 'lodash';
 import { countryList } from '../asset/countryList';
 import { placeholder } from '../asset/placeholder';
 import { expertDataLessField, expertDataMoreField } from '../asset/dataFieldHeader';
-import '../styles/signup.css'
+import '../styles/signup.css';
+import { CKEditor } from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 export default class AddExpertModal extends Component {
     constructor(props) {
