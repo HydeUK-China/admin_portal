@@ -941,7 +941,6 @@ function editProject(req, res) {
 function completeExpertApplication(req, res) {
     const token = req.session.token;
     const expertId = req.params.expertid;
-
     jwtUtil.verifyRoleFromToken(token)
         .then((role) => {
             if (role) {
@@ -973,6 +972,10 @@ function completeExpertApplication(req, res) {
                                     })
                                 }
                             });
+                        } else {
+                            res.status(200).json({
+                                success: true,
+                            })
                         }
                     }
                 });

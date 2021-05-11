@@ -7,7 +7,9 @@ export function fetchReq(path, opt = {}) {
     body: opt.body || null
   }
   return fetch(path, options)
-    .then(res => res.json())
+    .then(res => {
+      return res.json()
+    })
     .then(res => {
       if (res.success) {
         return (res.data)
