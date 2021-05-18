@@ -45,6 +45,7 @@ router.post('/api/fetchProjectExpert/:projectid', dbOps.fetchProjectExpert);
 router.post('/api/fetchExpertProject/:expertid', dbOps.fetchExpertProject);
 router.post('/api/fetchProjectMatching', dbOps.fetchProjectMatching);
 router.post('/api/deleteProjectMatching', dbOps.deleteProjectMatching);
+router.post('/api/sortByCategory', dbOps.sortByCategory);
 
 // router.post('/api/file/upload', s3Ops.uploadFile);
 // router.get('/api/file/:filename', s3Ops.downloadFile);

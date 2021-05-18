@@ -141,6 +141,7 @@ export default class ProjectManagement extends Component {
     }
 
     editConfirmHandler(record) {
+        console.log('record', record);
         fetchReq('/api/editProject', {
             body: JSON.stringify({
                 record

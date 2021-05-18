@@ -4,6 +4,8 @@ import ExpertRightSidebar from "../../components/expertRightSidebar";
 import { fetchReq } from "../../utils/utils";
 import { placeholder } from "../../asset/placeholder";
 import ReactGA from "react-ga";
+import { CKEditor } from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
 export default class ExpertProfile extends Component {
   constructor(props) {
@@ -89,12 +91,20 @@ export default class ExpertProfile extends Component {
       .catch((err) => alert(err));
   }
 
-  handleTextChange(e, key) {
+  handleTextChange(e, key, dataCk) {
     const { data } = this.state;
 
-    const tmp_data = Object.assign(data, {
-      [key]: e.target.value,
-    });
+    let tmp_data;
+    if(dataCk || dataCk === '') {
+         tmp_data = Object.assign(data, {
+            [key]: dataCk,
+        });
+
+    } else {
+        tmp_data = Object.assign(data, {
+            [key] : e.target.value
+        })
+    }
     this.setState({
       data: tmp_data,
     });
@@ -166,16 +176,32 @@ export default class ExpertProfile extends Component {
                         )
                       ) : null}
                     </h3>
-                    <textarea
-                      className="profile-content"
-                      row="2"
-                      defaultValue={value}
-                      placeholder={placeholder[key]}
-                      onChange={(e) => this.handleTextChange(e, key)}
-                      required={
-                        this.requiredFields.indexOf(key) !== -1 ? true : false
-                      }
-                    ></textarea>
+                    <CKEditor
+                      editor={ClassicEditor}
+                      config={{
+                        placeholder: placeholder[key],
+
+                        toolbar: [
+                          "heading",
+                          "|",
+                          "bold",
+                          "italic",
+                          "blockQuote",
+                          "link",
+                          "numberedList",
+                          "bulletedList",
+                          "|",
+                          "undo",
+                          "redo",
+                        ],
+                      }}
+                      data={value}
+                      required={this.requiredFields.indexOf(key) !== -1 ? true : false}
+                      onChange={(event, editor) => {
+                        const data = editor.getData();
+                        this.handleTextChange(event, key, data);
+                      }}
+                    />
                   </div>
                 );
               })
@@ -194,7 +220,7 @@ export default class ExpertProfile extends Component {
                         )
                       ) : null}
                     </h3>
-                    <section className="profile-content">{value}</section>
+                    <section className="profile-content"><div dangerouslySetInnerHTML={{ __html: value }} /></section>
                   </div>
                 );
               })}
