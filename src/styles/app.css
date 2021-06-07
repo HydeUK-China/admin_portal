@@ -777,6 +777,10 @@ body::-webkit-scrollbar-thumb {
   border-radius:100%;
 }
 
+.ck ul,ol {
+  padding: 0px 0px 0px 30px;
+}
+
 @-webkit-keyframes rotation {
   from {-webkit-transform: rotate(0deg);}
   to {-webkit-transform: rotate(359deg);}
