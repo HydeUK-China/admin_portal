@@ -1,25 +1,15 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import Footer from '../../components/Footer';
 import { getRole } from '../../utils/utils';
-import ReactGA from 'react-ga'
+import ReactGA from 'react-ga';
 
-
-export default class Privacy extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            role: getRole()
-        }
-    }
-
-   
-    render() {
-        const { role } = this.state;
+const Privacy = () => {
+    useEffect(() => {
         ReactGA.pageview(window.location.pathname + window.location.search);
-        return (
-            <div>
+    }, [])
+    return(
+        <div>
                 <section id="top" className="bg-dark">
                     <header id="header">
                         <div className="brand-container">
@@ -33,12 +23,12 @@ export default class Privacy extends Component {
                             <NavLink className="nav-item" to="/aboutus" style={{ color: 'white' }}>About</NavLink>
                             <NavLink className="nav-item" to="/contactus" style={{ color: 'white' }}>Contact</NavLink>
                             <div className="sign-in">
-                                {role === '__admin__' ?
+                                {getRole() === '__admin__' ?
                                     <NavLink className="nav-item user" to="/mgt/admin_dashboard">
                                         <div className="fa fa-user-o"></div>
                                     </NavLink>
                                     :
-                                    (role === 'expert' ?
+                                    (getRole() === 'expert' ?
                                         <NavLink className="nav-item user" to="/mgt/expert_profile">
                                             <div className="fa fa-user-o"></div>
                                         </NavLink>
@@ -173,7 +163,7 @@ export default class Privacy extends Component {
                
     <Footer/>
    </div>
-        
-        )
-    }
-}
+    )
+};
+
+export default Privacy;

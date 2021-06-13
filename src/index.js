@@ -16,12 +16,14 @@ import ApplyJob from './pages/ApplyJob';
 import ContactUs from './pages/ContactUs';
 import AboutUs from './pages/AboutUs';
 
+
 import './styles/index.css';
 import Privacy from './pages/Privacy';
 import Cookies from './pages/Cookies';
 import TermsOfService from './pages/TermsOfService';
 import ForgotPassword from './pages/ForgotPassword';
 import ResetPassword from './pages/ResetPassword';
+
 
 ReactDOM.render(
   <React.StrictMode>

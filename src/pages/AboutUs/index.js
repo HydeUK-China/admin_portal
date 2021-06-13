@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { useEffect } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { getRole } from '../../utils/utils';
 import Footer from '../../components/Footer';
@@ -12,22 +12,12 @@ import { LazyLoadImage } from 'react-lazy-load-image-component'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import PersonIcon from '@material-ui/icons/Person';
 
-
-export default class AboutUs extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      role: getRole()
-    }
-
-  }
-
-  render() {
-    const { role } = this.state;
-    ReactGA.pageview(window.location.pathname + window.location.search);
-    return (
-      <Fragment>
+const AboutUs = () => {
+    useEffect(() => {
+        ReactGA.pageview(window.location.pathname + window.location.search);
+    }, []);
+    return(
+        <>
         <Helmet>
           <title>HYDE INTERNATIONAL UK | ABOUT US</title>
           <meta charset="utf-8" />
@@ -63,12 +53,12 @@ export default class AboutUs extends Component {
                   <NavLink className="nav-link" to="/contactus" title='Contact Us'>Contact Us</NavLink>
                 </li>
                 <li className="sign-in">
-                  {role === '__admin__' ?
+                  {getRole() === '__admin__' ?
                     <NavLink className="nav-item user" to="/mgt/admin_dashboard">
                       <PersonIcon />
                     </NavLink>
                     :
-                    (role === 'expert' ?
+                    (getRole() === 'expert' ?
                       <NavLink className="nav-item user" to="/mgt/expert_profile">
                         <PersonIcon />
                       </NavLink>
@@ -187,7 +177,8 @@ export default class AboutUs extends Component {
 
         <Footer />
 
-      </Fragment>
-    );
-  }
+      </>
+    )
 }
+
+export default AboutUs;
