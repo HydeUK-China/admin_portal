@@ -113,11 +113,11 @@ export default class Jobs extends Component {
         return (
             <div>
                 <Helmet>
-                    <title>HYDE INTERNATIONAL UK | JOBS</title>
+                    <title>HI TALENTS UK | JOBS</title>
                     <meta charset="utf-8" />
                     <meta name="viewport" content="width=device-width, initial-scale=1" />
                     <meta name="theme-color" content="#000000" />
-                    <meta name="title" content="HYDE INTERNATIONAL UK JOBS" />
+                    <meta name="title" content="HI TALENTS UK JOBS" />
                     <meta name="description" content="High salary research and data science jobs and career opportunities around the world (data scientist, research director, and product manager, and more…)" />
                     <meta name="keywords" content="find research jobs,data science career,engineer salary,earospace work opportunity,best labs to work at " />
 

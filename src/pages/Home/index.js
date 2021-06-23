@@ -74,14 +74,14 @@ export default class Home extends Component {
         return (
             <Fragment>
                 <Helmet>
-                    <title>HYDE INTERNATIONAL UK</title>
+                    <title>HI TALENTS UK</title>
                     <meta charset="utf-8" />
                     <meta name="viewport" content="width=device-width, initial-scale=1" />
                     <meta name="theme-color" content="#000000" />
-                    <meta name="title" content="HYDE INTERNATIONAL UK" />
+                    <meta name="title" content="HI TALENTS UK" />
                     <meta name="description" content="Leading global academic and research network and project incubator to help scientists find R&D grants, fund projects and access training opportunities" />
                     <meta name="keywords" content="research and developement grant,tech funding,tech incubator,university cryptocurrency projects,research gateway,hitalent uk" />
-                    <meta property="og:title" content="HYDE INTERNATIONAL UK" />
+                    <meta property="og:title" content="HI TALENTS UK" />
                     <meta property="og:description" content="Leading global academic and research network and project incubator to help scientists find R&D grants, fund projects and access training opportunities" />
 
 
@@ -210,7 +210,7 @@ export default class Home extends Component {
                 {/* why us */}
                 <div className='whyUs_Container'>
                     <h1>Why us</h1>
-                    <article>Hyde International Talent (HIT) Network provides an interactive and innovative platform for global talented individuals and organisations in scientific and technological fields to exchange knowledge, incubate their research ideas and source collaborative opportunities.</article>
+                    <article>Hyde International Talents (HI TALENTS) Network provides an interactive and innovative platform for global talented individuals and organisations in scientific and technological fields to exchange knowledge, incubate their research ideas and source collaborative opportunities.</article>
                     <p>What you can expect：</p>
                     <p>● Join and interact in our high-tech community with thousands of talented individuals worldwide.</p>
                     <p>● Share your ideas and expertise through international training and consulting opportunities for industry leaders.</p>

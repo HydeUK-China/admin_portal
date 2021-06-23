@@ -106,11 +106,11 @@ class ApplyJob extends Component {
             <Fragment>
 
                 <Helmet>
-                    <title>HYDE INTERNATIONAL UK | Apply Jobs</title>
+                    <title>HI TALENTS UK | Apply Jobs</title>
                     <meta charset="utf-8" />
                     <meta name="viewport" content="width=device-width, initial-scale=1" />
                     <meta name="theme-color" content="#000000" />
-                    <meta name="title" content="HYDE INTERNATIONAL | Apply Jobs" />
+                    <meta name="title" content="HI TALENTS UK | Apply Jobs" />
                     <meta name="description" content="Hiring: High salary Director of Research Institute to facilitate technology innovation business and strategic planning of technology transfer" />
                     <meta name="description" content="Hiring: High salary, big data and product manager position for PhD gradates at large
                     public company in China" />
