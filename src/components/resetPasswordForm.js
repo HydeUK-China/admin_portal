@@ -1,95 +1,62 @@
-import React, { Component } from 'react';
+import React, {useState, useEffect, useRef } from 'react';
 import { withRouter } from 'react-router';
 import { fetchReq } from '../utils/utils';
 
-class ResetPasswordForm extends Component {
-    constructor(props) {
-        super(props);
+const ResetPasswordForm = (props) => {
+    const passwordRef = useRef();
+    const [token, setToken] = useState(props.match.params.token);
+    const [email, setEmail] = useState(null);
+    const [role, setRole] = useState(null);
+    const [showSpinner, setShowSpinner] = useState(false);
 
-        this.state = {
-            token: props.match.params.token,
-            email: null,
-            role: null,
-            password: null,
-            showSpinner: false
-        }
-        this.password = React.createRef();
-
-        this.updatePassword = this.updatePassword.bind(this);
-        this.handleInputChange = this.handleInputChange.bind(this);
-    }
-
-    componentDidMount() {
-        const { token } = this.state;
-
+    useEffect(() => {
         const url = `/api/resetPassword/${token}`
         fetchReq(url).then(data => {
-            this.setState({
-                email: data.account_name,
-                role: data.permission_role
-            })
+            setEmail(data.account_name);
+            setRole(data.permission_role);
         }).catch(msg => {
             alert(msg);
         });
-    }
+    }, []);
 
-    handleInputChange(e, key) {
-        this.setState({
-            [key]: e.target.value
-        })
-    }
-
-    updatePassword(e) {
+    const updatePassword = (e) => {
         e.preventDefault();
-
-        this.setState({
-            showSpinner: true
-        })
-
-        const { email, password } = this.state;
-
+        setShowSpinner(true);
+        const password = passwordRef.current.value;
         fetchReq('/api/updatePassword', {
             body: JSON.stringify({
                 email,
                 password
             })
         }).then(data => {
-            this.setState({
-                showSpinner: false
-            })
+            setShowSpinner(false);
             alert(data);
 
-            this.props.history.replace('/login');
+            props.history.replace('/login');
         }).catch(msg => {
-            this.setState({
-                showSpinner: false
-            })
+            setShowSpinner(false);
             alert(msg);
         });
     }
 
-    render() {
-        const { email, password, showSpinner } = this.state;
-
-        return (
-            <form className="registerLogin-form" onSubmit={this.updatePassword}>
-                <div className="form-group">
-                    <label> Your email: </label>
-                    <label> {email} </label>
-                </div>
-                <div className="form-group">
-                    <label> Reset password: </label>
-                    <input type="password" className="form-control" placeholder="Reset password"
-                        value={password}
-                        onChange={(e) => this.handleInputChange(e, 'password')} required />
-                </div>
-                <div className="form-group">
-                    <button type="submit" className="apply-btn">Submit</button>
-                </div>
-                <div className={showSpinner ? "spinner" : null}></div>
-            </form>
-        )
-    }
+    return (
+        <form className="registerLogin-form" onSubmit={updatePassword}>
+            <div className="form-group">
+                <label> Your email: </label>
+                <label> {email} </label>
+            </div>
+            <div className="form-group">
+                <label> Reset password: </label>
+                <input type="password" className="form-control" placeholder="Reset password"
+                    ref={passwordRef}
+                 required />
+            </div>
+            <div className="form-group">
+                <button type="submit" className="apply-btn">Submit</button>
+            </div>
+            <div className={showSpinner ? "spinner" : null}></div>
+        </form>
+    )
 }
 
-export default withRouter(ResetPasswordForm)
+export default withRouter(ResetPasswordForm);

@@ -1,124 +1,91 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import _ from "lodash";
 import InfoEditModal from "./infoEditModal";
 import ConfirmDeleteModal from "./confirmDeleteModal";
-import { Button, Modal } from "react-bootstrap";
 
-export default class ModalOpsRow extends Component {
-  constructor(props) {
-    super(props);
+const ModalOpsRow = (props) => {
+  const [showInfo, setShowInfo] = useState(false);
+  const [selOption, setSelOption] = useState("");
+  const [data, setData] = useState(props.rowData);
+  const [showModal, setShowModal] = useState(false);
 
-    this.state = {
-      showInfo: false,
-      selOption: "",
-      data: props.rowData,
-      showModal: false,
-    };
+  useEffect(() => {
+    setData(props.rowData);
+  }, [props.rowData]);
 
-    this.handleSelect = this.handleSelect.bind(this);
-    this.handleDataChange = this.handleDataChange.bind(this);
-    this.handleClose = this.handleClose.bind(this);
-    this.confirmDelete = this.confirmDelete.bind(this);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (nextProps !== this.props) {
-      this.setState({
-        data: nextProps.rowData,
-      });
-    }
-  }
-
-  handleSelect(e) {
+  const handleSelect = (e) => {
     if (e.target.value === "moreinfo") {
-      this.setState({
-        showInfo: !this.showInfo,
-      });
+      setShowInfo(!showInfo);
     } else if (e.target.value === "delete") {
-      this.setState({ showModal: true });
+      setShowModal(true);
     }
-  }
-
-  closeInfoHandler = (hide) => {
-    this.setState({
-      showInfo: hide,
-    });
   };
 
-  handleDataChange = (data) => {
-    this.setState({
-      data,
-    });
+  const closeInfoHandler = (hide) => {
+    setShowInfo(hide);
   };
-  handleClose() {
-    this.setState({ showModal: false });
-  }
-  confirmDelete() {
-    const { onRowDelete, dataIdentifier } = this.props;
-    const { data } = this.state;
+
+  const handleDataChange = (data) => {
+    setData(data);
+  };
+  const handleClose = () => {
+    setShowModal(false);
+  };
+
+  const confirmDelete = () => {
+    const { onRowDelete, dataIdentifier } = props;
     const id = data[dataIdentifier];
 
     onRowDelete(id);
-    this.setState({ showModal: false });
-  }
+    setShowModal(false);
+  };
 
-  render() {
-    const {
-      useClass,
-      rowLessField,
-      rowMoreField,
-      rowMoreHeader,
-      modalHeader,
-      role,
-      onEditConfirm,
-    } = this.props;
-    const { data, selOption, showInfo } = this.state;
+  return (
+    <div className="database">
+      <div className={`datatable_${props.useClass}`}>
+        {_.map(_.pick(data, props.rowLessField), (value, key) => {
+          return <label key={`row-${key}`}>{value}</label>;
+        })}
 
-    return (
-      <div className="database">
-        <div className={`datatable_${useClass}`}>
-          {_.map(_.pick(data, rowLessField), (value, key) => {
-            return <label key={`row-${key}`}>{value}</label>;
-          })}
-
-          {role === "__admin__" ? (
-            <select
-              className="more-info-btn"
-              value={selOption}
-              onChange={this.handleSelect}
-            >
-              <option value="">Please Select</option>
-              <option value="moreinfo">More info</option>
-              <option value="delete">Delete</option>
-            </select>
-          ) : (
-            <select
-              className="more-info-btn"
-              value={selOption}
-              onChange={this.handleSelect}
-            >
-              <option value="">Please Select</option>
-              <option value="moreinfo">More info</option>
-            </select>
-          )}
-        </div>
-        <ConfirmDeleteModal
-          showModal={this.state.showModal}
-          handleClose={this.handleClose}
-          confirmDelete={this.confirmDelete}
-        />
-        <InfoEditModal
-          show={showInfo}
-          close={this.closeInfoHandler}
-          allowEdit={role === "__admin__" ? true : false}
-          onDataChange={role === "__admin__" ? this.handleDataChange : null}
-          onEditConfirm={role === "__admin__" ? onEditConfirm : null}
-          modalHeader={modalHeader}
-          headers={rowMoreHeader}
-          fileds={rowMoreField}
-          data={data}
-        />
+        {props.role === "__admin__" ? (
+          <select
+            className="more-info-btn"
+            value={props.selOption}
+            onChange={handleSelect}
+          >
+            <option value="">Please Select</option>
+            <option value="moreinfo">More info</option>
+            <option value="delete">Delete</option>
+          </select>
+        ) : (
+          <select
+            className="more-info-btn"
+            value={selOption}
+            onChange={handleSelect}
+          >
+            <option value="">Please Select</option>
+            <option value="moreinfo">More info</option>
+          </select>
+        )}
       </div>
-    );
-  }
-}
+      <ConfirmDeleteModal
+        showModal={showModal}
+        handleClose={handleClose}
+        confirmDelete={confirmDelete}
+      />
+      <InfoEditModal
+        show={showInfo}
+        close={closeInfoHandler}
+        allowEdit={props.role === "__admin__" ? true : false}
+        onDataChange={props.role === "__admin__" ? handleDataChange : null}
+        onEditConfirm={props.role === "__admin__" ? props.onEditConfirm : null}
+        modalHeader={props.modalHeader}
+        headers={props.rowMoreHeader}
+        fileds={props.rowMoreField}
+        data={data}
+      />
+    </div>
+  );
+};
+
+export default ModalOpsRow;

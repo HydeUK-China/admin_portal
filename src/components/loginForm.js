@@ -1,60 +1,63 @@
-import React, { Component } from 'react';
-import { fetchReq } from '../utils/utils';
-import { Link } from 'react-router-dom';
+import React, { useRef } from "react";
+import { fetchReq } from "../utils/utils";
+import { Link } from "react-router-dom";
 
-import '../styles/login.css';
+const LoginForm = (props) => {
+  const email = useRef();
+  const password = useRef();
 
-export default class LoginForm extends Component {
-    constructor(props) {
-        super(props);
+  const handleLogin = (e) => {
+    const { loginCallback } = props;
 
-        this.state = {
+    e.preventDefault();
 
-        }
-        this.email = React.createRef()
-        this.password = React.createRef()
+    fetchReq("/api/login", {
+      body: JSON.stringify({
+        email: email.current.value,
+        password: password.current.value,
+      }),
+    })
+      .then((data) => {
+        loginCallback(data);
+      })
+      .catch((msg) => {
+        alert(msg);
+      });
+  };
 
-        this.handleLogin = this.handleLogin.bind(this);
-    }
+  return (
+    <form className="registerLogin-form">
+      <div className="form-group ">
+        <label>Email</label>
+        <input
+          type="email"
+          className="form-control"
+          ref={email}
+          placeholder="email"
+        />
+      </div>
+      <div className="form-group">
+        <label>Password</label>
+        <input
+          type="password"
+          className="form-control"
+          ref={password}
+          placeholder="*******"
+        />
+      </div>
+      <div>
+        <Link to="/forgot-password">Forgot Password ?</Link>
+      </div>
+      <div
+        style={{ maxWidth: "inherit" }}
+        className="apply-btn create_btn"
+        onClick={handleLogin}
+      >
+        {" "}
+        {props.confirmButtonText}{" "}
+      </div>
+    </form>
+  );
+};
 
-    handleLogin(e) {
-        const { loginCallback } = this.props;
-
-        e.preventDefault();
-
-        const email = this.email;
-        const pwd = this.password;
-
-        fetchReq('/api/login', {
-            body: JSON.stringify({
-                email: email.current.value,
-                password: pwd.current.value
-            })
-        }).then(data => {
-            loginCallback(data);
-        }).catch(msg => {
-            alert(msg);
-        });
-    }
-
-    render() {
-        const { confirmButtonText } = this.props;
-
-        return (
-            <form className="registerLogin-form">
-                <div className="form-group ">
-                    <label>Email</label>
-                    <input type="email" className="form-control" ref={this.email} placeholder="email" />
-                </div>
-                <div className="form-group">
-                    <label>Password</label>
-                    <input type="password" className="form-control" ref={this.password} placeholder="*******" />
-                </div>
-                <div>
-                    <Link to ="/forgot-password">Forgot Password ?</Link>
-                </div>
-                <div style={{maxWidth: 'inherit'}} className="apply-btn create_btn" onClick={this.handleLogin}> {confirmButtonText} </div>
-            </form>
-        )
-    }
-}
+export default LoginForm;

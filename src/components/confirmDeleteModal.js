@@ -1,23 +1,23 @@
-import React, { Component } from "react";
+import React from "react";
 import { Button, Modal } from "react-bootstrap";
 
-export default class ConfirmDeleteModal extends React.Component {
-  render() {
+const ConfirmDeleteModal = (props) => {
     return (
-      <Modal show={this.props.showModal} onHide={this.props.handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Delete</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Are you sure that you want delete this?</Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={this.props.handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={this.props.confirmDelete}>
-            Confirm
-          </Button>
-        </Modal.Footer>
-      </Modal>
-    );
-  }
+        <Modal show={props.showModal} onHide={props.handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Delete</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>Are you sure that you want delete this?</Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={props.handleClose}>
+              Close
+            </Button>
+            <Button variant="primary" onClick={props.confirmDelete}>
+              Confirm
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      );
 }
+
+export default ConfirmDeleteModal;

@@ -1,58 +1,48 @@
-import React, { Component } from 'react';
-import _ from 'lodash';
-import { fetchReq } from '../../utils/utils';
-import Search from '../../components/search';
+import React, { useState, useEffect } from "react";
+import { fetchReq } from "../../utils/utils";
+import Search from "../../components/search";
 
-export default class EmployerManagement extends Component {
-    constructor(props) {
-        super(props);
+const dataField = [
+  "id",
+  "title",
+  "first_name",
+  "last_name",
+  "organization",
+  "email",
+  "phone_no",
+  "nationality",
+];
 
-        this.state = {
-            data: null,
-            filterData: null
-        }
+const EmployerManagement = (props) => {
+  const [data, setData] = useState(null);
+  const [filterData, setFilterData] = useState(null);
 
-        this.header = ['ID', 'Title', 'First Name', 'Last Name', 'Organization',
-            'Email', 'Phone No', 'Nationality']
+  useEffect(() => {
+    fetchReq("/api/fetchEmployer")
+      .then((data) => {
+        setData(data);
+        setFilterData(data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
-        this.dataField = ['id', 'title', 'first_name', 'last_name', 'organization', 'email', 'phone_no', 'nationality']
+  const filterDataHandler = (filterData) => {
+    setFilterData(filterData);
+  };
 
-        this.filterDataHandler = this.filterDataHandler.bind(this);
-    }
+  return (
+    <div className="database">
+      <div className="search">
+        <Search
+          fullData={data}
+          dataFilterableField={dataField}
+          filterDataHandler={filterDataHandler}
+        />
+      </div>
 
-    componentDidMount() {
-        fetchReq('/api/fetchEmployer').then(data => {
-            this.setState({
-                data,
-                filterData: data
-            })
-        }).catch(err => console.log(err));
-    }
+      <div className="dataheader_expert"></div>
+    </div>
+  );
+};
 
-    filterDataHandler(filterData) {
-        this.setState({
-            filterData
-        })
-    }
-
-    render() {
-        const { data } = this.state;
-
-        return (
-            <div className="database">
-                <div className="search">
-                    <Search
-                        fullData={data}
-                        dataFilterableField={this.dataField}
-                        filterDataHandler={this.filterDataHandler}
-                    />
-                </div>
-                
-                <div className="dataheader_expert">
-                   
-                </div>
-               
-            </div>
-        )
-    }
-}
+export default EmployerManagement;

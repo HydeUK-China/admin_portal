@@ -5,9 +5,9 @@ import '../styles/inputrange.css';
 export default class InputRange extends Component {
     constructor(props) {
         super(props);
-
-        this.min = props.minValue || 0
-        this.max = props.maxValue || 5000000
+        console.log('props', props);
+        this.min = this.props.minValue || 0
+        this.max = this.props.maxValue || 5000000
 
         this.state = {
             range: {
@@ -40,6 +40,7 @@ export default class InputRange extends Component {
     }
 
     handleLowerBoundRangeChange(e) {
+        console.log('this.max', this.max);
         let { range, thumb, sign, value } = this.state;
         const { onChange } = this.props;
 
@@ -68,6 +69,7 @@ export default class InputRange extends Component {
     }
 
     handlelUpperBoundRangeChange(e) {
+        console.log('this.max', this.max);
         let { range, thumb, sign, value } = this.state;
         const { onChange } = this.props;
 
