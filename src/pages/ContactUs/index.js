@@ -72,6 +72,7 @@ const ContacUs = () => {
 
       {/* Nav Bar */}
       <div>
+<<<<<<< HEAD
         <nav className="navbar navbar-expand-lg navbar-light bg-transperent sticky-top px-3 text-dark">
           <NavLink
             className="navbar-brand text-dark"
@@ -158,6 +159,80 @@ const ContacUs = () => {
               </header>
               <form id="contact-form" onSubmit={submitEmail} method="POST">
                 {_.dropRight(allFields).map((item, i) => (
+=======
+        <Helmet>
+          <title>HYDE INTERNATIONAL TALENTS (HIT) UK | CONTACT US</title>
+          <meta charset="utf-8" />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <meta name="theme-color" content="#000000" />
+          <meta name="title" content="HYDE INTERNATIONAL TALENTS (HIT) UK CONTACT US" />
+          <meta name="description" content="HI TALENTS SERVICES" />
+          <meta name="keywords" content="talents" />
+          <meta name="keywords" content="china and uk talents contact us" />
+          <meta name="keywords" content="research grants contact us" />
+
+        </Helmet>
+
+        {/* Nav Bar */}
+        <div>
+          <nav className="navbar navbar-expand-lg navbar-light bg-transperent sticky-top px-3 text-dark">
+            <NavLink className="navbar-brand text-dark" to="/home" title='Hi Talents'><h2>HI Talents</h2></NavLink>
+            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+              <span className="navbar-toggler-icon"></span>
+            </button>
+
+            <div className="collapse navbar-collapse" id="navbarToggler">
+              <ul className="navbar-nav ml-auto mt-2 mt-lg-0 ">
+                <li className="nav-item">
+                  <NavLink className="nav-link" to="/home" title='Home'>Home</NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink className="nav-link" to="/jobs" title='Jobs'>Jobs</NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink className="nav-link" to="/aboutus" title='About Us'>About Us</NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink className="nav-link" to="/contactus" title='Contact Us'>Contact Us</NavLink>
+                </li>
+                <li className="sign-in">
+                  {role === '__admin__' ?
+                    <NavLink className="nav-item user" to="/mgt/admin_dashboard">
+                      <PersonIcon />
+                    </NavLink>
+                    :
+                    (role === 'expert' ?
+                      <NavLink className="nav-item user" to="/mgt/expert_profile">
+                        <PersonIcon />
+                      </NavLink>
+                      : <NavLink className="nav-item user" to="/login">
+                        <span className='nav-link'>Login</span>
+                      </NavLink>)
+                  }
+                </li>
+              </ul>
+
+            </div>
+          </nav>
+        </div>
+
+        {/* Contact Us */}
+        <div className="contactUs_Container">
+          <Grid container spacing={3} alignItems='center' justify='center'
+            style={{ width: '100%', margin: '0px' }} >
+            <Row>
+              <Grid item xs={12} sm={12} md={8} lg={8}  >
+                <header className="section-header">
+                  <h1 className="mb-2">Contact us</h1>
+
+                  <h4 className="contact-form_header">Let us know we can help you.</h4>
+                </header>
+                <form id="contact-form" onSubmit={this.submitEmail} method="POST">
+                  <div className="form-group">
+                    {/* <label>First Name</label> */}
+                    <input type="text" className="form-control" name="fname" id="fname" placeholder="First name" ref={this.fname} required />
+                  </div>
+>>>>>>> 26ccc68... website title rename and added react-snapshot
                   <div className="form-group">
                     <input
                       type={item.type}

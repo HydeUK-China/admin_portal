@@ -145,11 +145,38 @@ const ApplyJob = (props) => {
                             <h1>{job_title}</h1>
                         </div>
 
+<<<<<<< HEAD
                         <div className="job-details">
                             <div className="salary">{currency} {salary}</div>
                             <div className="status">{`Posted ${start_date} by ${show_employer_name === 'Y' ? employer : 'admin'}`}</div>
                             {/* <div className="type">Featured</div> */}
                         </div>
+=======
+    render() {
+        const { role, project, statusForApply } = this.state;
+        const { job_title, employer, show_employer_name, start_date, close_date, currency, salary, job_description,
+            required_expertise, professional_field, organization_info, responsibility, essential_skills } = project;
+
+        ReactGA.pageview(window.location.pathname + window.location.search);
+        return (
+            <Fragment>
+
+                <Helmet>
+                    <title>HYDE INTERNATIONAL TALENTS (HIT) UK | {job_title}</title>
+                    <meta charset="utf-8" />
+                    <meta name="viewport" content="width=device-width, initial-scale=1" />
+                    <meta name="theme-color" content="#000000" />
+                    <meta name="title" content="HYDE INTERNATIONAL TALENTS (HIT) UK | Apply Jobs" />
+                    <meta name="description" content="Hiring: High salary Director of Research Institute to facilitate technology innovation business and strategic planning of technology transfer" />
+                    <meta name="description" content="Hiring: High salary, big data and product manager position for PhD gradates at large
+                    public company in China" />
+                    <meta name="description" content="High paying principal scientist position for international PhD
+                    candidate to lead R&D in the new energy industry" />
+                    <meta name="keywords" content="Technical strategic planning,Director of Research,R&D and lab management,Product manager cover letter,data management projects,blockchain research opportunities uk,best job in research,working remotely as an engineer,New energy industry job opportunity" />
+
+
+                </Helmet>
+>>>>>>> 26ccc68... website title rename and added react-snapshot
 
                         <div className="job-summary">
                             <p className="para-width">
