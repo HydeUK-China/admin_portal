@@ -46,7 +46,7 @@
     "serverprod": "cross-env NODE_ENV=prod node nodeApp.js",
     "clean": "rimraf build",
     "react": "cross-env PORT=5000 react-scripts start",
-    "build": "npm run clean && react-scripts build && react-snapshot",
+    "build": "npm run clean && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "server": "nodenv . --exec nodemon | pino-colada",
