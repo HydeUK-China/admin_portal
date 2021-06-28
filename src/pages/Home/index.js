@@ -74,14 +74,14 @@ export default class Home extends Component {
         return (
             <Fragment>
                 <Helmet>
-                    <title>HI TALENTS UK</title>
+                    <title>HYDE INTERNATIONAL TALENTS (HIT) UK</title>
                     <meta charset="utf-8" />
                     <meta name="viewport" content="width=device-width, initial-scale=1" />
                     <meta name="theme-color" content="#000000" />
-                    <meta name="title" content="HI TALENTS UK" />
+                    <meta name="title" content="HYDE INTERNATIONAL TALENTS (HIT) UK" />
                     <meta name="description" content="Leading global academic and research network and project incubator to help scientists find R&D grants, fund projects and access training opportunities" />
                     <meta name="keywords" content="research and developement grant,tech funding,tech incubator,university cryptocurrency projects,research gateway,hitalent uk" />
-                    <meta property="og:title" content="HI TALENTS UK" />
+                    <meta property="og:title" content="HYDE INTERNATIONAL TALENTS (HIT) UK" />
                     <meta property="og:description" content="Leading global academic and research network and project incubator to help scientists find R&D grants, fund projects and access training opportunities" />
 
 

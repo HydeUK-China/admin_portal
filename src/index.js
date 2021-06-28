@@ -7,22 +7,22 @@ import {
 import * as serviceWorker from './serviceWorker';
 import App from './App/App';
 import Login from './pages/Login';
-import {getRole} from './utils/utils';
+import { getRole } from './utils/utils';
 import Signup from './pages/Signup';
 import Home from './pages/Home';
 import Jobs from './pages/Jobs';
 import ApplyJob from './pages/ApplyJob';
 import ContactUs from './pages/ContactUs';
 import AboutUs from './pages/AboutUs';
-
 import './styles/index.css';
 import Privacy from './pages/Privacy';
 import Cookies from './pages/Cookies';
 import TermsOfService from './pages/TermsOfService';
 import ForgotPassword from './pages/ForgotPassword';
 import ResetPassword from './pages/ResetPassword';
+import { render } from 'react-snapshot'
 
-ReactDOM.render(
+render(
   <React.StrictMode>
     <BrowserRouter>
       <Switch>
@@ -60,10 +60,10 @@ ReactDOM.render(
           <TermsOfService />
         </Route>
         <Route exact path="/forgot-password">
-          <ForgotPassword/>
+          <ForgotPassword />
         </Route>
         <Route exact path="/resetpassword/:token">
-          <ResetPassword/>
+          <ResetPassword />
         </Route>
         {/* fallback route */}
         <Route path="/">
@@ -81,7 +81,7 @@ function PrivateRoute({ children, ...rest }) {
       {...rest}
       render={(location) => getRole() != null
         ? children
-        : <Redirect to={{ pathname: '/login'}} />}
+        : <Redirect to={{ pathname: '/login' }} />}
     />
   )
 }

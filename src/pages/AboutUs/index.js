@@ -29,11 +29,11 @@ export default class AboutUs extends Component {
     return (
       <Fragment>
         <Helmet>
-          <title>HI TALENTS UK | ABOUT US</title>
+          <title>HYDE INTERNATIONAL TALENTS (HIT) UK | ABOUT US</title>
           <meta charset="utf-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <meta name="theme-color" content="#000000" />
-          <meta name="title" content="HI TALENTS UK ABOUT US" />
+          <meta name="title" content="HYDE INTERNATIONAL TALENTS (HIT) UK ABOUT US" />
           <meta name="description" content="Leading global academic and research network to help scientists find R&D grants, source funding and protecting their intellectual properties" />
           <meta name="keywords" content="protect intellectual property,Hyde International UK,researcher visa uk" />
 

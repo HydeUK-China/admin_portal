@@ -84,11 +84,11 @@ export default class ContactUs extends Component {
     return (
       <div>
         <Helmet>
-          <title>HI TALENTS UK | CONTACT US</title>
+          <title>HYDE INTERNATIONAL TALENTS (HIT) UK | CONTACT US</title>
           <meta charset="utf-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <meta name="theme-color" content="#000000" />
-          <meta name="title" content="HI TALENTS UK CONTACT US" />
+          <meta name="title" content="HYDE INTERNATIONAL TALENTS (HIT) UK CONTACT US" />
           <meta name="description" content="HI TALENTS SERVICES" />
           <meta name="keywords" content="talents" />
           <meta name="keywords" content="china and uk talents contact us" />
