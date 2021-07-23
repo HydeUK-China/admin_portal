@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import _ from "lodash";
 import { Button, Modal } from "react-bootstrap";
 import { isValidDate } from "../utils/utils";
@@ -9,14 +9,47 @@ import { distanceList } from "../asset/distanceList";
 import Category from "../asset/category";
 import { placeholder } from "../asset/placeholder";
 import jsPDF from "jspdf";
+import autoTable from "jspdf-autotable";
 import "../styles/signup.css";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
+const firstColumnsHeader = [
+  "Id",
+  "Job Title",
+  "Job Type",
+  "Employer",
+  "Location",
+  "Salary",
+];
+
+const secondColumnsHeader = [
+  "Distance",
+  "Currency",
+  "Show Employer",
+  "Start",
+  "Close",
+];
+
+const fixHtmlPdf = (text) =>
+  text.replace(/[\u0100-\uffff]/g, function (ch) {
+    switch (ch) {
+      case "“":
+      case "”�":
+        return '"';
+      case "’":
+      case "‘":
+        return "'";
+      default:
+        return "";
+    }
+  });
+
 const InfoEditModal = (props) => {
-  const [show, setShow] = useState(props.show);
+  const htmlToPdfRef = useRef(null);
+  const [show, setShow] = useState();
   const [showInput, setShowInput] = useState(false);
-  const [data, setData] = useState(props.data);
+  const [data, setData] = useState();
 
   useEffect(() => {
     setShow(props.show);
@@ -36,16 +69,15 @@ const InfoEditModal = (props) => {
   const clickEdit = (e) => {
     e.preventDefault();
     setShowInput(true);
-  }
+  };
 
   const clickConfirm = (e) => {
     e.preventDefault();
 
     const { onEditConfirm } = props;
     setShowInput(!showInput);
-    onEditConfirm(data)
-
-  }
+    onEditConfirm(data);
+  };
 
   const handleTextChange = (e, key, dataCk) => {
     const { onDataChange } = props;
@@ -62,52 +94,79 @@ const InfoEditModal = (props) => {
     }
     setData(tmp_data);
     onDataChange(data);
-  }
+  };
 
   const generatePDF = () => {
     const { fileds } = props;
 
-    const pdf = new jsPDF("p", "in", "letter");
-    const pageHeight = pdf.internal.pageSize.height;
-    const margin = 0.5;
-    const size = 12;
-    let curLines = [];
-    let lastLine = pdf.splitTextToSize("", 7.5);
-    let longStr = "";
-    let verticalOffset = margin;
+    const doc = new jsPDF();
+    const tableHeaders = _.compact(_.drop(fileds, 6), _.dropRight(fileds, 7));
+    const tableValues = _.map(tableHeaders, (value) => {
+      return data[value];
+    });
+    const firstTableHeaders = _.dropRight(fileds, 12);
+    const firstTableValues = _.map(firstTableHeaders, (value) => {
+      return data[value];
+    });
+    let finalY = doc.lastAutoTable.finalY; // The y position on the page
+    let finalX = doc.lastAutoTable.finalX;
 
-    let contents = [];
-    
-
-    _.forEach(fileds, (key, index) => {
-      contents.push(fieldTitle[key] + ": \n" + data[key] || "");
-
-      longStr = contents.join("\n\n");
-
-      curLines = pdf.splitTextToSize(longStr, 7.5);
-      verticalOffset = verticalOffset + ((curLines.length + 0.5) * size) / 72;
-
-      if (verticalOffset > pageHeight) {
-        if (index === fileds.length - 1) {
-          pdf.text(0.5, margin + size / 72, curLines);
-        } else {
-          pdf.text(0.5, margin + size / 72, lastLine);
-
-          pdf.addPage();
-          verticalOffset = margin; // Restart height position
-          contents = [fieldTitle[key] + ": \n" + data[key] || ""];
+    autoTable(doc, {
+      theme: "grid",
+      styles: { overflow: "linebreak", textColor: [0, 0, 0] },
+      margin: { top: 0, bottom: 0, left: 0, right: 0 },
+      columnStyles: { halign: "center" },
+      head: [firstColumnsHeader],
+      body: [firstTableValues],
+      didParseCell: function (hookData) {
+        if (
+          hookData.cell.raw === "Id" ||
+          hookData.cell.raw === "Salary" ||
+          hookData.cell.raw === "Location" ||
+          hookData.cell.raw === "Job Title" ||
+          hookData.cell.raw === "Job Type" ||
+          hookData.cell.raw === "Employer"
+        ) {
+          hookData.cell.styles.fillColor = [220, 220, 220];
         }
-      } else {
-        if (index === fileds.length - 1) {
-          pdf.text(0.5, margin + size / 72, curLines);
-        } else {
-          lastLine = curLines;
-        }
-      }
+      },
     });
 
-    const fileName = data[fileds[2]] + " " + data[fileds[3]] + ".pdf";
-    pdf.save(fileName);
+    autoTable(doc, {
+      theme: "grid",
+      styles: { overflow: "linebreak", textColor: [0, 0, 0] },
+      margin: { top: finalY + 15, bottom: 0, left: 0, right: 0 },
+      columnStyles: { halign: "center" },
+      head: [secondColumnsHeader],
+      body: [tableValues],
+      didParseCell: function (hookData) {
+        if (
+          hookData.cell.raw === "Show Employer" ||
+          hookData.cell.raw === "Close" ||
+          hookData.cell.raw === "Start" ||
+          hookData.cell.raw === "Distance" ||
+          hookData.cell.raw === "Currency"
+        ) {
+          hookData.cell.styles.fillColor = [248, 248, 255];
+        }
+      },
+    });
+
+    doc.fromHTML(
+      fixHtmlPdf(htmlToPdfRef.current.children[11].outerHTML) +
+        fixHtmlPdf(htmlToPdfRef.current.children[12].outerHTML) +
+        fixHtmlPdf(htmlToPdfRef.current.children[13].outerHTML) +
+        fixHtmlPdf(htmlToPdfRef.current.children[14].outerHTML) +
+        fixHtmlPdf(htmlToPdfRef.current.children[15].outerHTML) +
+        fixHtmlPdf(htmlToPdfRef.current.children[16].outerHTML),
+      20,
+      40,
+      {
+        width: 170,
+        margin: { top: finalY + 15, bottom: 0, left: 10, right: 10 },
+      }
+    );
+    doc.save();
   };
 
   return (
@@ -128,7 +187,11 @@ const InfoEditModal = (props) => {
 
       <Modal.Body>
         <form onSubmit={clickConfirm}>
-          <div id="htmlTopdf" className="content-general-info">
+          <div
+            id="htmlTopdf"
+            ref={htmlToPdfRef}
+            className="content-general-info"
+          >
             {showInput
               ? _.map(_.pick(data, props.fileds), (value, key) => {
                   if (
@@ -177,10 +240,7 @@ const InfoEditModal = (props) => {
                         >
                           {_.map(jobTypeList, (_item, _index) => {
                             return (
-                              <option
-                                key={`job_type-${_index}`}
-                                value={_item}
-                              >
+                              <option key={`job_type-${_index}`} value={_item}>
                                 {_item}
                               </option>
                             );
@@ -430,11 +490,7 @@ const InfoEditModal = (props) => {
                       <div key={`modal-${key}`} className="columns-merge">
                         <h2>{fieldTitle[key]}</h2>
                         <div className="newline-text">
-                          {value === "Y"
-                            ? "Yes"
-                            : value === "N"
-                            ? "No"
-                            : value}
+                          {value === "Y" ? "Yes" : value === "N" ? "No" : value}
                         </div>
                       </div>
                     );
