@@ -23,6 +23,21 @@ const firstColumnsHeader = [
   "Salary",
 ];
 
+const expertManagemenHeader = [
+  "Id",
+  "Title",
+  "First Name",
+  "Last Name",
+  "Expertise",
+];
+
+const expertManagementSecondHeader = [
+  "Category",
+  "Nationality",
+  "Email",
+  "Phone Number",
+];
+
 const secondColumnsHeader = [
   "Distance",
   "Currency",
@@ -97,27 +112,50 @@ const InfoEditModal = (props) => {
   };
 
   const generatePDF = () => {
-    const { fileds } = props;
+    const { fileds, data } = props;
 
     const doc = new jsPDF();
+
     const tableHeaders = _.compact(_.drop(fileds, 6), _.dropRight(fileds, 7));
     const tableValues = _.map(tableHeaders, (value) => {
+      return data[value];
+    });
+    const expertFirstTableHeaders = _.dropRight(fileds, 12);
+    const expertFirstTableValues = _.map(expertFirstTableHeaders, (value) => {
+      return data[value];
+    });
+    const expertSecondTableHeaders = _.compact(
+      _.drop(fileds, 5),
+      _.dropRight(fileds, 8)
+    );
+    const expertSecondTableValues = _.map(expertSecondTableHeaders, (value) => {
       return data[value];
     });
     const firstTableHeaders = _.dropRight(fileds, 12);
     const firstTableValues = _.map(firstTableHeaders, (value) => {
       return data[value];
     });
-    let finalY = doc.lastAutoTable.finalY; // The y position on the page
-    let finalX = doc.lastAutoTable.finalX;
+
+    let finalY = doc.lastAutoTable.finalY;
+
+    const firstTableHead =
+      fileds[0] === "expert_id" ? expertManagemenHeader : firstColumnsHeader;
+    const firstTableBody =
+      fileds[0] === "expert_id" ? expertFirstTableValues : firstTableValues;
+    const secondTableHead =
+      fileds[0] === "expert_id"
+        ? expertManagementSecondHeader
+        : secondColumnsHeader;
+    const secondTableBody =
+      fileds[0] === "expert_id" ? expertSecondTableValues : tableValues;
 
     autoTable(doc, {
       theme: "grid",
       styles: { overflow: "linebreak", textColor: [0, 0, 0] },
-      margin: { top: 0, bottom: 0, left: 0, right: 0 },
+      margin: { top: 5, bottom: 0, left: 10, right: 10 },
       columnStyles: { halign: "center" },
-      head: [firstColumnsHeader],
-      body: [firstTableValues],
+      head: [firstTableHead],
+      body: [firstTableBody],
       didParseCell: function (hookData) {
         if (
           hookData.cell.raw === "Id" ||
@@ -125,7 +163,11 @@ const InfoEditModal = (props) => {
           hookData.cell.raw === "Location" ||
           hookData.cell.raw === "Job Title" ||
           hookData.cell.raw === "Job Type" ||
-          hookData.cell.raw === "Employer"
+          hookData.cell.raw === "Employer" ||
+          hookData.cell.raw === "Title" ||
+          hookData.cell.raw === "First Name" ||
+          hookData.cell.raw === "Last Name" ||
+          hookData.cell.raw === "Expertise"
         ) {
           hookData.cell.styles.fillColor = [220, 220, 220];
         }
@@ -135,38 +177,56 @@ const InfoEditModal = (props) => {
     autoTable(doc, {
       theme: "grid",
       styles: { overflow: "linebreak", textColor: [0, 0, 0] },
-      margin: { top: finalY + 15, bottom: 0, left: 0, right: 0 },
+      margin: { top: finalY + 15, bottom: 0, left: 10, right: 10 },
       columnStyles: { halign: "center" },
-      head: [secondColumnsHeader],
-      body: [tableValues],
+      head: [secondTableHead],
+      body: [secondTableBody],
       didParseCell: function (hookData) {
         if (
           hookData.cell.raw === "Show Employer" ||
           hookData.cell.raw === "Close" ||
           hookData.cell.raw === "Start" ||
           hookData.cell.raw === "Distance" ||
-          hookData.cell.raw === "Currency"
+          hookData.cell.raw === "Currency" ||
+          hookData.cell.raw === "Category" ||
+          hookData.cell.raw === "Nationality" ||
+          hookData.cell.raw === "Email" ||
+          hookData.cell.raw === "Phone Number"
         ) {
           hookData.cell.styles.fillColor = [248, 248, 255];
         }
       },
     });
 
-    doc.fromHTML(
+    const expertFromHtml =
+      fixHtmlPdf(htmlToPdfRef.current.children[9].outerHTML) +
+      fixHtmlPdf(htmlToPdfRef.current.children[10].outerHTML) +
       fixHtmlPdf(htmlToPdfRef.current.children[11].outerHTML) +
-        fixHtmlPdf(htmlToPdfRef.current.children[12].outerHTML) +
-        fixHtmlPdf(htmlToPdfRef.current.children[13].outerHTML) +
-        fixHtmlPdf(htmlToPdfRef.current.children[14].outerHTML) +
-        fixHtmlPdf(htmlToPdfRef.current.children[15].outerHTML) +
-        fixHtmlPdf(htmlToPdfRef.current.children[16].outerHTML),
-      20,
-      40,
-      {
-        width: 170,
-        margin: { top: finalY + 15, bottom: 0, left: 10, right: 10 },
-      }
-    );
-    doc.save();
+      fixHtmlPdf(htmlToPdfRef.current.children[12].outerHTML) +
+      fixHtmlPdf(htmlToPdfRef.current.children[13].outerHTML) +
+      fixHtmlPdf(htmlToPdfRef.current.children[14].outerHTML) +
+      fixHtmlPdf(htmlToPdfRef.current.children[15].outerHTML) +
+      fixHtmlPdf(htmlToPdfRef.current.children[16].outerHTML);
+    const projectFromtHtml =
+      fixHtmlPdf(htmlToPdfRef.current.children[11].outerHTML) +
+      fixHtmlPdf(htmlToPdfRef.current.children[12].outerHTML) +
+      fixHtmlPdf(htmlToPdfRef.current.children[13].outerHTML) +
+      fixHtmlPdf(htmlToPdfRef.current.children[14].outerHTML) +
+      fixHtmlPdf(htmlToPdfRef.current.children[15].outerHTML) +
+      fixHtmlPdf(htmlToPdfRef.current.children[16].outerHTML);
+    const convertFromHtml =
+      fileds[0] === "expert_id"
+        ? expertFromHtml
+        : projectFromtHtml +
+          fixHtmlPdf(htmlToPdfRef.current.children[17].outerHTML);
+          const fileName = data["project_id"]
+            ? data["project_id"] + " " + data["job_title"]
+            : data["expert_id"] + " " + data["first_name"] + " " + data["last_name"];
+    doc.fromHTML(convertFromHtml, 10, 40, {
+      width: 170,
+      
+    }, function () { doc.save(fileName) }, {top: 10, bottom: 0, left: 10, right: 10});
+    //doc.save(fileName);
   };
 
   return (
