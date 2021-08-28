@@ -19,7 +19,6 @@
     "aws-sdk": "^2.749.0",
     "bootstrap": "^4.5.2",
     "canvg": "^3.0.7",
-    "chart.js": "^2.9.4",
     "jsonwebtoken": "^8.5.1",
     "jspdf": "^1.5.3",
     "jspdf-autotable": "^3.5.15",
