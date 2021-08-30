@@ -19,11 +19,11 @@ const AboutUs = () => {
     return(
         <>
         <Helmet>
-          <title>HYDE INTERNATIONAL UK | ABOUT US</title>
+          <title>HYDE INTERNATIONAL TALENTS (HIT) UK | ABOUT US</title>
           <meta charset="utf-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <meta name="theme-color" content="#000000" />
-          <meta name="title" content="HYDE INTERNATIONAL UK ABOUT US" />
+          <meta name="title" content="HYDE INTERNATIONAL TALENTS (HIT) UK ABOUT US" />
           <meta name="description" content="Leading global academic and research network to help scientists find R&D grants, source funding and protecting their intellectual properties" />
           <meta name="keywords" content="protect intellectual property,Hyde International UK,researcher visa uk" />
 
@@ -87,7 +87,7 @@ const AboutUs = () => {
                 <div className="aboutus_Article">
                   <h1>Our Story</h1>
                   <section>
-                    With years of experience in technology-intensive fields, HIT understands the struggles that every researcher and professional faces when looking for collaborative opportunities and research-related support for their projects. HIT aims to unite highly talented researchers, investors and professionals in scientific and technological fields with the best possible opportunities and solutions sourced from numerous industry-leading organisations and research partners all around the world . HIT believes in the power of connections and is dedicated to expanding and maintaining its network of members through providing them with customised solutions. HIT strives to help facilitate its members’ goals and aspirations.
+                    With years of experience in technology-intensive fields, HI TALENTS understands the struggles that every researcher and professional faces when looking for collaborative opportunities and research-related support for their projects. HIT aims to unite highly talented researchers, investors and professionals in scientific and technological fields with the best possible opportunities and solutions sourced from numerous industry-leading organisations and research partners all around the world . HIT believes in the power of connections and is dedicated to expanding and maintaining its network of members through providing them with customised solutions. HIT strives to help facilitate its members’ goals and aspirations.
                       </section>
                 </div>
               </Grid>
