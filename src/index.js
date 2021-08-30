@@ -16,10 +16,13 @@ import ApplyJob from './pages/ApplyJob';
 import ContactUs from './pages/ContactUs';
 import AboutUs from './pages/AboutUs';
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
 =======
 >>>>>>> 26ccc68... website title rename and added react-snapshot
+=======
+>>>>>>> 68398d31679119531bf38adbf9bc230dbd339378
 import './styles/index.css';
 import Privacy from './pages/Privacy';
 import Cookies from './pages/Cookies';
@@ -27,6 +30,7 @@ import TermsOfService from './pages/TermsOfService';
 import ForgotPassword from './pages/ForgotPassword';
 import ResetPassword from './pages/ResetPassword';
 import { render } from 'react-snapshot'
+<<<<<<< HEAD
 
 <<<<<<< HEAD
 
@@ -34,6 +38,10 @@ ReactDOM.render(
 =======
 render(
 >>>>>>> 26ccc68... website title rename and added react-snapshot
+=======
+
+render(
+>>>>>>> 68398d31679119531bf38adbf9bc230dbd339378
   <React.StrictMode>
     <BrowserRouter>
       <Switch>

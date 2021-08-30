@@ -14,8 +14,11 @@
     "async": "^3.2.0",
     "bootstrap": "^4.5.2",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "canvg": "^3.0.7",
 =======
+=======
+>>>>>>> 68398d31679119531bf38adbf9bc230dbd339378
     "chart.js": "^2.9.4",
 >>>>>>> 466ad79... uninstall heavy dependencies part 2
     "jsonwebtoken": "^8.5.1",
