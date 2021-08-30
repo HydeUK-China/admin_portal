@@ -29,11 +29,11 @@ export const projectDataLessHeader= [
 ]
 
 export const projectDataMoreField = [
-    'distance', 'currency', 'show_employer_name', 'start_date', 'close_date', 'organization_info', 'professional_field', 'job_description', 'required_expertise', 'responsibility', 'essential_skills'
+    'distance', 'currency', 'show_employer_name', 'start_date', 'close_date', 'organization_info', 'professional_field', 'job_description', 'required_expertise', 'responsibility', 'essential_skills', 'category'
 ]
 
 export const projectDataMoreHeader = [
-    'Distance', 'Currency', 'Show Employer Name', 'Start Date', 'Close Date', 'Organization Infomation', 'Professional Field', 'Job Description', 'Required Expertise', 'Responsibility', 'Essential Skills'
+    'Distance', 'Currency', 'Show Employer Name', 'Start Date', 'Close Date', 'Organization Infomation', 'Professional Field', 'Job Description', 'Required Expertise', 'Responsibility', 'Essential Skills', 'Category'
 ]
 
 export const projectMatchingDataLessField = [

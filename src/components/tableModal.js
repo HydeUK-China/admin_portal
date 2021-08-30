@@ -1,40 +1,31 @@
-import React, { Component } from 'react';
+import React, {useState, useEffect} from 'react';
 import _ from 'lodash';
-import { Button, Modal } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
 import jsPDF from 'jspdf';
 
-export default class TableModal extends Component {
-    constructor(props) {
-        super(props);
 
-        this.state = {
-            show: props.show,
-            tableData: props.tableData
-        }
+const TableModal = (props) => {
+    const [show, setShow] = useState(props.show);
+    const [tableData, setTableData] = useState(props.tableData);
 
-        this.tableFieldTitle = _.zipObject(props.rowField, props.rowHeader);
+    const tableFieldTitle = _.zipObject(props.rowField, props.rowHeader);
+
+    useEffect(() => {
+        setShow(props.show);
+    }, [props.show]);
+
+    useEffect(() => {
+        setTableData(props.tableData);
+    }, [props.tableData]);
+
+    const closeModal = () => {
+        const { onClose } = props;
+        setShow(false);
+        onClose(false);
     }
 
-    componentWillReceiveProps(nextProps) {
-        if (nextProps !== this.props) {
-            this.setState({
-                show: nextProps.show,
-                tableData: nextProps.tableData
-            })
-        }
-    }
-
-    closeModal = () => {
-        const { onClose } = this.props;
-
-        this.setState({
-            show: false
-        }, () => onClose(this.state.show));
-    }
-
-    generatePDF = (index) => {
-        const { tableData } = this.state;
-        const { downloadField, downloadHeader } = this.props;
+    const generatePDF = (index) => {
+        const { downloadField, downloadHeader } = props;
 
         const pdf = new jsPDF('p', 'in', 'letter');
         const pageHeight = pdf.internal.pageSize.height;
@@ -80,44 +71,40 @@ export default class TableModal extends Component {
         pdf.save(fileName)
     }
 
-    render() {
-        const { rowHeader, rowField } = this.props;
-        const { tableData, show } = this.state;
-
-        return (
-            <Modal show={show} onHide={this.closeModal} size='xl'>
-                <Modal.Header closeButton onHide={this.closeModal}>Job Matching</Modal.Header>
-                <Modal.Body>
-                    <div id='htopdf' className="dataheader_expert">
-                        {
-                            tableData && tableData[0] ?
-                                _.map(_.pick(this.tableFieldTitle, _.keys(tableData[0])), (value, key) => {
-                                    return <h6 key={`dataHeader-${key}`}>{value}</h6>
-                                })
-                                : null
-                        }
-                    </div>
-
+    return (
+        <Modal show={show} onHide={closeModal} size='xl'>
+            <Modal.Header closeButton onHide={closeModal}>Job Matching</Modal.Header>
+            <Modal.Body>
+                <div id='htopdf' className="dataheader_expert">
                     {
-                        _.map(tableData, (item, index) => {
-                            return (
-                                <div key={`tableModalRow-${index}`} className='database'>
-                                    <div id='HtoPdf' className="datatable_expert">
-                                        {
-                                            _.map(_.pick(item, rowField), (_value, _key) => {
-                                                return <label key={`row-${_key}`}>{_value}</label>
-                                            })
-
-                                        }
-                                        <button onClick={() => this.generatePDF(index)} className='more-info-btn'>Download</button>
-                                    </div>
-                                </div>
-                            )
-                        })
+                        tableData && tableData[0] ?
+                            _.map(_.pick(tableFieldTitle, _.keys(tableData[0])), (value, key) => {
+                                return <h6 key={`dataHeader-${key}`}>{value}</h6>
+                            })
+                            : null
                     }
-                </Modal.Body>
-            </Modal>
-        );
-    }
+                </div>
 
+                {
+                    _.map(tableData, (item, index) => {
+                        return (
+                            <div key={`tableModalRow-${index}`} className='database'>
+                                <div id='HtoPdf' className="datatable_expert">
+                                    {
+                                        _.map(_.pick(item, props.rowField), (_value, _key) => {
+                                            return <label key={`row-${_key}`}>{_value}</label>
+                                        })
+
+                                    }
+                                    <button onClick={() => generatePDF(index)} className='more-info-btn'>Download</button>
+                                </div>
+                            </div>
+                        )
+                    })
+                }
+            </Modal.Body>
+        </Modal>
+    );
 }
+
+export default TableModal;

@@ -13,9 +13,14 @@
     "aos": "^2.3.4",
     "async": "^3.2.0",
     "bootstrap": "^4.5.2",
+<<<<<<< HEAD
     "chart.js": "^2.9.4",
+=======
+    "canvg": "^3.0.7",
+>>>>>>> Szymon
     "jsonwebtoken": "^8.5.1",
-    "jspdf": "^2.1.1",
+    "jspdf": "^1.5.3",
+    "jspdf-autotable": "^3.5.15",
     "lodash": "^4.17.20",
     "mysql": "^2.18.1",
     "node-pdffiller": "0.0.7",

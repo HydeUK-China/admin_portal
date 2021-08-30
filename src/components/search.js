@@ -1,97 +1,83 @@
-import React, { Component } from 'react';
-import FilterGroup from './filterGroup';
-import _ from 'lodash';
+import React, { useState } from "react";
+import FilterGroup from "./filterGroup";
+import _ from "lodash";
 
-import '../styles/search.css';
+import "../styles/search.css";
 
-export default class Search extends Component {
-    constructor(props) {
-        super(props);
+const Search = (props) => {
+  const [filterInput, setFilterInput] = useState("");
+  const [firstInit, setFirstInit] = useState(true);
+  const [groupResults, setGroupResults] = useState(null);
 
-        this.state = {
-            filterInput: "",
-            firstInit: true,
-            groupResults: null
-        };
+  const handleGlobalFilterChange = (e) => {
+    const { fullData } = props;
+    const value = e.target.value || "";
+    setFilterInput(value);
+    setGroupResults(firstInit ? fullData : groupResults);
+    setFirstInit(false);
+    finalSearch();
+  };
 
-        this.finalSearch = this.finalSearch.bind(this);
+  const globalSearch = () => {
+    const { fullData, dataFilterableField } = props;
+
+    const filteredData = _.filter(fullData, (item) => {
+      let condition = false;
+
+      _.forEach(dataFilterableField, (_item, _index) => {
+        condition =
+          condition ||
+          (item[_item] &&
+            item[_item]
+              .toString()
+              .toLowerCase()
+              .includes(filterInput.toLowerCase()));
+      });
+      return condition;
+    });
+
+    return filteredData;
+  };
+
+  const groupSearch = (groupResults) => {
+    setGroupResults(groupResults);
+    setFirstInit(false);
+    finalSearch();
+  };
+
+  const finalSearch = () => {
+    const { filterDataHandler, showGroupFilter, intersectionByKey } = props;
+
+    const globalResults = globalSearch();
+
+    if (showGroupFilter) {
+      const finalResults = _.intersectionBy(
+        globalResults,
+        groupResults,
+        intersectionByKey
+      );
+      filterDataHandler(finalResults);
+    } else {
+      filterDataHandler(globalResults);
     }
+  };
+  return (
+    <div className="filters disp-c">
+      <input
+        className="filter-input"
+        value={filterInput}
+        onChange={handleGlobalFilterChange}
+        placeholder={props.placeholder || "Global search"}
+      />
+      {props.showGroupFilter ? (
+        <FilterGroup
+          fullData={props.fullData}
+          groupFilterField={props.groupFilterField}
+          filterDataHandler={groupSearch}
+        />
+      ) : null}
+    </div>
+  );
+};
 
-    handleGlobalFilterChange = e => {
-        const { firstInit, groupResults } = this.state;
-        const { fullData } = this.props;
-        const value = e.target.value || "";
-
-        this.setState({ 
-            filterInput: value,
-            groupResults: firstInit ? fullData : groupResults, /**this.props.fullData is [] at first render, to avoid intersectionBy [], initialize groupResults with fullData*/
-            firstInit: false
-        }, () => {
-            this.finalSearch();
-        });
-    };
-
-    globalSearch = () => {
-        const { filterInput } = this.state;
-        const { fullData, dataFilterableField } = this.props;
-
-        const filteredData = _.filter(fullData, item => {
-            let condition = false;
-
-            _.forEach(dataFilterableField, (_item, _index) => {
-                condition = condition || (item[_item] && item[_item].toString().toLowerCase().includes(filterInput.toLowerCase()))
-            })
-            return condition;
-        });
-
-        return filteredData;
-    }
-
-    groupSearch = (groupResults) => {
-        this.setState({ 
-            groupResults,
-            firstInit: false
-        }, () => {
-            this.finalSearch()
-        })
-    }
-
-    finalSearch = () => {
-        const { filterDataHandler, showGroupFilter, intersectionByKey } = this.props;
-        const { groupResults } = this.state;
-        
-        const globalResults = this.globalSearch();
-        
-        if (showGroupFilter) {
-            const finalResults = _.intersectionBy(globalResults, groupResults, intersectionByKey);
-            filterDataHandler(finalResults);
-        } else {
-            filterDataHandler(globalResults);
-        }
-    }
-
-
-
-    render() {
-        const { filterInput } = this.state;
-        const { placeholder, showGroupFilter, groupFilterField, fullData } = this.props;
-
-        return (
-        <div className="filters disp-c">
-            <input className="filter-input"
-                value={filterInput}
-                onChange={this.handleGlobalFilterChange}
-                placeholder={placeholder || "Global search"}
-            />
-            {
-                showGroupFilter ?
-                    <FilterGroup
-                        fullData={fullData}
-                        groupFilterField={groupFilterField}
-                        filterDataHandler={this.groupSearch}
-                    /> : null
-            }
-         </div>
-        )
-    }
-}
+export default Search;

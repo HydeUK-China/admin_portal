@@ -11,9 +11,15 @@ import { getRole } from './utils/utils';
 import Signup from './pages/Signup';
 import Home from './pages/Home';
 import Jobs from './pages/Jobs';
+import Category from './pages/Jobs/category';
 import ApplyJob from './pages/ApplyJob';
 import ContactUs from './pages/ContactUs';
 import AboutUs from './pages/AboutUs';
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> Szymon
 import './styles/index.css';
 import Privacy from './pages/Privacy';
 import Cookies from './pages/Cookies';
@@ -22,7 +28,12 @@ import ForgotPassword from './pages/ForgotPassword';
 import ResetPassword from './pages/ResetPassword';
 import { render } from 'react-snapshot'
 
+<<<<<<< HEAD
 render(
+=======
+
+ReactDOM.render(
+>>>>>>> Szymon
   <React.StrictMode>
     <BrowserRouter>
       <Switch>
@@ -40,6 +51,9 @@ render(
         </Route>
         <Route exact path="/jobs">
           <Jobs />
+        </Route>
+        <Route exact path ="/category/:category">
+          <Category />
         </Route>
         <Route exact path="/applyjob/:projectId">
           <ApplyJob />

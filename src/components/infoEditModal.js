@@ -1,324 +1,584 @@
-import React, { Component } from 'react';
-import _ from 'lodash';
-import { Button, Modal } from 'react-bootstrap';
-import { isValidDate } from '../utils/utils';
-import { currencyList } from '../asset/currencyList';
-import { countryList } from '../asset/countryList';
-import { jobTypeList } from '../asset/jobTypeList';
-import { distanceList } from '../asset/distanceList';
-import { placeholder } from '../asset/placeholder';
-import jsPDF from 'jspdf';
-import '../styles/signup.css'
+import React, { useState, useEffect, useRef } from "react";
+import _ from "lodash";
+import { Button, Modal } from "react-bootstrap";
+import { isValidDate } from "../utils/utils";
+import { currencyList } from "../asset/currencyList";
+import { countryList } from "../asset/countryList";
+import { jobTypeList } from "../asset/jobTypeList";
+import { distanceList } from "../asset/distanceList";
+import Category from "../asset/category";
+import { placeholder } from "../asset/placeholder";
+import jsPDF from "jspdf";
+import autoTable from "jspdf-autotable";
+import "../styles/signup.css";
+import { CKEditor } from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
-export default class InfoEditModal extends Component {
-    constructor(props) {
-        super(props);
+const firstColumnsHeader = [
+  "Id",
+  "Job Title",
+  "Job Type",
+  "Employer",
+  "Location",
+  "Salary",
+];
 
-        this.state = {
-            show: props.show,
-            showInput: false,
-            data: props.data
+const expertManagemenHeader = [
+  "Id",
+  "Title",
+  "First Name",
+  "Last Name",
+  "Expertise",
+];
+
+const expertManagementSecondHeader = [
+  "Category",
+  "Nationality",
+  "Email",
+  "Phone Number",
+];
+
+const secondColumnsHeader = [
+  "Distance",
+  "Currency",
+  "Show Employer",
+  "Start",
+  "Close",
+];
+
+const fixHtmlPdf = (text) =>
+  text.replace(/[\u0100-\uffff]/g, function (ch) {
+    switch (ch) {
+      case "“":
+      case "”�":
+        return '"';
+      case "’":
+      case "‘":
+        return "'";
+      default:
+        return "";
+    }
+  });
+
+const InfoEditModal = (props) => {
+  const htmlToPdfRef = useRef(null);
+  const [show, setShow] = useState();
+  const [showInput, setShowInput] = useState(false);
+  const [data, setData] = useState();
+
+  useEffect(() => {
+    setShow(props.show);
+  }, [props.show]);
+  useEffect(() => {
+    setData(props.data);
+  }, [props.data]);
+
+  const fieldTitle = _.zipObject(props.fileds, props.headers);
+
+  const closeModal = () => {
+    const { close } = props;
+    setShow(false);
+    close(show);
+  };
+
+  const clickEdit = (e) => {
+    e.preventDefault();
+    setShowInput(true);
+  };
+
+  const clickConfirm = (e) => {
+    e.preventDefault();
+
+    const { onEditConfirm } = props;
+    setShowInput(!showInput);
+    onEditConfirm(data);
+  };
+
+  const handleTextChange = (e, key, dataCk) => {
+    const { onDataChange } = props;
+
+    let tmp_data;
+    if (dataCk || dataCk === "") {
+      tmp_data = Object.assign(data, {
+        [key]: dataCk,
+      });
+    } else {
+      tmp_data = Object.assign(data, {
+        [key]: e.target.value,
+      });
+    }
+    setData(tmp_data);
+    onDataChange(data);
+  };
+
+  const generatePDF = () => {
+    const { fileds, data } = props;
+
+    const doc = new jsPDF();
+
+    const tableHeaders = _.compact(_.drop(fileds, 6), _.dropRight(fileds, 7));
+    const tableValues = _.map(tableHeaders, (value) => {
+      return data[value];
+    });
+    const expertFirstTableHeaders = _.dropRight(fileds, 12);
+    const expertFirstTableValues = _.map(expertFirstTableHeaders, (value) => {
+      return data[value];
+    });
+    const expertSecondTableHeaders = _.compact(
+      _.drop(fileds, 5),
+      _.dropRight(fileds, 8)
+    );
+    const expertSecondTableValues = _.map(expertSecondTableHeaders, (value) => {
+      return data[value];
+    });
+    const firstTableHeaders = _.dropRight(fileds, 12);
+    const firstTableValues = _.map(firstTableHeaders, (value) => {
+      return data[value];
+    });
+
+    let finalY = doc.lastAutoTable.finalY;
+
+    const firstTableHead =
+      fileds[0] === "expert_id" ? expertManagemenHeader : firstColumnsHeader;
+    const firstTableBody =
+      fileds[0] === "expert_id" ? expertFirstTableValues : firstTableValues;
+    const secondTableHead =
+      fileds[0] === "expert_id"
+        ? expertManagementSecondHeader
+        : secondColumnsHeader;
+    const secondTableBody =
+      fileds[0] === "expert_id" ? expertSecondTableValues : tableValues;
+
+    autoTable(doc, {
+      theme: "grid",
+      styles: { overflow: "linebreak", textColor: [0, 0, 0] },
+      margin: { top: 5, bottom: 0, left: 10, right: 10 },
+      columnStyles: { halign: "center" },
+      head: [firstTableHead],
+      body: [firstTableBody],
+      didParseCell: function (hookData) {
+        if (
+          hookData.cell.raw === "Id" ||
+          hookData.cell.raw === "Salary" ||
+          hookData.cell.raw === "Location" ||
+          hookData.cell.raw === "Job Title" ||
+          hookData.cell.raw === "Job Type" ||
+          hookData.cell.raw === "Employer" ||
+          hookData.cell.raw === "Title" ||
+          hookData.cell.raw === "First Name" ||
+          hookData.cell.raw === "Last Name" ||
+          hookData.cell.raw === "Expertise"
+        ) {
+          hookData.cell.styles.fillColor = [220, 220, 220];
         }
+      },
+    });
 
-        this.fieldTitle = _.zipObject(props.fileds, props.headers);
-        this.closeModal = this.closeModal.bind(this);
-        this.clickEdit = this.clickEdit.bind(this);
-        this.clickConfirm = this.clickConfirm.bind(this);
-    }
-
-    componentWillReceiveProps(nextProps) {
-        if (nextProps !== this.props) {
-            this.setState({
-                show: nextProps.show,
-                data: nextProps.data
-            })
+    autoTable(doc, {
+      theme: "grid",
+      styles: { overflow: "linebreak", textColor: [0, 0, 0] },
+      margin: { top: finalY + 15, bottom: 0, left: 10, right: 10 },
+      columnStyles: { halign: "center" },
+      head: [secondTableHead],
+      body: [secondTableBody],
+      didParseCell: function (hookData) {
+        if (
+          hookData.cell.raw === "Show Employer" ||
+          hookData.cell.raw === "Close" ||
+          hookData.cell.raw === "Start" ||
+          hookData.cell.raw === "Distance" ||
+          hookData.cell.raw === "Currency" ||
+          hookData.cell.raw === "Category" ||
+          hookData.cell.raw === "Nationality" ||
+          hookData.cell.raw === "Email" ||
+          hookData.cell.raw === "Phone Number"
+        ) {
+          hookData.cell.styles.fillColor = [248, 248, 255];
         }
-    }
+      },
+    });
 
-    closeModal() {
-        const { close } = this.props;
+    const expertFromHtml =
+      fixHtmlPdf(htmlToPdfRef.current.children[9].outerHTML) +
+      fixHtmlPdf(htmlToPdfRef.current.children[10].outerHTML) +
+      fixHtmlPdf(htmlToPdfRef.current.children[11].outerHTML) +
+      fixHtmlPdf(htmlToPdfRef.current.children[12].outerHTML) +
+      fixHtmlPdf(htmlToPdfRef.current.children[13].outerHTML) +
+      fixHtmlPdf(htmlToPdfRef.current.children[14].outerHTML) +
+      fixHtmlPdf(htmlToPdfRef.current.children[15].outerHTML) +
+      fixHtmlPdf(htmlToPdfRef.current.children[16].outerHTML);
+    const projectFromtHtml =
+      fixHtmlPdf(htmlToPdfRef.current.children[11].outerHTML) +
+      fixHtmlPdf(htmlToPdfRef.current.children[12].outerHTML) +
+      fixHtmlPdf(htmlToPdfRef.current.children[13].outerHTML) +
+      fixHtmlPdf(htmlToPdfRef.current.children[14].outerHTML) +
+      fixHtmlPdf(htmlToPdfRef.current.children[15].outerHTML) +
+      fixHtmlPdf(htmlToPdfRef.current.children[16].outerHTML);
+    const convertFromHtml =
+      fileds[0] === "expert_id"
+        ? expertFromHtml
+        : projectFromtHtml +
+          fixHtmlPdf(htmlToPdfRef.current.children[17].outerHTML);
+          const fileName = data["project_id"]
+            ? data["project_id"] + " " + data["job_title"]
+            : data["expert_id"] + " " + data["first_name"] + " " + data["last_name"];
+    doc.fromHTML(convertFromHtml, 10, 40, {
+      width: 170,
+      
+    }, function () { doc.save(fileName) }, {top: 10, bottom: 0, left: 10, right: 10});
+    //doc.save(fileName);
+  };
 
-        this.setState({
-            show: false
-        }, () => {
-            close(this.state.show);
-        });
-    }
+  return (
+    <Modal
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+      show={show}
+      onHide={closeModal}
+    >
+      <Modal.Header
+        closeButton
+        onHide={closeModal}
+        id="contained-modal-title-vcenter"
+      >
+        {props.modalHeader}
+      </Modal.Header>
 
-    clickEdit(e) {
-        e.preventDefault();
-
-        this.setState({
-            showInput: true
-        });
-    }
-
-    clickConfirm(e) {
-        e.preventDefault();
-
-        const { onEditConfirm } = this.props;
-        const { data } = this.state;
-
-        this.setState({
-            showInput: !this.state.showInput
-        }, () => {
-            onEditConfirm(data);
-        });
-    }
-
-    handleTextChange(e, key) {
-        const { onDataChange } = this.props;
-        const { data } = this.state;
-
-        const tmp_data = Object.assign(data, {
-            [key]: e.target.value
-        })
-        this.setState({
-            data: tmp_data
-        }, () => {
-            onDataChange(this.state.data)
-        });
-    }
-
-    generatePDF = () => {
-        const { fileds } = this.props;
-        const { data } = this.state;
-
-        const pdf = new jsPDF('p', 'in', 'letter');
-        const pageHeight = pdf.internal.pageSize.height;
-        const margin = 0.5;
-        const size = 12;
-        let curLines = [];
-        let lastLine = pdf.splitTextToSize('', 7.5);
-        let longStr = ''
-        let verticalOffset = margin;
-
-        let contents = [];
-        const fieldTitle = this.fieldTitle;
-
-        _.forEach(fileds, (key, index) => {
-            contents.push(fieldTitle[key] + ': \n' + data[key] || '')
-
-            longStr = contents.join('\n\n')
-
-            curLines = pdf.splitTextToSize(longStr, 7.5)
-            verticalOffset = verticalOffset + (curLines.length + 0.5) * size / 72
-
-
-            if (verticalOffset > pageHeight) {
-                if (index === fileds.length - 1) {
-                    pdf.text(0.5, margin + size / 72, curLines)
-                } else {
-                    pdf.text(0.5, margin + size / 72, lastLine)
-
-                    pdf.addPage();
-                    verticalOffset = margin // Restart height position
-                    contents = [fieldTitle[key] + ': \n' + data[key] || '']
-                }
-            } else {
-                if (index === fileds.length - 1) {
-                    pdf.text(0.5, margin + size / 72, curLines)
-                } else {
-                    lastLine = curLines
-                }
-            }
-        })
-
-        const fileName = data[fileds[2]] + ' ' + data[fileds[3]] + '.pdf'
-        pdf.save(fileName)
-    }
-
-    render() {
-        const { fileds, modalHeader, allowEdit } = this.props;
-        const { data, show, showInput } = this.state;
-
-        return (
-            <Modal size="lg" aria-labelledby="contained-modal-title-vcenter" centered
-                show={show} onHide={this.closeModal}>
-                <Modal.Header closeButton onHide={this.closeModal} id="contained-modal-title-vcenter">{modalHeader}</Modal.Header>
-
-                <Modal.Body>
-                    <form onSubmit={this.clickConfirm}>
-                        <div id='htmlTopdf' className='content-general-info'>
-                            {showInput ?
-                                _.map(_.pick(data, fileds), (value, key) => {
-                                    if (key === 'id' || key === 'expert_id' || key === 'project_id' || key === 'matching_id') {
-                                        // readonly input
-                                        return (
-
-                                            <div key={`modal-${key}`} className='columns-merge'>
-                                                <h2>{this.fieldTitle[key]}</h2>
-                                                <input className="form-control" readOnly
-                                                    defaultValue={value} />
-                                            </div>
-
-                                        )
-                                    } else if (key === 'show_employer_name') {
-                                        // required select
-                                        return (
-                                            <div key={`modal-${key}`} className='columns-merge'>
-                                                <h2>{this.fieldTitle[key]}</h2>
-                                                <select className="form-control" required
-                                                    defaultValue={value}
-                                                    onChange={(e) => this.handleTextChange(e, key)}>
-                                                    <option value='Y'>Yes</option>
-                                                    <option value='N'>No</option>
-                                                </select>
-                                            </div>
-                                        )
-                                    } else if (key === 'job_type') {
-                                        // required select
-                                        return (
-                                            <div key={`modal-${key}`} className='columns-merge'>
-                                                <h2>{this.fieldTitle[key]}</h2>
-                                                <select className="form-control" required
-                                                    defaultValue={value}
-                                                    onChange={(e) => this.handleTextChange(e, key)}>
-                                                    {
-                                                        _.map(jobTypeList, (_item, _index) => {
-                                                            return <option key={`job_type-${_index}`} value={_item}>{_item}</option>
-                                                        })
-                                                    }
-                                                </select>
-                                            </div>
-                                        )
-                                    } else if (key === 'currency') {
-                                        // required select
-                                        return (
-                                            <div key={`modal-${key}`} className='columns-merge'>
-                                                <h2>{this.fieldTitle[key]}</h2>
-                                                <select className="form-control" required
-                                                    defaultValue={value}
-                                                    onChange={(e) => this.handleTextChange(e, key)}>
-                                                    {_.map(currencyList, (_item, _index) => {
-                                                        if (_item === "") {
-                                                            return <option key={`currency-${_index}`} value={_item}>Please select</option>
-                                                        } else {
-                                                            return <option key={`currency-${_index}`} value={_item}>{_item}</option>
-                                                        }
-                                                    })}
-                                                </select>
-                                            </div>
-                                        )
-                                    } else if (key === 'nationality') {
-                                        // required select
-                                        return (
-                                            <div key={`modal-${key}`} className='columns-merge'>
-                                                <h2>{this.fieldTitle[key]}</h2>
-                                                <select className="form-control" required
-                                                    defaultValue={value}
-                                                    onChange={(e) => this.handleTextChange(e, key)}>
-                                                    {_.map(countryList, (_item, _index) => {
-                                                        if (_item === "") {
-                                                            return <option key={`nationality-${_index}`} value={_item}>Please select</option>
-                                                        } else {
-                                                            return <option key={`nationality-${_index}`} value={_item}>{_item}</option>
-                                                        }
-                                                    })}
-                                                </select>
-                                            </div>
-                                        )
-                                    } else if (key === 'distance') {
-                                        // required select
-                                        return (
-                                            <div key={`modal-${key}`} className='columns-merge'>
-                                                <h2>{this.fieldTitle[key]}</h2>
-                                                <select className="form-control" required
-                                                    defaultValue={value}
-                                                    onChange={(e) => this.handleTextChange(e, key)}>
-                                                    {_.map(distanceList, (_item, _index) => {
-                                                        if (_item === "") {
-                                                            return <option key={`nationality-${_index}`} value={_item}>Please select</option>
-                                                        } else {
-                                                            return <option key={`nationality-${_index}`} value={_item}>{_item}</option>
-                                                        }
-                                                    })}
-                                                </select>
-                                            </div>
-                                        )
-                                    } else if (key === 'start_date' || key === 'close_date') {
-                                        // required date
-                                        return (
-                                            <div key={`modal-${key}`} className='columns-merge'>
-                                                <h2>{this.fieldTitle[key]}</h2>
-                                                <input type="date" className="form-control" required
-                                                    defaultValue={isValidDate(value) ? new Date(value).toISOString().substr(0, 10) : value}
-                                                    onChange={(e) => this.handleTextChange(e, key)} />
-                                            </div>
-                                        )
-                                    } else if (key === 'job_title' || key === 'location' || key === 'employer' || key === 'area' || key === 'salary' || key === 'title' ||
-                                        key === 'first_name' || key === 'last_name' || key === 'category' || key === 'email' || key === 'expertise') {
-                                        // required input
-                                        return (
-                                            <div key={`modal-${key}`} className='columns-merge'>
-                                                <h2>{this.fieldTitle[key]}</h2>
-                                                <input className="form-control" required
-                                                    placeholder={placeholder[key]}
-                                                    defaultValue={value}
-                                                    onChange={(e) => this.handleTextChange(e, key)} />
-                                            </div>
-                                        )
-                                    } else if (key === 'phone_no' || key === 'level') {
-                                        // non-required input
-                                        return (
-                                            <div key={`modal-${key}`} className='columns-merge'>
-                                                <h2>{this.fieldTitle[key]}</h2>
-                                                <input className="form-control"
-                                                    placeholder={placeholder[key]}
-                                                    defaultValue={value}
-                                                    onChange={(e) => this.handleTextChange(e, key)} />
-                                            </div>
-                                        )
-                                    } else {
-                                        // non-required textarea
-                                        return (
-                                            <div key={`modal-${key}`} className='columns-merge'>
-                                                <h2>{this.fieldTitle[key]}</h2>
-                                                <textarea className="form-control"
-                                                    rows='5'
-                                                    placeholder={placeholder[key]}
-                                                    defaultValue={value}
-                                                    onChange={(e) => this.handleTextChange(e, key)}></textarea>
-                                            </div>
-                                        )
-                                    }
-                                })
-                                :
-                                _.map(_.pick(data, fileds), (value, key) => {
-                                    // if (key === 'employer' && data.show_employer_name === 'N') {
-                                    //     return null;
-                                    // } else 
-                                    if (key === 'show_employer_name' || key === 'application_complete' || key === 'featured') {
-                                        return (
-                                            <div key={`modal-${key}`} className='columns-merge'>
-                                                <h2>{this.fieldTitle[key]}</h2>
-                                                <div className="newline-text">{value === 'Y' ? 'Yes' : (value === 'N' ? 'No' : value)}</div>
-                                            </div>
-                                        )
-                                    } else {
-                                        return (
-                                            <div key={`modal-${key}`} className='columns-merge'>
-                                                <h2>{this.fieldTitle[key]}</h2>
-                                                <div className="newline-text">{value}</div>
-                                            </div>
-                                        )
-                                    }
-
-                                })
+      <Modal.Body>
+        <form onSubmit={clickConfirm}>
+          <div
+            id="htmlTopdf"
+            ref={htmlToPdfRef}
+            className="content-general-info"
+          >
+            {showInput
+              ? _.map(_.pick(data, props.fileds), (value, key) => {
+                  if (
+                    key === "id" ||
+                    key === "expert_id" ||
+                    key === "project_id" ||
+                    key === "matching_id"
+                  ) {
+                    // readonly input
+                    return (
+                      <div key={`modal-${key}`} className="columns-merge">
+                        <h2>{fieldTitle[key]}</h2>
+                        <input
+                          className="form-control"
+                          readOnly
+                          defaultValue={value}
+                        />
+                      </div>
+                    );
+                  } else if (key === "show_employer_name") {
+                    // required select
+                    return (
+                      <div key={`modal-${key}`} className="columns-merge">
+                        <h2>{fieldTitle[key]}</h2>
+                        <select
+                          className="form-control"
+                          required
+                          defaultValue={value}
+                          onChange={(e) => this.handleTextChange(e, key)}
+                        >
+                          <option value="Y">Yes</option>
+                          <option value="N">No</option>
+                        </select>
+                      </div>
+                    );
+                  } else if (key === "job_type") {
+                    // required select
+                    return (
+                      <div key={`modal-${key}`} className="columns-merge">
+                        <h2>{fieldTitle[key]}</h2>
+                        <select
+                          className="form-control"
+                          required
+                          defaultValue={value}
+                          onChange={(e) => handleTextChange(e, key)}
+                        >
+                          {_.map(jobTypeList, (_item, _index) => {
+                            return (
+                              <option key={`job_type-${_index}`} value={_item}>
+                                {_item}
+                              </option>
+                            );
+                          })}
+                        </select>
+                      </div>
+                    );
+                  } else if (key === "currency") {
+                    // required select
+                    return (
+                      <div key={`modal-${key}`} className="columns-merge">
+                        <h2>{fieldTitle[key]}</h2>
+                        <select
+                          className="form-control"
+                          required
+                          defaultValue={value}
+                          onChange={(e) => handleTextChange(e, key)}
+                        >
+                          {_.map(currencyList, (_item, _index) => {
+                            if (_item === "") {
+                              return (
+                                <option
+                                  key={`currency-${_index}`}
+                                  value={_item}
+                                >
+                                  Please select
+                                </option>
+                              );
+                            } else {
+                              return (
+                                <option
+                                  key={`currency-${_index}`}
+                                  value={_item}
+                                >
+                                  {_item}
+                                </option>
+                              );
                             }
+                          })}
+                        </select>
+                      </div>
+                    );
+                  } else if (key === "nationality") {
+                    // required select
+                    return (
+                      <div key={`modal-${key}`} className="columns-merge">
+                        <h2>{fieldTitle[key]}</h2>
+                        <select
+                          className="form-control"
+                          required
+                          defaultValue={value}
+                          onChange={(e) => handleTextChange(e, key)}
+                        >
+                          {_.map(countryList, (_item, _index) => {
+                            if (_item === "") {
+                              return (
+                                <option
+                                  key={`nationality-${_index}`}
+                                  value={_item}
+                                >
+                                  Please select
+                                </option>
+                              );
+                            } else {
+                              return (
+                                <option
+                                  key={`nationality-${_index}`}
+                                  value={_item}
+                                >
+                                  {_item}
+                                </option>
+                              );
+                            }
+                          })}
+                        </select>
+                      </div>
+                    );
+                  } else if (key === "distance") {
+                    // required select
+                    return (
+                      <div key={`modal-${key}`} className="columns-merge">
+                        <h2>{fieldTitle[key]}</h2>
+                        <select
+                          className="form-control"
+                          required
+                          defaultValue={value}
+                          onChange={(e) => handleTextChange(e, key)}
+                        >
+                          {_.map(distanceList, (_item, _index) => {
+                            if (_item === "") {
+                              return (
+                                <option
+                                  key={`nationality-${_index}`}
+                                  value={_item}
+                                >
+                                  Please select
+                                </option>
+                              );
+                            } else {
+                              return (
+                                <option
+                                  key={`nationality-${_index}`}
+                                  value={_item}
+                                >
+                                  {_item}
+                                </option>
+                              );
+                            }
+                          })}
+                        </select>
+                      </div>
+                    );
+                  } else if (key === "start_date" || key === "close_date") {
+                    // required date
+                    return (
+                      <div key={`modal-${key}`} className="columns-merge">
+                        <h2>{fieldTitle[key]}</h2>
+                        <input
+                          type="date"
+                          className="form-control"
+                          required
+                          defaultValue={
+                            isValidDate(value)
+                              ? new Date(value).toISOString().substr(0, 10)
+                              : value
+                          }
+                          onChange={(e) => handleTextChange(e, key)}
+                        />
+                      </div>
+                    );
+                  } else if (
+                    key === "job_title" ||
+                    key === "location" ||
+                    key === "employer" ||
+                    key === "area" ||
+                    key === "salary" ||
+                    key === "title" ||
+                    key === "first_name" ||
+                    key === "last_name" ||
+                    key === "email" ||
+                    key === "expertise"
+                  ) {
+                    // required input
+                    return (
+                      <div key={`modal-${key}`} className="columns-merge">
+                        <h2>{fieldTitle[key]}</h2>
+                        <input
+                          className="form-control"
+                          required
+                          placeholder={placeholder[key]}
+                          defaultValue={value}
+                          onChange={(e) => handleTextChange(e, key)}
+                        />
+                      </div>
+                    );
+                  } else if (key === "category") {
+                    return (
+                      <div key={`modal-${key}`} className="columns-merge">
+                        <h2>{fieldTitle[key]}</h2>
+                        <select
+                          className="form-control"
+                          required
+                          defaultValue={value}
+                          onChange={(e) => handleTextChange(e, key)}
+                        >
+                          {_.map(Category, (_item, _index) => {
+                            if (_item === "") {
+                              return (
+                                <option
+                                  key={`nationality-${_index}`}
+                                  value={_item}
+                                >
+                                  Please select
+                                </option>
+                              );
+                            } else {
+                              return (
+                                <option
+                                  key={`nationality-${_index}`}
+                                  value={_item}
+                                >
+                                  {_item}
+                                </option>
+                              );
+                            }
+                          })}
+                        </select>
+                      </div>
+                    );
+                  } else if (key === "phone_no" || key === "level") {
+                    // non-required input
+                    return (
+                      <div key={`modal-${key}`} className="columns-merge">
+                        <h2>{fieldTitle[key]}</h2>
+                        <input
+                          className="form-control"
+                          placeholder={placeholder[key]}
+                          defaultValue={value}
+                          onChange={(e) => handleTextChange(e, key)}
+                        />
+                      </div>
+                    );
+                  } else {
+                    // non-required textarea
+                    return (
+                      <div key={`modal-${key}`} className="columns-merge">
+                        <h2>{fieldTitle[key]}</h2>
+                        <CKEditor
+                          editor={ClassicEditor}
+                          config={{
+                            placeholder: placeholder[key],
+
+                            toolbar: [
+                              "heading",
+                              "|",
+                              "bold",
+                              "italic",
+                              "blockQuote",
+                              "link",
+                              "numberedList",
+                              "bulletedList",
+                              "|",
+                              "undo",
+                              "redo",
+                            ],
+                          }}
+                          data={value}
+                          onChange={(event, editor) => {
+                            const data = editor.getData();
+                            handleTextChange(event, key, data);
+                          }}
+                        />
+                      </div>
+                    );
+                  }
+                })
+              : _.map(_.pick(data, props.fileds), (value, key) => {
+                  // if (key === 'employer' && data.show_employer_name === 'N') {
+                  //     return null;
+                  // } else
+                  if (
+                    key === "show_employer_name" ||
+                    key === "application_complete" ||
+                    key === "featured"
+                  ) {
+                    return (
+                      <div key={`modal-${key}`} className="columns-merge">
+                        <h2>{fieldTitle[key]}</h2>
+                        <div className="newline-text">
+                          {value === "Y" ? "Yes" : value === "N" ? "No" : value}
                         </div>
-                        {
-                            allowEdit ?
-                                (showInput ?
-                                    <Button type="submit"> Save </Button>
-                                    : <Button onClick={this.clickEdit}> Edit </Button>)
-                                : null
-                        }
-                        <Button onClick={this.generatePDF}>Download</Button>
-                        {/* window.print */}
-                    </form>
-                </Modal.Body>
-            </Modal>
-        )
-    }
-}
+                      </div>
+                    );
+                  } else {
+                    return (
+                      <div key={`modal-${key}`} className="columns-merge">
+                        <h2>{fieldTitle[key]}</h2>
+                        <div className="newline-text">
+                          <div dangerouslySetInnerHTML={{ __html: value }} />
+                        </div>
+                      </div>
+                    );
+                  }
+                })}
+          </div>
+          {props.allowEdit ? (
+            showInput ? (
+              <Button type="submit"> Save </Button>
+            ) : (
+              <Button onClick={clickEdit}> Edit </Button>
+            )
+          ) : null}
+          <Button onClick={generatePDF}>Download</Button>
+          {/* window.print */}
+        </form>
+      </Modal.Body>
+    </Modal>
+  );
+};
+
+export default InfoEditModal;
