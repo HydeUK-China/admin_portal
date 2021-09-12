@@ -13,15 +13,8 @@
     "aos": "^2.3.4",
     "async": "^3.2.0",
     "bootstrap": "^4.5.2",
-<<<<<<< HEAD
     "canvg": "^3.0.7",
-=======
-<<<<<<< HEAD
     "chart.js": "^2.9.4",
-=======
-    "canvg": "^3.0.7",
->>>>>>> Szymon
->>>>>>> master
     "jsonwebtoken": "^8.5.1",
     "jspdf": "^1.5.3",
     "jspdf-autotable": "^3.5.15",

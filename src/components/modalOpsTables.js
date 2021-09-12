@@ -15,13 +15,13 @@ const ModalOpsTables = (props) => {
         setOuterData(props.outerData);
     }, [props.outerData]);
     useEffect(() => {
-        setOuterData(props.innerData);
+        setInnerData(props.innerData);
     }, [props.innerData]);
     useEffect(() => {
-        setOuterData(props.sortKey);
+        setSortKey(props.sortKey);
     }, [props.sortKey]);
     useEffect(() => {
-        setOuterData(props.sortOrder);
+        setSortOrder(props.sortOrder);
     }, [props.sortOrder]);
 
     const handleToggleShow = (id) => {

@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import _ from 'lodash';
 import { Modal } from 'react-bootstrap';
 import jsPDF from 'jspdf';
+import autoTable from "jspdf-autotable";
 
 
 const TableModal = (props) => {
@@ -24,51 +25,62 @@ const TableModal = (props) => {
         onClose(false);
     }
 
-    const generatePDF = (index) => {
-        const { downloadField, downloadHeader } = props;
+    const generatePDF = () => {
+        const doc = new jsPDF();
 
-        const pdf = new jsPDF('p', 'in', 'letter');
-        const pageHeight = pdf.internal.pageSize.height;
-        const margin = 0.5;
-        const size = 12;
-        let curLines = [];
-        let lastLine = pdf.splitTextToSize('', 7.5);
-        let longStr = ''
-        let verticalOffset = margin;
+        let finalY = doc.lastAutoTable.finalY;
 
-        let contents = [];
-        const downloadFieldTitle = _.zipObject(downloadField, downloadHeader);
+        const firstTableHead = ['Expert Id', 'Title', 'First Name', 'Last Name', 'Gender', 'Nationality'];
+        const firstTableBody = [tableData[0].expert_id, tableData[0].expert_id.title, tableData[0].first_name, tableData[0].last_name, tableData[0].gender, tableData[0].nationality];
+
+        const secondTableHead = ['Date of Birth', 'Email', 'Phone No', 'Expertise', 'Category', 'Education organization'];
+        const secondTableBody = [tableData[0].date_of_birth, tableData[0].email, tableData[0].phone_no, tableData[0].expertise, tableData[0].category, tableData[0].edu_organization];
         
-        _.forEach(downloadField, (key, i) => {
-            contents.push(downloadFieldTitle[key] + ': \n' + tableData[index][key] || '')
+        autoTable(doc, {
+            theme: "grid",
+            styles: { overflow: "linebreak", textColor: [0, 0, 0] },
+            margin: { top: 5, bottom: 0, left: 10, right: 10 },
+            columnStyles: { halign: "center" },
+            head: [firstTableHead],
+            body: [firstTableBody],
+            didParseCell: function (hookData) {
+              if (
+                hookData.cell.raw === "Expert Id" ||
+                hookData.cell.raw === "Title" ||
+                hookData.cell.raw === "First Name" ||
+                hookData.cell.raw === "Last Name" ||
+                hookData.cell.raw === "Gender" ||
+                hookData.cell.raw === "Nationality"
+              ) {
+                hookData.cell.styles.fillColor = [220, 220, 220];
+              }
+            },
+          });
 
-            longStr = contents.join('\n\n')
+          autoTable(doc, {
+            theme: "grid",
+            styles: { overflow: "linebreak", textColor: [0, 0, 0] },
+            margin: { top: finalY + 15, bottom: 0, left: 10, right: 10 },
+            columnStyles: { halign: "center" },
+            head: [secondTableHead],
+            body: [secondTableBody],
+            didParseCell: function (hookData) {
+              if (
+                hookData.cell.raw === "Date of Birth" ||
+                hookData.cell.raw === "Email" ||
+                hookData.cell.raw === "Phone No" ||
+                hookData.cell.raw === "Expertise" ||
+                hookData.cell.raw === "Category" ||
+                hookData.cell.raw === "Education organization" ||
+                hookData.cell.raw === "Email" ||
+                hookData.cell.raw === "Phone Number"
+              ) {
+                hookData.cell.styles.fillColor = [248, 248, 255];
+              }
+            },
+          });
 
-            curLines = pdf.splitTextToSize(longStr, 7.5)
-            verticalOffset = verticalOffset + (curLines.length + 0.5) * size / 72
-
-
-            if (verticalOffset > pageHeight) {
-                if (i === downloadField.length - 1) {
-                    pdf.text(0.5, margin + size / 72, curLines)
-                } else {
-                    pdf.text(0.5, margin + size / 72, lastLine)
-
-                    pdf.addPage();
-                    verticalOffset = margin // Restart height position
-                    contents = [downloadFieldTitle[key] + ': \n' + tableData[index][key] || '']
-                }
-            } else {
-                if (i === downloadField.length - 1) {
-                    pdf.text(0.5, margin + size / 72, curLines)
-                } else {
-                    lastLine = curLines
-                }
-            }
-        })
-
-        const fileName = tableData[index][downloadField[2]] + tableData[index][downloadField[3]] + '.pdf'
-        pdf.save(fileName)
+          doc.save('pdfDOC');
     }
 
     return (
