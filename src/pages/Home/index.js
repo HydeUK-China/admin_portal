@@ -30,7 +30,7 @@ import PersonIcon from "@material-ui/icons/Person";
 
 const Home = () => {
   const [projectData, setProjectData] = useState([]);
-
+ 
   useEffect(() => {
     receiveUpdateData();
     ReactGA.pageview(window.location.pathname + window.location.search);
